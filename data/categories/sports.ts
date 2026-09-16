@@ -30,4 +30,14 @@ export default defineCategories([
     source: { name: 'Wikipédia — Copa Libertadores da América', url: 'https://pt.wikipedia.org/wiki/Copa_Libertadores_da_Am%C3%A9rica' },
     difficulty: 2,
   },
+  {
+    id: 'copa-do-brasil-champion-club',
+    family: 'sports',
+    label: 'Tem campeão da Copa do Brasil',
+    description: 'Algum clube da UF já venceu a Copa do Brasil.',
+    members: ['MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP'],
+    source: { name: 'Wikipédia — Copa do Brasil de Futebol', url: 'https://pt.wikipedia.org/wiki/Copa_do_Brasil_de_Futebol' },
+    notes: 'SC: Criciúma (1991). PE: Sport (2008). PR: Athletico (2019). SP inclui Santo André (2004) e Paulista (2005).',
+    difficulty: 2,
+  },
 ])

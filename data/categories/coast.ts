@@ -1,8 +1,12 @@
 import { defineCategories } from './types.ts'
 
 const IBGE_COAST = {
-  name: 'IBGE — Municípios defrontantes com o mar',
-  url: 'https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/24072-municipios-defrontantes-com-o-mar.html',
+  name: 'IBGE — Municípios defrontantes com o mar (2024)',
+  url: 'https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/',
+}
+const IBGE_NORTH = {
+  name: 'IBGE — Municípios localizados no hemisfério norte (2024)',
+  url: 'https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/',
 }
 const IBGE_ATLAS = {
   name: 'IBGE — Atlas Geográfico Escolar',
@@ -18,6 +22,7 @@ export default defineCategories([
     members: ['AL', 'AP', 'BA', 'CE', 'ES', 'MA', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RS', 'SC', 'SE', 'SP'],
     source: IBGE_COAST,
     difficulty: 1,
+    derive: (uf) => uf.territory.seaFacing,
   },
   {
     id: 'landlocked',
@@ -28,6 +33,7 @@ export default defineCategories([
     source: IBGE_COAST,
     notes: 'O Amazonas não chega ao mar: o rio desemboca no Pará e no Amapá.',
     difficulty: 1,
+    derive: (uf) => !uf.territory.seaFacing,
   },
   {
     id: 'crossed-by-equator',
@@ -35,8 +41,10 @@ export default defineCategories([
     label: 'Cortado pela Linha do Equador',
     description: 'A Linha do Equador atravessa o território da UF.',
     members: ['AM', 'AP', 'PA', 'RR'],
-    source: IBGE_ATLAS,
+    source: IBGE_NORTH,
+    notes: 'Conferido pela lista do IBGE de municípios com território no hemisfério norte; as quatro UFs também têm território ao sul.',
     difficulty: 2,
+    derive: (uf) => uf.territory.northernHemisphere,
   },
   {
     id: 'crossed-by-capricorn',

@@ -54,4 +54,26 @@ export default defineCategories([
     notes: 'Não conta a transferência simbólica de um dia para outras cidades.',
     difficulty: 1,
   },
+  {
+    id: 'capital-under-500k',
+    family: 'capitals',
+    label: 'Capital com menos de 500 mil',
+    description: 'A capital tinha menos de 500 mil habitantes no Censo 2022.',
+    members: ['AC', 'AP', 'ES', 'RO', 'RR', 'TO'],
+    source: IBGE_CENSO_2022,
+    notes: 'Mais perto do limite: Porto Velho (460 mil, dentro) e Florianópolis (537 mil, fora).',
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.capital.population2022, op: '<', threshold: 500_000 },
+  },
+  {
+    id: 'capital-ends-with-a',
+    family: 'capitals',
+    label: 'Capital termina com "a"',
+    description: 'O nome da capital termina com "a", com ou sem acento (ex.: Macapá, Brasília).',
+    members: ['AP', 'CE', 'DF', 'ES', 'GO', 'MT', 'PB', 'PI', 'PR', 'RR'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    derive: (uf) => normalize(uf.capital.name).endsWith('a'),
+  },
 ])
+

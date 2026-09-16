@@ -12,7 +12,14 @@ interface WikidataRaw {
   ufs: { code: string; capital: { name: string; ibgeId: number } | null; neighborUfs: string[]; neighborCountries: string[] }[]
 }
 
+interface TerritoryRaw {
+  source: unknown
+  lists: Record<'legalAmazon' | 'sudene' | 'seaFacing' | 'semiarid' | 'northernHemisphere', { ufs: string[] }>
+  predominantBiomeMunicipalitiesByUf: Record<string, Record<string, number>>
+}
+
 const ibge = await readJson<IbgeRaw>(dataPath('raw', 'ibge.json'))
+const territory = await readJson<TerritoryRaw>(dataPath('raw', 'ibge-territory.json'))
 const wikidata = await readJson<WikidataRaw>(dataPath('raw', 'wikidata.json'))
 const errors: string[] = []
 
@@ -55,6 +62,10 @@ const ufs = UFS.map((canon) => {
     largestCity: { name: largest.name, ibgeId: largest.ibgeId, population2022: largest.population },
     neighborUfs: w.neighborUfs,
     neighborCountries: w.neighborCountries,
+    territory: Object.fromEntries(
+      Object.entries(territory.lists).map(([key, list]) => [key, list.ufs.includes(canon.code)]),
+    ) as Record<keyof TerritoryRaw['lists'], boolean>,
+    predominantBiomes: territory.predominantBiomeMunicipalitiesByUf[canon.code] ?? {},
   }
 })
 
@@ -65,10 +76,12 @@ if (errors.length) {
 
 await writeJson(dataPath('ufs.json'), {
   generated: today(),
-  sources: [ibge.source, wikidata.source],
+  sources: [ibge.source, wikidata.source, territory.source],
   notes: [
     'population2022 e areaKm2: Censo 2022 (IBGE, tabela 4714).',
     'municipalityCount: API de localidades do IBGE na data de coleta (inclui municípios criados depois do Censo).',
+    'territory: a UF tem ao menos um município na lista oficial do IBGE (Amazônia Legal 2024, SUDENE 2021, defrontantes com o mar 2024, semiárido 2022, hemisfério norte 2024).',
+    'predominantBiomes: nº de municípios por bioma predominante (IBGE, 2024).',
     'neighborCountries: ISO 3166-1 alfa-2 do país de cada vizinho no Wikidata (Guiana Francesa aparece como FR).',
   ],
   ufs,

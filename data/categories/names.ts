@@ -52,4 +52,25 @@ export default defineCategories([
     difficulty: 2,
     derive: (uf) => normalize(uf.name).slice(0, 2).toUpperCase() === uf.code,
   },
+  {
+    id: 'name-three-plus-words',
+    family: 'names',
+    label: 'Nome com 3 palavras ou mais',
+    description: 'O nome oficial da UF tem três ou mais palavras (ex.: Rio de Janeiro).',
+    members: ['MS', 'RJ', 'RN', 'RS'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    derive: (uf) => uf.name.trim().split(/\s+/).length >= 3,
+  },
+  {
+    id: 'name-up-to-6-letters',
+    family: 'names',
+    label: 'Nome com até 6 letras',
+    description: 'O nome da UF tem no máximo 6 letras (ex.: Acre, Paraná).',
+    members: ['AC', 'AP', 'BA', 'CE', 'GO', 'PA', 'PI', 'PR'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => normalize(uf.name).replace(/[^a-z]/g, '').length <= 6,
+  },
 ])
+

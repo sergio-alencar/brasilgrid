@@ -179,8 +179,17 @@ export function generatePuzzles(categories: CategoryDef[], opts: GeneratorOption
   }
 
   for (let day = 0; day < opts.days; day++) {
-    let best = null
-    for (let cooldown = opts.cooldownDays; cooldown >= 0 && !best; cooldown--) best = searchDay(day, cooldown)
+    // Armadilha pesa mais que repetição: afrouxa o intervalo até achar grade sem armadilha.
+    let best: ReturnType<typeof searchDay> = null
+    for (let cooldown = opts.cooldownDays; cooldown >= 0; cooldown--) {
+      const found = searchDay(day, cooldown)
+      if (!found) continue
+      if (!best) best = found
+      if (found.puzzle.metrics.traps === 0) {
+        best = found
+        break
+      }
+    }
     if (!best) throw new Error(`Não achei grade válida para ${addDays(opts.from, day)}; adicione categorias`)
     for (const id of [...best.puzzle.rows, ...best.puzzle.cols]) lastUsed.set(id, day)
     puzzles.push(best.puzzle)

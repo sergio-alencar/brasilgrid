@@ -1,6 +1,8 @@
+import biomes from './biomes.ts'
 import borders from './borders.ts'
 import capitals from './capitals.ts'
 import coast from './coast.ts'
+import culture from './culture.ts'
 import demography from './demography.ts'
 import history from './history.ts'
 import hydrography from './hydrography.ts'
@@ -15,6 +17,8 @@ export const CATEGORIES: CategoryDef[] = [
   ...borders,
   ...coast,
   ...hydrography,
+  ...biomes,
+  ...culture,
   ...politics,
   ...capitals,
   ...names,

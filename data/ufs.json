@@ -18,11 +18,25 @@
       ],
       "query": "SELECT ?iso ?capitalLabel ?capitalIbge ?nbIso ?nbCountry WHERE {\n  ?uf wdt:P300 ?iso . FILTER(STRSTARTS(?iso, \"BR-\"))\n  ?uf wdt:P17 wd:Q155 .\n  OPTIONAL { ?uf p:P36 ?cs . ?cs ps:P36 ?capital . FILTER NOT EXISTS { ?cs pq:P582 [] }\n             OPTIONAL { ?capital wdt:P1585 ?capitalIbge } }\n  OPTIONAL { ?uf wdt:P47 ?nb .\n             OPTIONAL { ?nb wdt:P300 ?nbIso }\n             OPTIONAL { ?nb wdt:P17 ?nbCountryItem . ?nbCountryItem wdt:P297 ?nbCountry } }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"pt\". }\n}",
       "accessed": "2026-09-16"
+    },
+    {
+      "name": "IBGE — Estrutura territorial e Bioma predominante por município (2024)",
+      "urls": [
+        "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/Bioma_Predominante_por_Municipio_2024.csv",
+        "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/Municipios_da_Amazonia_Legal_2024.xls",
+        "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/SUDENE_2021.xls",
+        "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/Municipios_Defrontantes_com_o_Mar_2024.xls",
+        "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/lista_municipios_Semiarido_2022.xlsx",
+        "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/Municipios_Hemisferio_Norte_2024.xls"
+      ],
+      "accessed": "2026-09-16"
     }
   ],
   "notes": [
     "population2022 e areaKm2: Censo 2022 (IBGE, tabela 4714).",
     "municipalityCount: API de localidades do IBGE na data de coleta (inclui municípios criados depois do Censo).",
+    "territory: a UF tem ao menos um município na lista oficial do IBGE (Amazônia Legal 2024, SUDENE 2021, defrontantes com o mar 2024, semiárido 2022, hemisfério norte 2024).",
+    "predominantBiomes: nº de municípios por bioma predominante (IBGE, 2024).",
     "neighborCountries: ISO 3166-1 alfa-2 do país de cada vizinho no Wikidata (Guiana Francesa aparece como FR)."
   ],
   "ufs": [
@@ -52,7 +66,17 @@
       "neighborCountries": [
         "BO",
         "PE"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Amazônia": 22
+      }
     },
     {
       "code": "AL",
@@ -78,7 +102,18 @@
         "PE",
         "SE"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 44,
+        "Mata Atlântica": 58
+      }
     },
     {
       "code": "AP",
@@ -105,7 +140,17 @@
       "neighborCountries": [
         "FR",
         "SR"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": true
+      },
+      "predominantBiomes": {
+        "Amazônia": 16
+      }
     },
     {
       "code": "AM",
@@ -137,7 +182,17 @@
         "CO",
         "PE",
         "VE"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": true
+      },
+      "predominantBiomes": {
+        "Amazônia": 62
+      }
     },
     {
       "code": "BA",
@@ -168,7 +223,19 @@
         "SE",
         "TO"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 225,
+        "Mata Atlântica": 174,
+        "Cerrado": 18
+      }
     },
     {
       "code": "CE",
@@ -195,7 +262,17 @@
         "PI",
         "RN"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 184
+      }
     },
     {
       "code": "DF",
@@ -220,7 +297,17 @@
         "GO",
         "MG"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 1
+      }
     },
     {
       "code": "ES",
@@ -246,7 +333,17 @@
         "MG",
         "RJ"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 78
+      }
     },
     {
       "code": "GO",
@@ -275,7 +372,18 @@
         "MT",
         "TO"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 242,
+        "Mata Atlântica": 4
+      }
     },
     {
       "code": "MA",
@@ -301,7 +409,18 @@
         "PI",
         "TO"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Amazônia": 93,
+        "Cerrado": 124
+      }
     },
     {
       "code": "MT",
@@ -332,7 +451,19 @@
       ],
       "neighborCountries": [
         "BO"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 61,
+        "Amazônia": 76,
+        "Pantanal": 4
+      }
     },
     {
       "code": "MS",
@@ -363,7 +494,19 @@
       "neighborCountries": [
         "BO",
         "PY"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 51,
+        "Mata Atlântica": 23,
+        "Pantanal": 5
+      }
     },
     {
       "code": "MG",
@@ -393,7 +536,19 @@
         "RJ",
         "SP"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": false,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 256,
+        "Mata Atlântica": 572,
+        "Caatinga": 25
+      }
     },
     {
       "code": "PA",
@@ -425,7 +580,17 @@
       "neighborCountries": [
         "GY",
         "SR"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": true
+      },
+      "predominantBiomes": {
+        "Amazônia": 144
+      }
     },
     {
       "code": "PB",
@@ -451,7 +616,18 @@
         "PE",
         "RN"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 204,
+        "Mata Atlântica": 19
+      }
     },
     {
       "code": "PR",
@@ -480,7 +656,18 @@
       "neighborCountries": [
         "AR",
         "PY"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 398,
+        "Cerrado": 1
+      }
     },
     {
       "code": "PE",
@@ -508,7 +695,18 @@
         "PB",
         "PI"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 76,
+        "Caatinga": 109
+      }
     },
     {
       "code": "PI",
@@ -536,7 +734,18 @@
         "PE",
         "TO"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 116,
+        "Cerrado": 108
+      }
     },
     {
       "code": "RJ",
@@ -562,7 +771,17 @@
         "MG",
         "SP"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 92
+      }
     },
     {
       "code": "RN",
@@ -587,7 +806,18 @@
         "CE",
         "PB"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 156,
+        "Mata Atlântica": 11
+      }
     },
     {
       "code": "RS",
@@ -614,7 +844,18 @@
       "neighborCountries": [
         "AR",
         "UY"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Pampa": 162,
+        "Mata Atlântica": 337
+      }
     },
     {
       "code": "RO",
@@ -642,7 +883,17 @@
       ],
       "neighborCountries": [
         "BO"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Amazônia": 52
+      }
     },
     {
       "code": "RR",
@@ -670,7 +921,17 @@
       "neighborCountries": [
         "GY",
         "VE"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": true
+      },
+      "predominantBiomes": {
+        "Amazônia": 15
+      }
     },
     {
       "code": "SC",
@@ -697,7 +958,17 @@
       ],
       "neighborCountries": [
         "AR"
-      ]
+      ],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 295
+      }
     },
     {
       "code": "SP",
@@ -724,7 +995,18 @@
         "PR",
         "RJ"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": false,
+        "seaFacing": true,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Mata Atlântica": 561,
+        "Cerrado": 84
+      }
     },
     {
       "code": "SE",
@@ -749,7 +1031,18 @@
         "AL",
         "BA"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": false,
+        "sudene": true,
+        "seaFacing": true,
+        "semiarid": true,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Caatinga": 32,
+        "Mata Atlântica": 43
+      }
     },
     {
       "code": "TO",
@@ -778,7 +1071,18 @@
         "PA",
         "PI"
       ],
-      "neighborCountries": []
+      "neighborCountries": [],
+      "territory": {
+        "legalAmazon": true,
+        "sudene": false,
+        "seaFacing": false,
+        "semiarid": false,
+        "northernHemisphere": false
+      },
+      "predominantBiomes": {
+        "Cerrado": 116,
+        "Amazônia": 23
+      }
     }
   ]
 }

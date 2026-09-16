@@ -17,7 +17,12 @@ export interface UfRecord {
   largestCity: { name: string; ibgeId: number; population2022: number }
   neighborUfs: UfCode[]
   neighborCountries: string[]
+  territory: Record<'legalAmazon' | 'sudene' | 'seaFacing' | 'semiarid' | 'northernHemisphere', boolean>
+  /** Nº de municípios por bioma predominante (IBGE 2024). */
+  predominantBiomes: Partial<Record<Biome, number>>
 }
+
+export type Biome = 'Amazônia' | 'Caatinga' | 'Cerrado' | 'Mata Atlântica' | 'Pampa' | 'Pantanal'
 
 export function loadUfs(): UfRecord[] {
   return (JSON.parse(readFileSync(dataPath('ufs.json'), 'utf8')) as { ufs: UfRecord[] }).ufs
