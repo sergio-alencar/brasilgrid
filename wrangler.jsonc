@@ -24,7 +24,9 @@
     }
   ],
   "vars": {
-    "PUBLIC_URL": "http://localhost:5173"
+    "PUBLIC_URL": "http://localhost:5173",
+    // Sem domínio verificado no Resend, só dá para enviar para o e-mail do dono da conta.
+    "EMAIL_FROM": "BrasilGrid <onboarding@resend.dev>"
   },
   "triggers": {
     // 03:05 UTC = 00:05 em America/Sao_Paulo (Brasil não tem mais horário de verão)

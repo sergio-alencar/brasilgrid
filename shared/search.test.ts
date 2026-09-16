@@ -23,7 +23,19 @@ describe('searchUfs', () => {
     expect(codes.slice(0, 3).sort()).toEqual(['RJ', 'RN', 'RS'])
   })
 
-  it('devolve todas com busca vazia', () => {
-    expect(searchUfs('')).toHaveLength(27)
+  it('casa o começo de qualquer palavra do nome', () => {
+    expect(searchUfs('grosso').map((u) => u.code)).toEqual(['MT', 'MS'])
+    expect(searchUfs('norte').map((u) => u.code)).toEqual(['RN'])
+  })
+
+  it('não casa trechos do meio da palavra', () => {
+    expect(searchUfs('ia')).toEqual([])
+    expect(searchUfs('ba').map((u) => u.code)).toEqual(['BA'])
+  })
+
+  it('não sugere nada antes de 2 letras', () => {
+    expect(searchUfs('')).toEqual([])
+    expect(searchUfs('a')).toEqual([])
+    expect(searchUfs(' p ')).toEqual([])
   })
 })

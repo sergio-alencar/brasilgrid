@@ -33,16 +33,6 @@ export default defineCategories([
     derive: (uf) => normalize(uf.name).endsWith('a'),
   },
   {
-    id: 'name-has-diacritic',
-    family: 'names',
-    label: 'Nome tem acento ou til',
-    description: 'O nome oficial da UF tem ao menos um acento (´ ^) ou til (~).',
-    members: ['AP', 'CE', 'ES', 'GO', 'MA', 'PA', 'PB', 'PI', 'PR', 'RO', 'SP'],
-    source: IBGE_LOCALIDADES,
-    difficulty: 2,
-    derive: (uf) => normalize(uf.name) !== uf.name.toLowerCase(),
-  },
-  {
     id: 'code-is-first-two-letters',
     family: 'names',
     label: 'Sigla = duas primeiras letras',

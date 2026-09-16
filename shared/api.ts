@@ -65,3 +65,33 @@ export interface ResultsResponse {
 export interface ApiError {
   error: string
 }
+
+export interface HistoryEntry {
+  puzzleId: number
+  playDate: string
+  status: GameStatus
+  correctCount: number
+  rarity: number
+  /** 9 células em ordem de leitura; null = vazia. */
+  cellPercents: (number | null)[]
+}
+
+export interface StatsResponse {
+  played: number
+  completed: number
+  averageCorrect: number
+  averageRarity: number | null
+  bestRarity: number | null
+  currentStreak: number
+  longestStreak: number
+  /** Índice = nº de acertos (0 a 9). */
+  correctDistribution: number[]
+  /** Quantos acertos caíram em cada faixa de raridade. */
+  bandCounts: Record<string, number>
+  history: HistoryEntry[]
+}
+
+export interface MeResponse {
+  user: { id: string; name: string; email: string | null; image: string | null; isAnonymous: boolean }
+  profile: { nickname: string | null; showInRanking: boolean }
+}

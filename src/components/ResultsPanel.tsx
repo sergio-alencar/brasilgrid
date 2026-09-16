@@ -3,7 +3,9 @@ import type { CategoryInfo, GameState, ResultsResponse } from '../../shared/api.
 import { bandFor } from '../../shared/rarity.ts'
 import { buildShareText } from '../../shared/shareText.ts'
 import { getUf } from '../../shared/ufs.ts'
+import { Link } from 'react-router-dom'
 import { api } from '../lib/api.ts'
+import { authClient } from '../lib/authClient.ts'
 import { formatPercent } from '../lib/format.ts'
 import { Countdown } from './Countdown.tsx'
 import { ShareButtons } from './ShareButtons.tsx'
@@ -30,6 +32,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
   const [error, setError] = useState(false)
   const [tab, setTab] = useState<Tab>('popular')
   const [mapCell, setMapCell] = useState(0)
+  const { data: session } = authClient.useSession()
 
   useEffect(() => {
     api.results(puzzleId).then(setResults, () => setError(true))
@@ -56,6 +59,16 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
       </div>
 
       <ShareButtons text={shareText} />
+
+      {session?.user.isAnonymous && (
+        <p className="rounded-lg bg-emerald-50 p-3 text-sm dark:bg-emerald-950">
+          Quer guardar seu histórico e sua sequência de dias?{' '}
+          <Link to="/entrar" className="font-semibold underline">
+            Entre ou crie uma conta
+          </Link>{' '}
+          — a partida de hoje vem junto.
+        </p>
+      )}
 
       <div>
         <h3 className="font-semibold">Respostas</h3>

@@ -142,4 +142,30 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     const again = await publishPuzzles(db, [puzzle], CATEGORIES, '2020-01-01')
     expect(again.skipped).toEqual([today])
   })
+
+  it('junta as partidas do visitante na conta, sem contar a pessoa duas vezes', async () => {
+    // Ana (conta) e Bia (visitante) jogaram a mesma grade; Caio (visitante) também.
+    await guess('ana', 0, 'SP')
+    await guess('bia', 0, 'SP')
+    await guess('bia', 1, 'MG')
+    await guess('caio', 0, 'RJ')
+
+    const dup = await db.query('select merge_user_games($1, $2) n', ['bia', 'ana'])
+    expect(dup.rows[0].n).toBe(0)
+    const stats = await db.query('select players from puzzle_stats')
+    expect(stats.rows[0].players).toBe(2)
+    const picks = await db.query('select cell, uf, picks from cell_pick_count order by cell, uf')
+    expect(picks.rows).toEqual([
+      { cell: 0, uf: 'RJ', picks: 1 },
+      { cell: 0, uf: 'SP', picks: 1 },
+      { cell: 1, uf: 'MG', picks: 0 },
+    ])
+
+    // Sem conflito, a partida só muda de dono.
+    await db.query(`insert into "user" (id, name, email) values ('dani', 'dani', 'dani@teste.dev')`)
+    const moved = await db.query('select merge_user_games($1, $2) n', ['caio', 'dani'])
+    expect(moved.rows[0].n).toBe(1)
+    const owners = await db.query('select user_id from game order by user_id')
+    expect(owners.rows.map((r) => r.user_id)).toEqual(['ana', 'dani'])
+  })
 })

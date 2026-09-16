@@ -15,6 +15,13 @@
       "when": 1789579589134,
       "tag": "0001_game_functions",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789584214936,
+      "tag": "0002_merge_user_games",
+      "breakpoints": true
     }
   ]
 }

@@ -56,4 +56,15 @@ export default defineCategories([
     notes: 'Em Minas Gerais, o rio forma um trecho da divisa com o Rio de Janeiro.',
     difficulty: 3,
   },
+  {
+    id: 'basin-sao-francisco',
+    family: 'hydrography',
+    label: 'Na bacia do São Francisco',
+    description: 'A UF tem parte do território na bacia hidrográfica do Rio São Francisco.',
+    members: ['AL', 'BA', 'DF', 'GO', 'MG', 'PE', 'SE'],
+    source: { name: 'CBHSF — Comitê da Bacia Hidrográfica do Rio São Francisco', url: 'https://cbhsaofrancisco.org.br/a-bacia/' },
+    notes: 'Diferente do curso do rio: GO (0,5% da bacia) e DF (0,2%) têm afluentes, mas o rio não passa por lá.',
+    difficulty: 2,
+  },
 ])
+

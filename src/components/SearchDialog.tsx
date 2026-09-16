@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { searchUfs } from '../../shared/search.ts'
+import { MIN_QUERY_LENGTH, normalizeSearch, searchUfs } from '../../shared/search.ts'
 
 interface Props {
   title: string
@@ -51,6 +51,15 @@ export function SearchDialog({ title, usedUfs, wrongHere, onPick, onClose }: Pro
           className="mt-2 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 outline-none focus:border-brand-green dark:border-slate-600"
         />
       </div>
+      {normalizeSearch(query).length < MIN_QUERY_LENGTH ? (
+        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500 dark:border-slate-700">
+          Digite pelo menos {MIN_QUERY_LENGTH} letras.
+        </p>
+      ) : results.length === 0 ? (
+        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500 dark:border-slate-700">
+          Nenhuma UF encontrada.
+        </p>
+      ) : (
       <ul className="max-h-72 overflow-y-auto border-t border-slate-200 dark:border-slate-700" role="listbox">
         {results.map((u) => {
           const used = usedUfs.includes(u.code)
@@ -67,8 +76,6 @@ export function SearchDialog({ title, usedUfs, wrongHere, onPick, onClose }: Pro
                   isActive ? 'bg-emerald-50 dark:bg-emerald-950' : 'hover:bg-slate-50 dark:hover:bg-slate-800',
                 ].join(' ')}
               >
-                <img src={`/flags/${u.code}.svg`} alt="" loading="lazy" className="h-5 w-7 rounded-sm object-cover ring-1 ring-black/10" />
-                <span className="w-7 font-mono text-sm font-bold">{u.code}</span>
                 <span className="flex-1">{u.name}</span>
                 {used && <span className="text-xs">já usada</span>}
                 {wrong && <span className="text-xs">errou aqui</span>}
@@ -77,6 +84,7 @@ export function SearchDialog({ title, usedUfs, wrongHere, onPick, onClose }: Pro
           )
         })}
       </ul>
+      )}
       <div className="border-t border-slate-200 p-3 text-right dark:border-slate-700">
         <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg px-3 py-1 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
           Cancelar
