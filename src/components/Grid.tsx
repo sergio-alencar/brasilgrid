@@ -60,8 +60,12 @@ function Row({
           >
             {hit && uf && band ? (
               <>
-                <span className="text-xl font-black sm:text-3xl">{uf.code}</span>
-                <span className="line-clamp-2 text-[10px] leading-tight sm:text-xs">{uf.name}</span>
+                <img
+                  src={`/flags/${uf.code}.svg`}
+                  alt=""
+                  className="h-7 w-10 rounded-sm object-cover shadow-sm ring-1 ring-black/10 sm:h-10 sm:w-14"
+                />
+                <span className="mt-1 line-clamp-2 text-[10px] leading-tight font-semibold sm:text-xs">{uf.name}</span>
                 <span className="mt-1 text-[10px] sm:text-xs" title={band.label}>
                   {band.emoji} {formatPercent(hit.percent)}
                 </span>

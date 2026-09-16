@@ -1,0 +1,224 @@
+{
+  "source": {
+    "name": "Wikimedia Commons (arquivos indicados no Wikidata, P41)",
+    "accessed": "2026-09-16"
+  },
+  "flags": [
+    {
+      "code": "AC",
+      "file": "Bandeira do Acre.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Acre.svg",
+      "license": "Public domain",
+      "author": "Public domainPublic domainfalsefalse This work has been released into the public domain by its author, E2m. This applies worldwide. In some countries this may not be legally possible; if so: E2m grants anyone the right to use this work for any purpose, without any conditions, unless such conditions are required by law.",
+      "bytes": 208
+    },
+    {
+      "code": "AL",
+      "file": "Bandeira de Alagoas.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Alagoas.svg",
+      "license": "Public domain",
+      "author": "Giro720",
+      "bytes": 272245
+    },
+    {
+      "code": "AP",
+      "file": "Bandeira do Amapá.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Amap%C3%A1.svg",
+      "license": "Public domain",
+      "author": "E2m",
+      "bytes": 2025
+    },
+    {
+      "code": "AM",
+      "file": "Bandeira do Amazonas.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Amazonas.svg",
+      "license": "Public domain",
+      "author": "This work is in the public domain in Brazil for one of the following reasons: It is a work published or commissioned by a Brazilian government (federal, state, or municipal) prior to 1983. (Law 3071/1916, art. 662; Law 5988/1973, art. 46; Law 9610/1998, art. 115) It is the text of a treaty, convention, law, decree, regulation, judicial decision, or other official enactment. (Law 9610/1998, art. 8) It is a work whose authors' rights belong to the Brazilian government (federal, state, or municipal), for which the economic rights shall be protected for a period of 70 years from the first of January of the year following that of their disclosure or that of the author's demise, whichever is later. ([1])",
+      "bytes": 8483
+    },
+    {
+      "code": "BA",
+      "file": "Bandeira da Bahia.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_da_Bahia.svg",
+      "license": "Public domain",
+      "author": "Diocleciano Ramos",
+      "bytes": 284
+    },
+    {
+      "code": "CE",
+      "file": "Bandeira do Ceará.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Cear%C3%A1.svg",
+      "license": "Public domain",
+      "author": "Srfortes",
+      "bytes": 16463
+    },
+    {
+      "code": "DF",
+      "file": "Bandeira do Distrito Federal (Brasil).svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Distrito_Federal_(Brasil).svg",
+      "license": "Public domain",
+      "author": "Governo do Distrito Federal; [ Decreto 1090 de 25/08/1969 Sem Revogação Expressa https://www.sinj.df.gov.br/sinj/Diario/97b57569-dff4-35b9-878b-80769812c242/00fcaf81.pdf]",
+      "bytes": 821
+    },
+    {
+      "code": "ES",
+      "file": "Bandeira do Espírito Santo.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Esp%C3%ADrito_Santo.svg",
+      "license": "Public domain",
+      "author": "SVG implementation by E2m",
+      "bytes": 3495
+    },
+    {
+      "code": "GO",
+      "file": "Flag of Goiás.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Goi%C3%A1s.svg",
+      "license": "Public domain",
+      "author": "",
+      "bytes": 843
+    },
+    {
+      "code": "MA",
+      "file": "Bandeira do Maranhão.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Maranh%C3%A3o.svg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. E2m assumed (based on copyright claims).",
+      "bytes": 881
+    },
+    {
+      "code": "MT",
+      "file": "Bandeira de Mato Grosso.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mato_Grosso.svg",
+      "license": "Public domain",
+      "author": "SVG implementation by E2m",
+      "bytes": 641
+    },
+    {
+      "code": "MS",
+      "file": "Bandeira de Mato Grosso do Sul.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Mato_Grosso_do_Sul.svg",
+      "license": "Public domain",
+      "author": "E2m",
+      "bytes": 309
+    },
+    {
+      "code": "MG",
+      "file": "Bandeira de Minas Gerais.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Minas_Gerais.svg",
+      "license": "Public domain",
+      "author": "Plovisanta",
+      "bytes": 9665
+    },
+    {
+      "code": "PA",
+      "file": "Bandeira do Pará.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Par%C3%A1.svg",
+      "license": "Public domain",
+      "author": "",
+      "bytes": 675
+    },
+    {
+      "code": "PB",
+      "file": "Bandeira da Paraíba.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_da_Para%C3%ADba.svg",
+      "license": "Public domain",
+      "author": "SVG implementation by E2m",
+      "bytes": 1015
+    },
+    {
+      "code": "PR",
+      "file": "Bandeira do Paraná.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Paran%C3%A1.svg",
+      "license": "Public domain",
+      "author": "FXXX",
+      "bytes": 181311
+    },
+    {
+      "code": "PE",
+      "file": "Bandeira de Pernambuco.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Pernambuco.svg",
+      "license": "Public domain",
+      "author": "Original: Revolução Pernambucana Vector: SpinnerLaserzthe2nd, E2m, Pedro Alb Xavier",
+      "bytes": 1074
+    },
+    {
+      "code": "PI",
+      "file": "Bandeira do Piauí.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Piau%C3%AD.svg",
+      "license": "Public domain",
+      "author": "E2m, Giro720",
+      "bytes": 5592
+    },
+    {
+      "code": "RJ",
+      "file": "Bandeira do estado do Rio de Janeiro.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_estado_do_Rio_de_Janeiro.svg",
+      "license": "Public domain",
+      "author": "FORTES",
+      "bytes": 181697
+    },
+    {
+      "code": "RN",
+      "file": "Bandeira do Rio Grande do Norte.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Rio_Grande_do_Norte.svg",
+      "license": "Public domain",
+      "author": "Giro720",
+      "bytes": 83071
+    },
+    {
+      "code": "RS",
+      "file": "Bandeira do Rio Grande do Sul.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Rio_Grande_do_Sul.svg",
+      "license": "Public domain",
+      "author": "Srfortes",
+      "bytes": 121362
+    },
+    {
+      "code": "RO",
+      "file": "Bandeira de Rondônia.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Rond%C3%B4nia.svg",
+      "license": "Public domain",
+      "author": "E2m",
+      "bytes": 397
+    },
+    {
+      "code": "RR",
+      "file": "Bandeira de Roraima.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Roraima.svg",
+      "license": "Public domain",
+      "author": "E2m",
+      "bytes": 391
+    },
+    {
+      "code": "SC",
+      "file": "Bandeira de Santa Catarina.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Santa_Catarina.svg",
+      "license": "Public domain",
+      "author": "OAlexander (talk) (colours from Manual de Identidade Visual do Governo do Estado do Santa Catarina)",
+      "bytes": 78947
+    },
+    {
+      "code": "SP",
+      "file": "Bandeira do estado de São Paulo.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_estado_de_S%C3%A3o_Paulo.svg",
+      "license": "Public domain",
+      "author": "Felipe Micaroni Lalli, Giro720",
+      "bytes": 8838
+    },
+    {
+      "code": "SE",
+      "file": "Bandeira de Sergipe.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_de_Sergipe.svg",
+      "license": "Public domain",
+      "author": "E2m",
+      "bytes": 960
+    },
+    {
+      "code": "TO",
+      "file": "Bandeira do Tocantins.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bandeira_do_Tocantins.svg",
+      "license": "Public domain",
+      "author": "Own work",
+      "bytes": 472
+    }
+  ]
+}

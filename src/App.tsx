@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home.tsx'
 import { HowToPlay } from './pages/HowToPlay.tsx'
 import { Placeholder } from './pages/Placeholder.tsx'
+import { Sources } from './pages/Sources.tsx'
 
 export function App() {
   return (
@@ -24,12 +25,17 @@ export function App() {
           <Route path="/entrar" element={<Placeholder title="Entrar" />} />
           <Route path="/perfil" element={<Placeholder title="Perfil" />} />
           <Route path="/r/:shareId" element={<Placeholder title="Resultado" />} />
-          <Route path="/fontes" element={<Placeholder title="Fontes e créditos" />} />
+          <Route path="/fontes" element={<Sources />} />
           <Route path="/privacidade" element={<Placeholder title="Política de privacidade" />} />
           <Route path="/termos" element={<Placeholder title="Termos de uso" />} />
           <Route path="*" element={<Placeholder title="Página não encontrada" />} />
         </Routes>
       </main>
+      <footer className="mx-auto max-w-xl px-4 pb-8 text-center text-xs text-slate-500">
+        <Link to="/fontes" className="underline">
+          Fontes e créditos
+        </Link>
+      </footer>
     </BrowserRouter>
   )
 }

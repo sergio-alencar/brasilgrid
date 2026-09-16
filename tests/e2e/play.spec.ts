@@ -29,6 +29,15 @@ test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', a
   expect(share).toMatch(/^BrasilGrid #\d+ 🇧🇷\n✅ \d\/9 · Raridade \d+/)
   expect(share).not.toMatch(/Sergipe|Alagoas|Paraíba|Espírito|Norte/)
 
+  // O mapa acompanha a célula escolhida nas respostas.
+  const cards = page.locator('ol button[aria-pressed]')
+  await expect(cards).toHaveCount(9)
+  await cards.nth(4).click()
+  await expect(cards.nth(4)).toHaveAttribute('aria-pressed', 'true')
+  const caption = await page.locator('figcaption').innerText()
+  expect(await cards.nth(4).locator('p').innerText()).toBe(caption)
+  await expect(page.getByRole('img', { name: new RegExp(caption.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) })).toBeVisible()
+
   await page.getByRole('tab', { name: 'Seus erros' }).click()
   await expect(page.getByText(/não atende/).or(page.getByText('Nenhum palpite errado'))).toBeVisible()
 })

@@ -67,7 +67,8 @@ export function SearchDialog({ title, usedUfs, wrongHere, onPick, onClose }: Pro
                   isActive ? 'bg-emerald-50 dark:bg-emerald-950' : 'hover:bg-slate-50 dark:hover:bg-slate-800',
                 ].join(' ')}
               >
-                <span className="w-8 font-mono font-bold">{u.code}</span>
+                <img src={`/flags/${u.code}.svg`} alt="" loading="lazy" className="h-5 w-7 rounded-sm object-cover ring-1 ring-black/10" />
+                <span className="w-7 font-mono text-sm font-bold">{u.code}</span>
                 <span className="flex-1">{u.name}</span>
                 {used && <span className="text-xs">já usada</span>}
                 {wrong && <span className="text-xs">errou aqui</span>}

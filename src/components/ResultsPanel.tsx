@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import type { CategoryInfo, GameState, ResultsResponse } from '../../shared/api.ts'
 import { bandFor } from '../../shared/rarity.ts'
 import { buildShareText } from '../../shared/shareText.ts'
@@ -7,6 +7,8 @@ import { api } from '../lib/api.ts'
 import { formatPercent } from '../lib/format.ts'
 import { Countdown } from './Countdown.tsx'
 import { ShareButtons } from './ShareButtons.tsx'
+
+const BrazilMap = lazy(() => import('./BrazilMap.tsx'))
 
 type Tab = 'popular' | 'rare' | 'all' | 'wrong'
 const TABS: [Tab, string][] = [
@@ -27,6 +29,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
   const [results, setResults] = useState<ResultsResponse | null>(null)
   const [error, setError] = useState(false)
   const [tab, setTab] = useState<Tab>('popular')
+  const [mapCell, setMapCell] = useState(0)
 
   useEffect(() => {
     api.results(puzzleId).then(setResults, () => setError(true))
@@ -61,8 +64,20 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
         {results && (
           <>
             <p className="text-xs text-slate-500">
-              {results.players} {results.players === 1 ? 'jogador' : 'jogadores'} hoje
+              {results.players} {results.players === 1 ? 'jogador' : 'jogadores'} hoje · toque numa célula para ver no mapa
             </p>
+            <figure className="mt-3 flex flex-col items-center">
+              <Suspense fallback={<div className="aspect-square w-full max-w-xs" />}>
+                <BrazilMap
+                  title={`${rows[Math.floor(mapCell / 3)].label} × ${cols[mapCell % 3].label}`}
+                  valid={results.cells[mapCell].answers.map((a) => a.uf)}
+                  mine={game.filled.find((f) => f.cell === mapCell)?.uf}
+                />
+              </Suspense>
+              <figcaption className="mt-1 text-center text-xs text-slate-500">
+                {rows[Math.floor(mapCell / 3)].label} × {cols[mapCell % 3].label}
+              </figcaption>
+            </figure>
             <div role="tablist" className="mt-2 flex flex-wrap gap-1">
               {TABS.map(([id, label]) => (
                 <button
@@ -88,7 +103,18 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
                     tab === 'popular' ? answers.slice(0, 3) : tab === 'rare' ? [...answers].reverse().slice(0, 3) : answers
                   const mine = game.filled.find((f) => f.cell === cell)?.uf
                   return (
-                    <li key={cell} className="rounded-lg bg-slate-50 p-2 text-xs dark:bg-slate-900">
+                    <li key={cell}>
+                      <button
+                        type="button"
+                        onClick={() => setMapCell(cell)}
+                        aria-pressed={mapCell === cell}
+                        className={[
+                          'h-full w-full rounded-lg p-2 text-left text-xs',
+                          mapCell === cell
+                            ? 'bg-emerald-50 ring-2 ring-brand-green dark:bg-emerald-950'
+                            : 'bg-slate-50 dark:bg-slate-900',
+                        ].join(' ')}
+                      >
                       <p className="font-semibold">
                         {rows[Math.floor(cell / 3)].label} × {cols[cell % 3].label}
                       </p>
@@ -100,6 +126,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
                           </li>
                         ))}
                       </ul>
+                      </button>
                     </li>
                   )
                 })}
