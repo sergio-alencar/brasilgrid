@@ -1,0 +1,55 @@
+import { IBGE_LOCALIDADES, normalize } from './common.ts'
+import { defineCategories } from './types.ts'
+
+export default defineCategories([
+  {
+    id: 'name-starts-with-vowel',
+    family: 'names',
+    label: 'Nome começa com vogal',
+    description: 'O nome oficial da UF começa com A, E, I, O ou U.',
+    members: ['AC', 'AL', 'AM', 'AP', 'ES'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => /^[aeiou]/.test(normalize(uf.name)),
+  },
+  {
+    id: 'name-multiword',
+    family: 'names',
+    label: 'Nome com mais de uma palavra',
+    description: 'O nome oficial da UF tem duas ou mais palavras (ex.: Mato Grosso).',
+    members: ['DF', 'ES', 'MG', 'MS', 'MT', 'RJ', 'RN', 'RS', 'SC', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.name.trim().split(/\s+/).length > 1,
+  },
+  {
+    id: 'name-ends-with-a',
+    family: 'names',
+    label: 'Nome termina com "a"',
+    description: 'A última letra do nome da UF é "a", com ou sem acento (ex.: Pará, Bahia).',
+    members: ['AP', 'BA', 'CE', 'PA', 'PB', 'PR', 'RO', 'RR', 'SC'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => normalize(uf.name).endsWith('a'),
+  },
+  {
+    id: 'name-has-diacritic',
+    family: 'names',
+    label: 'Nome tem acento ou til',
+    description: 'O nome oficial da UF tem ao menos um acento (´ ^) ou til (~).',
+    members: ['AP', 'CE', 'ES', 'GO', 'MA', 'PA', 'PB', 'PI', 'PR', 'RO', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    derive: (uf) => normalize(uf.name) !== uf.name.toLowerCase(),
+  },
+  {
+    id: 'code-is-first-two-letters',
+    family: 'names',
+    label: 'Sigla = duas primeiras letras',
+    description: 'A sigla da UF são as duas primeiras letras do nome (ex.: GO, Goiás).',
+    members: ['AC', 'AL', 'AM', 'BA', 'CE', 'ES', 'GO', 'MA', 'PA', 'PE', 'PI', 'RO', 'SE', 'TO'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    derive: (uf) => normalize(uf.name).slice(0, 2).toUpperCase() === uf.code,
+  },
+])

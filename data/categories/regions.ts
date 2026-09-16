@@ -1,0 +1,55 @@
+import { IBGE_LOCALIDADES } from './common.ts'
+import { defineCategories } from './types.ts'
+
+export default defineCategories([
+  {
+    id: 'region-north',
+    family: 'regions',
+    label: 'Região Norte',
+    description: 'A UF pertence à Região Norte, segundo o IBGE.',
+    members: ['AC', 'AM', 'AP', 'PA', 'RO', 'RR', 'TO'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.region === 'N',
+  },
+  {
+    id: 'region-northeast',
+    family: 'regions',
+    label: 'Região Nordeste',
+    description: 'A UF pertence à Região Nordeste, segundo o IBGE.',
+    members: ['AL', 'BA', 'CE', 'MA', 'PB', 'PE', 'PI', 'RN', 'SE'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.region === 'NE',
+  },
+  {
+    id: 'region-center-west',
+    family: 'regions',
+    label: 'Região Centro-Oeste',
+    description: 'A UF pertence à Região Centro-Oeste, segundo o IBGE (inclui o Distrito Federal).',
+    members: ['DF', 'GO', 'MS', 'MT'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.region === 'CO',
+  },
+  {
+    id: 'region-southeast',
+    family: 'regions',
+    label: 'Região Sudeste',
+    description: 'A UF pertence à Região Sudeste, segundo o IBGE.',
+    members: ['ES', 'MG', 'RJ', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.region === 'SE',
+  },
+  {
+    id: 'region-south',
+    family: 'regions',
+    label: 'Região Sul',
+    description: 'A UF pertence à Região Sul, segundo o IBGE.',
+    members: ['PR', 'RS', 'SC'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.region === 'S',
+  },
+])

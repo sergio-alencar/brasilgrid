@@ -1,0 +1,784 @@
+{
+  "generated": "2026-09-16",
+  "sources": [
+    {
+      "name": "IBGE — API de localidades e SIDRA (tabela 4714, Censo 2022)",
+      "urls": [
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+        "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
+        "https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93%7C6318?localidades=N3%5Ball%5D",
+        "https://servicodados.ibge.gov.br/api/v3/agregados/4714/periodos/2022/variaveis/93%7C6318?localidades=N6%5Ball%5D"
+      ],
+      "accessed": "2026-09-16"
+    },
+    {
+      "name": "Wikidata (CC0) — P36 capital, P47 faz fronteira com",
+      "urls": [
+        "https://query.wikidata.org/sparql"
+      ],
+      "query": "SELECT ?iso ?capitalLabel ?capitalIbge ?nbIso ?nbCountry WHERE {\n  ?uf wdt:P300 ?iso . FILTER(STRSTARTS(?iso, \"BR-\"))\n  ?uf wdt:P17 wd:Q155 .\n  OPTIONAL { ?uf p:P36 ?cs . ?cs ps:P36 ?capital . FILTER NOT EXISTS { ?cs pq:P582 [] }\n             OPTIONAL { ?capital wdt:P1585 ?capitalIbge } }\n  OPTIONAL { ?uf wdt:P47 ?nb .\n             OPTIONAL { ?nb wdt:P300 ?nbIso }\n             OPTIONAL { ?nb wdt:P17 ?nbCountryItem . ?nbCountryItem wdt:P297 ?nbCountry } }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"pt\". }\n}",
+      "accessed": "2026-09-16"
+    }
+  ],
+  "notes": [
+    "population2022 e areaKm2: Censo 2022 (IBGE, tabela 4714).",
+    "municipalityCount: API de localidades do IBGE na data de coleta (inclui municípios criados depois do Censo).",
+    "neighborCountries: ISO 3166-1 alfa-2 do país de cada vizinho no Wikidata (Guiana Francesa aparece como FR)."
+  ],
+  "ufs": [
+    {
+      "code": "AC",
+      "ibgeId": 12,
+      "name": "Acre",
+      "region": "N",
+      "population2022": 830018,
+      "areaKm2": 164173.429,
+      "municipalityCount": 22,
+      "capital": {
+        "name": "Rio Branco",
+        "ibgeId": 1200401,
+        "population2022": 364756,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Rio Branco",
+        "ibgeId": 1200401,
+        "population2022": 364756
+      },
+      "neighborUfs": [
+        "AM",
+        "RO"
+      ],
+      "neighborCountries": [
+        "BO",
+        "PE"
+      ]
+    },
+    {
+      "code": "AL",
+      "ibgeId": 27,
+      "name": "Alagoas",
+      "region": "NE",
+      "population2022": 3127683,
+      "areaKm2": 27830.661,
+      "municipalityCount": 102,
+      "capital": {
+        "name": "Maceió",
+        "ibgeId": 2704302,
+        "population2022": 957916,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Maceió",
+        "ibgeId": 2704302,
+        "population2022": 957916
+      },
+      "neighborUfs": [
+        "BA",
+        "PE",
+        "SE"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "AP",
+      "ibgeId": 16,
+      "name": "Amapá",
+      "region": "N",
+      "population2022": 733759,
+      "areaKm2": 142470.762,
+      "municipalityCount": 16,
+      "capital": {
+        "name": "Macapá",
+        "ibgeId": 1600303,
+        "population2022": 442933,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Macapá",
+        "ibgeId": 1600303,
+        "population2022": 442933
+      },
+      "neighborUfs": [
+        "PA"
+      ],
+      "neighborCountries": [
+        "FR",
+        "SR"
+      ]
+    },
+    {
+      "code": "AM",
+      "ibgeId": 13,
+      "name": "Amazonas",
+      "region": "N",
+      "population2022": 3941613,
+      "areaKm2": 1559255.881,
+      "municipalityCount": 62,
+      "capital": {
+        "name": "Manaus",
+        "ibgeId": 1302603,
+        "population2022": 2063689,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Manaus",
+        "ibgeId": 1302603,
+        "population2022": 2063689
+      },
+      "neighborUfs": [
+        "AC",
+        "MT",
+        "PA",
+        "RO",
+        "RR"
+      ],
+      "neighborCountries": [
+        "CO",
+        "PE",
+        "VE"
+      ]
+    },
+    {
+      "code": "BA",
+      "ibgeId": 29,
+      "name": "Bahia",
+      "region": "NE",
+      "population2022": 14141626,
+      "areaKm2": 564760.429,
+      "municipalityCount": 417,
+      "capital": {
+        "name": "Salvador",
+        "ibgeId": 2927408,
+        "population2022": 2417678,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Salvador",
+        "ibgeId": 2927408,
+        "population2022": 2417678
+      },
+      "neighborUfs": [
+        "AL",
+        "ES",
+        "GO",
+        "MG",
+        "PE",
+        "PI",
+        "SE",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "CE",
+      "ibgeId": 23,
+      "name": "Ceará",
+      "region": "NE",
+      "population2022": 8794957,
+      "areaKm2": 148894.447,
+      "municipalityCount": 184,
+      "capital": {
+        "name": "Fortaleza",
+        "ibgeId": 2304400,
+        "population2022": 2428708,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Fortaleza",
+        "ibgeId": 2304400,
+        "population2022": 2428708
+      },
+      "neighborUfs": [
+        "PB",
+        "PE",
+        "PI",
+        "RN"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "DF",
+      "ibgeId": 53,
+      "name": "Distrito Federal",
+      "region": "CO",
+      "population2022": 2817381,
+      "areaKm2": 5760.784,
+      "municipalityCount": 1,
+      "capital": {
+        "name": "Brasília",
+        "ibgeId": 5300108,
+        "population2022": 2817381,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Brasília",
+        "ibgeId": 5300108,
+        "population2022": 2817381
+      },
+      "neighborUfs": [
+        "GO",
+        "MG"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "ES",
+      "ibgeId": 32,
+      "name": "Espírito Santo",
+      "region": "SE",
+      "population2022": 3833712,
+      "areaKm2": 46074.448,
+      "municipalityCount": 78,
+      "capital": {
+        "name": "Vitória",
+        "ibgeId": 3205309,
+        "population2022": 322869,
+        "isLargestCity": false
+      },
+      "largestCity": {
+        "name": "Serra",
+        "ibgeId": 3205002,
+        "population2022": 520653
+      },
+      "neighborUfs": [
+        "BA",
+        "MG",
+        "RJ"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "GO",
+      "ibgeId": 52,
+      "name": "Goiás",
+      "region": "CO",
+      "population2022": 7056495,
+      "areaKm2": 340242.859,
+      "municipalityCount": 246,
+      "capital": {
+        "name": "Goiânia",
+        "ibgeId": 5208707,
+        "population2022": 1437366,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Goiânia",
+        "ibgeId": 5208707,
+        "population2022": 1437366
+      },
+      "neighborUfs": [
+        "BA",
+        "DF",
+        "MG",
+        "MS",
+        "MT",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "MA",
+      "ibgeId": 21,
+      "name": "Maranhão",
+      "region": "NE",
+      "population2022": 6776699,
+      "areaKm2": 329651.496,
+      "municipalityCount": 217,
+      "capital": {
+        "name": "São Luís",
+        "ibgeId": 2111300,
+        "population2022": 1037775,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "São Luís",
+        "ibgeId": 2111300,
+        "population2022": 1037775
+      },
+      "neighborUfs": [
+        "PA",
+        "PI",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "MT",
+      "ibgeId": 51,
+      "name": "Mato Grosso",
+      "region": "CO",
+      "population2022": 3658649,
+      "areaKm2": 903208.361,
+      "municipalityCount": 142,
+      "capital": {
+        "name": "Cuiabá",
+        "ibgeId": 5103403,
+        "population2022": 650877,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Cuiabá",
+        "ibgeId": 5103403,
+        "population2022": 650877
+      },
+      "neighborUfs": [
+        "AM",
+        "GO",
+        "MS",
+        "PA",
+        "RO",
+        "TO"
+      ],
+      "neighborCountries": [
+        "BO"
+      ]
+    },
+    {
+      "code": "MS",
+      "ibgeId": 50,
+      "name": "Mato Grosso do Sul",
+      "region": "CO",
+      "population2022": 2757013,
+      "areaKm2": 357142.082,
+      "municipalityCount": 79,
+      "capital": {
+        "name": "Campo Grande",
+        "ibgeId": 5002704,
+        "population2022": 898100,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Campo Grande",
+        "ibgeId": 5002704,
+        "population2022": 898100
+      },
+      "neighborUfs": [
+        "GO",
+        "MG",
+        "MT",
+        "PR",
+        "SP"
+      ],
+      "neighborCountries": [
+        "BO",
+        "PY"
+      ]
+    },
+    {
+      "code": "MG",
+      "ibgeId": 31,
+      "name": "Minas Gerais",
+      "region": "SE",
+      "population2022": 20539989,
+      "areaKm2": 586513.983,
+      "municipalityCount": 853,
+      "capital": {
+        "name": "Belo Horizonte",
+        "ibgeId": 3106200,
+        "population2022": 2315560,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Belo Horizonte",
+        "ibgeId": 3106200,
+        "population2022": 2315560
+      },
+      "neighborUfs": [
+        "BA",
+        "DF",
+        "ES",
+        "GO",
+        "MS",
+        "RJ",
+        "SP"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PA",
+      "ibgeId": 15,
+      "name": "Pará",
+      "region": "N",
+      "population2022": 8120131,
+      "areaKm2": 1245870.704,
+      "municipalityCount": 144,
+      "capital": {
+        "name": "Belém",
+        "ibgeId": 1501402,
+        "population2022": 1303403,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Belém",
+        "ibgeId": 1501402,
+        "population2022": 1303403
+      },
+      "neighborUfs": [
+        "AM",
+        "AP",
+        "MA",
+        "MT",
+        "RR",
+        "TO"
+      ],
+      "neighborCountries": [
+        "GY",
+        "SR"
+      ]
+    },
+    {
+      "code": "PB",
+      "ibgeId": 25,
+      "name": "Paraíba",
+      "region": "NE",
+      "population2022": 3974687,
+      "areaKm2": 56467.242,
+      "municipalityCount": 223,
+      "capital": {
+        "name": "João Pessoa",
+        "ibgeId": 2507507,
+        "population2022": 833932,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "João Pessoa",
+        "ibgeId": 2507507,
+        "population2022": 833932
+      },
+      "neighborUfs": [
+        "CE",
+        "PE",
+        "RN"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PR",
+      "ibgeId": 41,
+      "name": "Paraná",
+      "region": "S",
+      "population2022": 11444380,
+      "areaKm2": 199298.981,
+      "municipalityCount": 399,
+      "capital": {
+        "name": "Curitiba",
+        "ibgeId": 4106902,
+        "population2022": 1773718,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Curitiba",
+        "ibgeId": 4106902,
+        "population2022": 1773718
+      },
+      "neighborUfs": [
+        "MS",
+        "SC",
+        "SP"
+      ],
+      "neighborCountries": [
+        "AR",
+        "PY"
+      ]
+    },
+    {
+      "code": "PE",
+      "ibgeId": 26,
+      "name": "Pernambuco",
+      "region": "NE",
+      "population2022": 9058931,
+      "areaKm2": 98067.877,
+      "municipalityCount": 185,
+      "capital": {
+        "name": "Recife",
+        "ibgeId": 2611606,
+        "population2022": 1488920,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Recife",
+        "ibgeId": 2611606,
+        "population2022": 1488920
+      },
+      "neighborUfs": [
+        "AL",
+        "BA",
+        "CE",
+        "PB",
+        "PI"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PI",
+      "ibgeId": 22,
+      "name": "Piauí",
+      "region": "NE",
+      "population2022": 3271199,
+      "areaKm2": 251755.481,
+      "municipalityCount": 224,
+      "capital": {
+        "name": "Teresina",
+        "ibgeId": 2211001,
+        "population2022": 866300,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Teresina",
+        "ibgeId": 2211001,
+        "population2022": 866300
+      },
+      "neighborUfs": [
+        "BA",
+        "CE",
+        "MA",
+        "PE",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "RJ",
+      "ibgeId": 33,
+      "name": "Rio de Janeiro",
+      "region": "SE",
+      "population2022": 16055174,
+      "areaKm2": 43750.425,
+      "municipalityCount": 92,
+      "capital": {
+        "name": "Rio de Janeiro",
+        "ibgeId": 3304557,
+        "population2022": 6211223,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Rio de Janeiro",
+        "ibgeId": 3304557,
+        "population2022": 6211223
+      },
+      "neighborUfs": [
+        "ES",
+        "MG",
+        "SP"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "RN",
+      "ibgeId": 24,
+      "name": "Rio Grande do Norte",
+      "region": "NE",
+      "population2022": 3302729,
+      "areaKm2": 52809.599,
+      "municipalityCount": 167,
+      "capital": {
+        "name": "Natal",
+        "ibgeId": 2408102,
+        "population2022": 751300,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Natal",
+        "ibgeId": 2408102,
+        "population2022": 751300
+      },
+      "neighborUfs": [
+        "CE",
+        "PB"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "RS",
+      "ibgeId": 43,
+      "name": "Rio Grande do Sul",
+      "region": "S",
+      "population2022": 10882965,
+      "areaKm2": 281707.151,
+      "municipalityCount": 497,
+      "capital": {
+        "name": "Porto Alegre",
+        "ibgeId": 4314902,
+        "population2022": 1332845,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Porto Alegre",
+        "ibgeId": 4314902,
+        "population2022": 1332845
+      },
+      "neighborUfs": [
+        "SC"
+      ],
+      "neighborCountries": [
+        "AR",
+        "UY"
+      ]
+    },
+    {
+      "code": "RO",
+      "ibgeId": 11,
+      "name": "Rondônia",
+      "region": "N",
+      "population2022": 1581196,
+      "areaKm2": 237754.172,
+      "municipalityCount": 52,
+      "capital": {
+        "name": "Porto Velho",
+        "ibgeId": 1100205,
+        "population2022": 460434,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Porto Velho",
+        "ibgeId": 1100205,
+        "population2022": 460434
+      },
+      "neighborUfs": [
+        "AC",
+        "AM",
+        "MT"
+      ],
+      "neighborCountries": [
+        "BO"
+      ]
+    },
+    {
+      "code": "RR",
+      "ibgeId": 14,
+      "name": "Roraima",
+      "region": "N",
+      "population2022": 636707,
+      "areaKm2": 223644.53,
+      "municipalityCount": 15,
+      "capital": {
+        "name": "Boa Vista",
+        "ibgeId": 1400100,
+        "population2022": 413486,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Boa Vista",
+        "ibgeId": 1400100,
+        "population2022": 413486
+      },
+      "neighborUfs": [
+        "AM",
+        "PA"
+      ],
+      "neighborCountries": [
+        "GY",
+        "VE"
+      ]
+    },
+    {
+      "code": "SC",
+      "ibgeId": 42,
+      "name": "Santa Catarina",
+      "region": "S",
+      "population2022": 7610361,
+      "areaKm2": 95730.69,
+      "municipalityCount": 295,
+      "capital": {
+        "name": "Florianópolis",
+        "ibgeId": 4205407,
+        "population2022": 537211,
+        "isLargestCity": false
+      },
+      "largestCity": {
+        "name": "Joinville",
+        "ibgeId": 4209102,
+        "population2022": 616317
+      },
+      "neighborUfs": [
+        "PR",
+        "RS"
+      ],
+      "neighborCountries": [
+        "AR"
+      ]
+    },
+    {
+      "code": "SP",
+      "ibgeId": 35,
+      "name": "São Paulo",
+      "region": "SE",
+      "population2022": 44411238,
+      "areaKm2": 248219.485,
+      "municipalityCount": 645,
+      "capital": {
+        "name": "São Paulo",
+        "ibgeId": 3550308,
+        "population2022": 11451999,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "São Paulo",
+        "ibgeId": 3550308,
+        "population2022": 11451999
+      },
+      "neighborUfs": [
+        "MG",
+        "MS",
+        "PR",
+        "RJ"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "SE",
+      "ibgeId": 28,
+      "name": "Sergipe",
+      "region": "NE",
+      "population2022": 2210004,
+      "areaKm2": 21938.188,
+      "municipalityCount": 75,
+      "capital": {
+        "name": "Aracaju",
+        "ibgeId": 2800308,
+        "population2022": 602757,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Aracaju",
+        "ibgeId": 2800308,
+        "population2022": 602757
+      },
+      "neighborUfs": [
+        "AL",
+        "BA"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "TO",
+      "ibgeId": 17,
+      "name": "Tocantins",
+      "region": "N",
+      "population2022": 1511460,
+      "areaKm2": 277423.627,
+      "municipalityCount": 139,
+      "capital": {
+        "name": "Palmas",
+        "ibgeId": 1721000,
+        "population2022": 302692,
+        "isLargestCity": true
+      },
+      "largestCity": {
+        "name": "Palmas",
+        "ibgeId": 1721000,
+        "population2022": 302692
+      },
+      "neighborUfs": [
+        "BA",
+        "GO",
+        "MA",
+        "MT",
+        "PA",
+        "PI"
+      ],
+      "neighborCountries": []
+    }
+  ]
+}

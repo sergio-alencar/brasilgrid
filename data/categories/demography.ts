@@ -1,0 +1,55 @@
+import { IBGE_CENSO_2022, IBGE_LOCALIDADES } from './common.ts'
+import { defineCategories } from './types.ts'
+
+export default defineCategories([
+  {
+    id: 'population-over-10m',
+    family: 'demography',
+    label: 'Mais de 10 milhões de hab.',
+    description: 'A UF tinha mais de 10 milhões de habitantes no Censo 2022.',
+    members: ['BA', 'MG', 'PR', 'RJ', 'RS', 'SP'],
+    source: IBGE_CENSO_2022,
+    difficulty: 1,
+    numeric: { metric: (uf) => uf.population2022, op: '>', threshold: 10_000_000 },
+  },
+  {
+    id: 'population-under-1m',
+    family: 'demography',
+    label: 'Menos de 1 milhão de hab.',
+    description: 'A UF tinha menos de 1 milhão de habitantes no Censo 2022.',
+    members: ['AC', 'AP', 'RR'],
+    source: IBGE_CENSO_2022,
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.population2022, op: '<', threshold: 1_000_000 },
+  },
+  {
+    id: 'area-over-300k',
+    family: 'demography',
+    label: 'Área maior que 300 mil km²',
+    description: 'A área territorial da UF passa de 300 mil km² (IBGE, 2022).',
+    members: ['AM', 'BA', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA'],
+    source: IBGE_CENSO_2022,
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.areaKm2, op: '>', threshold: 300_000 },
+  },
+  {
+    id: 'area-under-60k',
+    family: 'demography',
+    label: 'Área menor que 60 mil km²',
+    description: 'A área territorial da UF é menor que 60 mil km² (IBGE, 2022).',
+    members: ['AL', 'DF', 'ES', 'PB', 'RJ', 'RN', 'SE'],
+    source: IBGE_CENSO_2022,
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.areaKm2, op: '<', threshold: 60_000 },
+  },
+  {
+    id: 'municipalities-over-350',
+    family: 'demography',
+    label: 'Mais de 350 municípios',
+    description: 'A UF tem mais de 350 municípios.',
+    members: ['BA', 'MG', 'PR', 'RS', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.municipalityCount, op: '>', threshold: 350 },
+  },
+])

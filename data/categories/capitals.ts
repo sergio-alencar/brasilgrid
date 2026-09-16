@@ -1,0 +1,57 @@
+import { IBGE_CENSO_2022, IBGE_LOCALIDADES, normalize } from './common.ts'
+import { defineCategories } from './types.ts'
+
+export default defineCategories([
+  {
+    id: 'capital-same-initial',
+    family: 'capitals',
+    label: 'Capital com a mesma inicial',
+    description: 'O nome da capital começa com a mesma letra do nome da UF (ex.: Goiânia, Goiás).',
+    members: ['GO', 'RJ', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 2,
+    derive: (uf) => normalize(uf.capital.name)[0] === normalize(uf.name)[0],
+  },
+  {
+    id: 'capital-multiword',
+    family: 'capitals',
+    label: 'Capital com nome composto',
+    description: 'O nome da capital tem duas ou mais palavras (ex.: Belo Horizonte).',
+    members: ['AC', 'MA', 'MG', 'MS', 'PB', 'RJ', 'RO', 'RR', 'RS', 'SP'],
+    source: IBGE_LOCALIDADES,
+    difficulty: 1,
+    derive: (uf) => uf.capital.name.trim().split(/\s+/).length > 1,
+  },
+  {
+    id: 'capital-not-largest-city',
+    family: 'capitals',
+    label: 'Capital não é a maior cidade',
+    description: 'Algum outro município da UF tem mais habitantes que a capital (Censo 2022).',
+    members: ['ES', 'SC'],
+    source: IBGE_CENSO_2022,
+    notes: 'ES: Serra, Vila Velha e Cariacica superam Vitória. SC: Joinville supera Florianópolis.',
+    difficulty: 3,
+    derive: (uf) => !uf.capital.isLargestCity,
+  },
+  {
+    id: 'capital-over-1m',
+    family: 'capitals',
+    label: 'Capital com mais de 1 milhão',
+    description: 'A capital tinha mais de 1 milhão de habitantes no Censo 2022.',
+    members: ['AM', 'BA', 'CE', 'DF', 'GO', 'MA', 'MG', 'PA', 'PE', 'PR', 'RJ', 'RS', 'SP'],
+    source: IBGE_CENSO_2022,
+    notes: 'Mais perto do limite: São Luís (1,04 mi, dentro) e Maceió (0,96 mi, fora).',
+    difficulty: 2,
+    numeric: { metric: (uf) => uf.capital.population2022, op: '>', threshold: 1_000_000 },
+  },
+  {
+    id: 'capital-was-national-capital',
+    family: 'capitals',
+    label: 'Já sediou a capital do Brasil',
+    description: 'A capital da UF já foi capital do Brasil: Salvador (1549–1763), Rio de Janeiro (1763–1960) ou Brasília (desde 1960).',
+    members: ['BA', 'DF', 'RJ'],
+    source: { name: 'Wikipédia — Capitais do Brasil', url: 'https://pt.wikipedia.org/wiki/Capitais_do_Brasil' },
+    notes: 'Não conta a transferência simbólica de um dia para outras cidades.',
+    difficulty: 1,
+  },
+])
