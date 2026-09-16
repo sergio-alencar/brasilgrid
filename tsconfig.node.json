@@ -19,5 +19,5 @@
     "resolveJsonModule": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo"
   },
-  "include": ["scripts", "data", "shared", "vite.config.ts", "vitest.config.ts"]
+  "include": ["scripts", "data", "shared", "tests", "vite.config.ts", "vitest.config.ts", "drizzle.config.ts", "playwright.config.ts"]
 }

@@ -1,0 +1,2574 @@
+{
+  "generated": "2026-09-16",
+  "options": {
+    "from": "2026-09-16",
+    "days": 30,
+    "seed": 916,
+    "cooldownDays": 6,
+    "minAnswersPerCell": 2,
+    "minFamilies": 4,
+    "attemptsPerDay": 20000
+  },
+  "categoryCount": 52,
+  "puzzles": [
+    {
+      "playDate": "2026-09-16",
+      "rows": [
+        "name-has-diacritic",
+        "borders-mt",
+        "world-cup-2014-host"
+      ],
+      "cols": [
+        "area-over-300k",
+        "borders-foreign-country",
+        "code-is-first-two-letters"
+      ],
+      "cells": [
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "AP",
+          "PA",
+          "PR",
+          "RO"
+        ],
+        [
+          "CE",
+          "ES",
+          "GO",
+          "MA",
+          "PA",
+          "PI",
+          "RO"
+        ],
+        [
+          "AM",
+          "GO",
+          "MS",
+          "PA"
+        ],
+        [
+          "AM",
+          "MS",
+          "PA",
+          "RO"
+        ],
+        [
+          "AM",
+          "GO",
+          "PA",
+          "RO",
+          "TO"
+        ],
+        [
+          "AM",
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "MT",
+          "PR",
+          "RS"
+        ],
+        [
+          "AM",
+          "BA",
+          "CE",
+          "PE"
+        ]
+      ],
+      "solution": [
+        "MA",
+        "AP",
+        "CE",
+        "MS",
+        "PA",
+        "GO",
+        "BA",
+        "MT",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 39,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.83
+      },
+      "cooldownUsed": 6
+    },
+    {
+      "playDate": "2026-09-17",
+      "rows": [
+        "borders-few-ufs",
+        "created-1960-or-later",
+        "legal-amazon"
+      ],
+      "cols": [
+        "name-ends-with-a",
+        "borders-spanish-speaking",
+        "capital-multiword"
+      ],
+      "cells": [
+        [
+          "AP",
+          "RR",
+          "SC"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS",
+          "SC"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS"
+        ],
+        [
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MA",
+          "RO",
+          "RR"
+        ]
+      ],
+      "solution": [
+        "RR",
+        "SC",
+        "RS",
+        "AP",
+        "RO",
+        "MS",
+        "PA",
+        "AM",
+        "AC"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.67
+      },
+      "cooldownUsed": 6
+    },
+    {
+      "playDate": "2026-09-18",
+      "rows": [
+        "density-over-50",
+        "name-multiword",
+        "landlocked"
+      ],
+      "cols": [
+        "capital-over-1m",
+        "trf-seat",
+        "borders-mg"
+      ],
+      "cells": [
+        [
+          "CE",
+          "DF",
+          "PE",
+          "PR",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "PE",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "MS",
+          "RJ",
+          "SP"
+        ],
+        [
+          "AM",
+          "DF",
+          "GO",
+          "MG"
+        ],
+        [
+          "DF",
+          "MG"
+        ],
+        [
+          "DF",
+          "GO",
+          "MS"
+        ]
+      ],
+      "solution": [
+        "CE",
+        "PE",
+        "ES",
+        "RJ",
+        "RS",
+        "MS",
+        "AM",
+        "MG",
+        "DF"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 38,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.2
+      },
+      "cooldownUsed": 6
+    },
+    {
+      "playDate": "2026-09-19",
+      "rows": [
+        "brazilian-champion-club",
+        "area-under-60k",
+        "borders-to"
+      ],
+      "cols": [
+        "has-coastline",
+        "sudene-area",
+        "borders-ba"
+      ],
+      "cells": [
+        [
+          "BA",
+          "PE",
+          "PR",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "MG",
+          "PE"
+        ],
+        [
+          "MG",
+          "PE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RJ",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "SE"
+        ],
+        [
+          "BA",
+          "MA",
+          "PA",
+          "PI"
+        ],
+        [
+          "BA",
+          "MA",
+          "PI"
+        ],
+        [
+          "GO",
+          "PI"
+        ]
+      ],
+      "solution": [
+        "PR",
+        "MG",
+        "PE",
+        "PB",
+        "ES",
+        "AL",
+        "MA",
+        "BA",
+        "GO"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.4
+      },
+      "cooldownUsed": 6
+    },
+    {
+      "playDate": "2026-09-20",
+      "rows": [
+        "name-has-diacritic",
+        "borders-pa",
+        "world-cup-2014-host"
+      ],
+      "cols": [
+        "area-over-300k",
+        "borders-foreign-country",
+        "code-is-first-two-letters"
+      ],
+      "cells": [
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "AP",
+          "PA",
+          "PR",
+          "RO"
+        ],
+        [
+          "CE",
+          "ES",
+          "GO",
+          "MA",
+          "PA",
+          "PI",
+          "RO"
+        ],
+        [
+          "AM",
+          "MA",
+          "MT"
+        ],
+        [
+          "AM",
+          "AP",
+          "MT",
+          "RR"
+        ],
+        [
+          "AM",
+          "MA",
+          "TO"
+        ],
+        [
+          "AM",
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "MT",
+          "PR",
+          "RS"
+        ],
+        [
+          "AM",
+          "BA",
+          "CE",
+          "PE"
+        ]
+      ],
+      "solution": [
+        "GO",
+        "PA",
+        "CE",
+        "MA",
+        "AP",
+        "TO",
+        "BA",
+        "MT",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 36,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.83
+      },
+      "cooldownUsed": 3
+    },
+    {
+      "playDate": "2026-09-21",
+      "rows": [
+        "region-north",
+        "crossed-by-equator",
+        "borders-bolivia"
+      ],
+      "cols": [
+        "borders-mt",
+        "former-federal-territory",
+        "capital-timezone-not-brasilia"
+      ],
+      "cells": [
+        [
+          "AM",
+          "PA",
+          "RO",
+          "TO"
+        ],
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "RO",
+          "RR"
+        ],
+        [
+          "AM",
+          "PA"
+        ],
+        [
+          "AP",
+          "RR"
+        ],
+        [
+          "AM",
+          "RR"
+        ],
+        [
+          "MS",
+          "RO"
+        ],
+        [
+          "AC",
+          "RO"
+        ],
+        [
+          "AC",
+          "MS",
+          "MT",
+          "RO"
+        ]
+      ],
+      "solution": [
+        "TO",
+        "RO",
+        "AM",
+        "PA",
+        "AP",
+        "RR",
+        "MS",
+        "AC",
+        "MT"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 26,
+        "traps": 8,
+        "trivialCells": 2,
+        "difficulty": 2.83
+      },
+      "cooldownUsed": 4
+    },
+    {
+      "playDate": "2026-09-22",
+      "rows": [
+        "name-ends-with-a",
+        "borders-spanish-speaking",
+        "created-1960-or-later"
+      ],
+      "cols": [
+        "capital-multiword",
+        "borders-few-ufs",
+        "legal-amazon"
+      ],
+      "cells": [
+        [
+          "PB",
+          "RO",
+          "RR"
+        ],
+        [
+          "AP",
+          "RR",
+          "SC"
+        ],
+        [
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR",
+          "RS"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS",
+          "SC"
+        ],
+        [
+          "AC",
+          "AM",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AP",
+          "DF",
+          "RR"
+        ],
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR",
+          "TO"
+        ]
+      ],
+      "solution": [
+        "PB",
+        "RR",
+        "PA",
+        "RO",
+        "RS",
+        "AM",
+        "MS",
+        "AP",
+        "AC"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 37,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.67
+      },
+      "cooldownUsed": 4
+    },
+    {
+      "playDate": "2026-09-23",
+      "rows": [
+        "density-over-50",
+        "borders-sp",
+        "landlocked"
+      ],
+      "cols": [
+        "borders-mg",
+        "capital-over-1m",
+        "name-multiword"
+      ],
+      "cells": [
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "CE",
+          "DF",
+          "PE",
+          "PR",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "RN",
+          "SC",
+          "SP"
+        ],
+        [
+          "MS",
+          "RJ"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "MG",
+          "MS",
+          "RJ"
+        ],
+        [
+          "DF",
+          "GO",
+          "MS"
+        ],
+        [
+          "AM",
+          "DF",
+          "GO",
+          "MG"
+        ],
+        [
+          "DF",
+          "MG",
+          "MS",
+          "MT"
+        ]
+      ],
+      "solution": [
+        "RJ",
+        "CE",
+        "ES",
+        "MS",
+        "PR",
+        "MG",
+        "GO",
+        "AM",
+        "DF"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 35,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.03
+      },
+      "cooldownUsed": 4
+    },
+    {
+      "playDate": "2026-09-24",
+      "rows": [
+        "area-under-60k",
+        "river-sao-francisco",
+        "borders-to"
+      ],
+      "cols": [
+        "borders-ba",
+        "region-northeast",
+        "has-coastline"
+      ],
+      "cells": [
+        [
+          "AL",
+          "ES",
+          "SE"
+        ],
+        [
+          "AL",
+          "PB",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RJ",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "MG",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "GO",
+          "PI"
+        ],
+        [
+          "BA",
+          "MA",
+          "PI"
+        ],
+        [
+          "BA",
+          "MA",
+          "PA",
+          "PI"
+        ]
+      ],
+      "solution": [
+        "SE",
+        "PB",
+        "ES",
+        "MG",
+        "AL",
+        "PE",
+        "GO",
+        "MA",
+        "BA"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.87
+      },
+      "cooldownUsed": 4
+    },
+    {
+      "playDate": "2026-09-25",
+      "rows": [
+        "river-tocantins",
+        "code-is-first-two-letters",
+        "world-cup-2014-host"
+      ],
+      "cols": [
+        "borders-many-ufs",
+        "area-over-300k",
+        "name-has-diacritic"
+      ],
+      "cells": [
+        [
+          "GO",
+          "PA",
+          "TO"
+        ],
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "BA",
+          "GO",
+          "PA",
+          "TO"
+        ],
+        [
+          "AM",
+          "BA",
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "CE",
+          "ES",
+          "GO",
+          "MA",
+          "PA",
+          "PI",
+          "RO"
+        ],
+        [
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "CE",
+          "PR",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "TO",
+        "PA",
+        "MA",
+        "GO",
+        "BA",
+        "ES",
+        "MG",
+        "AM",
+        "CE"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 35,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2
+      },
+      "cooldownUsed": 4
+    },
+    {
+      "playDate": "2026-09-26",
+      "rows": [
+        "borders-go",
+        "brazilian-champion-club",
+        "population-over-10m"
+      ],
+      "cols": [
+        "capital-was-national-capital",
+        "borders-foreign-country",
+        "trf-seat"
+      ],
+      "cells": [
+        [
+          "BA",
+          "DF"
+        ],
+        [
+          "MS",
+          "MT"
+        ],
+        [
+          "DF",
+          "MG"
+        ],
+        [
+          "BA",
+          "RJ"
+        ],
+        [
+          "PR",
+          "RS"
+        ],
+        [
+          "MG",
+          "PE",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "RJ"
+        ],
+        [
+          "PR",
+          "RS"
+        ],
+        [
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "DF",
+        "MS",
+        "MG",
+        "RJ",
+        "RS",
+        "PE",
+        "BA",
+        "PR",
+        "SP"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 23,
+        "traps": 9,
+        "trivialCells": 0,
+        "difficulty": 3.07
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-09-27",
+      "rows": [
+        "crossed-by-equator",
+        "region-north",
+        "borders-bolivia"
+      ],
+      "cols": [
+        "former-federal-territory",
+        "capital-timezone-not-brasilia",
+        "borders-mt"
+      ],
+      "cells": [
+        [
+          "AP",
+          "RR"
+        ],
+        [
+          "AM",
+          "RR"
+        ],
+        [
+          "AM",
+          "PA"
+        ],
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "RO",
+          "RR"
+        ],
+        [
+          "AM",
+          "PA",
+          "RO",
+          "TO"
+        ],
+        [
+          "AC",
+          "RO"
+        ],
+        [
+          "AC",
+          "MS",
+          "MT",
+          "RO"
+        ],
+        [
+          "MS",
+          "RO"
+        ]
+      ],
+      "solution": [
+        "RR",
+        "AM",
+        "PA",
+        "AP",
+        "RO",
+        "TO",
+        "AC",
+        "MT",
+        "MS"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 26,
+        "traps": 8,
+        "trivialCells": 2,
+        "difficulty": 2.83
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-09-28",
+      "rows": [
+        "legal-amazon",
+        "borders-few-ufs",
+        "name-ends-with-a"
+      ],
+      "cols": [
+        "borders-spanish-speaking",
+        "created-1960-or-later",
+        "capital-multiword"
+      ],
+      "cells": [
+        [
+          "AC",
+          "AM",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR",
+          "TO"
+        ],
+        [
+          "AC",
+          "MA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS",
+          "SC"
+        ],
+        [
+          "AC",
+          "AP",
+          "DF",
+          "RR"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS"
+        ],
+        [
+          "PR",
+          "RO",
+          "RR",
+          "SC"
+        ],
+        [
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "PB",
+          "RO",
+          "RR"
+        ]
+      ],
+      "solution": [
+        "AM",
+        "RO",
+        "MA",
+        "RS",
+        "AC",
+        "RR",
+        "PR",
+        "AP",
+        "PB"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 35,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.67
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-09-29",
+      "rows": [
+        "capital-over-1m",
+        "sudene-area",
+        "borders-mg"
+      ],
+      "cols": [
+        "density-over-50",
+        "name-multiword",
+        "region-southeast"
+      ],
+      "cells": [
+        [
+          "CE",
+          "DF",
+          "PE",
+          "PR",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "RJ",
+          "SP"
+        ],
+        [
+          "AL",
+          "CE",
+          "ES",
+          "PB",
+          "PE",
+          "RN",
+          "SE"
+        ],
+        [
+          "ES",
+          "MG",
+          "RN"
+        ],
+        [
+          "ES",
+          "MG"
+        ],
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "MS",
+          "RJ",
+          "SP"
+        ],
+        [
+          "ES",
+          "RJ",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "CE",
+        "RJ",
+        "SP",
+        "AL",
+        "RN",
+        "MG",
+        "DF",
+        "MS",
+        "ES"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 38,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.2
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-09-30",
+      "rows": [
+        "area-under-60k",
+        "borders-to",
+        "river-sao-francisco"
+      ],
+      "cols": [
+        "region-northeast",
+        "borders-ba",
+        "has-coastline"
+      ],
+      "cells": [
+        [
+          "AL",
+          "PB",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RJ",
+          "RN",
+          "SE"
+        ],
+        [
+          "BA",
+          "MA",
+          "PI"
+        ],
+        [
+          "GO",
+          "PI"
+        ],
+        [
+          "BA",
+          "MA",
+          "PA",
+          "PI"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "MG",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ]
+      ],
+      "solution": [
+        "PB",
+        "SE",
+        "ES",
+        "PI",
+        "GO",
+        "MA",
+        "BA",
+        "MG",
+        "AL"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.87
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-01",
+      "rows": [
+        "name-has-diacritic",
+        "borders-many-ufs",
+        "landlocked"
+      ],
+      "cols": [
+        "world-cup-2014-host",
+        "code-is-first-two-letters",
+        "area-over-300k"
+      ],
+      "cells": [
+        [
+          "CE",
+          "PR",
+          "SP"
+        ],
+        [
+          "CE",
+          "ES",
+          "GO",
+          "MA",
+          "PA",
+          "PI",
+          "RO"
+        ],
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "BA",
+          "GO",
+          "PA",
+          "TO"
+        ],
+        [
+          "BA",
+          "GO",
+          "MG",
+          "MT",
+          "PA"
+        ],
+        [
+          "AM",
+          "DF",
+          "MG",
+          "MT"
+        ],
+        [
+          "AC",
+          "AM",
+          "GO",
+          "RO",
+          "TO"
+        ],
+        [
+          "AM",
+          "GO",
+          "MG",
+          "MS",
+          "MT"
+        ]
+      ],
+      "solution": [
+        "PR",
+        "CE",
+        "MA",
+        "MG",
+        "GO",
+        "BA",
+        "DF",
+        "AC",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 39,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.83
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-02",
+      "rows": [
+        "brazilian-champion-club",
+        "borders-go",
+        "population-over-10m"
+      ],
+      "cols": [
+        "borders-sp",
+        "trf-seat",
+        "municipalities-over-350"
+      ],
+      "cells": [
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "MG",
+          "PE",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "MS"
+        ],
+        [
+          "DF",
+          "MG"
+        ],
+        [
+          "BA",
+          "MG"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "RJ",
+        "PE",
+        "SP",
+        "MS",
+        "DF",
+        "MG",
+        "PR",
+        "RS",
+        "BA"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 31,
+        "traps": 6,
+        "trivialCells": 2,
+        "difficulty": 2.6
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-03",
+      "rows": [
+        "former-federal-territory",
+        "borders-mt",
+        "capital-timezone-not-brasilia"
+      ],
+      "cols": [
+        "region-north",
+        "borders-bolivia",
+        "crossed-by-equator"
+      ],
+      "cells": [
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "RO"
+        ],
+        [
+          "AP",
+          "RR"
+        ],
+        [
+          "AM",
+          "PA",
+          "RO",
+          "TO"
+        ],
+        [
+          "MS",
+          "RO"
+        ],
+        [
+          "AM",
+          "PA"
+        ],
+        [
+          "AC",
+          "AM",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "MT",
+          "RO"
+        ],
+        [
+          "AM",
+          "RR"
+        ]
+      ],
+      "solution": [
+        "AP",
+        "RO",
+        "RR",
+        "TO",
+        "MS",
+        "PA",
+        "AC",
+        "MT",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 26,
+        "traps": 8,
+        "trivialCells": 2,
+        "difficulty": 2.83
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-04",
+      "rows": [
+        "borders-few-ufs",
+        "legal-amazon",
+        "capital-multiword"
+      ],
+      "cols": [
+        "created-1960-or-later",
+        "name-ends-with-a",
+        "borders-spanish-speaking"
+      ],
+      "cells": [
+        [
+          "AC",
+          "AP",
+          "DF",
+          "RR"
+        ],
+        [
+          "AP",
+          "RR",
+          "SC"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS",
+          "SC"
+        ],
+        [
+          "AC",
+          "AP",
+          "RO",
+          "RR",
+          "TO"
+        ],
+        [
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "PB",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR",
+          "RS"
+        ]
+      ],
+      "solution": [
+        "DF",
+        "AP",
+        "RR",
+        "RO",
+        "PA",
+        "AM",
+        "MS",
+        "PB",
+        "AC"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 37,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.67
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-05",
+      "rows": [
+        "sudene-area",
+        "name-multiword",
+        "region-southeast"
+      ],
+      "cols": [
+        "density-over-50",
+        "capital-over-1m",
+        "borders-mg"
+      ],
+      "cells": [
+        [
+          "AL",
+          "CE",
+          "ES",
+          "PB",
+          "PE",
+          "RN",
+          "SE"
+        ],
+        [
+          "BA",
+          "CE",
+          "MA",
+          "MG",
+          "PE"
+        ],
+        [
+          "BA",
+          "ES"
+        ],
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "RN",
+          "SC",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "MS",
+          "RJ",
+          "SP"
+        ],
+        [
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "MG",
+          "RJ",
+          "SP"
+        ],
+        [
+          "ES",
+          "RJ",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "AL",
+        "CE",
+        "BA",
+        "DF",
+        "MG",
+        "MS",
+        "SP",
+        "RJ",
+        "ES"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 39,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.2
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-06",
+      "rows": [
+        "region-northeast",
+        "borders-ba",
+        "has-coastline"
+      ],
+      "cols": [
+        "area-under-60k",
+        "borders-to",
+        "river-sao-francisco"
+      ],
+      "cells": [
+        [
+          "AL",
+          "PB",
+          "RN",
+          "SE"
+        ],
+        [
+          "BA",
+          "MA",
+          "PI"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "SE"
+        ],
+        [
+          "GO",
+          "PI"
+        ],
+        [
+          "AL",
+          "MG",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RJ",
+          "RN",
+          "SE"
+        ],
+        [
+          "BA",
+          "MA",
+          "PA",
+          "PI"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ]
+      ],
+      "solution": [
+        "PB",
+        "PI",
+        "BA",
+        "SE",
+        "GO",
+        "MG",
+        "ES",
+        "MA",
+        "AL"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.87
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-07",
+      "rows": [
+        "world-cup-2014-host",
+        "borders-pa",
+        "river-araguaia"
+      ],
+      "cols": [
+        "code-is-first-two-letters",
+        "area-over-300k",
+        "landlocked"
+      ],
+      "cells": [
+        [
+          "AM",
+          "BA",
+          "CE",
+          "PE"
+        ],
+        [
+          "AM",
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "DF",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "MA",
+          "TO"
+        ],
+        [
+          "AM",
+          "MA",
+          "MT"
+        ],
+        [
+          "AM",
+          "MT",
+          "RR",
+          "TO"
+        ],
+        [
+          "GO",
+          "PA",
+          "TO"
+        ],
+        [
+          "GO",
+          "MT",
+          "PA"
+        ],
+        [
+          "GO",
+          "MT",
+          "TO"
+        ]
+      ],
+      "solution": [
+        "CE",
+        "BA",
+        "DF",
+        "TO",
+        "MA",
+        "AM",
+        "PA",
+        "MT",
+        "GO"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 31,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.83
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-08",
+      "rows": [
+        "municipalities-over-350",
+        "trf-seat",
+        "borders-sp"
+      ],
+      "cols": [
+        "brazilian-champion-club",
+        "population-over-10m",
+        "borders-go"
+      ],
+      "cells": [
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ],
+        [
+          "BA",
+          "MG"
+        ],
+        [
+          "MG",
+          "PE",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "MG",
+          "MS"
+        ]
+      ],
+      "solution": [
+        "SP",
+        "RS",
+        "BA",
+        "PE",
+        "RJ",
+        "DF",
+        "PR",
+        "MG",
+        "MS"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 31,
+        "traps": 6,
+        "trivialCells": 2,
+        "difficulty": 2.6
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-09",
+      "rows": [
+        "name-has-diacritic",
+        "region-north",
+        "borders-mt"
+      ],
+      "cols": [
+        "borders-foreign-country",
+        "crossed-by-equator",
+        "river-tocantins"
+      ],
+      "cells": [
+        [
+          "AP",
+          "PA",
+          "PR",
+          "RO"
+        ],
+        [
+          "AP",
+          "PA"
+        ],
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "AC",
+          "AM",
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AM",
+          "AP",
+          "PA",
+          "RR"
+        ],
+        [
+          "PA",
+          "TO"
+        ],
+        [
+          "AM",
+          "MS",
+          "PA",
+          "RO"
+        ],
+        [
+          "AM",
+          "PA"
+        ],
+        [
+          "GO",
+          "PA",
+          "TO"
+        ]
+      ],
+      "solution": [
+        "PR",
+        "PA",
+        "MA",
+        "AC",
+        "AP",
+        "TO",
+        "MS",
+        "AM",
+        "GO"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 30,
+        "traps": 0,
+        "trivialCells": 1,
+        "difficulty": 2.27
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-10",
+      "rows": [
+        "capital-multiword",
+        "created-1960-or-later",
+        "legal-amazon"
+      ],
+      "cols": [
+        "capital-timezone-not-brasilia",
+        "borders-few-ufs",
+        "name-ends-with-a"
+      ],
+      "cells": [
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "RR",
+          "RS"
+        ],
+        [
+          "PB",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "MS",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AP",
+          "DF",
+          "RR"
+        ],
+        [
+          "AP",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AC",
+          "AP",
+          "RR"
+        ],
+        [
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ]
+      ],
+      "solution": [
+        "MS",
+        "RS",
+        "PB",
+        "RR",
+        "DF",
+        "RO",
+        "AM",
+        "AC",
+        "AP"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 33,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.67
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-11",
+      "rows": [
+        "density-over-50",
+        "sudene-area",
+        "borders-mg"
+      ],
+      "cols": [
+        "region-southeast",
+        "capital-over-1m",
+        "name-multiword"
+      ],
+      "cells": [
+        [
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "CE",
+          "DF",
+          "PE",
+          "PR",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "RJ",
+          "RN",
+          "SC",
+          "SP"
+        ],
+        [
+          "ES",
+          "MG"
+        ],
+        [
+          "BA",
+          "CE",
+          "MA",
+          "MG",
+          "PE"
+        ],
+        [
+          "ES",
+          "MG",
+          "RN"
+        ],
+        [
+          "ES",
+          "RJ",
+          "SP"
+        ],
+        [
+          "BA",
+          "DF",
+          "GO",
+          "RJ",
+          "SP"
+        ],
+        [
+          "DF",
+          "ES",
+          "MS",
+          "RJ",
+          "SP"
+        ]
+      ],
+      "solution": [
+        "SP",
+        "CE",
+        "ES",
+        "MG",
+        "BA",
+        "RN",
+        "RJ",
+        "GO",
+        "DF"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 38,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.2
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-12",
+      "rows": [
+        "river-sao-francisco",
+        "area-under-60k",
+        "borders-to"
+      ],
+      "cols": [
+        "region-northeast",
+        "borders-ba",
+        "has-coastline"
+      ],
+      "cells": [
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "MG",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "BA",
+          "PE",
+          "SE"
+        ],
+        [
+          "AL",
+          "PB",
+          "RN",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "SE"
+        ],
+        [
+          "AL",
+          "ES",
+          "PB",
+          "RJ",
+          "RN",
+          "SE"
+        ],
+        [
+          "BA",
+          "MA",
+          "PI"
+        ],
+        [
+          "GO",
+          "PI"
+        ],
+        [
+          "BA",
+          "MA",
+          "PA",
+          "PI"
+        ]
+      ],
+      "solution": [
+        "PE",
+        "MG",
+        "AL",
+        "PB",
+        "SE",
+        "ES",
+        "MA",
+        "GO",
+        "BA"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 34,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.87
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-13",
+      "rows": [
+        "borders-spanish-speaking",
+        "river-araguaia",
+        "world-cup-2014-host"
+      ],
+      "cols": [
+        "landlocked",
+        "area-over-300k",
+        "code-is-first-two-letters"
+      ],
+      "cells": [
+        [
+          "AC",
+          "AM",
+          "MS",
+          "MT",
+          "RO",
+          "RR"
+        ],
+        [
+          "AM",
+          "MS",
+          "MT"
+        ],
+        [
+          "AC",
+          "AM",
+          "RO"
+        ],
+        [
+          "GO",
+          "MT",
+          "TO"
+        ],
+        [
+          "GO",
+          "MT",
+          "PA"
+        ],
+        [
+          "GO",
+          "PA",
+          "TO"
+        ],
+        [
+          "AM",
+          "DF",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "BA",
+          "MG",
+          "MT"
+        ],
+        [
+          "AM",
+          "BA",
+          "CE",
+          "PE"
+        ]
+      ],
+      "solution": [
+        "AC",
+        "MS",
+        "RO",
+        "TO",
+        "MT",
+        "GO",
+        "DF",
+        "BA",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 3,
+        "totalAnswers": 33,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 1.83
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-14",
+      "rows": [
+        "population-over-10m",
+        "brazilian-champion-club",
+        "borders-go"
+      ],
+      "cols": [
+        "trf-seat",
+        "borders-sp",
+        "municipalities-over-350"
+      ],
+      "cells": [
+        [
+          "MG",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "PE",
+          "RJ",
+          "RS",
+          "SP"
+        ],
+        [
+          "MG",
+          "PR",
+          "RJ"
+        ],
+        [
+          "BA",
+          "MG",
+          "PR",
+          "RS",
+          "SP"
+        ],
+        [
+          "DF",
+          "MG"
+        ],
+        [
+          "MG",
+          "MS"
+        ],
+        [
+          "BA",
+          "MG"
+        ]
+      ],
+      "solution": [
+        "SP",
+        "RJ",
+        "MG",
+        "PE",
+        "PR",
+        "RS",
+        "DF",
+        "MS",
+        "BA"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 31,
+        "traps": 6,
+        "trivialCells": 2,
+        "difficulty": 2.6
+      },
+      "cooldownUsed": 5
+    },
+    {
+      "playDate": "2026-10-15",
+      "rows": [
+        "river-tocantins",
+        "borders-foreign-country",
+        "name-starts-with-vowel"
+      ],
+      "cols": [
+        "region-north",
+        "name-has-diacritic",
+        "borders-pa"
+      ],
+      "cells": [
+        [
+          "PA",
+          "TO"
+        ],
+        [
+          "GO",
+          "MA",
+          "PA"
+        ],
+        [
+          "MA",
+          "TO"
+        ],
+        [
+          "AC",
+          "AM",
+          "AP",
+          "PA",
+          "RO",
+          "RR"
+        ],
+        [
+          "AP",
+          "PA",
+          "PR",
+          "RO"
+        ],
+        [
+          "AM",
+          "AP",
+          "MT",
+          "RR"
+        ],
+        [
+          "AC",
+          "AM",
+          "AP"
+        ],
+        [
+          "AP",
+          "ES"
+        ],
+        [
+          "AM",
+          "AP"
+        ]
+      ],
+      "solution": [
+        "TO",
+        "GO",
+        "MA",
+        "PA",
+        "PR",
+        "AP",
+        "AC",
+        "ES",
+        "AM"
+      ],
+      "metrics": {
+        "minAnswers": 2,
+        "totalAnswers": 28,
+        "traps": 0,
+        "trivialCells": 0,
+        "difficulty": 2.3
+      },
+      "cooldownUsed": 5
+    }
+  ]
+}

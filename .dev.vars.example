@@ -1,0 +1,6 @@
+# Copie para .dev.vars (não versionado).
+PUBLIC_URL=http://localhost:5173
+# Gere com: openssl rand -base64 32
+BETTER_AUTH_SECRET=
+# Opcional em desenvolvimento (sem ela o Turnstile fica desligado)
+# TURNSTILE_SECRET_KEY=

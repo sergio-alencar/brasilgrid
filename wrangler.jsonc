@@ -23,6 +23,9 @@
       "localConnectionString": "postgres://brasilgrid:brasilgrid@localhost:5433/brasilgrid"
     }
   ],
+  "vars": {
+    "PUBLIC_URL": "http://localhost:5173"
+  },
   "triggers": {
     // 03:05 UTC = 00:05 em America/Sao_Paulo (Brasil não tem mais horário de verão)
     "crons": ["5 3 * * *"]

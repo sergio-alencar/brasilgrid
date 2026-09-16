@@ -17,11 +17,15 @@ Convenção: identificadores de código em inglês, texto exibido ao jogador em 
 
 ```bash
 npm install
+cp .dev.vars.example .dev.vars   # e preencha BETTER_AUTH_SECRET (openssl rand -base64 32)
 docker compose up -d      # Postgres local, porta 5433 (5432 costuma estar ocupada)
-npm run dev                # SPA + Worker juntos (via @cloudflare/vite-plugin)
+npm run db:migrate
+npm run puzzles:generate -- --from $(date +%F) --days 30 --seed 1
+npm run puzzles:publish -- --file puzzles/$(date +%F)_30d.json --launch $(date +%F)
+npm run dev                # SPA + Worker juntos (via @cloudflare/vite-plugin), em http://localhost:5173
 ```
 
-Outros comandos: `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`.
+Outros comandos: `npm run typecheck`, `npm run lint`, `npm test` (inclui testes das funções SQL, se o Postgres estiver no ar), `npm run test:e2e`, `npm run build`.
 
 ## Dados e grades
 
@@ -37,4 +41,4 @@ As categorias ficam em `data/categories/`. Cada uma tem o gabarito escrito à m�
 
 ## Estado atual
 
-Projeto em construção — ver `docs/plano.md` para as fases. A Fase 0 (estrutura do projeto e coleta de dados) está em andamento.
+Projeto em construção — ver `docs/plano.md` para as fases. Fase 0 (estrutura e dados) quase concluída; Fase 1 (grade jogável com sessão anônima) funcionando localmente.
