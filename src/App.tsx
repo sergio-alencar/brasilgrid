@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
+import { Avatar } from './components/Avatar.tsx'
 import { authClient } from './lib/authClient.ts'
 import { Home } from './pages/Home.tsx'
 import { HowToPlay } from './pages/HowToPlay.tsx'
@@ -29,9 +30,15 @@ function Header() {
           <NavLink to="/estatisticas" className={navClass}>
             Estatísticas
           </NavLink>
-          <NavLink to={loggedIn ? '/perfil' : '/entrar'} className={navClass}>
-            {loggedIn ? 'Perfil' : 'Entrar'}
-          </NavLink>
+          {loggedIn ? (
+            <NavLink to="/perfil" className={navClass} aria-label="Perfil">
+              <Avatar image={session.user.image} label={session.user.name || session.user.email} />
+            </NavLink>
+          ) : (
+            <NavLink to="/entrar" className={navClass}>
+              Entrar
+            </NavLink>
+          )}
         </div>
       </nav>
     </header>

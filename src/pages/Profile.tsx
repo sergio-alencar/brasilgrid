@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { MeResponse } from '../../shared/api.ts'
+import { Avatar } from '../components/Avatar.tsx'
 import { ApiError, api } from '../lib/api.ts'
 import { authClient } from '../lib/authClient.ts'
 
@@ -62,9 +63,12 @@ export function Profile() {
 
   return (
     <section className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold">Perfil</h1>
-        <p className="text-sm text-slate-500">{me.user.email}</p>
+      <div className="flex items-center gap-4">
+        <Avatar image={me.user.image} label={me.user.name || me.user.email || '?'} size="lg" />
+        <div>
+          <h1 className="text-2xl font-bold">{me.user.name || 'Perfil'}</h1>
+          <p className="text-sm text-slate-500">{me.user.email}</p>
+        </div>
       </div>
 
       <form onSubmit={save} className="space-y-4">

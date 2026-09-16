@@ -19,7 +19,7 @@ const CELLS = [
 const puzzle: GeneratedPuzzle = {
   playDate: today,
   rows: ['region-north', 'region-south', 'region-northeast'],
-  cols: ['name-multiword', 'landlocked', 'has-coastline'],
+  cols: ['capital-multiword', 'landlocked', 'has-coastline'],
   cells: CELLS,
   solution: CELLS.map((c) => c[0]),
   metrics: { minAnswers: 2, totalAnswers: 18, traps: 0, trivialCells: 0, difficulty: 1 },

@@ -9,7 +9,6 @@ export type Family =
   | 'biomes'
   | 'geology'
   | 'capitals'
-  | 'names'
   | 'demography'
   | 'history'
   | 'sports'
