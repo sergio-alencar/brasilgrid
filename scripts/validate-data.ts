@@ -1,5 +1,5 @@
 import { CATEGORIES } from '../data/categories/index.ts'
-import { loadUfs } from '../data/categories/ufData.ts'
+import { loadUfs } from './lib/loadUfs.ts'
 import { validateCategories } from './lib/validateCategories.ts'
 
 const { errors, warnings } = validateCategories(CATEGORIES, loadUfs())

@@ -1,15 +1,20 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
 import { Avatar } from './components/Avatar.tsx'
 import { authClient } from './lib/authClient.ts'
 import { Home } from './pages/Home.tsx'
 import { HowToPlay } from './pages/HowToPlay.tsx'
 import { Login } from './pages/Login.tsx'
-import { Placeholder } from './pages/Placeholder.tsx'
+import { NotFound } from './pages/NotFound.tsx'
 import { Privacy } from './pages/Privacy.tsx'
 import { Profile } from './pages/Profile.tsx'
+import { SharedResultPage } from './pages/SharedResultPage.tsx'
 import { Sources } from './pages/Sources.tsx'
 import { Stats } from './pages/Stats.tsx'
 import { Terms } from './pages/Terms.tsx'
+
+// Revisão de grades: só existe no servidor de desenvolvimento (removida do build).
+const ReviewPuzzles = import.meta.env.DEV ? lazy(() => import('./pages/dev/ReviewPuzzles.tsx')) : null
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
   `rounded-md px-2 py-1 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 ${isActive ? 'font-semibold' : ''}`
@@ -56,11 +61,21 @@ export function App() {
           <Route path="/estatisticas" element={<Stats />} />
           <Route path="/entrar" element={<Login />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path="/r/:shareId" element={<Placeholder title="Resultado" />} />
+          <Route path="/r/:shareId" element={<SharedResultPage />} />
           <Route path="/fontes" element={<Sources />} />
           <Route path="/privacidade" element={<Privacy />} />
           <Route path="/termos" element={<Terms />} />
-          <Route path="*" element={<Placeholder title="Página não encontrada" />} />
+          {ReviewPuzzles && (
+            <Route
+              path="/dev/grades"
+              element={
+                <Suspense fallback={<p>Carregando…</p>}>
+                  <ReviewPuzzles />
+                </Suspense>
+              }
+            />
+          )}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <footer className="mx-auto flex max-w-xl justify-center gap-4 px-4 pb-8 text-xs text-slate-500">

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { CATEGORIES } from '../data/categories/index.ts'
-import { loadUfs, type UfCode } from '../data/categories/ufData.ts'
+import type { UfCode } from '../data/categories/ufData.ts'
+import { loadUfs } from './lib/loadUfs.ts'
 import { validateCategories } from './lib/validateCategories.ts'
 
 const ufs = loadUfs()

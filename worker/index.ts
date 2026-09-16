@@ -8,6 +8,9 @@ import { dbMiddleware, type Db } from './db/client.ts'
 import { devEmailsEnabled, lastDevEmail } from './email.ts'
 import { gameRoutes } from './routes/game.ts'
 import { meRoutes } from './routes/me.ts'
+import { reportRoutes } from './routes/report.ts'
+import { loadSharedResult, shareRoutes } from './routes/share.ts'
+import { renderSharePage } from './sharePage.ts'
 
 type AppEnv = { Bindings: Env; Variables: { db: Db; session: AuthSession | null } }
 
@@ -35,8 +38,10 @@ app.get('/api/health', async (c) => {
 app.all('/api/auth/*', (c) => createAuth(c.env, c.get('db'), c.executionCtx).handler(c.req.raw))
 
 app.use('/api/*', sessionMiddleware)
+app.route('/api/share', shareRoutes)
 app.route('/api', gameRoutes)
 app.route('/api/me', meRoutes)
+app.route('/api/report', reportRoutes)
 
 app.all('/api/*', (c) => c.json({ error: 'not_found' }, 404))
 
@@ -45,7 +50,12 @@ app.onError((error, c) => {
   return c.json({ error: 'internal_error' }, 500)
 })
 
-// /r/* ainda não tem tratamento no servidor: cai na SPA.
+// Link compartilhado: SPA com meta tags de prévia (sem nenhuma resposta).
+app.get('/r/:shareId', dbMiddleware, async (c) => {
+  const result = await loadSharedResult(c.get('db'), c.req.param('shareId'))
+  return renderSharePage(c.req.raw, c.env, result)
+})
+
 app.all('*', (c) => c.env.ASSETS.fetch(c.req.raw))
 
 export default {

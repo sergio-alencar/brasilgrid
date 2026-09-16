@@ -8,6 +8,7 @@ import { api } from '../lib/api.ts'
 import { authClient } from '../lib/authClient.ts'
 import { formatPercent } from '../lib/format.ts'
 import { Countdown } from './Countdown.tsx'
+import { ReportDialog } from './ReportDialog.tsx'
 import { ShareButtons } from './ShareButtons.tsx'
 
 const BrazilMap = lazy(() => import('./BrazilMap.tsx'))
@@ -32,6 +33,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
   const [error, setError] = useState(false)
   const [tab, setTab] = useState<Tab>('popular')
   const [mapCell, setMapCell] = useState(0)
+  const [reporting, setReporting] = useState(false)
   const { data: session } = authClient.useSession()
 
   useEffect(() => {
@@ -144,6 +146,22 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
                   )
                 })}
               </ol>
+            )}
+            <p className="mt-4 text-center text-xs text-slate-500">
+              Achou um erro no gabarito?{' '}
+              <button type="button" onClick={() => setReporting(true)} className="underline">
+                Avise a gente
+              </button>
+            </p>
+            {reporting && (
+              <ReportDialog
+                puzzleId={puzzleId}
+                rows={rows}
+                cols={cols}
+                cells={results.cells}
+                initialCell={mapCell}
+                onClose={() => setReporting(false)}
+              />
             )}
           </>
         )}

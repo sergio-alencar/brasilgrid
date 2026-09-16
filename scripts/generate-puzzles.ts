@@ -2,7 +2,7 @@
 // Uso: npm run puzzles:generate -- --from 2026-11-01 --days 60 --seed 42
 import { parseArgs } from 'node:util'
 import { CATEGORIES } from '../data/categories/index.ts'
-import { loadUfs } from '../data/categories/ufData.ts'
+import { loadUfs } from './lib/loadUfs.ts'
 import { generatePuzzles } from './lib/generator.ts'
 import { ROOT, today, writeJson } from './lib/io.ts'
 import { validateCategories } from './lib/validateCategories.ts'

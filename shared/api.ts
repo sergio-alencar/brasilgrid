@@ -95,3 +95,15 @@ export interface MeResponse {
   user: { id: string; name: string; email: string | null; image: string | null; isAnonymous: boolean }
   profile: { nickname: string | null; showInRanking: boolean }
 }
+
+/** Resultado público de uma partida: só números e faixas, nunca UFs. */
+export interface SharedResult {
+  puzzleId: number
+  playDate: string
+  status: GameStatus
+  correctCount: number
+  rarity: number
+  cellPercents: (number | null)[]
+  rows: string[]
+  cols: string[]
+}

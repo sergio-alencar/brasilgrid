@@ -20,11 +20,13 @@
     "data:fetch-wikidata": "tsx scripts/fetch-wikidata.ts",
     "data:fetch-flags": "tsx scripts/fetch-flags.ts",
     "data:build-map": "tsx scripts/build-map.ts",
+    "build:og-image": "tsx scripts/build-og-image.ts",
     "data:build": "tsx scripts/build-ufs.ts",
     "data:validate": "tsx scripts/validate-data.ts",
     "puzzles:generate": "tsx scripts/generate-puzzles.ts",
     "puzzles:publish": "tsx scripts/publish-puzzles.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "reports": "tsx scripts/list-reports.ts"
   },
   "dependencies": {
     "better-auth": "^1.7.5",

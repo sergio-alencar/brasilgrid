@@ -2,6 +2,7 @@ import type {
   GameState,
   GuessResponse,
   MeResponse,
+  SharedResult,
   ResultsResponse,
   StatsResponse,
   TodayResponse,
@@ -42,8 +43,11 @@ export const api = {
     request<{ game: GameState }>('/api/game/give-up', { method: 'POST', body: JSON.stringify({ puzzleId }) }),
   results: (puzzleId: number) => request<ResultsResponse>(`/api/game/${puzzleId}/results`),
   me: () => request<MeResponse>('/api/me'),
+  shared: (shareId: string) => request<SharedResult>(`/api/share/${encodeURIComponent(shareId)}`),
   stats: () => request<StatsResponse>('/api/me/stats'),
   updateProfile: (data: { nickname?: string | null; showInRanking?: boolean }) =>
     request<{ ok: true }>('/api/me/profile', { method: 'PATCH', body: JSON.stringify(data) }),
+  report: (data: { puzzleId: number; cell: number | null; uf: string | null; message: string }) =>
+    request<{ ok: true }>('/api/report', { method: 'POST', body: JSON.stringify(data) }),
   deleteAccount: () => request<{ ok: true }>('/api/me', { method: 'DELETE' }),
 }

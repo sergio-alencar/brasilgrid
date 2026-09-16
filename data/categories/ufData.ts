@@ -1,6 +1,3 @@
-import { readFileSync } from 'node:fs'
-import { dataPath } from '../../scripts/lib/io.ts'
-
 export type UfCode =
   | 'AC' | 'AL' | 'AP' | 'AM' | 'BA' | 'CE' | 'DF' | 'ES' | 'GO' | 'MA' | 'MT' | 'MS' | 'MG' | 'PA'
   | 'PB' | 'PR' | 'PE' | 'PI' | 'RJ' | 'RN' | 'RS' | 'RO' | 'RR' | 'SC' | 'SP' | 'SE' | 'TO'
@@ -23,7 +20,3 @@ export interface UfRecord {
 }
 
 export type Biome = 'Amazônia' | 'Caatinga' | 'Cerrado' | 'Mata Atlântica' | 'Pampa' | 'Pantanal'
-
-export function loadUfs(): UfRecord[] {
-  return (JSON.parse(readFileSync(dataPath('ufs.json'), 'utf8')) as { ufs: UfRecord[] }).ufs
-}
