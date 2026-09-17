@@ -51,7 +51,9 @@ function Row({
             onClick={() => onSelect(cell)}
             aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
             className={[
-              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 p-1 text-center transition',
+              // As células são sempre um "azulejo" claro — texto escuro fixo,
+              // não herda o branco do box verde por trás.
+              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 p-1 text-center text-slate-900 transition dark:text-slate-100',
               hit
                 ? 'border-brand-green bg-emerald-50 dark:bg-emerald-950 animate-pop'
                 : 'border-slate-300 bg-slate-50 hover:border-brand-green hover:bg-white disabled:hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900',

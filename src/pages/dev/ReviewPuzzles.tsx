@@ -35,7 +35,7 @@ export default function ReviewPuzzles() {
   const publishCommand = `npm run puzzles:publish -- --file ${path} --launch ${launch || '<AAAA-MM-DD>'}`
 
   return (
-    <section className="space-y-6">
+    <section className="content-panel space-y-6">
       <h1 className="text-2xl font-bold">Revisão de grades</h1>
       <div className="flex flex-wrap items-end gap-3 text-sm">
         <label>

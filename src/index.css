@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Oxygen', ui-sans-serif, system-ui, sans-serif;
 
   /* Paleta da bandeira. Duas tonalidades de verde bem próximas — uma para o
      fundo da página, outra (levemente mais clara) para a caixa que envolve
@@ -30,14 +30,21 @@ body {
   background: var(--color-brand-green-bg);
 }
 
-/* A caixa verde que contém o jogo: moldura visível ao redor do cartão branco,
-   já no celular. A partir de telas maiores, ela também flutua com espaço em
-   volta (mostrando o verde mais escuro do fundo da página). */
-.page-frame {
-  @apply bg-brand-green p-2.5 shadow-inner sm:mx-auto sm:my-6 sm:max-w-2xl sm:rounded-3xl sm:p-4 sm:shadow-xl;
+/* A caixa onde o jogo mora: fundo verde de verdade, não um cartão branco
+   com moldura verde. Cheia no celular; a partir de telas maiores, flutua
+   com espaço em volta (mostrando o verde mais escuro do fundo da página). */
+.page-box {
+  @apply bg-brand-green p-4 text-white shadow-inner;
+}
+@media (min-width: 640px) {
+  .page-box {
+    @apply mx-auto my-6 max-w-2xl rounded-3xl p-6 shadow-xl;
+  }
 }
 
-.page-card {
+/* Painéis internos brancos, para texto denso e formulários (login, perfil,
+   estatísticas, termos) — continuam legíveis mesmo dentro da caixa verde. */
+.content-panel {
   @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6 dark:bg-slate-950 dark:text-slate-100;
 }
 

@@ -38,8 +38,8 @@ export function Home() {
     setTimeout(() => setToast(null), 2500)
   }, [])
 
-  if (loadError) return <p className="text-center text-slate-500">{loadError}</p>
-  if (!today) return <p className="text-center text-slate-500">Carregando a grade…</p>
+  if (loadError) return <p className="text-center text-white/80">{loadError}</p>
+  if (!today) return <p className="text-center text-white/80">Carregando a grade…</p>
 
   const { puzzle, maxGuesses } = today
   const finished = !!game && game.status !== 'in_progress'
@@ -88,7 +88,7 @@ export function Home() {
       <div className="mb-4 flex items-end justify-between">
         <div>
           <h1 className="text-2xl font-bold">BrasilGrid #{puzzle.id}</h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-white/70">
             {new Date(`${puzzle.playDate}T12:00:00`).toLocaleDateString('pt-BR', { dateStyle: 'long' })}
           </p>
         </div>
@@ -96,7 +96,7 @@ export function Home() {
           <p>
             <strong className="text-lg">{guessesLeft}</strong>/{maxGuesses} palpites
           </p>
-          {game && <p className="text-xs text-slate-500">raridade {game.rarity}</p>}
+          {game && <p className="text-xs text-white/70">raridade {game.rarity}</p>}
         </div>
       </div>
 
@@ -115,7 +115,7 @@ export function Home() {
             type="button"
             onClick={giveUp}
             disabled={busy}
-            className="rounded-lg border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:hover:bg-slate-900"
+            className="rounded-lg border border-white/40 px-4 py-2 text-sm text-white hover:bg-white/10 disabled:opacity-50"
           >
             Desistir e revelar
           </button>

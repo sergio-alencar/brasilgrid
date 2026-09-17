@@ -21,12 +21,12 @@ export function SharedResultPage() {
   }, [shareId])
 
   if (result === 'missing') return <NotFound message="Não encontramos esse resultado." />
-  if (!result) return <p className="text-center text-slate-500">Carregando…</p>
+  if (!result) return <p className="text-center text-white/80">Carregando…</p>
 
   return (
     <section className="space-y-6">
       <div className="text-center">
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-white/70">
           {new Date(`${result.playDate}T12:00:00`).toLocaleDateString('pt-BR', { dateStyle: 'long' })}
         </p>
         <h1 className="text-3xl font-bold">BrasilGrid #{result.puzzleId}</h1>
@@ -39,7 +39,7 @@ export function SharedResultPage() {
       <div className="grid grid-cols-[minmax(0,0.8fr)_repeat(3,minmax(0,1fr))] gap-1.5">
         <div />
         {result.cols.map((c) => (
-          <p key={c} className="flex items-end justify-center p-1 text-center text-[11px] leading-tight font-semibold sm:text-sm">
+          <p key={c} className="flex items-end justify-center p-1 text-center text-[11px] leading-tight font-bold text-white sm:text-sm">
             {c}
           </p>
         ))}
@@ -48,7 +48,7 @@ export function SharedResultPage() {
         ))}
       </div>
 
-      <p className="text-center text-xs text-slate-500">
+      <p className="text-center text-xs text-white/70">
         As respostas ficam escondidas para não estragar o jogo de ninguém.
       </p>
       <div className="text-center">
@@ -63,7 +63,7 @@ export function SharedResultPage() {
 function RowCells({ label, percents }: { label: string; percents: (number | null)[] }) {
   return (
     <>
-      <p className="flex items-center justify-center p-1 text-center text-[11px] leading-tight font-semibold sm:text-sm">
+      <p className="flex items-center justify-center p-1 text-center text-[11px] leading-tight font-bold text-white sm:text-sm">
         {label}
       </p>
       {percents.map((p, i) => {
@@ -72,7 +72,7 @@ function RowCells({ label, percents }: { label: string; percents: (number | null
           <div
             key={i}
             className={[
-              'flex aspect-square flex-col items-center justify-center rounded-xl border-2',
+              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 text-slate-900 dark:text-slate-100',
               p === null
                 ? 'border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900'
                 : 'border-brand-green bg-emerald-50 dark:bg-emerald-950',

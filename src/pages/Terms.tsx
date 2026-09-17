@@ -3,7 +3,7 @@ import { LEGAL_UPDATED_AT } from '../lib/site.ts'
 
 export function Terms() {
   return (
-    <article className="space-y-4 text-sm [&_h2]:mt-6 [&_h2]:text-base [&_h2]:font-semibold [&_li]:ml-5 [&_li]:list-disc">
+    <article className="content-panel space-y-4 text-sm [&_h2]:mt-6 [&_h2]:text-base [&_h2]:font-semibold [&_li]:ml-5 [&_li]:list-disc">
       <h1 className="text-2xl font-bold">Termos de uso</h1>
       <p className="text-xs text-slate-500">
         Atualizados em {new Date(`${LEGAL_UPDATED_AT}T12:00:00`).toLocaleDateString('pt-BR')}

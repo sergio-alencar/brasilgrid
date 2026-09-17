@@ -13,7 +13,7 @@ const SOURCES = [
 
 export function Sources() {
   return (
-    <article className="space-y-6">
+    <article className="content-panel space-y-6">
       <h1 className="text-2xl font-bold">Fontes e créditos</h1>
       <section>
         <h2 className="text-lg font-semibold">Dados</h2>

@@ -14,7 +14,7 @@ export function Login() {
 
   if (session && !session.user.isAnonymous) {
     return (
-      <section className="space-y-2">
+      <section className="content-panel space-y-2">
         <h1 className="text-2xl font-bold">Você já entrou</h1>
         <Link to="/perfil" className="underline">
           Ver perfil
@@ -50,7 +50,7 @@ export function Login() {
   }
 
   return (
-    <section className="mx-auto max-w-sm space-y-6">
+    <section className="content-panel mx-auto max-w-sm space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Entrar</h1>
         <p className="mt-1 text-sm text-slate-500">

@@ -25,7 +25,7 @@ export function Profile() {
   if (isPending) return <p className="text-slate-500">Carregando…</p>
   if (!session || session.user.isAnonymous) {
     return (
-      <section className="space-y-2">
+      <section className="content-panel space-y-2">
         <h1 className="text-2xl font-bold">Perfil</h1>
         <p>
           <Link to="/entrar" className="underline">
@@ -62,7 +62,7 @@ export function Profile() {
   }
 
   return (
-    <section className="space-y-8">
+    <section className="content-panel space-y-8">
       <div className="flex items-center gap-4">
         <Avatar image={me.user.image} label={me.user.name || me.user.email || '?'} size="lg" />
         <div>

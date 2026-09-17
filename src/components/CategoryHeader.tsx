@@ -12,10 +12,10 @@ export function CategoryHeader({ category }: { category: CategoryInfo }) {
         aria-expanded={open}
         aria-controls={id}
         aria-label={`${category.label}. Ver a regra completa e a fonte.`}
-        className="rounded-md px-1 text-[11px] leading-tight font-semibold sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
+        className="rounded-md px-1 text-[11px] leading-tight font-bold text-white sm:text-sm hover:bg-white/15"
       >
         {category.label}
-        <span aria-hidden className="ml-1 text-slate-400">ⓘ</span>
+        <span aria-hidden className="ml-1 text-white/70">ⓘ</span>
       </button>
       {open && (
         <div

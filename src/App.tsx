@@ -56,8 +56,8 @@ export function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="page-frame">
-        <main className="page-card">
+      <div className="page-box">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/como-jogar" element={<HowToPlay />} />

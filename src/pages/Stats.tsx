@@ -26,7 +26,7 @@ export function Stats() {
   if (isPending) return <p className="text-slate-500">Carregando…</p>
   if (!session) {
     return (
-      <section className="space-y-2">
+      <section className="content-panel space-y-2">
         <h1 className="text-2xl font-bold">Estatísticas</h1>
         <p>Jogue a grade de hoje para começar suas estatísticas.</p>
         <Link to="/" className="underline">
@@ -49,7 +49,7 @@ export function Stats() {
   ]
 
   return (
-    <section className="space-y-8">
+    <section className="content-panel space-y-8">
       <h1 className="text-2xl font-bold">Estatísticas</h1>
 
       {session.user.isAnonymous && (

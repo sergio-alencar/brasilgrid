@@ -52,7 +52,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
     game.status === 'completed' ? 'Grade completa!' : game.status === 'gave_up' ? 'Você desistiu' : 'Acabaram os palpites'
 
   return (
-    <section className="mt-6 space-y-5 rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
+    <section className="content-panel mt-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="text-sm text-slate-500">
