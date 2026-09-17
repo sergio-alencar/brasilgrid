@@ -102,7 +102,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
                   onClick={() => setTab(id)}
                   className={[
                     'rounded-full px-3 py-1 text-xs',
-                    tab === id ? 'bg-brand-blue text-white' : 'bg-slate-100 dark:bg-slate-800',
+                    tab === id ? 'bg-brand-green text-white' : 'bg-slate-100 dark:bg-slate-800',
                   ].join(' ')}
                 >
                   {label}
@@ -126,7 +126,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
                         className={[
                           'h-full w-full rounded-lg p-2 text-left text-xs',
                           mapCell === cell
-                            ? 'bg-sky-50 ring-2 ring-brand-blue dark:bg-sky-950'
+                            ? 'bg-amber-50 ring-2 ring-brand-yellow dark:bg-amber-950'
                             : 'bg-slate-50 dark:bg-slate-900',
                         ].join(' ')}
                       >

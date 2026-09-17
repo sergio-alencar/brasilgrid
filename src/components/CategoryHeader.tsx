@@ -5,14 +5,14 @@ export function CategoryHeader({ category }: { category: CategoryInfo }) {
   const [open, setOpen] = useState(false)
   const id = useId()
   return (
-    <div className="relative flex h-full items-center justify-center p-1 text-center">
+    <div className="relative flex h-full items-stretch p-0.5 text-center sm:p-1">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={id}
         aria-label={`${category.label}. Ver a regra completa e a fonte.`}
-        className="rounded-md px-1 text-[11px] leading-tight font-bold text-white sm:text-sm hover:bg-white/15"
+        className="flex w-full flex-1 items-center justify-center rounded-xl border-2 border-white/25 bg-white/10 px-1 text-[11px] leading-tight font-bold text-white transition hover:border-brand-yellow hover:bg-white/20 sm:text-sm"
       >
         {category.label}
         <span aria-hidden className="ml-1 text-white/70">ⓘ</span>

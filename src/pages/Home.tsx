@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
+import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
 import { ResultsPanel } from '../components/ResultsPanel.tsx'
 import { SearchDialog } from '../components/SearchDialog.tsx'
@@ -12,6 +13,15 @@ const MESSAGES: Record<string, string> = {
   cell_filled: 'Essa célula já está preenchida.',
   game_over: 'A partida já terminou.',
   puzzle_unavailable: 'Esta grade não está mais disponível. Recarregue a página.',
+}
+
+/** No desktop, a grade ocupa a tela toda sem rolar — só depois de terminar
+ * é que aparece o resto (respostas) e a página passa a rolar normalmente. */
+function useNoScrollWhilePlaying(active: boolean) {
+  useEffect(() => {
+    document.body.classList.toggle('game-in-progress', active)
+    return () => document.body.classList.remove('game-in-progress')
+  }, [active])
 }
 
 export function Home() {
@@ -38,11 +48,13 @@ export function Home() {
     setTimeout(() => setToast(null), 2500)
   }, [])
 
+  const finished = !!game && game.status !== 'in_progress'
+  useNoScrollWhilePlaying(!!today && !finished)
+
   if (loadError) return <p className="text-center text-white/80">{loadError}</p>
   if (!today) return <p className="text-center text-white/80">Carregando a grade…</p>
 
   const { puzzle, maxGuesses } = today
-  const finished = !!game && game.status !== 'in_progress'
   const guessesLeft = game?.guessesLeft ?? maxGuesses
 
   const pick = async (uf: string) => {
@@ -84,45 +96,38 @@ export function Home() {
   const colOf = (cell: number) => puzzle.cols[cell % 3]
 
   return (
-    <section>
-      <div className="mb-4 flex items-end justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">BrasilGrid #{puzzle.id}</h1>
-          <p className="text-xs text-white/70">
-            {new Date(`${puzzle.playDate}T12:00:00`).toLocaleDateString('pt-BR', { dateStyle: 'long' })}
-          </p>
+    <section className="game-fit">
+      <div className="flex flex-1 flex-col gap-4 md:min-h-0 md:flex-row">
+        <div className="flex min-h-0 flex-1 items-center justify-center">
+          <div className="aspect-square w-full max-w-xl md:h-full md:max-h-full md:w-auto">
+            <Grid
+              puzzleId={puzzle.id}
+              rows={puzzle.rows}
+              cols={puzzle.cols}
+              filled={game?.filled ?? []}
+              disabled={busy || finished}
+              shakeCell={shakeCell}
+              onSelect={setSelected}
+            />
+          </div>
         </div>
-        <div className="text-right text-sm">
-          <p>
-            <strong className="text-lg">{guessesLeft}</strong>/{maxGuesses} palpites
-          </p>
-          {game && <p className="text-xs text-white/70">raridade {game.rarity}</p>}
-        </div>
+
+        <GameSidebar
+          playDate={puzzle.playDate}
+          guessesLeft={guessesLeft}
+          maxGuesses={maxGuesses}
+          rarity={game?.rarity ?? null}
+          finished={finished}
+          busy={busy}
+          onGiveUp={giveUp}
+        />
       </div>
 
-      <Grid
-        rows={puzzle.rows}
-        cols={puzzle.cols}
-        filled={game?.filled ?? []}
-        disabled={busy || finished}
-        shakeCell={shakeCell}
-        onSelect={setSelected}
-      />
-
-      {!finished && (
-        <div className="mt-4 flex justify-center">
-          <button
-            type="button"
-            onClick={giveUp}
-            disabled={busy}
-            className="rounded-lg border border-white/40 px-4 py-2 text-sm text-white hover:bg-white/10 disabled:opacity-50"
-          >
-            Desistir e revelar
-          </button>
+      {finished && game && (
+        <div className="mt-4">
+          <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} />
         </div>
       )}
-
-      {finished && game && <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} />}
 
       {selected !== null && (
         <SearchDialog

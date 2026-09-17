@@ -38,7 +38,21 @@ body {
 }
 @media (min-width: 640px) {
   .page-box {
-    @apply mx-auto my-6 max-w-2xl rounded-3xl p-6 shadow-xl;
+    @apply mx-auto my-6 rounded-3xl p-6 shadow-xl;
+  }
+}
+/* Páginas de texto e formulário ficam numa largura confortável de leitura;
+   o jogo (definida via .page-box--wide, na própria página) usa bem mais
+   espaço no desktop. */
+.page-box--narrow {
+  @apply max-w-2xl;
+}
+.page-box--wide {
+  @apply max-w-2xl;
+}
+@media (min-width: 1024px) {
+  .page-box--wide {
+    @apply max-w-6xl;
   }
 }
 
@@ -46,6 +60,20 @@ body {
    estatísticas, termos) — continuam legíveis mesmo dentro da caixa verde. */
 .content-panel {
   @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6 dark:bg-slate-950 dark:text-slate-100;
+}
+
+/* A grade ocupa a tela toda no desktop, sem rolar, até a partida terminar. */
+.game-fit {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  body.game-in-progress {
+    overflow: hidden;
+  }
+  .game-fit {
+    height: calc(100dvh - 14rem);
+  }
 }
 
 /* Foco visível e consistente entre navegadores: amarelo sobre qualquer fundo. */

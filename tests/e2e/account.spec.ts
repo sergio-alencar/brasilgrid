@@ -2,13 +2,13 @@ import { expect, test } from '@playwright/test'
 
 test('visitante joga, entra por código e mantém a partida no histórico', async ({ page, request }) => {
   await page.goto('/')
-  await expect(page.getByRole('heading', { name: /BrasilGrid #\d+/ })).toBeVisible()
+  await expect(page.getByText(/^#\d+$/)).toBeVisible()
 
   // Um palpite qualquer cria a sessão de visitante e a partida.
   await page.getByRole('button', { name: /Célula 1:/ }).click()
   await page.getByLabel('Buscar UF').fill('Sergipe')
   await page.keyboard.press('Enter')
-  await expect(page.getByText('9/10 palpites')).toBeVisible()
+  await expect(page.getByLabel('9 de 10 palpites restantes')).toBeVisible()
 
   await page.getByRole('link', { name: 'Entrar' }).click()
   const email = `e2e.${Date.now()}@brasilgrid.invalid`
@@ -23,7 +23,7 @@ test('visitante joga, entra por código e mantém a partida no histórico', asyn
   await page.getByLabel('Código').fill(otp)
   await page.getByRole('button', { name: 'Entrar', exact: true }).click()
   await expect(page.getByRole('link', { name: 'Perfil' })).toBeVisible()
-  await expect(page.getByText('9/10 palpites')).toBeVisible()
+  await expect(page.getByLabel('9 de 10 palpites restantes')).toBeVisible()
 
   await page.getByRole('link', { name: 'Estatísticas' }).click()
   await expect(page.getByText('Você está jogando como visitante')).toHaveCount(0)

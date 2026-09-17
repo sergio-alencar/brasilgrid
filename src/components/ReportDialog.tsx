@@ -47,7 +47,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
         <div className="space-y-3">
           <h2 className="text-lg font-bold">Obrigado!</h2>
           <p className="text-sm">Vamos conferir. Se o gabarito estiver errado, ele é corrigido para as próximas grades.</p>
-          <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg bg-brand-blue px-4 py-2 text-white">
+          <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg bg-brand-green px-4 py-2 text-white">
             Fechar
           </button>
         </div>
@@ -107,7 +107,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg px-3 py-2 text-sm">
               Cancelar
             </button>
-            <button disabled={state === 'sending'} className="rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">
+            <button disabled={state === 'sending'} className="rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">
               {state === 'sending' ? 'Enviando…' : 'Enviar'}
             </button>
           </div>

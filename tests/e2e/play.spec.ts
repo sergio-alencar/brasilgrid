@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test'
 
 test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByRole('heading', { name: /BrasilGrid #\d+/ })).toBeVisible()
-  await expect(page.getByText('10/10 palpites')).toBeVisible()
+  await expect(page.getByText(/^#\d+$/)).toBeVisible()
+  await expect(page.getByLabel('10 de 10 palpites restantes')).toBeVisible()
 
   // Tenta UFs até errar uma na primeira célula.
   const tried: string[] = []
@@ -18,7 +18,7 @@ test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', a
     if (await page.getByText(`${name} não serve aqui.`).isVisible()) break
   }
   expect(tried.length).toBeGreaterThan(0)
-  await expect(page.getByText(`${10 - tried.length}/10 palpites`)).toBeVisible()
+  await expect(page.getByLabel(`${10 - tried.length} de 10 palpites restantes`)).toBeVisible()
 
   page.once('dialog', (d) => d.accept())
   await page.getByRole('button', { name: 'Desistir e revelar' }).click()

@@ -5,6 +5,7 @@ import { formatPercent } from '../lib/format.ts'
 import { CategoryHeader } from './CategoryHeader.tsx'
 
 interface Props {
+  puzzleId: number
   rows: CategoryInfo[]
   cols: CategoryInfo[]
   filled: FilledCell[]
@@ -13,10 +14,12 @@ interface Props {
   onSelect: (cell: number) => void
 }
 
-export function Grid({ rows, cols, filled, disabled, shakeCell, onSelect }: Props) {
+export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect }: Props) {
   return (
-    <div className="grid grid-cols-[minmax(0,0.8fr)_repeat(3,minmax(0,1fr))] gap-1.5">
-      <div />
+    <div className="grid h-full grid-cols-[minmax(0,0.8fr)_repeat(3,minmax(0,1fr))] grid-rows-[auto_repeat(3,minmax(0,1fr))] gap-1.5 sm:gap-2">
+      <div className="flex items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
+        <span className="text-lg sm:text-2xl">#{puzzleId}</span>
+      </div>
       {cols.map((c, i) => (
         <CategoryHeader key={`c${i}`} category={c} />
       ))}
@@ -34,7 +37,7 @@ function Row({
   disabled,
   shakeCell,
   onSelect,
-}: { row: number; category: CategoryInfo } & Omit<Props, 'rows' | 'cols'>) {
+}: { row: number; category: CategoryInfo } & Omit<Props, 'puzzleId' | 'rows' | 'cols'>) {
   return (
     <>
       <CategoryHeader category={category} />
@@ -51,12 +54,13 @@ function Row({
             onClick={() => onSelect(cell)}
             aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
             className={[
-              // As células são sempre um "azulejo" claro — texto escuro fixo,
-              // não herda o branco do box verde por trás.
-              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 p-1 text-center text-slate-900 transition dark:text-slate-100',
+              // As células são sempre um "azulejo" claro, tingido de verde
+              // (nunca cinza-azulado) — texto escuro fixo, não herda o
+              // branco do box verde por trás.
+              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-1 text-center text-emerald-950 transition dark:text-emerald-50',
               hit
-                ? 'border-brand-green bg-emerald-50 dark:bg-emerald-950 animate-pop'
-                : 'border-slate-300 bg-slate-50 hover:border-brand-green hover:bg-white disabled:hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900',
+                ? 'border-brand-green bg-emerald-100 animate-pop dark:bg-emerald-950'
+                : 'border-emerald-100/70 bg-white hover:border-brand-yellow hover:bg-emerald-50 disabled:hover:border-emerald-100/70 dark:border-emerald-900 dark:bg-emerald-950/40 dark:hover:bg-emerald-950/70',
               shakeCell === cell ? 'animate-shake border-red-500' : '',
             ].join(' ')}
           >
@@ -73,7 +77,7 @@ function Row({
                 </span>
               </>
             ) : (
-              <span aria-hidden className="text-2xl text-slate-300 dark:text-slate-600">
+              <span aria-hidden className="text-2xl text-emerald-200 dark:text-emerald-800">
                 +
               </span>
             )}

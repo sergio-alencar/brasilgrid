@@ -52,7 +52,7 @@ export function SharedResultPage() {
         As respostas ficam escondidas para não estragar o jogo de ninguém.
       </p>
       <div className="text-center">
-        <Link to="/" className="inline-block rounded-lg bg-brand-blue px-5 py-3 font-semibold text-white">
+        <Link to="/" className="inline-block rounded-lg bg-white px-5 py-3 font-bold text-brand-green">
           Jogar a grade de hoje
         </Link>
       </div>

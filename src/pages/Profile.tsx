@@ -94,7 +94,7 @@ export function Profile() {
             <span className="block text-xs text-slate-500">O ranking chega em breve. Nome e e-mail nunca são mostrados.</span>
           </span>
         </label>
-        <button className="rounded-lg bg-brand-blue px-4 py-2 font-semibold text-white">Salvar</button>
+        <button className="rounded-lg bg-brand-green px-4 py-2 font-semibold text-white">Salvar</button>
         {message && (
           <p role="status" className={message.ok ? 'text-sm text-brand-green' : 'text-sm text-red-600'}>
             {message.text}

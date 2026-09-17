@@ -21,7 +21,7 @@ export function Avatar({ image, label, size = 'sm' }: Props) {
     )
   }
   return (
-    <span aria-hidden className={`${dim} flex items-center justify-center rounded-full bg-brand-blue font-bold text-white`}>
+    <span aria-hidden className={`${dim} flex items-center justify-center rounded-full bg-white font-bold text-brand-green`}>
       {(label.trim()[0] ?? '?').toUpperCase()}
     </span>
   )

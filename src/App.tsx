@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { Avatar } from './components/Avatar.tsx'
 import { authClient } from './lib/authClient.ts'
 import { Home } from './pages/Home.tsx'
@@ -52,11 +52,13 @@ function Header() {
   )
 }
 
-export function App() {
+function AppShell() {
+  const { pathname } = useLocation()
+  const wide = pathname === '/'
   return (
-    <BrowserRouter>
+    <>
       <Header />
-      <div className="page-box">
+      <div className={`page-box ${wide ? 'page-box--wide' : 'page-box--narrow'}`}>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -93,6 +95,14 @@ export function App() {
           Termos
         </Link>
       </footer>
+    </>
+  )
+}
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   )
 }

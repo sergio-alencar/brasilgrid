@@ -99,7 +99,7 @@ export function Login() {
               className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
             />
           </label>
-          <button disabled={busy} className="w-full rounded-lg bg-brand-blue px-4 py-2.5 font-semibold text-white disabled:opacity-50">
+          <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
             {busy ? 'Enviando…' : 'Receber código por e-mail'}
           </button>
         </form>
@@ -121,7 +121,7 @@ export function Login() {
               className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-center font-mono text-2xl tracking-[0.4em] dark:border-slate-600"
             />
           </label>
-          <button disabled={busy} className="w-full rounded-lg bg-brand-blue px-4 py-2.5 font-semibold text-white disabled:opacity-50">
+          <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
             {busy ? 'Entrando…' : 'Entrar'}
           </button>
           <button type="button" onClick={() => setStep('email')} className="w-full text-sm text-slate-500 underline">
