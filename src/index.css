@@ -14,11 +14,34 @@ body {
   @apply min-h-dvh bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
 }
 
+/* Foco visível e consistente entre navegadores, em qualquer elemento interativo. */
+:focus-visible {
+  outline: 2px solid var(--color-brand-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 @theme {
   --animate-shake: shake 0.4s ease-in-out;
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-6px); }
     75% { transform: translateX(6px); }
+  }
+  --animate-pop: pop 0.25s ease-out;
+  @keyframes pop {
+    0% { transform: scale(0.85); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* Quem pede menos movimento não recebe o tremor: só um flash de cor. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-shake {
+    animation: none;
+    background-color: color-mix(in srgb, red 15%, transparent);
+  }
+  .animate-pop {
+    animation: none;
   }
 }

@@ -17,6 +17,14 @@ export interface UfRecord {
   territory: Record<'legalAmazon' | 'sudene' | 'seaFacing' | 'semiarid' | 'northernHemisphere', boolean>
   /** Nº de municípios por bioma predominante (IBGE 2024). */
   predominantBiomes: Partial<Record<Biome, number>>
+  production: {
+    soybeanTonnes2024: number
+    coffeeTonnes2023: number
+    cattleHead2023: number
+    topSoybeanProducer: boolean
+    topCoffeeProducer: boolean
+    topCattleProducer: boolean
+  }
 }
 
 export type Biome = 'Amazônia' | 'Caatinga' | 'Cerrado' | 'Mata Atlântica' | 'Pampa' | 'Pantanal'

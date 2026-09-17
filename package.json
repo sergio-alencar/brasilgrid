@@ -17,6 +17,7 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "data:fetch-ibge": "tsx scripts/fetch-ibge.ts",
     "data:fetch-ibge-territory": "tsx scripts/fetch-ibge-territory.ts",
+    "data:fetch-ibge-production": "tsx scripts/fetch-ibge-production.ts",
     "data:fetch-wikidata": "tsx scripts/fetch-wikidata.ts",
     "data:fetch-flags": "tsx scripts/fetch-flags.ts",
     "data:build-map": "tsx scripts/build-map.ts",
@@ -24,6 +25,7 @@
     "data:build": "tsx scripts/build-ufs.ts",
     "data:validate": "tsx scripts/validate-data.ts",
     "puzzles:generate": "tsx scripts/generate-puzzles.ts",
+    "puzzles:regenerate": "tsx scripts/regenerate-puzzles.ts",
     "puzzles:publish": "tsx scripts/publish-puzzles.ts",
     "test:e2e": "playwright test",
     "reports": "tsx scripts/list-reports.ts"

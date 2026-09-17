@@ -133,66 +133,116 @@ function penalty(m: GeneratedPuzzle['metrics'], cells: string[][]): number {
   return m.traps * 10 + m.trivialCells * 3 + tightCells * 1 + hugeCells * 2
 }
 
+export type Availability = (categoryId: string, cooldown: number) => boolean
+
+/** Uma tentativa de grade para uma data, respeitando isAvailable(categoria, cooldown). */
+function pickPuzzle(
+  categories: CategoryDef[],
+  rand: () => number,
+  opts: Pick<GeneratorOptions, 'minAnswersPerCell' | 'minFamilies' | 'attemptsPerDay'>,
+  playDate: string,
+  isAvailable: Availability,
+  cooldown: number,
+): { puzzle: GeneratedPuzzle; score: number } | null {
+  const available = categories.filter((c) => isAvailable(c.id, cooldown))
+  let best: { puzzle: GeneratedPuzzle; score: number } | null = null
+
+  for (let attempt = 0; attempt < opts.attemptsPerDay; attempt++) {
+    const rows = pick(available, 3, rand)
+    if (rows.length < 3 || new Set(rows.map((c) => c.family)).size < 3) continue
+    // Só colunas que cruzam bem com as três linhas.
+    const compatible = available.filter((c) => !rows.includes(c) && rows.every((r) => overlap(r, c) >= opts.minAnswersPerCell))
+    const cols = pick(compatible, 3, rand)
+    if (cols.length < 3 || new Set(cols.map((c) => c.family)).size < 3) continue
+    if (new Set([...rows, ...cols].map((c) => c.family)).size < opts.minFamilies) continue
+
+    const result = evaluateGrid(rows, cols, opts.minAnswersPerCell)
+    if (!result) continue
+    const score = penalty(result.metrics, result.cells)
+    if (!best || score < best.score) {
+      best = {
+        score,
+        puzzle: { playDate, rows: rows.map((c) => c.id), cols: cols.map((c) => c.id), ...result, cooldownUsed: cooldown },
+      }
+      if (score === 0) break
+    }
+  }
+  return best
+}
+
+/** Tenta o intervalo pedido e vai afrouxando; prioriza 0 armadilhas sobre o intervalo maior. */
+function pickWithFallback(
+  categories: CategoryDef[],
+  rand: () => number,
+  opts: Pick<GeneratorOptions, 'minAnswersPerCell' | 'minFamilies' | 'attemptsPerDay'>,
+  playDate: string,
+  isAvailable: Availability,
+  maxCooldown: number,
+): { puzzle: GeneratedPuzzle; score: number } | null {
+  let best: { puzzle: GeneratedPuzzle; score: number } | null = null
+  for (let cooldown = maxCooldown; cooldown >= 0; cooldown--) {
+    const found = pickPuzzle(categories, rand, opts, playDate, isAvailable, cooldown)
+    if (!found) continue
+    if (!best) best = found
+    if (found.puzzle.metrics.traps === 0) return found
+  }
+  return best
+}
+
 export function generatePuzzles(categories: CategoryDef[], opts: GeneratorOptions): GeneratedPuzzle[] {
   const rand = mulberry32(opts.seed)
   const lastUsed = new Map<string, number>()
   const puzzles: GeneratedPuzzle[] = []
 
-  const searchDay = (day: number, cooldown: number) => {
-    const available = categories.filter((c) => {
-      const used = lastUsed.get(c.id)
-      return used === undefined || day - used > cooldown
-    })
-    let best: { puzzle: GeneratedPuzzle; score: number } | null = null
-
-    for (let attempt = 0; attempt < opts.attemptsPerDay; attempt++) {
-      const rows = pick(available, 3, rand)
-      if (rows.length < 3 || new Set(rows.map((c) => c.family)).size < 3) continue
-      // Só colunas que cruzam bem com as três linhas.
-      const compatible = available.filter(
-        (c) =>
-          !rows.includes(c) &&
-          rows.every((r) => overlap(r, c) >= opts.minAnswersPerCell),
-      )
-      const cols = pick(compatible, 3, rand)
-      if (cols.length < 3 || new Set(cols.map((c) => c.family)).size < 3) continue
-      if (new Set([...rows, ...cols].map((c) => c.family)).size < opts.minFamilies) continue
-
-      const result = evaluateGrid(rows, cols, opts.minAnswersPerCell)
-      if (!result) continue
-      const score = penalty(result.metrics, result.cells)
-      if (!best || score < best.score) {
-        best = {
-          score,
-          puzzle: {
-            playDate: addDays(opts.from, day),
-            rows: rows.map((c) => c.id),
-            cols: cols.map((c) => c.id),
-            ...result,
-            cooldownUsed: cooldown,
-          },
-        }
-        if (score === 0) break
-      }
-    }
-    return best
-  }
-
   for (let day = 0; day < opts.days; day++) {
-    // Armadilha pesa mais que repetição: afrouxa o intervalo até achar grade sem armadilha.
-    let best: ReturnType<typeof searchDay> = null
-    for (let cooldown = opts.cooldownDays; cooldown >= 0; cooldown--) {
-      const found = searchDay(day, cooldown)
-      if (!found) continue
-      if (!best) best = found
-      if (found.puzzle.metrics.traps === 0) {
-        best = found
-        break
-      }
+    const isAvailable: Availability = (id, cooldown) => {
+      const used = lastUsed.get(id)
+      return used === undefined || day - used > cooldown
     }
+    const best = pickWithFallback(categories, rand, opts, addDays(opts.from, day), isAvailable, opts.cooldownDays)
     if (!best) throw new Error(`Não achei grade válida para ${addDays(opts.from, day)}; adicione categorias`)
     for (const id of [...best.puzzle.rows, ...best.puzzle.cols]) lastUsed.set(id, day)
     puzzles.push(best.puzzle)
   }
   return puzzles
+}
+
+function diffDays(a: string, b: string): number {
+  return Math.round((Date.parse(`${a}T00:00:00Z`) - Date.parse(`${b}T00:00:00Z`)) / 86_400_000)
+}
+
+/**
+ * Gera uma grade nova para uma data já existente num lote, sem repetir categoria
+ * usada por nenhuma OUTRA grade do lote a menos de cooldownDays de distância
+ * (nos dois sentidos). Usada para substituir grades rejeitadas na revisão.
+ */
+export function regeneratePuzzle(
+  categories: CategoryDef[],
+  batch: GeneratedPuzzle[],
+  targetDate: string,
+  opts: Pick<GeneratorOptions, 'cooldownDays' | 'minAnswersPerCell' | 'minFamilies' | 'attemptsPerDay'>,
+  seed: number,
+): GeneratedPuzzle {
+  const rand = mulberry32(seed)
+  // Importante: NÃO exclui a própria data. Isso faz suas 6 categorias originais
+  // contarem como "usadas a distância 0", garantindo uma grade genuinamente
+  // diferente — senão a busca tende a escolher de volta a mesma combinação,
+  // que ficaria livre por não estar mais "em uso" em nenhum outro dia.
+  const isAvailable: Availability = (id, cooldown) => {
+    const distances = batch
+      .filter((p) => p.rows.includes(id) || p.cols.includes(id))
+      .map((p) => Math.abs(diffDays(p.playDate, targetDate)))
+    return distances.length === 0 || Math.min(...distances) > cooldown
+  }
+
+  const best = pickWithFallback(
+    categories,
+    rand,
+    opts,
+    targetDate,
+    isAvailable,
+    opts.cooldownDays,
+  )
+  if (!best) throw new Error(`Não achei grade nova para ${targetDate}; adicione categorias`)
+  return best.puzzle
 }

@@ -9,9 +9,14 @@ export function Countdown() {
   }, [])
   const s = Math.floor(ms / 1000)
   const pad = (n: number) => String(n).padStart(2, '0')
+  const h = Math.floor(s / 3600)
+  const m = Math.floor((s % 3600) / 60)
+  const sec = s % 60
   return (
-    <span className="font-mono">
-      {pad(Math.floor(s / 3600))}:{pad(Math.floor((s % 3600) / 60))}:{pad(s % 60)}
+    <span aria-label={`${h} horas, ${m} minutos e ${sec} segundos até a próxima grade`}>
+      <span aria-hidden className="font-mono">
+        {pad(h)}:{pad(m)}:{pad(sec)}
+      </span>
     </span>
   )
 }

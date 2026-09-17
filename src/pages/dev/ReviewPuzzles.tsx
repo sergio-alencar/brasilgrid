@@ -31,12 +31,8 @@ export default function ReviewPuzzles() {
     })
 
   const path = file.replace('../../../', '')
-  const command = [
-    `npm run puzzles:publish -- --file ${path} --launch ${launch || '<AAAA-MM-DD>'}`,
-    rejected.size ? `--skip ${[...rejected].sort().join(',')}` : '',
-  ]
-    .filter(Boolean)
-    .join(' ')
+  const regenerateCommand = `npm run puzzles:regenerate -- --file ${path} --dates ${[...rejected].sort().join(',')}`
+  const publishCommand = `npm run puzzles:publish -- --file ${path} --launch ${launch || '<AAAA-MM-DD>'}`
 
   return (
     <section className="space-y-6">
@@ -60,7 +56,21 @@ export default function ReviewPuzzles() {
       <p className="text-sm text-slate-500">
         {batch.puzzles.length} grades · semente {batch.options.seed} · gerado em {batch.generated} · {rejected.size} rejeitadas
       </p>
-      <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs dark:bg-slate-800">{command}</pre>
+      {rejected.size > 0 ? (
+        <div className="space-y-1">
+          <p className="text-sm">
+            1. Rode o comando abaixo para <strong>gerar substitutas</strong> só para as datas rejeitadas (elas nunca
+            saem iguais às que estão marcadas):
+          </p>
+          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs dark:bg-slate-800">{regenerateCommand}</pre>
+          <p className="text-sm">2. Recarregue esta página, revise as novas e desmarque-as antes de publicar.</p>
+        </div>
+      ) : (
+        <div className="space-y-1">
+          <p className="text-sm">Nenhuma grade rejeitada. Comando para publicar o lote inteiro:</p>
+          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs dark:bg-slate-800">{publishCommand}</pre>
+        </div>
+      )}
 
       {batch.puzzles.map((p) => {
         const out = rejected.has(p.playDate)

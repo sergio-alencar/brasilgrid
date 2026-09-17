@@ -18,8 +18,25 @@ interface TerritoryRaw {
   predominantBiomeMunicipalitiesByUf: Record<string, Record<string, number>>
 }
 
+interface ProductionRaw {
+  source: unknown
+  soybean: { year: number; values: Record<string, number> }
+  coffee: { year: number; values: Record<string, number> }
+  cattleHerd: { year: number; values: Record<string, number> }
+}
+
 const ibge = await readJson<IbgeRaw>(dataPath('raw', 'ibge.json'))
 const territory = await readJson<TerritoryRaw>(dataPath('raw', 'ibge-territory.json'))
+const production = await readJson<ProductionRaw>(dataPath('raw', 'ibge-production.json'))
+
+function top5<T extends string>(values: Record<T, number>): Set<T> {
+  return new Set(
+    (Object.entries(values) as [T, number][]).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([code]) => code),
+  )
+}
+const topSoybean = top5(production.soybean.values)
+const topCoffee = top5(production.coffee.values)
+const topCattle = top5(production.cattleHerd.values)
 const wikidata = await readJson<WikidataRaw>(dataPath('raw', 'wikidata.json'))
 const errors: string[] = []
 
@@ -66,6 +83,14 @@ const ufs = UFS.map((canon) => {
       Object.entries(territory.lists).map(([key, list]) => [key, list.ufs.includes(canon.code)]),
     ) as Record<keyof TerritoryRaw['lists'], boolean>,
     predominantBiomes: territory.predominantBiomeMunicipalitiesByUf[canon.code] ?? {},
+    production: {
+      soybeanTonnes2024: production.soybean.values[canon.code],
+      coffeeTonnes2023: production.coffee.values[canon.code],
+      cattleHead2023: production.cattleHerd.values[canon.code],
+      topSoybeanProducer: topSoybean.has(canon.code),
+      topCoffeeProducer: topCoffee.has(canon.code),
+      topCattleProducer: topCattle.has(canon.code),
+    },
   }
 })
 
@@ -76,12 +101,13 @@ if (errors.length) {
 
 await writeJson(dataPath('ufs.json'), {
   generated: today(),
-  sources: [ibge.source, wikidata.source, territory.source],
+  sources: [ibge.source, wikidata.source, territory.source, production.source],
   notes: [
     'population2022 e areaKm2: Censo 2022 (IBGE, tabela 4714).',
     'municipalityCount: API de localidades do IBGE na data de coleta (inclui municípios criados depois do Censo).',
     'territory: a UF tem ao menos um município na lista oficial do IBGE (Amazônia Legal 2024, SUDENE 2021, defrontantes com o mar 2024, semiárido 2022, hemisfério norte 2024).',
     'predominantBiomes: nº de municípios por bioma predominante (IBGE, 2024).',
+    `production: soja e bovinos ${production.soybean.year}, café ${production.coffee.year} (IBGE/SIDRA — PAM e PPM).`,
     'neighborCountries: ISO 3166-1 alfa-2 do país de cada vizinho no Wikidata (Guiana Francesa aparece como FR).',
   ],
   ufs,

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16",
+  "generated": "2026-09-17",
   "sources": [
     {
       "name": "IBGE — API de localidades e SIDRA (tabela 4714, Censo 2022)",
@@ -30,6 +30,10 @@
         "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/Municipios_Hemisferio_Norte_2024.xls"
       ],
       "accessed": "2026-09-16"
+    },
+    {
+      "name": "IBGE/SIDRA — Produção Agrícola Municipal (soja, café) e Pesquisa Pecuária Municipal (bovinos), por UF",
+      "accessed": "2026-09-17"
     }
   ],
   "notes": [
@@ -37,6 +41,7 @@
     "municipalityCount: API de localidades do IBGE na data de coleta (inclui municípios criados depois do Censo).",
     "territory: a UF tem ao menos um município na lista oficial do IBGE (Amazônia Legal 2024, SUDENE 2021, defrontantes com o mar 2024, semiárido 2022, hemisfério norte 2024).",
     "predominantBiomes: nº de municípios por bioma predominante (IBGE, 2024).",
+    "production: soja e bovinos 2024, café 2023 (IBGE/SIDRA — PAM e PPM).",
     "neighborCountries: ISO 3166-1 alfa-2 do país de cada vizinho no Wikidata (Guiana Francesa aparece como FR)."
   ],
   "ufs": [
@@ -76,6 +81,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 22
+      },
+      "production": {
+        "soybeanTonnes2024": 60554,
+        "coffeeTonnes2023": 2858,
+        "cattleHead2023": 4908956,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -113,6 +126,14 @@
       "predominantBiomes": {
         "Caatinga": 44,
         "Mata Atlântica": 58
+      },
+      "production": {
+        "soybeanTonnes2024": 17656,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 1437589,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -150,6 +171,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 16
+      },
+      "production": {
+        "soybeanTonnes2024": 20300,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 54842,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -192,6 +221,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 62
+      },
+      "production": {
+        "soybeanTonnes2024": 70057,
+        "coffeeTonnes2023": 405,
+        "cattleHead2023": 2377089,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -235,6 +272,14 @@
         "Caatinga": 225,
         "Mata Atlântica": 174,
         "Cerrado": 18
+      },
+      "production": {
+        "soybeanTonnes2024": 7668295,
+        "coffeeTonnes2023": 232545,
+        "cattleHead2023": 13205880,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": true,
+        "topCattleProducer": false
       }
     },
     {
@@ -272,6 +317,14 @@
       },
       "predominantBiomes": {
         "Caatinga": 184
+      },
+      "production": {
+        "soybeanTonnes2024": 11822,
+        "coffeeTonnes2023": 494,
+        "cattleHead2023": 2772173,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -307,6 +360,14 @@
       },
       "predominantBiomes": {
         "Cerrado": 1
+      },
+      "production": {
+        "soybeanTonnes2024": 290700,
+        "coffeeTonnes2023": 933,
+        "cattleHead2023": 83061,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -343,6 +404,14 @@
       },
       "predominantBiomes": {
         "Mata Atlântica": 78
+      },
+      "production": {
+        "soybeanTonnes2024": 1509,
+        "coffeeTonnes2023": 820614,
+        "cattleHead2023": 2179082,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": true,
+        "topCattleProducer": false
       }
     },
     {
@@ -383,6 +452,14 @@
       "predominantBiomes": {
         "Cerrado": 242,
         "Mata Atlântica": 4
+      },
+      "production": {
+        "soybeanTonnes2024": 16973882,
+        "coffeeTonnes2023": 14934,
+        "cattleHead2023": 23729878,
+        "topSoybeanProducer": true,
+        "topCoffeeProducer": false,
+        "topCattleProducer": true
       }
     },
     {
@@ -420,6 +497,14 @@
       "predominantBiomes": {
         "Amazônia": 93,
         "Cerrado": 124
+      },
+      "production": {
+        "soybeanTonnes2024": 4073259,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 10128610,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -463,6 +548,14 @@
         "Cerrado": 61,
         "Amazônia": 76,
         "Pantanal": 4
+      },
+      "production": {
+        "soybeanTonnes2024": 38396410,
+        "coffeeTonnes2023": 11547,
+        "cattleHead2023": 34075004,
+        "topSoybeanProducer": true,
+        "topCoffeeProducer": false,
+        "topCattleProducer": true
       }
     },
     {
@@ -506,6 +599,14 @@
         "Cerrado": 51,
         "Mata Atlântica": 23,
         "Pantanal": 5
+      },
+      "production": {
+        "soybeanTonnes2024": 11303640,
+        "coffeeTonnes2023": 292,
+        "cattleHead2023": 18891916,
+        "topSoybeanProducer": true,
+        "topCoffeeProducer": false,
+        "topCattleProducer": true
       }
     },
     {
@@ -548,6 +649,14 @@
         "Cerrado": 256,
         "Mata Atlântica": 572,
         "Caatinga": 25
+      },
+      "production": {
+        "soybeanTonnes2024": 7740542,
+        "coffeeTonnes2023": 1735408,
+        "cattleHead2023": 22498415,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": true,
+        "topCattleProducer": true
       }
     },
     {
@@ -590,6 +699,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 144
+      },
+      "production": {
+        "soybeanTonnes2024": 3751973,
+        "coffeeTonnes2023": 179,
+        "cattleHead2023": 25040621,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": true
       }
     },
     {
@@ -627,6 +744,14 @@
       "predominantBiomes": {
         "Caatinga": 204,
         "Mata Atlântica": 19
+      },
+      "production": {
+        "soybeanTonnes2024": 0,
+        "coffeeTonnes2023": 24,
+        "cattleHead2023": 1412480,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -667,6 +792,14 @@
       "predominantBiomes": {
         "Mata Atlântica": 398,
         "Cerrado": 1
+      },
+      "production": {
+        "soybeanTonnes2024": 18689393,
+        "coffeeTonnes2023": 41840,
+        "cattleHead2023": 8774410,
+        "topSoybeanProducer": true,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -706,6 +839,14 @@
       "predominantBiomes": {
         "Mata Atlântica": 76,
         "Caatinga": 109
+      },
+      "production": {
+        "soybeanTonnes2024": 0,
+        "coffeeTonnes2023": 267,
+        "cattleHead2023": 2460111,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -745,6 +886,14 @@
       "predominantBiomes": {
         "Caatinga": 116,
         "Cerrado": 108
+      },
+      "production": {
+        "soybeanTonnes2024": 3811694,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 1384189,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -781,6 +930,14 @@
       },
       "predominantBiomes": {
         "Mata Atlântica": 92
+      },
+      "production": {
+        "soybeanTonnes2024": 2289,
+        "coffeeTonnes2023": 20146,
+        "cattleHead2023": 2765124,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -817,6 +974,14 @@
       "predominantBiomes": {
         "Caatinga": 156,
         "Mata Atlântica": 11
+      },
+      "production": {
+        "soybeanTonnes2024": 240,
+        "coffeeTonnes2023": 4,
+        "cattleHead2023": 1173351,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -855,6 +1020,14 @@
       "predominantBiomes": {
         "Pampa": 162,
         "Mata Atlântica": 337
+      },
+      "production": {
+        "soybeanTonnes2024": 18247609,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 12012219,
+        "topSoybeanProducer": true,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -893,6 +1066,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 52
+      },
+      "production": {
+        "soybeanTonnes2024": 2221610,
+        "coffeeTonnes2023": 158667,
+        "cattleHead2023": 18162632,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": true,
+        "topCattleProducer": false
       }
     },
     {
@@ -931,6 +1112,14 @@
       },
       "predominantBiomes": {
         "Amazônia": 15
+      },
+      "production": {
+        "soybeanTonnes2024": 416650,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 1181553,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -968,6 +1157,14 @@
       },
       "predominantBiomes": {
         "Mata Atlântica": 295
+      },
+      "production": {
+        "soybeanTonnes2024": 2733806,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 4540794,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -1006,6 +1203,14 @@
       "predominantBiomes": {
         "Mata Atlântica": 561,
         "Cerrado": 84
+      },
+      "production": {
+        "soybeanTonnes2024": 3626440,
+        "coffeeTonnes2023": 307353,
+        "cattleHead2023": 10763360,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": true,
+        "topCattleProducer": false
       }
     },
     {
@@ -1042,6 +1247,14 @@
       "predominantBiomes": {
         "Caatinga": 32,
         "Mata Atlântica": 43
+      },
+      "production": {
+        "soybeanTonnes2024": 0,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 1294262,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     },
     {
@@ -1082,6 +1295,14 @@
       "predominantBiomes": {
         "Cerrado": 116,
         "Amazônia": 23
+      },
+      "production": {
+        "soybeanTonnes2024": 4343438,
+        "coffeeTonnes2023": 0,
+        "cattleHead2023": 11313309,
+        "topSoybeanProducer": false,
+        "topCoffeeProducer": false,
+        "topCattleProducer": false
       }
     }
   ]

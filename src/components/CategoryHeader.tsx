@@ -11,6 +11,7 @@ export function CategoryHeader({ category }: { category: CategoryInfo }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={id}
+        aria-label={`${category.label}. Ver a regra completa e a fonte.`}
         className="rounded-md px-1 text-[11px] leading-tight font-semibold sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-800"
       >
         {category.label}

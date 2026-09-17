@@ -93,5 +93,47 @@ export default defineCategories([
     difficulty: 3,
     numeric: { metric: (uf) => uf.municipalityCount, op: '<', threshold: 70 },
   },
+  {
+    id: 'top5-soybean-producer',
+    family: 'demography',
+    label: 'Top 5 em soja (2024)',
+    description: 'Uma das 5 UFs que mais produziram soja em 2024, em toneladas (IBGE/SIDRA).',
+    members: ['GO', 'MS', 'MT', 'PR', 'RS'],
+    source: {
+      name: 'IBGE/SIDRA — Produção Agrícola Municipal, tabela 1612',
+      url: 'https://sidra.ibge.gov.br/tabela/1612',
+    },
+    notes: 'MS (11,3 milhões t) folgado do 6º colocado, MG (7,7 milhões t).',
+    difficulty: 2,
+    derive: (uf) => uf.production.topSoybeanProducer,
+  },
+  {
+    id: 'top5-coffee-producer',
+    family: 'demography',
+    label: 'Top 5 em café (2023)',
+    description: 'Uma das 5 UFs que mais produziram café em 2023, em toneladas (IBGE/SIDRA).',
+    members: ['BA', 'ES', 'MG', 'RO', 'SP'],
+    source: {
+      name: 'IBGE/SIDRA — Produção das Lavouras Permanentes, tabela 1613',
+      url: 'https://sidra.ibge.gov.br/tabela/1613',
+    },
+    notes: 'Minas Gerais sozinho responde por mais da metade da produção nacional.',
+    difficulty: 2,
+    derive: (uf) => uf.production.topCoffeeProducer,
+  },
+  {
+    id: 'top5-cattle-producer',
+    family: 'demography',
+    label: 'Top 5 em bovinos (2023)',
+    description: 'Uma das 5 UFs com o maior rebanho de bovinos em 2023 (IBGE/SIDRA).',
+    members: ['GO', 'MG', 'MS', 'MT', 'PA'],
+    source: {
+      name: 'IBGE/SIDRA — Efetivo dos Rebanhos, tabela 3939',
+      url: 'https://sidra.ibge.gov.br/tabela/3939',
+    },
+    notes: 'MS (18,9 milhões de cabeças) e RO (18,2 milhões, 6º) ficam próximos — cerca de 4% de diferença.',
+    difficulty: 3,
+    derive: (uf) => uf.production.topCattleProducer,
+  },
 ])
 

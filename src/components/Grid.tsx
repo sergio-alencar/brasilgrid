@@ -53,7 +53,7 @@ function Row({
             className={[
               'flex aspect-square flex-col items-center justify-center rounded-xl border-2 p-1 text-center transition',
               hit
-                ? 'border-brand-green bg-emerald-50 dark:bg-emerald-950'
+                ? 'border-brand-green bg-emerald-50 dark:bg-emerald-950 animate-pop'
                 : 'border-slate-300 bg-slate-50 hover:border-brand-green hover:bg-white disabled:hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900',
               shakeCell === cell ? 'animate-shake border-red-500' : '',
             ].join(' ')}

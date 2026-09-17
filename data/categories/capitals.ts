@@ -75,5 +75,16 @@ export default defineCategories([
     difficulty: 2,
     derive: (uf) => normalize(uf.capital.name).endsWith('a'),
   },
+  {
+    id: 'capital-planned',
+    family: 'capitals',
+    label: 'Capital planejada',
+    description: 'A capital foi projetada e construída como cidade planejada, não cresceu de um povoado antigo.',
+    members: ['DF', 'GO', 'MG', 'RR', 'TO'],
+    source: { name: 'Wikipédia — Cidade planejada', url: 'https://pt.wikipedia.org/wiki/Cidade_planejada' },
+    notes:
+      'Belo Horizonte (1897) foi a primeira; depois Goiânia (1935), Boa Vista (replanejada em 1944-46), Brasília (1960) e Palmas (1990).',
+    difficulty: 2,
+  },
 ])
 
