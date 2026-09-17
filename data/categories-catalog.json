@@ -8,7 +8,7 @@
       "name": "IBGE — Área de atuação da SUDENE (2021)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/"
     },
-    "notes": "Além do Nordeste, inclui parte do norte de Minas Gerais e do Espírito Santo.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -64,7 +64,7 @@
       "name": "Wikipédia — Rio Paraíba do Sul",
       "url": "https://pt.wikipedia.org/wiki/Rio_Para%C3%ADba_do_Sul"
     },
-    "notes": "Em Minas Gerais, o rio forma um trecho da divisa com o Rio de Janeiro.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -76,7 +76,7 @@
       "name": "Wikipédia — Rio Araguaia",
       "url": "https://pt.wikipedia.org/wiki/Rio_Araguaia"
     },
-    "notes": "O Araguaia forma as divisas GO–MT, MT–TO e TO–PA.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -88,7 +88,7 @@
       "name": "Wikipédia — Rio Paraná",
       "url": "https://pt.wikipedia.org/wiki/Rio_Paran%C3%A1"
     },
-    "notes": "O rio nasce na tríplice divisa MG–SP–MS (encontro dos rios Grande e Paranaíba); MG não conta.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -100,7 +100,7 @@
       "name": "Wikipédia — Rio Tocantins",
       "url": "https://pt.wikipedia.org/wiki/Rio_Tocantins"
     },
-    "notes": "No Maranhão, o rio forma a divisa com o Tocantins.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -112,14 +112,14 @@
       "name": "Wikipédia — Rio São Francisco",
       "url": "https://pt.wikipedia.org/wiki/Rio_S%C3%A3o_Francisco"
     },
-    "notes": "Conta o curso do rio, não a bacia (a bacia também inclui GO e DF).",
+    "notes": "",
     "difficulty": 2
   },
   {
     "id": "capital-same-initial",
     "family": "capitals",
     "label": "Capital com a mesma inicial",
-    "description": "O nome da capital começa com a mesma letra do nome da UF (ex.: Goiânia, Goiás).",
+    "description": "O nome da capital começa com a mesma letra do nome da UF.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -135,7 +135,7 @@
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
     },
-    "notes": "Mais perto do limite: São Luís (1,04 mi, dentro) e Maceió (0,96 mi, fora).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -147,14 +147,14 @@
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
     },
-    "notes": "Mais perto do limite: Porto Velho (460 mil, dentro) e Florianópolis (537 mil, fora).",
+    "notes": "",
     "difficulty": 2
   },
   {
     "id": "capital-multiword",
     "family": "capitals",
     "label": "Capital com nome composto",
-    "description": "O nome da capital tem duas ou mais palavras (ex.: Belo Horizonte).",
+    "description": "O nome da capital tem duas ou mais palavras.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -170,7 +170,7 @@
       "name": "Lei 12.876/2013 (fusos horários)",
       "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12876.htm"
     },
-    "notes": "Rio Branco usa UTC−5; as demais, UTC−4. Ilhas oceânicas em UTC−2 não contam (vale o fuso da capital).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -182,7 +182,7 @@
       "name": "Wikipédia — Capitais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
     },
-    "notes": "São Luís (Ilha do Maranhão), Vitória (Ilha de Vitória) e Florianópolis (Ilha de Santa Catarina).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -194,7 +194,7 @@
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
     },
-    "notes": "ES: Serra, Vila Velha e Cariacica superam Vitória. SC: Joinville supera Florianópolis.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -206,14 +206,14 @@
       "name": "Wikipédia — Cidade planejada",
       "url": "https://pt.wikipedia.org/wiki/Cidade_planejada"
     },
-    "notes": "Belo Horizonte (1897) foi a primeira; depois Goiânia (1935), Boa Vista (replanejada em 1944-46), Brasília (1960) e Palmas (1990).",
+    "notes": "",
     "difficulty": 2
   },
   {
     "id": "capital-ends-with-a",
     "family": "capitals",
     "label": "Capital termina com \"a\"",
-    "description": "O nome da capital termina com \"a\", com ou sem acento (ex.: Macapá, Brasília).",
+    "description": "O nome da capital termina com \"a\", com ou sem acento.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -229,7 +229,7 @@
       "name": "IBGE — Municípios localizados no hemisfério norte (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/"
     },
-    "notes": "Conferido pela lista do IBGE de municípios com território no hemisfério norte; as quatro UFs também têm território ao sul.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -412,7 +412,7 @@
     "id": "borders-spanish-speaking",
     "family": "borders",
     "label": "Fronteira com país hispânico",
-    "description": "A UF faz fronteira com pelo menos um país de língua oficial espanhola (Argentina, Bolívia, Colômbia, Paraguai, Peru, Uruguai ou Venezuela).",
+    "description": "A UF faz fronteira com pelo menos um país de língua oficial espanhola.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -428,14 +428,14 @@
       "name": "Wikipédia — Territórios federais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Territ%C3%B3rios_federais_do_Brasil"
     },
-    "notes": "Fernando de Noronha também foi território, mas hoje é parte de Pernambuco, que não conta.",
+    "notes": "",
     "difficulty": 2
   },
   {
     "id": "capital-was-national-capital",
     "family": "capitals",
     "label": "Já sediou a capital do Brasil",
-    "description": "A capital da UF já foi capital do Brasil: Salvador (1549–1763), Rio de Janeiro (1763–1960) ou Brasília (desde 1960).",
+    "description": "A capital da UF já foi capital do Brasil.",
     "source": {
       "name": "Wikipédia — Capitais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
@@ -507,7 +507,7 @@
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
     },
-    "notes": "Mais perto do limite: Alagoas (3,13 mi, fora).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -530,7 +530,7 @@
       "name": "CBHSF — Comitê da Bacia Hidrográfica do Rio São Francisco",
       "url": "https://cbhsaofrancisco.org.br/a-bacia/"
     },
-    "notes": "Diferente do curso do rio: GO (0,5% da bacia) e DF (0,2%) têm afluentes, mas o rio não passa por lá.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -542,7 +542,7 @@
       "name": "IBGE — Municípios da Amazônia Legal (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/"
     },
-    "notes": "O Maranhão entra só em parte. Goiás não tem nenhum município na lista de 2024, apesar de ser citado na lei.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -554,7 +554,7 @@
       "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
       "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
     },
-    "notes": "Inclui os Teatros da Amazônia (Manaus e Belém), inscritos em julho de 2026. A Serra da Capivara (PI) é bem cultural.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -566,14 +566,14 @@
       "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
       "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
     },
-    "notes": "RJ entra por Paraty e Ilha Grande (bem misto). MG, pelo Cânion do Peruaçu (2025); MA, pelos Lençóis Maranhenses (2024).",
+    "notes": "",
     "difficulty": 3
   },
   {
     "id": "region-center-west",
     "family": "regions",
     "label": "Região Centro-Oeste",
-    "description": "A UF pertence à Região Centro-Oeste, segundo o IBGE (inclui o Distrito Federal).",
+    "description": "A UF pertence à Região Centro-Oeste, segundo o IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -633,7 +633,7 @@
       "name": "CJF — Tribunais Regionais Federais",
       "url": "https://www.cjf.jus.br/cjf/"
     },
-    "notes": "TRF1 Brasília, TRF2 Rio, TRF3 São Paulo, TRF4 Porto Alegre, TRF5 Recife, TRF6 Belo Horizonte.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -645,7 +645,7 @@
       "name": "Wikipédia — Copa do Mundo FIFA de 2014",
       "url": "https://pt.wikipedia.org/wiki/Copa_do_Mundo_FIFA_de_2014"
     },
-    "notes": "Recife: jogos na Arena Pernambuco, em São Lourenço da Mata (PE).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -657,7 +657,7 @@
       "name": "IBGE — Municípios defrontantes com o mar (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/"
     },
-    "notes": "O Amazonas não chega ao mar: o rio desemboca no Pará e no Amapá.",
+    "notes": "",
     "difficulty": 1
   },
   {
@@ -675,7 +675,7 @@
     "id": "code-is-first-two-letters",
     "family": "names",
     "label": "Sigla = duas primeiras letras",
-    "description": "A sigla da UF são as duas primeiras letras do nome (ex.: GO, Goiás).",
+    "description": "A sigla da UF são as duas primeiras letras do nome.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -702,7 +702,7 @@
       "name": "IBGE — Municípios do Semiárido (2022)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/"
     },
-    "notes": "A delimitação de 2021 incluiu municípios do Espírito Santo e do Maranhão.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -714,7 +714,7 @@
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
     },
-    "notes": "O Ceará é a única UF com todos os municípios na Caatinga.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -726,7 +726,7 @@
       "name": "Wikipédia — Copa do Brasil de Futebol",
       "url": "https://pt.wikipedia.org/wiki/Copa_do_Brasil_de_Futebol"
     },
-    "notes": "SC: Criciúma (1991). PE: Sport (2008). PR: Athletico (2019). SP inclui Santo André (2004) e Paulista (2005).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -749,7 +749,7 @@
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
     },
-    "notes": "No Paraná, só um município tem o Cerrado como bioma predominante.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -761,7 +761,7 @@
       "name": "Wikipédia — Campeonato Brasileiro de Futebol",
       "url": "https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol"
     },
-    "notes": "BA: Bahia (1959, 1988). PE: Sport (1987). PR: Coritiba (1985), Athletico (2001).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -795,7 +795,7 @@
       "name": "IBGE/SIDRA — Efetivo dos Rebanhos, tabela 3939",
       "url": "https://sidra.ibge.gov.br/tabela/3939"
     },
-    "notes": "MS (18,9 milhões de cabeças) e RO (18,2 milhões, 6º) ficam próximos — cerca de 4% de diferença.",
+    "notes": "",
     "difficulty": 3
   },
   {
@@ -807,7 +807,7 @@
       "name": "IBGE/SIDRA — Produção das Lavouras Permanentes, tabela 1613",
       "url": "https://sidra.ibge.gov.br/tabela/1613"
     },
-    "notes": "Minas Gerais sozinho responde por mais da metade da produção nacional.",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -819,7 +819,7 @@
       "name": "IBGE/SIDRA — Produção Agrícola Municipal, tabela 1612",
       "url": "https://sidra.ibge.gov.br/tabela/1612"
     },
-    "notes": "MS (11,3 milhões t) folgado do 6º colocado, MG (7,7 milhões t).",
+    "notes": "",
     "difficulty": 2
   },
   {
@@ -837,12 +837,12 @@
     "id": "created-1960-or-later",
     "family": "history",
     "label": "UF criada a partir de 1960",
-    "description": "A UF passou a existir como estado (ou Distrito Federal) em 1960 ou depois: DF (1960), AC (1962), MS (1977), RO (1981), e AP, RR e TO (1988).",
+    "description": "A UF passou a existir como estado em 1960 ou depois.",
     "source": {
       "name": "Wikipédia — Unidades federativas do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Unidades_federativas_do_Brasil"
     },
-    "notes": "Vale a data da lei de criação (MS: 1977, instalado em 1979).",
+    "notes": "Vale a data da lei de criação.",
     "difficulty": 2
   },
   {
