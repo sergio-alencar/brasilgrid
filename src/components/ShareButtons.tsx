@@ -27,7 +27,7 @@ export function ShareButtons({ text }: { text: string }) {
           <button
             type="button"
             onClick={() => navigator.share({ text }).catch(() => {})}
-            className="rounded-lg bg-brand-green px-3 py-2 text-sm font-semibold text-white"
+            className="rounded-lg bg-brand-blue px-3 py-2 text-sm font-semibold text-white"
           >
             Compartilhar
           </button>

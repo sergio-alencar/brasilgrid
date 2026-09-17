@@ -47,7 +47,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
         <div className="space-y-3">
           <h2 className="text-lg font-bold">Obrigado!</h2>
           <p className="text-sm">Vamos conferir. Se o gabarito estiver errado, ele é corrigido para as próximas grades.</p>
-          <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg bg-brand-green px-4 py-2 text-white">
+          <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg bg-brand-blue px-4 py-2 text-white">
             Fechar
           </button>
         </div>
@@ -59,7 +59,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <select
               value={cell ?? ''}
               onChange={(e) => setCell(e.target.value === '' ? null : Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-transparent px-2 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-2 py-2 font-normal dark:border-slate-600"
             >
               <option value="">A grade toda</option>
               {cells.map(({ cell: i }) => (
@@ -74,7 +74,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <select
               value={uf}
               onChange={(e) => setUf(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-transparent px-2 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-2 py-2 font-normal dark:border-slate-600"
             >
               <option value="">—</option>
               {UFS.map((u) => (
@@ -95,7 +95,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Ex.: esta UF também atende às duas categorias porque…"
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
             />
           </label>
           {error && (
@@ -107,7 +107,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <button type="button" onClick={() => dialog.current?.close()} className="rounded-lg px-3 py-2 text-sm">
               Cancelar
             </button>
-            <button disabled={state === 'sending'} className="rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">
+            <button disabled={state === 'sending'} className="rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">
               {state === 'sending' ? 'Enviando…' : 'Enviar'}
             </button>
           </div>

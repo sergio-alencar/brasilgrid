@@ -1,24 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-green: #0a7a3f;
-  --color-brand-yellow: #f5c518;
-  --color-brand-blue: #0a2f6b;
+  --font-sans: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
+
+  /* Paleta da bandeira: verde de fundo, detalhes em azul, amarelo e branco. */
+  --color-brand-green: #0f9b58;
+  --color-brand-green-deep: #076b3a;
+  --color-brand-blue: #002776;
+  --color-brand-yellow: #ffdf00;
 }
 
 :root {
   color-scheme: light dark;
 }
 
-body {
-  @apply min-h-dvh bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-brand-green-deep: #042b17;
+    --color-brand-blue: #4d78e0;
+    --color-brand-yellow: #ffe14d;
+  }
 }
 
-/* Foco visível e consistente entre navegadores, em qualquer elemento interativo. */
+body {
+  @apply min-h-dvh font-sans antialiased;
+  background: var(--color-brand-green-deep);
+}
+
+/* O conteúdo mora num "cartão" branco por cima do verde — cheio no celular,
+   flutuando com espaço ao redor a partir de telas maiores. */
+.page-card {
+  @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+}
+@media (min-width: 640px) {
+  .page-card {
+    @apply mx-auto my-6 max-w-2xl rounded-3xl shadow-xl;
+  }
+}
+
+/* Foco visível e consistente entre navegadores: amarelo sobre qualquer fundo. */
 :focus-visible {
-  outline: 2px solid var(--color-brand-green);
+  outline: 3px solid var(--color-brand-yellow);
   outline-offset: 2px;
   border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 @theme {

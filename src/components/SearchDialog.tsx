@@ -48,7 +48,7 @@ export function SearchDialog({ title, usedUfs, wrongHere, onPick, onClose }: Pro
           }}
           placeholder="Digite o nome ou a sigla"
           aria-label="Buscar UF"
-          className="mt-2 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 outline-none focus:border-brand-green dark:border-slate-600"
+          className="mt-2 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 outline-none focus:border-brand-green dark:border-slate-600"
         />
       </div>
       {normalizeSearch(query).length < MIN_QUERY_LENGTH ? (

@@ -79,7 +79,7 @@ export function Profile() {
             onChange={(e) => setNickname(e.target.value)}
             maxLength={20}
             placeholder="Como você aparece no ranking"
-            className="mt-1 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 font-normal dark:border-slate-600"
+            className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
           />
         </label>
         <label className="flex items-start gap-2 text-sm">
@@ -94,7 +94,7 @@ export function Profile() {
             <span className="block text-xs text-slate-500">O ranking chega em breve. Nome e e-mail nunca são mostrados.</span>
           </span>
         </label>
-        <button className="rounded-lg bg-brand-green px-4 py-2 font-semibold text-white">Salvar</button>
+        <button className="rounded-lg bg-brand-blue px-4 py-2 font-semibold text-white">Salvar</button>
         {message && (
           <p role="status" className={message.ok ? 'text-sm text-brand-green' : 'text-sm text-red-600'}>
             {message.text}
