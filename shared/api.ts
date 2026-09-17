@@ -4,6 +4,7 @@ export type GameStatus = 'in_progress' | 'completed' | 'out_of_guesses' | 'gave_
 export type GameMode = 'normal' | 'practice'
 
 export interface CategoryInfo {
+  categoryId: string
   label: string
   description: string
   sourceName: string

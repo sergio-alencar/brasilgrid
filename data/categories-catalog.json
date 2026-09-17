@@ -1,0 +1,859 @@
+[
+  {
+    "id": "sudene-area",
+    "family": "politics",
+    "label": "Área de atuação da SUDENE",
+    "description": "A UF tem ao menos um município na área de atuação da SUDENE, segundo a lista oficial do IBGE (2021).",
+    "source": {
+      "name": "IBGE — Área de atuação da SUDENE (2021)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/"
+    },
+    "notes": "Além do Nordeste, inclui parte do norte de Minas Gerais e do Espírito Santo.",
+    "difficulty": 3
+  },
+  {
+    "id": "area-over-300k",
+    "family": "demography",
+    "label": "Área maior que 300 mil km²",
+    "description": "A área territorial da UF passa de 300 mil km² (IBGE, 2022).",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "area-under-120k",
+    "family": "demography",
+    "label": "Área menor que 120 mil km²",
+    "description": "A área territorial da UF é menor que 120 mil km² (IBGE, 2022).",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "area-under-60k",
+    "family": "demography",
+    "label": "Área menor que 60 mil km²",
+    "description": "A área territorial da UF é menor que 60 mil km² (IBGE, 2022).",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "has-coastline",
+    "family": "coast",
+    "label": "Banhado pelo oceano",
+    "description": "A UF tem litoral no Oceano Atlântico.",
+    "source": {
+      "name": "IBGE — Municípios defrontantes com o mar (2024)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "river-paraiba-do-sul",
+    "family": "hydrography",
+    "label": "Banhado pelo Paraíba do Sul",
+    "description": "O Rio Paraíba do Sul atravessa a UF ou forma parte de sua divisa.",
+    "source": {
+      "name": "Wikipédia — Rio Paraíba do Sul",
+      "url": "https://pt.wikipedia.org/wiki/Rio_Para%C3%ADba_do_Sul"
+    },
+    "notes": "Em Minas Gerais, o rio forma um trecho da divisa com o Rio de Janeiro.",
+    "difficulty": 3
+  },
+  {
+    "id": "river-araguaia",
+    "family": "hydrography",
+    "label": "Banhado pelo Rio Araguaia",
+    "description": "O Rio Araguaia atravessa a UF ou forma parte de sua divisa.",
+    "source": {
+      "name": "Wikipédia — Rio Araguaia",
+      "url": "https://pt.wikipedia.org/wiki/Rio_Araguaia"
+    },
+    "notes": "O Araguaia forma as divisas GO–MT, MT–TO e TO–PA.",
+    "difficulty": 2
+  },
+  {
+    "id": "river-parana",
+    "family": "hydrography",
+    "label": "Banhado pelo Rio Paraná",
+    "description": "O Rio Paraná atravessa a UF ou forma parte de sua divisa.",
+    "source": {
+      "name": "Wikipédia — Rio Paraná",
+      "url": "https://pt.wikipedia.org/wiki/Rio_Paran%C3%A1"
+    },
+    "notes": "O rio nasce na tríplice divisa MG–SP–MS (encontro dos rios Grande e Paranaíba); MG não conta.",
+    "difficulty": 2
+  },
+  {
+    "id": "river-tocantins",
+    "family": "hydrography",
+    "label": "Banhado pelo Rio Tocantins",
+    "description": "O Rio Tocantins atravessa a UF ou forma parte de sua divisa.",
+    "source": {
+      "name": "Wikipédia — Rio Tocantins",
+      "url": "https://pt.wikipedia.org/wiki/Rio_Tocantins"
+    },
+    "notes": "No Maranhão, o rio forma a divisa com o Tocantins.",
+    "difficulty": 2
+  },
+  {
+    "id": "river-sao-francisco",
+    "family": "hydrography",
+    "label": "Banhado pelo São Francisco",
+    "description": "O Rio São Francisco atravessa a UF ou forma parte de sua divisa.",
+    "source": {
+      "name": "Wikipédia — Rio São Francisco",
+      "url": "https://pt.wikipedia.org/wiki/Rio_S%C3%A3o_Francisco"
+    },
+    "notes": "Conta o curso do rio, não a bacia (a bacia também inclui GO e DF).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-same-initial",
+    "family": "capitals",
+    "label": "Capital com a mesma inicial",
+    "description": "O nome da capital começa com a mesma letra do nome da UF (ex.: Goiânia, Goiás).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "capital-over-1m",
+    "family": "capitals",
+    "label": "Capital com mais de 1 milhão",
+    "description": "A capital tinha mais de 1 milhão de habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "notes": "Mais perto do limite: São Luís (1,04 mi, dentro) e Maceió (0,96 mi, fora).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-under-500k",
+    "family": "capitals",
+    "label": "Capital com menos de 500 mil",
+    "description": "A capital tinha menos de 500 mil habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "notes": "Mais perto do limite: Porto Velho (460 mil, dentro) e Florianópolis (537 mil, fora).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-multiword",
+    "family": "capitals",
+    "label": "Capital com nome composto",
+    "description": "O nome da capital tem duas ou mais palavras (ex.: Belo Horizonte).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "capital-timezone-not-brasilia",
+    "family": "coast",
+    "label": "Capital em outro fuso horário",
+    "description": "A capital da UF usa um fuso diferente do horário de Brasília (UTC−3).",
+    "source": {
+      "name": "Lei 12.876/2013 (fusos horários)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12876.htm"
+    },
+    "notes": "Rio Branco usa UTC−5; as demais, UTC−4. Ilhas oceânicas em UTC−2 não contam (vale o fuso da capital).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-on-island",
+    "family": "capitals",
+    "label": "Capital fica numa ilha",
+    "description": "A sede da capital fica numa ilha.",
+    "source": {
+      "name": "Wikipédia — Capitais do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
+    },
+    "notes": "São Luís (Ilha do Maranhão), Vitória (Ilha de Vitória) e Florianópolis (Ilha de Santa Catarina).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-not-largest-city",
+    "family": "capitals",
+    "label": "Capital não é a maior cidade",
+    "description": "Algum outro município da UF tem mais habitantes que a capital (Censo 2022).",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "notes": "ES: Serra, Vila Velha e Cariacica superam Vitória. SC: Joinville supera Florianópolis.",
+    "difficulty": 3
+  },
+  {
+    "id": "capital-planned",
+    "family": "capitals",
+    "label": "Capital planejada",
+    "description": "A capital foi projetada e construída como cidade planejada, não cresceu de um povoado antigo.",
+    "source": {
+      "name": "Wikipédia — Cidade planejada",
+      "url": "https://pt.wikipedia.org/wiki/Cidade_planejada"
+    },
+    "notes": "Belo Horizonte (1897) foi a primeira; depois Goiânia (1935), Boa Vista (replanejada em 1944-46), Brasília (1960) e Palmas (1990).",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-ends-with-a",
+    "family": "capitals",
+    "label": "Capital termina com \"a\"",
+    "description": "O nome da capital termina com \"a\", com ou sem acento (ex.: Macapá, Brasília).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "crossed-by-equator",
+    "family": "coast",
+    "label": "Cortado pela Linha do Equador",
+    "description": "A Linha do Equador atravessa o território da UF.",
+    "source": {
+      "name": "IBGE — Municípios localizados no hemisfério norte (2024)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/"
+    },
+    "notes": "Conferido pela lista do IBGE de municípios com território no hemisfério norte; as quatro UFs também têm território ao sul.",
+    "difficulty": 2
+  },
+  {
+    "id": "crossed-by-capricorn",
+    "family": "coast",
+    "label": "Cruza o Trópico de Capricórnio",
+    "description": "O Trópico de Capricórnio atravessa o território da UF.",
+    "source": {
+      "name": "IBGE — Atlas Geográfico Escolar",
+      "url": "https://atlasescolar.ibge.gov.br/"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-many-ufs",
+    "family": "borders",
+    "label": "Divisa com 6 ou mais UFs",
+    "description": "A UF faz divisa com pelo menos seis outras UFs.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-ms",
+    "family": "borders",
+    "label": "Divisa com Mato Grosso do Sul",
+    "description": "A UF tem limite com Mato Grosso do Sul.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-few-ufs",
+    "family": "borders",
+    "label": "Divisa com só 1 ou 2 UFs",
+    "description": "A UF faz divisa com no máximo duas outras UFs (fronteiras com outros países não contam).",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-ba",
+    "family": "borders",
+    "label": "Faz divisa com a Bahia",
+    "description": "A UF tem limite com a Bahia.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-go",
+    "family": "borders",
+    "label": "Faz divisa com Goiás",
+    "description": "A UF tem limite com Goiás.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-mt",
+    "family": "borders",
+    "label": "Faz divisa com Mato Grosso",
+    "description": "A UF tem limite com Mato Grosso.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-mg",
+    "family": "borders",
+    "label": "Faz divisa com Minas Gerais",
+    "description": "A UF tem limite com Minas Gerais.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-am",
+    "family": "borders",
+    "label": "Faz divisa com o Amazonas",
+    "description": "A UF tem limite com o Amazonas.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-pa",
+    "family": "borders",
+    "label": "Faz divisa com o Pará",
+    "description": "A UF tem limite com o Pará.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-pi",
+    "family": "borders",
+    "label": "Faz divisa com o Piauí",
+    "description": "A UF tem limite com o Piauí.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-pe",
+    "family": "borders",
+    "label": "Faz divisa com Pernambuco",
+    "description": "A UF tem limite com Pernambuco.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-sp",
+    "family": "borders",
+    "label": "Faz divisa com São Paulo",
+    "description": "A UF tem limite com São Paulo.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-to",
+    "family": "borders",
+    "label": "Faz divisa com Tocantins",
+    "description": "A UF tem limite com o Tocantins.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-bolivia",
+    "family": "borders",
+    "label": "Faz fronteira com a Bolívia",
+    "description": "A UF tem limite com a Bolívia.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "borders-foreign-country",
+    "family": "borders",
+    "label": "Faz fronteira com outro país",
+    "description": "A UF tem limite terrestre ou fluvial com algum país vizinho.",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "borders-spanish-speaking",
+    "family": "borders",
+    "label": "Fronteira com país hispânico",
+    "description": "A UF faz fronteira com pelo menos um país de língua oficial espanhola (Argentina, Bolívia, Colômbia, Paraguai, Peru, Uruguai ou Venezuela).",
+    "source": {
+      "name": "Wikidata — propriedade P47 (faz fronteira com)",
+      "url": "https://www.wikidata.org/wiki/Property:P47"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "former-federal-territory",
+    "family": "history",
+    "label": "Já foi território federal",
+    "description": "A UF foi território federal antes de virar estado.",
+    "source": {
+      "name": "Wikipédia — Territórios federais do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Territ%C3%B3rios_federais_do_Brasil"
+    },
+    "notes": "Fernando de Noronha também foi território, mas hoje é parte de Pernambuco, que não conta.",
+    "difficulty": 2
+  },
+  {
+    "id": "capital-was-national-capital",
+    "family": "capitals",
+    "label": "Já sediou a capital do Brasil",
+    "description": "A capital da UF já foi capital do Brasil: Salvador (1549–1763), Rio de Janeiro (1763–1960) ou Brasília (desde 1960).",
+    "source": {
+      "name": "Wikipédia — Capitais do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
+    },
+    "notes": "Não conta a transferência simbólica de um dia para outras cidades.",
+    "difficulty": 1
+  },
+  {
+    "id": "population-over-10m",
+    "family": "demography",
+    "label": "Mais de 10 milhões de hab.",
+    "description": "A UF tinha mais de 10 milhões de habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "municipalities-over-350",
+    "family": "demography",
+    "label": "Mais de 350 municípios",
+    "description": "A UF tem mais de 350 municípios.",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "population-over-5m",
+    "family": "demography",
+    "label": "Mais de 5 milhões de hab.",
+    "description": "A UF tinha mais de 5 milhões de habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "density-over-50",
+    "family": "demography",
+    "label": "Mais de 50 hab./km²",
+    "description": "A densidade demográfica da UF passa de 50 habitantes por km² (Censo 2022).",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "population-under-1m",
+    "family": "demography",
+    "label": "Menos de 1 milhão de hab.",
+    "description": "A UF tinha menos de 1 milhão de habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "population-under-3m",
+    "family": "demography",
+    "label": "Menos de 3 milhões de hab.",
+    "description": "A UF tinha menos de 3 milhões de habitantes no Censo 2022.",
+    "source": {
+      "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
+      "url": "https://sidra.ibge.gov.br/tabela/4714"
+    },
+    "notes": "Mais perto do limite: Alagoas (3,13 mi, fora).",
+    "difficulty": 2
+  },
+  {
+    "id": "municipalities-under-70",
+    "family": "demography",
+    "label": "Menos de 70 municípios",
+    "description": "A UF tem menos de 70 municípios (o Distrito Federal conta como um).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "basin-sao-francisco",
+    "family": "hydrography",
+    "label": "Na bacia do São Francisco",
+    "description": "A UF tem parte do território na bacia hidrográfica do Rio São Francisco.",
+    "source": {
+      "name": "CBHSF — Comitê da Bacia Hidrográfica do Rio São Francisco",
+      "url": "https://cbhsaofrancisco.org.br/a-bacia/"
+    },
+    "notes": "Diferente do curso do rio: GO (0,5% da bacia) e DF (0,2%) têm afluentes, mas o rio não passa por lá.",
+    "difficulty": 2
+  },
+  {
+    "id": "legal-amazon",
+    "family": "politics",
+    "label": "Parte da Amazônia Legal",
+    "description": "A UF tem ao menos um município na Amazônia Legal, segundo a lista oficial do IBGE (2024).",
+    "source": {
+      "name": "IBGE — Municípios da Amazônia Legal (2024)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/"
+    },
+    "notes": "O Maranhão entra só em parte. Goiás não tem nenhum município na lista de 2024, apesar de ser citado na lei.",
+    "difficulty": 2
+  },
+  {
+    "id": "unesco-cultural",
+    "family": "culture",
+    "label": "Patrimônio Cultural da UNESCO",
+    "description": "A UF tem um bem cultural ou misto inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "source": {
+      "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
+    },
+    "notes": "Inclui os Teatros da Amazônia (Manaus e Belém), inscritos em julho de 2026. A Serra da Capivara (PI) é bem cultural.",
+    "difficulty": 2
+  },
+  {
+    "id": "unesco-natural",
+    "family": "culture",
+    "label": "Patrimônio Natural da UNESCO",
+    "description": "A UF tem um bem natural ou misto inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "source": {
+      "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
+    },
+    "notes": "RJ entra por Paraty e Ilha Grande (bem misto). MG, pelo Cânion do Peruaçu (2025); MA, pelos Lençóis Maranhenses (2024).",
+    "difficulty": 3
+  },
+  {
+    "id": "region-center-west",
+    "family": "regions",
+    "label": "Região Centro-Oeste",
+    "description": "A UF pertence à Região Centro-Oeste, segundo o IBGE (inclui o Distrito Federal).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "region-northeast",
+    "family": "regions",
+    "label": "Região Nordeste",
+    "description": "A UF pertence à Região Nordeste, segundo o IBGE.",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "region-north",
+    "family": "regions",
+    "label": "Região Norte",
+    "description": "A UF pertence à Região Norte, segundo o IBGE.",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "region-southeast",
+    "family": "regions",
+    "label": "Região Sudeste",
+    "description": "A UF pertence à Região Sudeste, segundo o IBGE.",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "region-south",
+    "family": "regions",
+    "label": "Região Sul",
+    "description": "A UF pertence à Região Sul, segundo o IBGE.",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "trf-seat",
+    "family": "politics",
+    "label": "Sede de um TRF",
+    "description": "A capital da UF sedia um dos seis Tribunais Regionais Federais.",
+    "source": {
+      "name": "CJF — Tribunais Regionais Federais",
+      "url": "https://www.cjf.jus.br/cjf/"
+    },
+    "notes": "TRF1 Brasília, TRF2 Rio, TRF3 São Paulo, TRF4 Porto Alegre, TRF5 Recife, TRF6 Belo Horizonte.",
+    "difficulty": 3
+  },
+  {
+    "id": "world-cup-2014-host",
+    "family": "sports",
+    "label": "Sediou jogos da Copa de 2014",
+    "description": "Uma cidade da UF foi sede de jogos da Copa do Mundo FIFA de 2014.",
+    "source": {
+      "name": "Wikipédia — Copa do Mundo FIFA de 2014",
+      "url": "https://pt.wikipedia.org/wiki/Copa_do_Mundo_FIFA_de_2014"
+    },
+    "notes": "Recife: jogos na Arena Pernambuco, em São Lourenço da Mata (PE).",
+    "difficulty": 2
+  },
+  {
+    "id": "landlocked",
+    "family": "coast",
+    "label": "Sem litoral",
+    "description": "A UF não tem litoral no oceano.",
+    "source": {
+      "name": "IBGE — Municípios defrontantes com o mar (2024)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/"
+    },
+    "notes": "O Amazonas não chega ao mar: o rio desemboca no Pará e no Amapá.",
+    "difficulty": 1
+  },
+  {
+    "id": "no-unesco-site",
+    "family": "culture",
+    "label": "Sem Patrimônio Mundial",
+    "description": "A UF não tem nenhum bem inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "source": {
+      "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "code-is-first-two-letters",
+    "family": "names",
+    "label": "Sigla = duas primeiras letras",
+    "description": "A sigla da UF são as duas primeiras letras do nome (ex.: GO, Goiás).",
+    "source": {
+      "name": "IBGE — API de localidades",
+      "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "biome-amazon",
+    "family": "biomes",
+    "label": "Tem Amazônia",
+    "description": "A UF tem municípios no bioma Amazônia. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "difficulty": 1
+  },
+  {
+    "id": "semiarid",
+    "family": "biomes",
+    "label": "Tem área no Semiárido",
+    "description": "A UF tem ao menos um município na delimitação oficial do Semiárido brasileiro (SUDENE, 2022).",
+    "source": {
+      "name": "IBGE — Municípios do Semiárido (2022)",
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/"
+    },
+    "notes": "A delimitação de 2021 incluiu municípios do Espírito Santo e do Maranhão.",
+    "difficulty": 3
+  },
+  {
+    "id": "biome-caatinga",
+    "family": "biomes",
+    "label": "Tem Caatinga",
+    "description": "A UF tem municípios no bioma Caatinga. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "notes": "O Ceará é a única UF com todos os municípios na Caatinga.",
+    "difficulty": 2
+  },
+  {
+    "id": "copa-do-brasil-champion-club",
+    "family": "sports",
+    "label": "Tem campeão da Copa do Brasil",
+    "description": "Algum clube da UF já venceu a Copa do Brasil.",
+    "source": {
+      "name": "Wikipédia — Copa do Brasil de Futebol",
+      "url": "https://pt.wikipedia.org/wiki/Copa_do_Brasil_de_Futebol"
+    },
+    "notes": "SC: Criciúma (1991). PE: Sport (2008). PR: Athletico (2019). SP inclui Santo André (2004) e Paulista (2005).",
+    "difficulty": 2
+  },
+  {
+    "id": "libertadores-champion-club",
+    "family": "sports",
+    "label": "Tem campeão da Libertadores",
+    "description": "Algum clube da UF já venceu a Copa Libertadores da América.",
+    "source": {
+      "name": "Wikipédia — Copa Libertadores da América",
+      "url": "https://pt.wikipedia.org/wiki/Copa_Libertadores_da_Am%C3%A9rica"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "biome-cerrado",
+    "family": "biomes",
+    "label": "Tem Cerrado",
+    "description": "A UF tem municípios no bioma Cerrado. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "notes": "No Paraná, só um município tem o Cerrado como bioma predominante.",
+    "difficulty": 2
+  },
+  {
+    "id": "brazilian-champion-club",
+    "family": "sports",
+    "label": "Tem clube campeão brasileiro",
+    "description": "Algum clube da UF tem título de campeão brasileiro reconhecido pela CBF (inclui Taça Brasil e Robertão).",
+    "source": {
+      "name": "Wikipédia — Campeonato Brasileiro de Futebol",
+      "url": "https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol"
+    },
+    "notes": "BA: Bahia (1959, 1988). PE: Sport (1987). PR: Coritiba (1985), Athletico (2001).",
+    "difficulty": 2
+  },
+  {
+    "id": "biome-atlantic-forest",
+    "family": "biomes",
+    "label": "Tem Mata Atlântica",
+    "description": "A UF tem municípios no bioma Mata Atlântica. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "difficulty": 2
+  },
+  {
+    "id": "biome-pantanal",
+    "family": "biomes",
+    "label": "Tem Pantanal",
+    "description": "A UF tem municípios no bioma Pantanal. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "top5-cattle-producer",
+    "family": "demography",
+    "label": "Top 5 em bovinos (2023)",
+    "description": "Uma das 5 UFs com o maior rebanho de bovinos em 2023 (IBGE/SIDRA).",
+    "source": {
+      "name": "IBGE/SIDRA — Efetivo dos Rebanhos, tabela 3939",
+      "url": "https://sidra.ibge.gov.br/tabela/3939"
+    },
+    "notes": "MS (18,9 milhões de cabeças) e RO (18,2 milhões, 6º) ficam próximos — cerca de 4% de diferença.",
+    "difficulty": 3
+  },
+  {
+    "id": "top5-coffee-producer",
+    "family": "demography",
+    "label": "Top 5 em café (2023)",
+    "description": "Uma das 5 UFs que mais produziram café em 2023, em toneladas (IBGE/SIDRA).",
+    "source": {
+      "name": "IBGE/SIDRA — Produção das Lavouras Permanentes, tabela 1613",
+      "url": "https://sidra.ibge.gov.br/tabela/1613"
+    },
+    "notes": "Minas Gerais sozinho responde por mais da metade da produção nacional.",
+    "difficulty": 2
+  },
+  {
+    "id": "top5-soybean-producer",
+    "family": "demography",
+    "label": "Top 5 em soja (2024)",
+    "description": "Uma das 5 UFs que mais produziram soja em 2024, em toneladas (IBGE/SIDRA).",
+    "source": {
+      "name": "IBGE/SIDRA — Produção Agrícola Municipal, tabela 1612",
+      "url": "https://sidra.ibge.gov.br/tabela/1612"
+    },
+    "notes": "MS (11,3 milhões t) folgado do 6º colocado, MG (7,7 milhões t).",
+    "difficulty": 2
+  },
+  {
+    "id": "three-biomes",
+    "family": "biomes",
+    "label": "Três biomas ou mais",
+    "description": "Os municípios da UF se dividem em pelo menos três biomas predominantes. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "difficulty": 3
+  },
+  {
+    "id": "created-1960-or-later",
+    "family": "history",
+    "label": "UF criada a partir de 1960",
+    "description": "A UF passou a existir como estado (ou Distrito Federal) em 1960 ou depois: DF (1960), AC (1962), MS (1977), RO (1981), e AP, RR e TO (1988).",
+    "source": {
+      "name": "Wikipédia — Unidades federativas do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Unidades_federativas_do_Brasil"
+    },
+    "notes": "Vale a data da lei de criação (MS: 1977, instalado em 1979).",
+    "difficulty": 2
+  },
+  {
+    "id": "single-biome",
+    "family": "biomes",
+    "label": "Um único bioma",
+    "description": "Todos os municípios da UF têm o mesmo bioma predominante. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "source": {
+      "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
+      "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
+    },
+    "difficulty": 2
+  }
+]

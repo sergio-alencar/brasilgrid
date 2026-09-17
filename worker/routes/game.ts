@@ -92,7 +92,7 @@ gameRoutes.get('/puzzle/today', async (c) => {
   const info = (axis: 'row' | 'col'): CategoryInfo[] =>
     cats
       .filter((x) => x.axis === axis)
-      .map(({ label, description, sourceName, sourceUrl }) => ({ label, description, sourceName, sourceUrl }))
+      .map(({ categoryId, label, description, sourceName, sourceUrl }) => ({ categoryId, label, description, sourceName, sourceUrl }))
 
   const session = c.get('session')
   const body: TodayResponse = {

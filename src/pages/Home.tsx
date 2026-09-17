@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GameMode, GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
+import { CategoriesAtlas } from '../components/CategoriesAtlas.tsx'
 import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
 import { ResultsPanel } from '../components/ResultsPanel.tsx'
@@ -30,6 +31,7 @@ export function Home() {
   const [loadError, setLoadError] = useState<string | null>(null)
   const [game, setGame] = useState<GameState | null>(null)
   const [selected, setSelected] = useState<number | null>(null)
+  const [atlasCategory, setAtlasCategory] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
   const [shakeCell, setShakeCell] = useState<number | null>(null)
@@ -121,6 +123,7 @@ export function Home() {
               disabled={busy || finished}
               shakeCell={shakeCell}
               onSelect={setSelected}
+              onOpenAtlas={setAtlasCategory}
             />
           </div>
         </div>
@@ -153,6 +156,10 @@ export function Home() {
           onPick={pick}
           onClose={() => setSelected(null)}
         />
+      )}
+
+      {atlasCategory !== null && (
+        <CategoriesAtlas initialCategoryId={atlasCategory} onClose={() => setAtlasCategory(null)} />
       )}
 
       {toast && (

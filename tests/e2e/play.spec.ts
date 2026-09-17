@@ -101,3 +101,18 @@ test('modo infinito não tem limite de palpites e não interfere na partida norm
   await expect(page.getByLabel('10 de 10 palpites restantes')).toBeVisible()
   await expect(page.getByRole('button', { name: 'Desistir e revelar' })).toBeVisible()
 })
+
+test('clicar numa categoria abre o atlas já na categoria certa', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: /Sem litoral\. Ver a regra/ }).click()
+  await expect(page.getByRole('heading', { name: 'Atlas de categorias' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Sem litoral' })).toBeVisible()
+  await expect(page.getByText('A UF não tem litoral no oceano.')).toBeVisible()
+
+  // Outras categorias do mesmo atlas, mesmo fora da grade de hoje, também abrem.
+  await page.getByRole('button', { name: 'Tem Cerrado', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Tem Cerrado' })).toBeVisible()
+
+  await page.getByRole('button', { name: 'Fechar' }).click()
+  await expect(page.getByRole('heading', { name: 'Atlas de categorias' })).toHaveCount(0)
+})

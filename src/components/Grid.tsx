@@ -12,19 +12,20 @@ interface Props {
   disabled: boolean
   shakeCell: number | null
   onSelect: (cell: number) => void
+  onOpenAtlas: (categoryId: string) => void
 }
 
-export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect }: Props) {
+export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect, onOpenAtlas }: Props) {
   return (
     <div className="grid h-full grid-cols-4 grid-rows-4 gap-1.5 sm:gap-2">
       <div className="flex aspect-square h-full w-full items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
         <span className="text-lg sm:text-2xl">#{puzzleId}</span>
       </div>
       {cols.map((c, i) => (
-        <CategoryHeader key={`c${i}`} category={c} />
+        <CategoryHeader key={`c${i}`} category={c} onOpenAtlas={onOpenAtlas} />
       ))}
       {rows.map((r, row) => (
-        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} onSelect={onSelect} />
+        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} onSelect={onSelect} onOpenAtlas={onOpenAtlas} />
       ))}
     </div>
   )
@@ -37,10 +38,11 @@ function Row({
   disabled,
   shakeCell,
   onSelect,
+  onOpenAtlas,
 }: { row: number; category: CategoryInfo } & Omit<Props, 'puzzleId' | 'rows' | 'cols'>) {
   return (
     <>
-      <CategoryHeader category={category} />
+      <CategoryHeader category={category} onOpenAtlas={onOpenAtlas} />
       {[0, 1, 2].map((col) => {
         const cell = row * 3 + col
         const hit = filled.find((f) => f.cell === cell)

@@ -23,6 +23,7 @@
     "data:build-map": "tsx scripts/build-map.ts",
     "build:og-image": "tsx scripts/build-og-image.ts",
     "data:build": "tsx scripts/build-ufs.ts",
+    "data:build-categories-catalog": "tsx scripts/build-categories-catalog.ts",
     "data:validate": "tsx scripts/validate-data.ts",
     "puzzles:generate": "tsx scripts/generate-puzzles.ts",
     "puzzles:regenerate": "tsx scripts/regenerate-puzzles.ts",
