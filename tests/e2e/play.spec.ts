@@ -25,6 +25,11 @@ test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', a
   await expect(page.getByRole('heading', { name: 'Você desistiu' })).toBeVisible()
   await expect(page.getByText(/jogadores? hoje/)).toBeVisible()
 
+  // A grade não deve encolher/desaparecer depois que a partida termina.
+  const box = await page.getByRole('button', { name: 'Célula 1: escolher UF' }).boundingBox()
+  expect(box!.width).toBeGreaterThan(50)
+  expect(box!.height).toBeGreaterThan(50)
+
   const share = await page.locator('pre').innerText()
   expect(share).toMatch(/^BrasilGrid #\d+ 🇧🇷\n✅ \d\/9 · Raridade \d+/)
   expect(share).not.toMatch(/Sergipe|Alagoas|Paraíba|Espírito|Norte/)

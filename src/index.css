@@ -71,7 +71,10 @@ body {
   body.game-in-progress {
     overflow: hidden;
   }
-  .game-fit {
+  /* Só trava a altura enquanto a partida está em andamento — depois de
+     terminar, o .game-fit precisa voltar ao tamanho natural, senão a
+     grade e as respostas ficam espremidas na mesma altura pequena. */
+  body.game-in-progress .game-fit {
     height: calc(100dvh - 14rem);
   }
 }
