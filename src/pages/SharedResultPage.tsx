@@ -36,10 +36,10 @@ export function SharedResultPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[minmax(0,0.8fr)_repeat(3,minmax(0,1fr))] gap-1.5">
-        <div />
+      <div className="grid grid-cols-4 gap-1.5">
+        <div className="aspect-square" />
         {result.cols.map((c) => (
-          <p key={c} className="flex items-end justify-center p-1 text-center text-[11px] leading-tight font-bold text-white sm:text-sm">
+          <p key={c} className="flex aspect-square items-end justify-center p-1 text-center text-[11px] leading-tight font-bold text-white sm:text-sm">
             {c}
           </p>
         ))}

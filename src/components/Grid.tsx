@@ -16,8 +16,8 @@ interface Props {
 
 export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect }: Props) {
   return (
-    <div className="grid h-full grid-cols-[minmax(0,0.8fr)_repeat(3,minmax(0,1fr))] grid-rows-[auto_repeat(3,minmax(0,1fr))] gap-1.5 sm:gap-2">
-      <div className="flex items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
+    <div className="grid h-full grid-cols-4 grid-rows-4 gap-1.5 sm:gap-2">
+      <div className="flex aspect-square h-full w-full items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
         <span className="text-lg sm:text-2xl">#{puzzleId}</span>
       </div>
       {cols.map((c, i) => (

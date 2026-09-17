@@ -5,7 +5,7 @@ export function CategoryHeader({ category }: { category: CategoryInfo }) {
   const [open, setOpen] = useState(false)
   const id = useId()
   return (
-    <div className="relative flex h-full items-stretch p-0.5 text-center sm:p-1">
+    <div className="relative aspect-square flex h-full w-full items-stretch p-0.5 text-center sm:p-1">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
