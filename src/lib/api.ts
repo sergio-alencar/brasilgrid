@@ -1,0 +1,55 @@
+import type {
+  GameMode,
+  GameState,
+  GuessResponse,
+  MeResponse,
+  SharedResult,
+  ResultsResponse,
+  StatsResponse,
+  TodayResponse,
+} from '../../shared/api.ts'
+
+export class ApiError extends Error {
+  constructor(
+    readonly status: number,
+    readonly code: string,
+  ) {
+    super(code)
+  }
+  /** Mensagem legível enviada pelo servidor, quando houver. */
+  serverMessage?: string
+}
+
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(path, {
+    ...init,
+    credentials: 'same-origin',
+    headers: { 'content-type': 'application/json', ...init?.headers },
+  })
+  const body = await res.json().catch(() => ({}))
+  if (!res.ok) {
+    const { error, message } = body as { error?: string; message?: string }
+    const err = new ApiError(res.status, error ?? 'unknown')
+    err.serverMessage = message
+    throw err
+  }
+  return body as T
+}
+
+export const api = {
+  today: (mode: GameMode = 'normal') => request<TodayResponse>(`/api/puzzle/today?mode=${mode}`),
+  guess: (puzzleId: number, cell: number, uf: string, mode: GameMode = 'normal') =>
+    request<GuessResponse>('/api/game/guess', { method: 'POST', body: JSON.stringify({ puzzleId, cell, uf, mode }) }),
+  giveUp: (puzzleId: number, mode: GameMode = 'normal') =>
+    request<{ game: GameState }>('/api/game/give-up', { method: 'POST', body: JSON.stringify({ puzzleId, mode }) }),
+  results: (puzzleId: number, mode: GameMode = 'normal') =>
+    request<ResultsResponse>(`/api/game/${puzzleId}/results?mode=${mode}`),
+  me: () => request<MeResponse>('/api/me'),
+  shared: (shareId: string) => request<SharedResult>(`/api/share/${encodeURIComponent(shareId)}`),
+  stats: () => request<StatsResponse>('/api/me/stats'),
+  updateProfile: (data: { nickname?: string | null; showInRanking?: boolean }) =>
+    request<{ ok: true }>('/api/me/profile', { method: 'PATCH', body: JSON.stringify(data) }),
+  report: (data: { puzzleId: number; cell: number | null; uf: string | null; message: string }) =>
+    request<{ ok: true }>('/api/report', { method: 'POST', body: JSON.stringify(data) }),
+  deleteAccount: () => request<{ ok: true }>('/api/me', { method: 'DELETE' }),
+}

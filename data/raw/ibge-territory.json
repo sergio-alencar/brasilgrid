@@ -1,0 +1,201 @@
+{
+  "source": {
+    "name": "IBGE — Estrutura territorial e Bioma predominante por município (2024)",
+    "urls": [
+      "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/Bioma_Predominante_por_Municipio_2024.csv",
+      "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/Municipios_da_Amazonia_Legal_2024.xls",
+      "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/SUDENE_2021.xls",
+      "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/Municipios_Defrontantes_com_o_Mar_2024.xls",
+      "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/lista_municipios_Semiarido_2022.xlsx",
+      "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/Municipios_Hemisferio_Norte_2024.xls"
+    ],
+    "accessed": "2026-09-16"
+  },
+  "lists": {
+    "legalAmazon": {
+      "ufs": [
+        "AC",
+        "AM",
+        "AP",
+        "MA",
+        "MT",
+        "PA",
+        "RO",
+        "RR",
+        "TO"
+      ],
+      "municipalities": 773,
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/Municipios_da_Amazonia_Legal_2024.xls"
+    },
+    "sudene": {
+      "ufs": [
+        "AL",
+        "BA",
+        "CE",
+        "ES",
+        "MA",
+        "MG",
+        "PB",
+        "PE",
+        "PI",
+        "RN",
+        "SE"
+      ],
+      "municipalities": 2074,
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/SUDENE_2021.xls"
+    },
+    "seaFacing": {
+      "ufs": [
+        "AL",
+        "AP",
+        "BA",
+        "CE",
+        "ES",
+        "MA",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RS",
+        "SC",
+        "SE",
+        "SP"
+      ],
+      "municipalities": 280,
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/Municipios_Defrontantes_com_o_Mar_2024.xls"
+    },
+    "semiarid": {
+      "ufs": [
+        "AL",
+        "BA",
+        "CE",
+        "ES",
+        "MA",
+        "MG",
+        "PB",
+        "PE",
+        "PI",
+        "RN",
+        "SE"
+      ],
+      "municipalities": 1477,
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/lista_municipios_Semiarido_2022.xlsx"
+    },
+    "northernHemisphere": {
+      "ufs": [
+        "AM",
+        "AP",
+        "PA",
+        "RR"
+      ],
+      "municipalities": 44,
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/Municipios_Hemisferio_Norte_2024.xls"
+    }
+  },
+  "predominantBiomeMunicipalitiesByUf": {
+    "RO": {
+      "Amazônia": 52
+    },
+    "AC": {
+      "Amazônia": 22
+    },
+    "AM": {
+      "Amazônia": 62
+    },
+    "RR": {
+      "Amazônia": 15
+    },
+    "PA": {
+      "Amazônia": 144
+    },
+    "AP": {
+      "Amazônia": 16
+    },
+    "TO": {
+      "Cerrado": 116,
+      "Amazônia": 23
+    },
+    "MA": {
+      "Amazônia": 93,
+      "Cerrado": 124
+    },
+    "PI": {
+      "Caatinga": 116,
+      "Cerrado": 108
+    },
+    "CE": {
+      "Caatinga": 184
+    },
+    "RN": {
+      "Caatinga": 156,
+      "Mata Atlântica": 11
+    },
+    "PB": {
+      "Caatinga": 204,
+      "Mata Atlântica": 19
+    },
+    "PE": {
+      "Mata Atlântica": 76,
+      "Caatinga": 109
+    },
+    "AL": {
+      "Caatinga": 44,
+      "Mata Atlântica": 58
+    },
+    "SE": {
+      "Caatinga": 32,
+      "Mata Atlântica": 43
+    },
+    "BA": {
+      "Caatinga": 225,
+      "Mata Atlântica": 174,
+      "Cerrado": 18
+    },
+    "MG": {
+      "Cerrado": 256,
+      "Mata Atlântica": 572,
+      "Caatinga": 25
+    },
+    "ES": {
+      "Mata Atlântica": 78
+    },
+    "RJ": {
+      "Mata Atlântica": 92
+    },
+    "SP": {
+      "Mata Atlântica": 561,
+      "Cerrado": 84
+    },
+    "PR": {
+      "Mata Atlântica": 398,
+      "Cerrado": 1
+    },
+    "SC": {
+      "Mata Atlântica": 295
+    },
+    "RS": {
+      "Pampa": 162,
+      "Mata Atlântica": 337
+    },
+    "MS": {
+      "Cerrado": 51,
+      "Mata Atlântica": 23,
+      "Pantanal": 5
+    },
+    "MT": {
+      "Cerrado": 61,
+      "Amazônia": 76,
+      "Pantanal": 4
+    },
+    "GO": {
+      "Cerrado": 242,
+      "Mata Atlântica": 4
+    },
+    "DF": {
+      "Cerrado": 1
+    }
+  }
+}

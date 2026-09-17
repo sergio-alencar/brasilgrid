@@ -1,0 +1,415 @@
+{
+  "source": {
+    "name": "Wikidata (CC0) — P36 capital, P47 faz fronteira com",
+    "urls": [
+      "https://query.wikidata.org/sparql"
+    ],
+    "query": "SELECT ?iso ?capitalLabel ?capitalIbge ?nbIso ?nbCountry WHERE {\n  ?uf wdt:P300 ?iso . FILTER(STRSTARTS(?iso, \"BR-\"))\n  ?uf wdt:P17 wd:Q155 .\n  OPTIONAL { ?uf p:P36 ?cs . ?cs ps:P36 ?capital . FILTER NOT EXISTS { ?cs pq:P582 [] }\n             OPTIONAL { ?capital wdt:P1585 ?capitalIbge } }\n  OPTIONAL { ?uf wdt:P47 ?nb .\n             OPTIONAL { ?nb wdt:P300 ?nbIso }\n             OPTIONAL { ?nb wdt:P17 ?nbCountryItem . ?nbCountryItem wdt:P297 ?nbCountry } }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"pt\". }\n}",
+    "accessed": "2026-09-16"
+  },
+  "ufs": [
+    {
+      "code": "AC",
+      "capital": {
+        "name": "Rio Branco",
+        "ibgeId": 1200401
+      },
+      "neighborUfs": [
+        "AM",
+        "RO"
+      ],
+      "neighborCountries": [
+        "BO",
+        "PE"
+      ]
+    },
+    {
+      "code": "AL",
+      "capital": {
+        "name": "Maceió",
+        "ibgeId": 2704302
+      },
+      "neighborUfs": [
+        "BA",
+        "PE",
+        "SE"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "AM",
+      "capital": {
+        "name": "Manaus",
+        "ibgeId": 1302603
+      },
+      "neighborUfs": [
+        "AC",
+        "MT",
+        "PA",
+        "RO",
+        "RR"
+      ],
+      "neighborCountries": [
+        "CO",
+        "PE",
+        "VE"
+      ]
+    },
+    {
+      "code": "AP",
+      "capital": {
+        "name": "Macapá",
+        "ibgeId": 1600303
+      },
+      "neighborUfs": [
+        "PA"
+      ],
+      "neighborCountries": [
+        "FR",
+        "SR"
+      ]
+    },
+    {
+      "code": "BA",
+      "capital": {
+        "name": "Salvador",
+        "ibgeId": 2927408
+      },
+      "neighborUfs": [
+        "AL",
+        "ES",
+        "GO",
+        "MG",
+        "PE",
+        "PI",
+        "SE",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "CE",
+      "capital": {
+        "name": "Fortaleza",
+        "ibgeId": 2304400
+      },
+      "neighborUfs": [
+        "PB",
+        "PE",
+        "PI",
+        "RN"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "DF",
+      "capital": {
+        "name": "Brasília",
+        "ibgeId": 5300108
+      },
+      "neighborUfs": [
+        "GO",
+        "MG"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "ES",
+      "capital": {
+        "name": "Vitória",
+        "ibgeId": 3205309
+      },
+      "neighborUfs": [
+        "BA",
+        "MG",
+        "RJ"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "GO",
+      "capital": {
+        "name": "Goiânia",
+        "ibgeId": 5208707
+      },
+      "neighborUfs": [
+        "BA",
+        "DF",
+        "MG",
+        "MS",
+        "MT",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "MA",
+      "capital": {
+        "name": "São Luís",
+        "ibgeId": 2111300
+      },
+      "neighborUfs": [
+        "PA",
+        "PI",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "MG",
+      "capital": {
+        "name": "Belo Horizonte",
+        "ibgeId": 3106200
+      },
+      "neighborUfs": [
+        "BA",
+        "DF",
+        "ES",
+        "GO",
+        "MS",
+        "RJ",
+        "SP"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "MS",
+      "capital": {
+        "name": "Campo Grande",
+        "ibgeId": 5002704
+      },
+      "neighborUfs": [
+        "GO",
+        "MG",
+        "MT",
+        "PR",
+        "SP"
+      ],
+      "neighborCountries": [
+        "BO",
+        "PY"
+      ]
+    },
+    {
+      "code": "MT",
+      "capital": {
+        "name": "Cuiabá",
+        "ibgeId": 5103403
+      },
+      "neighborUfs": [
+        "AM",
+        "GO",
+        "MS",
+        "PA",
+        "RO",
+        "TO"
+      ],
+      "neighborCountries": [
+        "BO"
+      ]
+    },
+    {
+      "code": "PA",
+      "capital": {
+        "name": "Belém",
+        "ibgeId": 1501402
+      },
+      "neighborUfs": [
+        "AM",
+        "AP",
+        "MA",
+        "MT",
+        "RR",
+        "TO"
+      ],
+      "neighborCountries": [
+        "GY",
+        "SR"
+      ]
+    },
+    {
+      "code": "PB",
+      "capital": {
+        "name": "João Pessoa",
+        "ibgeId": 2507507
+      },
+      "neighborUfs": [
+        "CE",
+        "PE",
+        "RN"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PE",
+      "capital": {
+        "name": "Recife",
+        "ibgeId": 2611606
+      },
+      "neighborUfs": [
+        "AL",
+        "BA",
+        "CE",
+        "PB",
+        "PI"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PI",
+      "capital": {
+        "name": "Teresina",
+        "ibgeId": 2211001
+      },
+      "neighborUfs": [
+        "BA",
+        "CE",
+        "MA",
+        "PE",
+        "TO"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "PR",
+      "capital": {
+        "name": "Curitiba",
+        "ibgeId": 4106902
+      },
+      "neighborUfs": [
+        "MS",
+        "SC",
+        "SP"
+      ],
+      "neighborCountries": [
+        "AR",
+        "PY"
+      ]
+    },
+    {
+      "code": "RJ",
+      "capital": {
+        "name": "Rio de Janeiro",
+        "ibgeId": 3304557
+      },
+      "neighborUfs": [
+        "ES",
+        "MG",
+        "SP"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "RN",
+      "capital": {
+        "name": "Natal",
+        "ibgeId": 2408102
+      },
+      "neighborUfs": [
+        "CE",
+        "PB"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "RO",
+      "capital": {
+        "name": "Porto Velho",
+        "ibgeId": 1100205
+      },
+      "neighborUfs": [
+        "AC",
+        "AM",
+        "MT"
+      ],
+      "neighborCountries": [
+        "BO"
+      ]
+    },
+    {
+      "code": "RR",
+      "capital": {
+        "name": "Boa Vista",
+        "ibgeId": 1400100
+      },
+      "neighborUfs": [
+        "AM",
+        "PA"
+      ],
+      "neighborCountries": [
+        "GY",
+        "VE"
+      ]
+    },
+    {
+      "code": "RS",
+      "capital": {
+        "name": "Porto Alegre",
+        "ibgeId": 4314902
+      },
+      "neighborUfs": [
+        "SC"
+      ],
+      "neighborCountries": [
+        "AR",
+        "UY"
+      ]
+    },
+    {
+      "code": "SC",
+      "capital": {
+        "name": "Florianópolis",
+        "ibgeId": 4205407
+      },
+      "neighborUfs": [
+        "PR",
+        "RS"
+      ],
+      "neighborCountries": [
+        "AR"
+      ]
+    },
+    {
+      "code": "SE",
+      "capital": {
+        "name": "Aracaju",
+        "ibgeId": 2800308
+      },
+      "neighborUfs": [
+        "AL",
+        "BA"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "SP",
+      "capital": {
+        "name": "São Paulo",
+        "ibgeId": 3550308
+      },
+      "neighborUfs": [
+        "MG",
+        "MS",
+        "PR",
+        "RJ"
+      ],
+      "neighborCountries": []
+    },
+    {
+      "code": "TO",
+      "capital": {
+        "name": "Palmas",
+        "ibgeId": 1721000
+      },
+      "neighborUfs": [
+        "BA",
+        "GO",
+        "MA",
+        "MT",
+        "PA",
+        "PI"
+      ],
+      "neighborCountries": []
+    }
+  ]
+}

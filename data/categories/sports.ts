@@ -1,0 +1,56 @@
+import { defineCategories } from "./types.ts";
+
+export default defineCategories([
+  {
+    id: "world-cup-2014-host",
+    family: "sports",
+    label: "Sediou jogos da Copa de 2014",
+    description: "Uma cidade da UF foi sede de jogos da Copa do Mundo FIFA de 2014.",
+    members: ["AM", "BA", "CE", "DF", "MG", "MT", "PE", "PR", "RJ", "RN", "RS", "SP"],
+    source: {
+      name: "Wikipédia — Copa do Mundo FIFA de 2014",
+      url: "https://pt.wikipedia.org/wiki/Copa_do_Mundo_FIFA_de_2014",
+    },
+    notes: "",
+    difficulty: 2,
+  },
+  {
+    id: "brazilian-champion-club",
+    family: "sports",
+    label: "Tem clube campeão brasileiro",
+    description:
+      "Algum clube da UF tem título de campeão brasileiro reconhecido pela CBF (inclui Taça Brasil e Robertão).",
+    members: ["BA", "MG", "PE", "PR", "RJ", "RS", "SP"],
+    source: {
+      name: "Wikipédia — Campeonato Brasileiro de Futebol",
+      url: "https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol",
+    },
+    notes: "",
+    difficulty: 2,
+  },
+  {
+    id: "libertadores-champion-club",
+    family: "sports",
+    label: "Tem campeão da Libertadores",
+    description: "Algum clube da UF já venceu a Copa Libertadores da América.",
+    members: ["MG", "RJ", "RS", "SP"],
+    source: {
+      name: "Wikipédia — Copa Libertadores da América",
+      url: "https://pt.wikipedia.org/wiki/Copa_Libertadores_da_Am%C3%A9rica",
+    },
+    difficulty: 2,
+  },
+  {
+    id: "copa-do-brasil-champion-club",
+    family: "sports",
+    label: "Tem campeão da Copa do Brasil",
+    description: "Algum clube da UF já venceu a Copa do Brasil.",
+    members: ["MG", "PE", "PR", "RJ", "RS", "SC", "SP"],
+    source: {
+      name: "Wikipédia — Copa do Brasil de Futebol",
+      url: "https://pt.wikipedia.org/wiki/Copa_do_Brasil_de_Futebol",
+    },
+    notes: "",
+    difficulty: 2,
+  },
+]);

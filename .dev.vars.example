@@ -1,0 +1,12 @@
+# Copie para .dev.vars (não versionado).
+PUBLIC_URL=http://localhost:5173
+# Gere com: openssl rand -base64 32
+BETTER_AUTH_SECRET=
+# Google Cloud → Credenciais → ID do cliente OAuth (aplicativo da Web)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+# Resend (chave só de envio). Sem ela, os e-mails só aparecem no console.
+RESEND_API_KEY=
+LOG_EMAILS=true
+# Opcional em desenvolvimento (sem ela o Turnstile fica desligado)
+# TURNSTILE_SECRET_KEY=
