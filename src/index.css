@@ -3,9 +3,11 @@
 @theme {
   --font-sans: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
 
-  /* Paleta da bandeira: verde de fundo, detalhes em azul, amarelo e branco. */
-  --color-brand-green: #0f9b58;
-  --color-brand-green-deep: #076b3a;
+  /* Paleta da bandeira. Duas tonalidades de verde bem próximas — uma para o
+     fundo da página, outra (levemente mais clara) para a caixa que envolve
+     o jogo e o cabeçalho — em vez de um verde vivo destoando de um escuro. */
+  --color-brand-green: #0d7a44;
+  --color-brand-green-bg: #085c34;
   --color-brand-blue: #002776;
   --color-brand-yellow: #ffdf00;
 }
@@ -16,7 +18,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-brand-green-deep: #042b17;
+    --color-brand-green: #0a5c33;
+    --color-brand-green-bg: #04371f;
     --color-brand-blue: #4d78e0;
     --color-brand-yellow: #ffe14d;
   }
@@ -24,18 +27,18 @@
 
 body {
   @apply min-h-dvh font-sans antialiased;
-  background: var(--color-brand-green-deep);
+  background: var(--color-brand-green-bg);
 }
 
-/* O conteúdo mora num "cartão" branco por cima do verde — cheio no celular,
-   flutuando com espaço ao redor a partir de telas maiores. */
-.page-card {
-  @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+/* A caixa verde que contém o jogo: moldura visível ao redor do cartão branco,
+   já no celular. A partir de telas maiores, ela também flutua com espaço em
+   volta (mostrando o verde mais escuro do fundo da página). */
+.page-frame {
+  @apply bg-brand-green p-2.5 shadow-inner sm:mx-auto sm:my-6 sm:max-w-2xl sm:rounded-3xl sm:p-4 sm:shadow-xl;
 }
-@media (min-width: 640px) {
-  .page-card {
-    @apply mx-auto my-6 max-w-2xl rounded-3xl shadow-xl;
-  }
+
+.page-card {
+  @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6 dark:bg-slate-950 dark:text-slate-100;
 }
 
 /* Foco visível e consistente entre navegadores: amarelo sobre qualquer fundo. */

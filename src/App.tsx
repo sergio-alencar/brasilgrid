@@ -25,7 +25,7 @@ function Header() {
   const { data: session } = authClient.useSession()
   const loggedIn = session && !session.user.isAnonymous
   return (
-    <header className="sticky top-0 z-10 bg-brand-green shadow-md">
+    <header className="sticky top-0 z-10 border-b border-black/10 bg-brand-green shadow-sm">
       <nav className="mx-auto flex max-w-2xl items-center justify-between gap-2 px-4 py-3 sm:px-6">
         <Link to="/" className="text-xl font-semibold tracking-wide text-white">
           Brasil<span className="text-brand-yellow">Grid</span>
@@ -56,8 +56,8 @@ export function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="page-card">
-        <main className="mx-auto max-w-2xl px-4 py-6 sm:px-6">
+      <div className="page-frame">
+        <main className="page-card">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/como-jogar" element={<HowToPlay />} />
