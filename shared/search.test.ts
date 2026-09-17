@@ -9,8 +9,14 @@ describe('normalizeSearch', () => {
 })
 
 describe('searchUfs', () => {
-  it('aceita sigla exata primeiro', () => {
-    expect(searchUfs('pa')[0].code).toBe('PA')
+  it('não aceita a sigla como pista: as letras precisam aparecer juntas no nome', () => {
+    // "rs" não aparece em "rio grande do sul" — não pode sugerir a UF pela sigla.
+    expect(searchUfs('rs')).toEqual([])
+    expect(searchUfs('sp')).toEqual([])
+    expect(searchUfs('mg')).toEqual([])
+    // "pa" continua achando Pará/Paraíba/Paraná (começo do nome) e São
+    // Paulo (começo da segunda palavra) — nunca pela sigla.
+    expect(searchUfs('pa').map((u) => u.code).sort()).toEqual(['PA', 'PB', 'PR', 'SP'])
   })
 
   it('encontra sem acento', () => {

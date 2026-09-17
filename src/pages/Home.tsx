@@ -112,7 +112,7 @@ export function Home() {
     <section className="game-fit">
       <div className="flex flex-1 flex-col gap-4 md:min-h-0 md:flex-row">
         <div className="flex min-h-0 flex-1 items-center justify-center">
-          <div className="aspect-square w-full max-w-xl md:h-full md:max-h-full md:w-auto md:max-w-none">
+          <div className="game-square aspect-square w-full max-w-xl">
             <Grid
               puzzleId={puzzle.id}
               rows={puzzle.rows}
@@ -146,7 +146,8 @@ export function Home() {
 
       {selected !== null && (
         <SearchDialog
-          title={`${rowOf(selected).label} × ${colOf(selected).label}`}
+          rowLabel={rowOf(selected).label}
+          colLabel={colOf(selected).label}
           usedUfs={game?.usedUfs ?? []}
           wrongHere={(game?.wrongGuesses ?? []).filter((w) => w.cell === selected).map((w) => w.uf)}
           onPick={pick}

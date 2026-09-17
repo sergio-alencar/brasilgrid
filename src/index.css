@@ -62,20 +62,26 @@ body {
   @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6 dark:bg-slate-950 dark:text-slate-100;
 }
 
-/* A grade ocupa a tela toda no desktop, sem rolar, até a partida terminar. */
 .game-fit {
   display: flex;
   flex-direction: column;
 }
+
+/* O tamanho da grade vem de uma só fórmula, válida em qualquer estado do
+   jogo: o menor entre a largura disponível na coluna e a altura que cabe
+   na tela (cabeçalho + moldura + rodapé). Antes, enquanto jogava, o
+   tamanho vinha da altura; ao terminar, a régua de altura sumia e o
+   tamanho passava a vir da largura — dois cálculos, dois tamanhos
+   diferentes. Agora é sempre este, então o quadrado não muda de tamanho
+   quando a partida termina.
+   14rem ≈ cabeçalho + margem/preenchimento da caixa verde + rodapé. */
 @media (min-width: 768px) {
   body.game-in-progress {
     overflow: hidden;
   }
-  /* Só trava a altura enquanto a partida está em andamento — depois de
-     terminar, o .game-fit precisa voltar ao tamanho natural, senão a
-     grade e as respostas ficam espremidas na mesma altura pequena. */
-  body.game-in-progress .game-fit {
-    height: calc(100dvh - 14rem);
+  .game-square {
+    width: min(100%, calc(100dvh - 14rem));
+    max-width: none;
   }
 }
 
