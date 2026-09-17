@@ -59,14 +59,14 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
         : 'Acabaram os palpites'
 
   return (
-    <section className="content-panel mt-6 space-y-5">
+    <section className="game-panel mt-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold">{title}</h2>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-white/70">
           {game.correctCount}/9 acertos · raridade {game.rarity} (parcial) · próxima grade em <Countdown />
         </p>
         {practice && (
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-white/70">
             Isso foi um treino no modo infinito: não conta nas suas estatísticas nem pode ser compartilhado.
           </p>
         )}
@@ -75,9 +75,9 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
       {!practice && <ShareButtons text={shareText} />}
 
       {!practice && session?.user.isAnonymous && (
-        <p className="rounded-lg bg-emerald-50 p-3 text-sm dark:bg-emerald-950">
+        <p className="rounded-lg bg-white p-3 text-sm text-slate-900">
           Quer guardar seu histórico e sua sequência de dias?{' '}
-          <Link to="/entrar" className="font-semibold underline">
+          <Link to="/entrar" className="font-semibold text-brand-green underline">
             Entre ou crie uma conta
           </Link>{' '}
           — a partida de hoje vem junto.
@@ -86,11 +86,11 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
 
       <div>
         <h3 className="font-semibold">Respostas</h3>
-        {error && <p className="text-sm text-red-600">Não foi possível carregar as respostas.</p>}
-        {!results && !error && <p className="text-sm text-slate-500">Carregando…</p>}
+        {error && <p className="text-sm text-red-200">Não foi possível carregar as respostas.</p>}
+        {!results && !error && <p className="text-sm text-white/70">Carregando…</p>}
         {results && (
           <>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-white/70">
               {results.players} {results.players === 1 ? 'jogador' : 'jogadores'} hoje · toque numa célula para ver no mapa
             </p>
             <figure className="mt-3 flex flex-col items-center">
@@ -101,7 +101,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                   mine={game.filled.find((f) => f.cell === mapCell)?.uf}
                 />
               </Suspense>
-              <figcaption className="mt-1 text-center text-xs text-slate-500">
+              <figcaption className="mt-1 text-center text-xs text-white/70">
                 {rows[Math.floor(mapCell / 3)].label} × {cols[mapCell % 3].label}
               </figcaption>
             </figure>
@@ -113,8 +113,8 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                   aria-selected={tab === id}
                   onClick={() => setTab(id)}
                   className={[
-                    'rounded-full px-3 py-1 text-xs',
-                    tab === id ? 'bg-brand-green text-white' : 'bg-slate-100 dark:bg-slate-800',
+                    'rounded-full px-3 py-1 text-xs font-medium',
+                    tab === id ? 'bg-white text-brand-green' : 'bg-white/10 text-white hover:bg-white/20',
                   ].join(' ')}
                 >
                   {label}
@@ -136,30 +136,28 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                         onClick={() => setMapCell(cell)}
                         aria-pressed={mapCell === cell}
                         className={[
-                          'h-full w-full rounded-lg p-2 text-left text-xs',
-                          mapCell === cell
-                            ? 'bg-amber-50 ring-2 ring-brand-yellow dark:bg-amber-950'
-                            : 'bg-slate-50 dark:bg-slate-900',
+                          'h-full w-full rounded-lg p-2 text-left text-xs text-slate-900',
+                          mapCell === cell ? 'bg-amber-50 ring-2 ring-brand-yellow' : 'bg-white',
                         ].join(' ')}
                       >
-                      <p className="font-semibold">
-                        {rows[Math.floor(cell / 3)].label} × {cols[cell % 3].label}
-                      </p>
-                      <ul className="mt-1 space-y-0.5">
-                        {shown.map((a) => (
-                          <li key={a.uf} className={a.uf === mine ? 'font-bold text-brand-green' : ''}>
-                            {a.picks > 0 ? bandFor(a.percent).emoji : '·'} {getUf(a.uf)?.name} —{' '}
-                            {a.picks > 0 ? formatPercent(a.percent) : 'ninguém escolheu'}
-                          </li>
-                        ))}
-                      </ul>
+                        <p className="font-semibold">
+                          {rows[Math.floor(cell / 3)].label} × {cols[cell % 3].label}
+                        </p>
+                        <ul className="mt-1 space-y-0.5">
+                          {shown.map((a) => (
+                            <li key={a.uf} className={a.uf === mine ? 'font-bold text-brand-green' : ''}>
+                              {a.picks > 0 ? bandFor(a.percent).emoji : '·'} {getUf(a.uf)?.name} —{' '}
+                              {a.picks > 0 ? formatPercent(a.percent) : 'ninguém escolheu'}
+                            </li>
+                          ))}
+                        </ul>
                       </button>
                     </li>
                   )
                 })}
               </ol>
             )}
-            <p className="mt-4 text-center text-xs text-slate-500">
+            <p className="mt-4 text-center text-xs text-white/70">
               Achou um erro no gabarito?{' '}
               <button type="button" onClick={() => setReporting(true)} className="underline">
                 Avise a gente
@@ -183,7 +181,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
 }
 
 function WrongList({ results, rows, cols }: { results: ResultsResponse; rows: CategoryInfo[]; cols: CategoryInfo[] }) {
-  if (!results.wrongGuesses.length) return <p className="mt-3 text-sm text-slate-500">Nenhum palpite errado. 👏</p>
+  if (!results.wrongGuesses.length) return <p className="mt-3 text-sm text-white/70">Nenhum palpite errado. 👏</p>
   return (
     <ul className="mt-3 space-y-1 text-sm">
       {results.wrongGuesses.map((w, i) => {

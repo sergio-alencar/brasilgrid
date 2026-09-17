@@ -21,12 +21,12 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'text-brand-yellow' : ''
   }`
 
-function Header() {
+function Header({ wide }: { wide: boolean }) {
   const { data: session } = authClient.useSession()
   const loggedIn = session && !session.user.isAnonymous
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-brand-green shadow-sm">
-      <nav className="mx-auto flex max-w-2xl items-center justify-between gap-2 px-4 py-3 sm:px-6">
+      <nav className={`mx-auto flex items-center justify-between gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
         <Link to="/" className="text-xl font-semibold tracking-wide text-white">
           Brasil<span className="text-brand-yellow">Grid</span>
         </Link>
@@ -57,7 +57,7 @@ function AppShell() {
   const wide = pathname === '/'
   return (
     <>
-      <Header />
+      <Header wide={wide} />
       <div className={`page-box ${wide ? 'page-box--wide' : 'page-box--narrow'}`}>
         <main>
           <Routes>
@@ -84,7 +84,7 @@ function AppShell() {
           </Routes>
         </main>
       </div>
-      <footer className="mx-auto flex max-w-2xl justify-center gap-4 px-4 py-6 text-xs text-white/70">
+      <footer className={`mx-auto flex justify-center gap-4 px-4 py-6 text-xs text-white/70 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
         <Link to="/fontes" className="underline decoration-white/40 hover:text-white">
           Fontes e créditos
         </Link>

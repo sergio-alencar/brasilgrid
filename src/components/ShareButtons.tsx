@@ -21,18 +21,18 @@ export function ShareButtons({ text }: { text: string }) {
 
   return (
     <div className="space-y-2">
-      <pre className="rounded-lg bg-slate-100 p-3 text-sm whitespace-pre-wrap dark:bg-slate-800">{text}</pre>
+      <pre className="rounded-lg bg-white p-3 text-sm whitespace-pre-wrap text-slate-900">{text}</pre>
       <div className="flex flex-wrap gap-2">
         {canShare && (
           <button
             type="button"
             onClick={() => navigator.share({ text }).catch(() => {})}
-            className="rounded-lg bg-brand-green px-3 py-2 text-sm font-semibold text-white"
+            className="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-brand-green"
           >
             Compartilhar
           </button>
         )}
-        <button type="button" onClick={copy} className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600">
+        <button type="button" onClick={copy} className="rounded-lg border border-white/40 px-3 py-2 text-sm text-white hover:bg-white/10">
           {copied ? 'Copiado!' : 'Copiar'}
         </button>
         {links.map(([name, href]) => (
@@ -41,7 +41,7 @@ export function ShareButtons({ text }: { text: string }) {
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600"
+            className="rounded-lg border border-white/40 px-3 py-2 text-sm text-white hover:bg-white/10"
           >
             {name}
           </a>
