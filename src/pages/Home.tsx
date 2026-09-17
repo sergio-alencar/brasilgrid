@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GameMode, GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
 import { GameSidebar } from '../components/GameSidebar.tsx'
@@ -44,9 +44,11 @@ export function Home() {
     )
   }, [mode])
 
+  const toastTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const flash = useCallback((message: string) => {
+    clearTimeout(toastTimeout.current)
     setToast(message)
-    setTimeout(() => setToast(null), 2500)
+    toastTimeout.current = setTimeout(() => setToast(null), 2500)
   }, [])
 
   const finished = !!game && game.status !== 'in_progress'
@@ -110,7 +112,7 @@ export function Home() {
     <section className="game-fit">
       <div className="flex flex-1 flex-col gap-4 md:min-h-0 md:flex-row">
         <div className="flex min-h-0 flex-1 items-center justify-center">
-          <div className="aspect-square w-full max-w-xl md:h-full md:max-h-full md:w-auto">
+          <div className="aspect-square w-full max-w-xl md:h-full md:max-h-full md:w-auto md:max-w-none">
             <Grid
               puzzleId={puzzle.id}
               rows={puzzle.rows}
