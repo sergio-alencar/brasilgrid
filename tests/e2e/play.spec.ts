@@ -67,3 +67,32 @@ test('link compartilhado mostra o placar sem respostas e tem prévia', async ({ 
   const missing = await request.get('/r/naoexiste1')
   expect(missing.status()).toBe(404)
 })
+
+test('modo infinito não tem limite de palpites e não interfere na partida normal', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('switch', { name: 'Modo infinito' }).click()
+  await expect(page.getByLabel('palpites ilimitados')).toBeVisible()
+
+  // Todos com litoral: garantidamente errados para "Sem litoral", mais que o
+  // limite normal de palpites, sem a partida acabar.
+  const coastal = ['Sergipe', 'Alagoas', 'Ceará', 'Bahia', 'Pará', 'Piauí', 'Maranhão', 'Espírito Santo', 'Paraíba', 'Pernambuco', 'Paraná', 'Rio de Janeiro']
+  for (const uf of coastal) {
+    await page.getByRole('button', { name: /Célula 1:/ }).click()
+    await page.getByLabel('Buscar UF').fill(uf)
+    await page.keyboard.press('Enter')
+    await expect(page.getByText(`${uf} não serve aqui.`)).toBeVisible()
+  }
+  await expect(page.getByLabel('palpites ilimitados')).toBeVisible()
+
+  page.once('dialog', (d) => d.accept())
+  await page.getByRole('button', { name: 'Encerrar treino' }).click()
+  await expect(page.getByRole('heading', { name: 'Treino encerrado' })).toBeVisible()
+  await expect(page.getByText('não conta nas suas estatísticas')).toBeVisible()
+  // Treino não tem botão de compartilhar.
+  await expect(page.getByRole('button', { name: 'Compartilhar' })).toHaveCount(0)
+
+  // Volta pro modo normal: a partida de hoje está intacta (nenhum palpite usado).
+  await page.getByRole('switch', { name: 'Modo infinito' }).click()
+  await expect(page.getByLabel('10 de 10 palpites restantes')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Desistir e revelar' })).toBeVisible()
+})

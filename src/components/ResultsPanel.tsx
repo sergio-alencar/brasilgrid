@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
-import type { CategoryInfo, GameState, ResultsResponse } from '../../shared/api.ts'
+import type { CategoryInfo, GameMode, GameState, ResultsResponse } from '../../shared/api.ts'
 import { bandFor } from '../../shared/rarity.ts'
 import { buildShareText } from '../../shared/shareText.ts'
 import { getUf } from '../../shared/ufs.ts'
@@ -26,19 +26,21 @@ interface Props {
   rows: CategoryInfo[]
   cols: CategoryInfo[]
   game: GameState
+  mode: GameMode
 }
 
-export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
+export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
   const [results, setResults] = useState<ResultsResponse | null>(null)
   const [error, setError] = useState(false)
   const [tab, setTab] = useState<Tab>('popular')
   const [mapCell, setMapCell] = useState(0)
   const [reporting, setReporting] = useState(false)
   const { data: session } = authClient.useSession()
+  const practice = mode === 'practice'
 
   useEffect(() => {
-    api.results(puzzleId).then(setResults, () => setError(true))
-  }, [puzzleId, game.status])
+    api.results(puzzleId, mode).then(setResults, () => setError(true))
+  }, [puzzleId, mode, game.status])
 
   const cellPercents = Array.from({ length: 9 }, (_, i) => game.filled.find((f) => f.cell === i)?.percent ?? null)
   const shareText = buildShareText({
@@ -48,8 +50,13 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
     url: `${window.location.origin}/r/${game.shareId}`,
   })
 
-  const title =
-    game.status === 'completed' ? 'Grade completa!' : game.status === 'gave_up' ? 'Você desistiu' : 'Acabaram os palpites'
+  const title = practice
+    ? 'Treino encerrado'
+    : game.status === 'completed'
+      ? 'Grade completa!'
+      : game.status === 'gave_up'
+        ? 'Você desistiu'
+        : 'Acabaram os palpites'
 
   return (
     <section className="content-panel mt-6 space-y-5">
@@ -58,11 +65,16 @@ export function ResultsPanel({ puzzleId, rows, cols, game }: Props) {
         <p className="text-sm text-slate-500">
           {game.correctCount}/9 acertos · raridade {game.rarity} (parcial) · próxima grade em <Countdown />
         </p>
+        {practice && (
+          <p className="mt-1 text-sm text-slate-500">
+            Isso foi um treino no modo infinito: não conta nas suas estatísticas nem pode ser compartilhado.
+          </p>
+        )}
       </div>
 
-      <ShareButtons text={shareText} />
+      {!practice && <ShareButtons text={shareText} />}
 
-      {session?.user.isAnonymous && (
+      {!practice && session?.user.isAnonymous && (
         <p className="rounded-lg bg-emerald-50 p-3 text-sm dark:bg-emerald-950">
           Quer guardar seu histórico e sua sequência de dias?{' '}
           <Link to="/entrar" className="font-semibold underline">

@@ -50,15 +50,15 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     }
   })
 
-  const guess = async (user: string, cell: number, uf: string, puzzleId = PUZZLE_ID) => {
-    const { rows } = await db.query('select * from submit_guess($1, $2, $3::smallint, $4, $5::smallint)', [
-      user, puzzleId, cell, uf, MAX_GUESSES,
+  const guess = async (user: string, cell: number, uf: string, puzzleId = PUZZLE_ID, mode = 'normal') => {
+    const { rows } = await db.query('select * from submit_guess($1, $2, $3::smallint, $4, $5::smallint, $6)', [
+      user, puzzleId, cell, uf, MAX_GUESSES, mode,
     ])
     return rows[0] as {
       result: string
       is_correct: boolean
       pick_percent: number | null
-      guesses_left: number
+      guesses_left: number | null
       game_status: string
       correct_count: number
     }
@@ -107,6 +107,35 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     expect(last).toMatchObject({ game_status: 'completed', correct_count: 9 })
     const { rows } = await db.query('select players, completed from puzzle_stats')
     expect(rows[0]).toEqual({ players: 1, completed: 1 })
+  })
+
+  it('modo infinito não tem limite de palpites nem conta na raridade dos outros', async () => {
+    for (let i = 0; i < MAX_GUESSES + 5; i++) {
+      const r = await guess('ana', 0, 'AC', PUZZLE_ID, 'practice')
+      expect(r).toMatchObject({ result: 'ok', is_correct: false, guesses_left: null, game_status: 'in_progress' })
+    }
+    const acerto = await guess('ana', 0, 'SP', PUZZLE_ID, 'practice')
+    expect(acerto).toMatchObject({ is_correct: true, guesses_left: null })
+    // Não é contada como jogadora nem soma escolha, pois é treino.
+    const stats = await db.query('select players from puzzle_stats')
+    expect(stats.rows).toEqual([])
+    const picks = await db.query('select count(*)::int n from cell_pick_count')
+    expect(picks.rows[0].n).toBe(0)
+  })
+
+  it('modo infinito é uma partida separada da normal, sem se misturar', async () => {
+    await guess('ana', 0, 'SP')
+    await guess('ana', 0, 'SP', PUZZLE_ID, 'practice')
+    const games = await db.query(`select mode from game where user_id = 'ana' order by mode`)
+    expect(games.rows.map((r) => r.mode)).toEqual(['normal', 'practice'])
+    const stats = await db.query('select players from puzzle_stats')
+    expect(stats.rows[0].players).toBe(1) // só a normal conta
+
+    const giveUpPractice = await db.query("select give_up($1, $2, 'practice') s", ['ana', PUZZLE_ID])
+    expect(giveUpPractice.rows[0].s).toBe('gave_up')
+    // A partida normal continua em andamento, intocada.
+    const normal = await db.query(`select status from game where user_id = 'ana' and mode = 'normal'`)
+    expect(normal.rows[0].status).toBe('in_progress')
   })
 
   it('só aceita a grade de hoje e células de 0 a 8', async () => {
@@ -167,5 +196,18 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     expect(moved.rows[0].n).toBe(1)
     const owners = await db.query('select user_id from game order by user_id')
     expect(owners.rows.map((r) => r.user_id)).toEqual(['ana', 'dani'])
+  })
+
+  it('junta partidas por modo: treino de um lado não conflita com a normal do outro', async () => {
+    await guess('ana', 0, 'SP') // normal
+    await guess('bia', 0, 'SP', PUZZLE_ID, 'practice') // treino, mesma UF, sem conflito de modo
+
+    const merged = await db.query('select merge_user_games($1, $2) n', ['bia', 'ana'])
+    expect(merged.rows[0].n).toBe(1) // moveu (não havia partida de treino da ana pra colidir)
+    const modes = await db.query(`select mode from game where user_id = 'ana' order by mode`)
+    expect(modes.rows.map((r) => r.mode)).toEqual(['normal', 'practice'])
+    // O pick da ana (normal) não foi afetado pelo merge do treino da bia.
+    const picks = await db.query('select picks from cell_pick_count')
+    expect(picks.rows[0].picks).toBe(1)
   })
 })

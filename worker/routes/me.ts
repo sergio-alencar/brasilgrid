@@ -57,7 +57,7 @@ meRoutes.get('/stats', async (c) => {
       ) as cells
     from game g
     join puzzle p on p.id = g.puzzle_id
-    where g.user_id = ${userId} and (g.guesses_used > 0 or g.status <> 'in_progress')
+    where g.user_id = ${userId} and g.mode = 'normal' and (g.guesses_used > 0 or g.status <> 'in_progress')
     order by p.play_date desc
   `)
 

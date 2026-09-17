@@ -4,6 +4,7 @@ import { z } from 'zod'
 import type {
   CategoryInfo,
   CellResults,
+  GameMode,
   GameState,
   GuessResponse,
   GuessResult,
@@ -19,16 +20,18 @@ import { cellPickCount, game, guess, puzzle, puzzleCategory, puzzleCell, puzzleS
 
 type AppEnv = { Bindings: Env; Variables: { db: Db; session: AuthSession | null } }
 
+const modeSchema = z.enum(['normal', 'practice']).default('normal')
+
 async function playersOf(db: Db, puzzleId: number): Promise<number> {
   const [row] = await db.select({ players: puzzleStats.players }).from(puzzleStats).where(eq(puzzleStats.puzzleId, puzzleId))
   return row?.players ?? 0
 }
 
-async function loadGameState(db: Db, userId: string, puzzleId: number): Promise<GameState | null> {
+async function loadGameState(db: Db, userId: string, puzzleId: number, mode: GameMode): Promise<GameState | null> {
   const [g] = await db
     .select()
     .from(game)
-    .where(and(eq(game.userId, userId), eq(game.puzzleId, puzzleId)))
+    .where(and(eq(game.userId, userId), eq(game.puzzleId, puzzleId), eq(game.mode, mode)))
   if (!g) return null
 
   const [guesses, counts, players] = await Promise.all([
@@ -44,9 +47,10 @@ async function loadGameState(db: Db, userId: string, puzzleId: number): Promise<
   const rarity = filled.reduce((s, f) => s + f.percent, 0) + (9 - filled.length) * 100
 
   return {
+    mode: g.mode,
     status: g.status,
     guessesUsed: g.guessesUsed,
-    guessesLeft: Math.max(MAX_GUESSES - g.guessesUsed, 0),
+    guessesLeft: mode === 'practice' ? null : Math.max(MAX_GUESSES - g.guessesUsed, 0),
     correctCount: g.correctCount,
     filled,
     usedUfs: filled.map((f) => f.uf),
@@ -68,12 +72,14 @@ const guessBody = z.object({
   puzzleId: z.number().int().positive(),
   cell: z.number().int().min(0).max(8),
   uf: z.string().refine(isUfCode, 'UF inválida'),
+  mode: modeSchema,
 })
-const giveUpBody = z.object({ puzzleId: z.number().int().positive() })
+const giveUpBody = z.object({ puzzleId: z.number().int().positive(), mode: modeSchema })
 
 export const gameRoutes = new Hono<AppEnv>()
 
 gameRoutes.get('/puzzle/today', async (c) => {
+  const mode = modeSchema.safeParse(c.req.query('mode')).data ?? 'normal'
   const db = c.get('db')
   const p = await todayPuzzle(db)
   if (!p) return c.json({ error: 'no_puzzle_today' }, 404)
@@ -93,7 +99,7 @@ gameRoutes.get('/puzzle/today', async (c) => {
     puzzle: { id: p.id, playDate: p.playDate, rows: info('row'), cols: info('col') },
     maxGuesses: MAX_GUESSES,
     players: await playersOf(db, p.id),
-    game: session ? await loadGameState(db, session.user.id, p.id) : null,
+    game: session ? await loadGameState(db, session.user.id, p.id, mode) : null,
   }
   c.header('Cache-Control', 'private, no-store')
   return c.json(body)
@@ -104,17 +110,17 @@ gameRoutes.post('/game/guess', async (c) => {
   if (!session) return c.json({ error: 'unauthenticated' }, 401)
   const parsed = guessBody.safeParse(await c.req.json().catch(() => null))
   if (!parsed.success) return c.json({ error: 'invalid_body' }, 400)
-  const { puzzleId, cell, uf } = parsed.data
+  const { puzzleId, cell, uf, mode } = parsed.data
 
   const db = c.get('db')
   const { rows } = await db.execute<{ result: GuessResult; is_correct: boolean }>(
-    sql`select result, is_correct from submit_guess(${session.user.id}, ${puzzleId}, ${cell}::smallint, ${uf}, ${MAX_GUESSES}::smallint)`,
+    sql`select result, is_correct from submit_guess(${session.user.id}, ${puzzleId}, ${cell}::smallint, ${uf}, ${MAX_GUESSES}::smallint, ${mode})`,
   )
   const row = rows[0]
   const body: GuessResponse = {
     result: row.result,
     correct: row.is_correct,
-    game: await loadGameState(db, session.user.id, puzzleId),
+    game: await loadGameState(db, session.user.id, puzzleId, mode),
   }
   return c.json(body, row.result === 'puzzle_unavailable' ? 409 : 200)
 })
@@ -124,18 +130,20 @@ gameRoutes.post('/game/give-up', async (c) => {
   if (!session) return c.json({ error: 'unauthenticated' }, 401)
   const parsed = giveUpBody.safeParse(await c.req.json().catch(() => null))
   if (!parsed.success) return c.json({ error: 'invalid_body' }, 400)
+  const { puzzleId, mode } = parsed.data
 
   const db = c.get('db')
   const { rows } = await db.execute<{ status: string }>(
-    sql`select give_up(${session.user.id}, ${parsed.data.puzzleId}) as status`,
+    sql`select give_up(${session.user.id}, ${puzzleId}, ${mode}) as status`,
   )
   if (rows[0].status === 'puzzle_unavailable') return c.json({ error: 'puzzle_unavailable' }, 409)
-  return c.json({ game: await loadGameState(db, session.user.id, parsed.data.puzzleId) })
+  return c.json({ game: await loadGameState(db, session.user.id, puzzleId, mode) })
 })
 
 gameRoutes.get('/game/:puzzleId/results', async (c) => {
   const puzzleId = Number(c.req.param('puzzleId'))
   if (!Number.isInteger(puzzleId)) return c.json({ error: 'invalid_puzzle' }, 400)
+  const mode = modeSchema.safeParse(c.req.query('mode')).data ?? 'normal'
   const session = c.get('session')
   const db = c.get('db')
 
@@ -143,7 +151,7 @@ gameRoutes.get('/game/:puzzleId/results', async (c) => {
   if (!p || p.status !== 'published' || p.playDate > brasiliaDate()) return c.json({ error: 'not_found' }, 404)
 
   // Gabarito só depois do fim da partida (ou de um dia que já passou).
-  const state = session ? await loadGameState(db, session.user.id, puzzleId) : null
+  const state = session ? await loadGameState(db, session.user.id, puzzleId, mode) : null
   const isPast = p.playDate < brasiliaDate()
   if (!isPast && (!state || state.status === 'in_progress')) return c.json({ error: 'game_not_finished' }, 403)
 

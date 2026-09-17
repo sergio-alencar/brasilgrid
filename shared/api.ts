@@ -1,6 +1,7 @@
 // Contratos da API, usados pelo Worker e pela SPA.
 
 export type GameStatus = 'in_progress' | 'completed' | 'out_of_guesses' | 'gave_up'
+export type GameMode = 'normal' | 'practice'
 
 export interface CategoryInfo {
   label: string
@@ -16,9 +17,11 @@ export interface FilledCell {
 }
 
 export interface GameState {
+  mode: GameMode
   status: GameStatus
   guessesUsed: number
-  guessesLeft: number
+  /** null no modo infinito (sem limite). */
+  guessesLeft: number | null
   correctCount: number
   filled: FilledCell[]
   /** Siglas que já foram acerto (não podem ser usadas de novo). */

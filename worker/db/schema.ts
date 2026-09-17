@@ -145,6 +145,12 @@ export const game = pgTable(
     puzzleId: integer('puzzle_id')
       .notNull()
       .references(() => puzzle.id, { onDelete: 'cascade' }),
+    // "practice" é o modo infinito: sem limite de palpites, não conta em
+    // estatísticas nem na raridade de outros jogadores. É uma partida
+    // separada da "normal" — por isso o índice único inclui o modo.
+    mode: text('mode', { enum: ['normal', 'practice'] })
+      .notNull()
+      .default('normal'),
     status: text('status', { enum: ['in_progress', 'completed', 'out_of_guesses', 'gave_up'] })
       .notNull()
       .default('in_progress'),
@@ -158,7 +164,10 @@ export const game = pgTable(
     startedAt: timestamp('started_at', { withTimezone: true }).notNull().defaultNow(),
     finishedAt: timestamp('finished_at', { withTimezone: true }),
   },
-  (t) => [uniqueIndex('game_user_puzzle_idx').on(t.userId, t.puzzleId), index('game_puzzle_idx').on(t.puzzleId)],
+  (t) => [
+    uniqueIndex('game_user_puzzle_mode_idx').on(t.userId, t.puzzleId, t.mode),
+    index('game_puzzle_idx').on(t.puzzleId),
+  ],
 )
 
 export const guess = pgTable(

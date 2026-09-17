@@ -1,4 +1,5 @@
 import type {
+  GameMode,
   GameState,
   GuessResponse,
   MeResponse,
@@ -36,12 +37,13 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  today: () => request<TodayResponse>('/api/puzzle/today'),
-  guess: (puzzleId: number, cell: number, uf: string) =>
-    request<GuessResponse>('/api/game/guess', { method: 'POST', body: JSON.stringify({ puzzleId, cell, uf }) }),
-  giveUp: (puzzleId: number) =>
-    request<{ game: GameState }>('/api/game/give-up', { method: 'POST', body: JSON.stringify({ puzzleId }) }),
-  results: (puzzleId: number) => request<ResultsResponse>(`/api/game/${puzzleId}/results`),
+  today: (mode: GameMode = 'normal') => request<TodayResponse>(`/api/puzzle/today?mode=${mode}`),
+  guess: (puzzleId: number, cell: number, uf: string, mode: GameMode = 'normal') =>
+    request<GuessResponse>('/api/game/guess', { method: 'POST', body: JSON.stringify({ puzzleId, cell, uf, mode }) }),
+  giveUp: (puzzleId: number, mode: GameMode = 'normal') =>
+    request<{ game: GameState }>('/api/game/give-up', { method: 'POST', body: JSON.stringify({ puzzleId, mode }) }),
+  results: (puzzleId: number, mode: GameMode = 'normal') =>
+    request<ResultsResponse>(`/api/game/${puzzleId}/results?mode=${mode}`),
   me: () => request<MeResponse>('/api/me'),
   shared: (shareId: string) => request<SharedResult>(`/api/share/${encodeURIComponent(shareId)}`),
   stats: () => request<StatsResponse>('/api/me/stats'),

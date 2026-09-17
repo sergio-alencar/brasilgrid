@@ -32,7 +32,7 @@ export async function loadSharedResult(db: Db, shareId: string): Promise<SharedR
       array(select label from puzzle_category where puzzle_id = g.puzzle_id and axis = 'col' order by position) as cols
     from game g
     join puzzle p on p.id = g.puzzle_id
-    where g.share_id = ${shareId} and g.status <> 'in_progress'
+    where g.share_id = ${shareId} and g.mode = 'normal' and g.status <> 'in_progress'
   `)
   const r = rows[0]
   if (!r) return null

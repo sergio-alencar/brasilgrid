@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { GameState, TodayResponse } from '../../shared/api.ts'
+import type { GameMode, GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
 import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
@@ -25,6 +25,7 @@ function useNoScrollWhilePlaying(active: boolean) {
 }
 
 export function Home() {
+  const [mode, setMode] = useState<GameMode>('normal')
   const [today, setToday] = useState<TodayResponse | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [game, setGame] = useState<GameState | null>(null)
@@ -34,14 +35,14 @@ export function Home() {
   const [shakeCell, setShakeCell] = useState<number | null>(null)
 
   useEffect(() => {
-    api.today().then(
+    api.today(mode).then(
       (t) => {
         setToday(t)
         setGame(t.game)
       },
       (e) => setLoadError(e instanceof ApiError && e.code === 'no_puzzle_today' ? 'Ainda não há grade para hoje.' : 'Não foi possível carregar a grade.'),
     )
-  }, [])
+  }, [mode])
 
   const flash = useCallback((message: string) => {
     setToast(message)
@@ -55,7 +56,7 @@ export function Home() {
   if (!today) return <p className="text-center text-white/80">Carregando a grade…</p>
 
   const { puzzle, maxGuesses } = today
-  const guessesLeft = game?.guessesLeft ?? maxGuesses
+  const guessesLeft = game?.guessesLeft ?? (mode === 'practice' ? null : maxGuesses)
 
   const pick = async (uf: string) => {
     if (selected === null) return
@@ -64,7 +65,7 @@ export function Home() {
     setBusy(true)
     try {
       await ensureSession()
-      const res = await api.guess(puzzle.id, cell, uf)
+      const res = await api.guess(puzzle.id, cell, uf, mode)
       if (res.game) setGame(res.game)
       if (res.result !== 'ok') flash(MESSAGES[res.result] ?? 'Palpite não aceito.')
       else if (!res.correct) {
@@ -80,16 +81,26 @@ export function Home() {
   }
 
   const giveUp = async () => {
-    if (!confirm('Desistir e ver as respostas? A partida de hoje será encerrada.')) return
+    const question =
+      mode === 'practice'
+        ? 'Encerrar o treino e ver as respostas?'
+        : 'Desistir e ver as respostas? A partida de hoje será encerrada.'
+    if (!confirm(question)) return
     setBusy(true)
     try {
       await ensureSession()
-      setGame((await api.giveUp(puzzle.id)).game)
+      setGame((await api.giveUp(puzzle.id, mode)).game)
     } catch {
       flash('Não foi possível desistir agora.')
     } finally {
       setBusy(false)
     }
+  }
+
+  const changeMode = (next: GameMode) => {
+    setSelected(null)
+    setGame(null)
+    setMode(next)
   }
 
   const rowOf = (cell: number) => puzzle.rows[Math.floor(cell / 3)]
@@ -117,15 +128,17 @@ export function Home() {
           guessesLeft={guessesLeft}
           maxGuesses={maxGuesses}
           rarity={game?.rarity ?? null}
+          mode={mode}
           finished={finished}
           busy={busy}
           onGiveUp={giveUp}
+          onModeChange={changeMode}
         />
       </div>
 
       {finished && game && (
         <div className="mt-4">
-          <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} />
+          <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} mode={mode} />
         </div>
       )}
 
