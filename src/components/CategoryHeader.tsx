@@ -7,7 +7,7 @@ export function CategoryHeader({ category, onOpenAtlas }: { category: CategoryIn
         type="button"
         onClick={() => onOpenAtlas(category.categoryId)}
         aria-label={`${category.label}. Ver a regra completa no atlas de categorias.`}
-        className="flex w-full flex-1 items-center justify-center rounded-xl border-2 border-white/25 bg-white/10 px-1 text-[11px] leading-tight font-bold text-white transition hover:border-brand-yellow hover:bg-white/20 sm:text-sm"
+        className="flex w-full flex-1 cursor-pointer items-center justify-center rounded-xl border-2 border-white/25 bg-white/10 px-1 text-[11px] leading-tight font-bold text-white transition hover:border-brand-yellow hover:bg-white/20 sm:text-sm"
       >
         {category.label}
       </button>

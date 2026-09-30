@@ -96,7 +96,7 @@ export default defineCategories([
   {
     id: "top5-soybean-producer",
     family: "demography",
-    label: "Top 5 em soja (2024)",
+    label: "Top 5 em produção de soja (2024)",
     description: "Uma das 5 UFs que mais produziram soja em 2024, em toneladas (IBGE/SIDRA).",
     members: ["GO", "MS", "MT", "PR", "RS"],
     source: {
@@ -110,7 +110,7 @@ export default defineCategories([
   {
     id: "top5-coffee-producer",
     family: "demography",
-    label: "Top 5 em café (2023)",
+    label: "Top 5 em produção de café (2023)",
     description: "Uma das 5 UFs que mais produziram café em 2023, em toneladas (IBGE/SIDRA).",
     members: ["BA", "ES", "MG", "RO", "SP"],
     source: {
@@ -124,7 +124,7 @@ export default defineCategories([
   {
     id: "top5-cattle-producer",
     family: "demography",
-    label: "Top 5 em bovinos (2023)",
+    label: "Top 5 em rebanho bovino (2023)",
     description: "Uma das 5 UFs com o maior rebanho de bovinos em 2023 (IBGE/SIDRA).",
     members: ["GO", "MG", "MS", "MT", "PA"],
     source: {

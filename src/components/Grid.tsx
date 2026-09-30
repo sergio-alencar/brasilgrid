@@ -59,7 +59,7 @@ function Row({
               // As células são sempre um "azulejo" claro, tingido de verde
               // (nunca cinza-azulado) — texto escuro fixo, não herda o
               // branco do box verde por trás.
-              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-1 text-center text-emerald-950 transition dark:text-emerald-50',
+              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-1 text-center text-emerald-950 transition dark:text-emerald-50 cursor-pointer disabled:cursor-not-allowed',
               hit
                 ? 'border-brand-green bg-emerald-100 animate-pop dark:bg-emerald-950'
                 : 'border-emerald-100/70 bg-white hover:border-brand-yellow hover:bg-emerald-50 disabled:hover:border-emerald-100/70 dark:border-emerald-900 dark:bg-emerald-950/40 dark:hover:bg-emerald-950/70',
