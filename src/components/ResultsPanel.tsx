@@ -37,6 +37,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
   const [reporting, setReporting] = useState(false)
   const { data: session } = authClient.useSession()
   const practice = mode === 'practice'
+  const archive = mode === 'archive'
 
   useEffect(() => {
     api.results(puzzleId, mode).then(setResults, () => setError(true))
@@ -63,7 +64,19 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
       <div>
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="text-sm text-white/70">
-          {game.correctCount}/9 acertos · raridade {game.rarity} (parcial) · próxima grade em <Countdown />
+          {game.correctCount}/9 acertos · raridade {game.rarity} (parcial){' '}
+          {archive ? (
+            <>
+              ·{' '}
+              <Link to="/arquivo" className="underline">
+                voltar ao arquivo
+              </Link>
+            </>
+          ) : (
+            <>
+              · próxima grade em <Countdown />
+            </>
+          )}
         </p>
         {practice && (
           <p className="mt-1 text-sm text-white/70">
@@ -91,7 +104,8 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
         {results && (
           <>
             <p className="text-xs text-white/70">
-              {results.players} {results.players === 1 ? 'jogador' : 'jogadores'} hoje · toque numa célula para ver no mapa
+              {results.players} {results.players === 1 ? 'jogador' : 'jogadores'}
+              {mode === 'normal' ? ' hoje' : ''} · toque numa célula para ver no mapa
             </p>
             <figure className="mt-3 flex flex-col items-center">
               <Suspense fallback={<div className="aspect-square w-full max-w-xs" />}>

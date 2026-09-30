@@ -146,9 +146,11 @@ export const game = pgTable(
       .notNull()
       .references(() => puzzle.id, { onDelete: 'cascade' }),
     // "practice" é o modo infinito: sem limite de palpites, não conta em
-    // estatísticas nem na raridade de outros jogadores. É uma partida
-    // separada da "normal" — por isso o índice único inclui o modo.
-    mode: text('mode', { enum: ['normal', 'practice'] })
+    // estatísticas nem na raridade de outros jogadores. "archive" é jogar
+    // uma grade de um dia passado: conta como "normal" na raridade, mas é
+    // uma partida separada (por isso fica de fora de /api/me/stats, que só
+    // olha mode = 'normal'). O índice único inclui o modo nos três casos.
+    mode: text('mode', { enum: ['normal', 'practice', 'archive'] })
       .notNull()
       .default('normal'),
     status: text('status', { enum: ['in_progress', 'completed', 'out_of_guesses', 'gave_up'] })

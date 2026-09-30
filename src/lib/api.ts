@@ -1,4 +1,5 @@
 import type {
+  ArchiveResponse,
   GameMode,
   GameState,
   GuessResponse,
@@ -38,6 +39,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const api = {
   today: (mode: GameMode = 'normal') => request<TodayResponse>(`/api/puzzle/today?mode=${mode}`),
+  archive: (page = 0) => request<ArchiveResponse>(`/api/archive?page=${page}`),
+  puzzle: (puzzleId: number) => request<TodayResponse>(`/api/puzzle/${puzzleId}`),
   guess: (puzzleId: number, cell: number, uf: string, mode: GameMode = 'normal') =>
     request<GuessResponse>('/api/game/guess', { method: 'POST', body: JSON.stringify({ puzzleId, cell, uf, mode }) }),
   giveUp: (puzzleId: number, mode: GameMode = 'normal') =>

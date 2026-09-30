@@ -37,6 +37,10 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     const launch = new Date(Date.parse(`${today}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10)
     await publishPuzzles(db, [puzzle], CATEGORIES, launch)
     await db.query(`insert into puzzle (id, play_date, status) values (1, '2020-01-01', 'published')`)
+    // Gabarito da grade nº 1 (já passada), pra poder testar o modo arquivo.
+    for (const [cell, validUfs] of CELLS.entries()) {
+      await db.query('insert into puzzle_cell (puzzle_id, cell, valid_ufs) values (1, $1, $2)', [cell, validUfs])
+    }
   })
 
   afterAll(async () => {
@@ -136,6 +140,34 @@ describe.skipIf(!available)('funções do jogo no Postgres', () => {
     // A partida normal continua em andamento, intocada.
     const normal = await db.query(`select status from game where user_id = 'ana' and mode = 'normal'`)
     expect(normal.rows[0].status).toBe('in_progress')
+  })
+
+  it('modo arquivo só aceita grade de um dia já passado, e conta como normal na raridade', async () => {
+    expect((await guess('ana', 0, 'SP', PUZZLE_ID, 'archive')).result).toBe('puzzle_unavailable') // hoje não vale no arquivo
+    expect((await guess('ana', 0, 'SP', 1, 'normal')).result).toBe('puzzle_unavailable') // passado não vale no normal
+
+    const r = await guess('ana', 0, 'SP', 1, 'archive')
+    expect(r).toMatchObject({ result: 'ok', is_correct: true, guesses_left: MAX_GUESSES - 1, game_status: 'in_progress' })
+    expect(r.pick_percent).toBe(100)
+
+    const stats = await db.query('select players from puzzle_stats where puzzle_id = 1')
+    expect(stats.rows[0].players).toBe(1)
+    const picks = await db.query("select picks from cell_pick_count where puzzle_id = 1 and cell = 0 and uf = 'SP'")
+    expect(picks.rows[0].picks).toBe(1)
+  })
+
+  it('modo arquivo é uma partida separada, mesmo replayando uma grade já jogada no dia', async () => {
+    await guess('ana', 0, 'SP', 1, 'archive')
+    await guess('ana', 0, 'SP', 1, 'archive') // já preenchida, não conta de novo
+    const games = await db.query(`select mode, correct_count from game where user_id = 'ana' and puzzle_id = 1`)
+    expect(games.rows).toEqual([{ mode: 'archive', correct_count: 1 }])
+  })
+
+  it('desistir funciona no modo arquivo', async () => {
+    await guess('ana', 0, 'SP', 1, 'archive')
+    const { rows } = await db.query("select give_up($1, $2, 'archive') s", ['ana', 1])
+    expect(rows[0].s).toBe('gave_up')
+    expect((await guess('ana', 1, 'MG', 1, 'archive')).result).toBe('game_over')
   })
 
   it('só aceita a grade de hoje e células de 0 a 8', async () => {

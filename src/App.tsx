@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { Avatar } from './components/Avatar.tsx'
 import { authClient } from './lib/authClient.ts'
+import { Archive } from './pages/Archive.tsx'
+import { ArchivePlay } from './pages/ArchivePlay.tsx'
 import { Home } from './pages/Home.tsx'
 import { HowToPlay } from './pages/HowToPlay.tsx'
 import { Login } from './pages/Login.tsx'
@@ -34,6 +36,9 @@ function Header({ wide }: { wide: boolean }) {
           <NavLink to="/como-jogar" className={navClass}>
             Como jogar
           </NavLink>
+          <NavLink to="/arquivo" className={navClass}>
+            Arquivo
+          </NavLink>
           <NavLink to="/estatisticas" className={navClass}>
             Estatísticas
           </NavLink>
@@ -54,7 +59,7 @@ function Header({ wide }: { wide: boolean }) {
 
 function AppShell() {
   const { pathname } = useLocation()
-  const wide = pathname === '/'
+  const wide = pathname === '/' || pathname.startsWith('/arquivo/')
   return (
     <>
       <Header wide={wide} />
@@ -62,6 +67,8 @@ function AppShell() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/arquivo" element={<Archive />} />
+            <Route path="/arquivo/:id" element={<ArchivePlay />} />
             <Route path="/como-jogar" element={<HowToPlay />} />
             <Route path="/estatisticas" element={<Stats />} />
             <Route path="/entrar" element={<Login />} />

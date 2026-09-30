@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import type { GameMode, GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
 import { CategoriesAtlas } from '../components/CategoriesAtlas.tsx'
@@ -25,8 +26,8 @@ function useNoScrollWhilePlaying(active: boolean) {
   }, [active])
 }
 
-export function Home() {
-  const [mode, setMode] = useState<GameMode>('normal')
+export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
+  const [mode, setMode] = useState<GameMode>(archivePuzzleId ? 'archive' : 'normal')
   const [today, setToday] = useState<TodayResponse | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [game, setGame] = useState<GameState | null>(null)
@@ -37,14 +38,22 @@ export function Home() {
   const [shakeCell, setShakeCell] = useState<number | null>(null)
 
   useEffect(() => {
-    api.today(mode).then(
+    const load = archivePuzzleId ? api.puzzle(archivePuzzleId) : api.today(mode)
+    load.then(
       (t) => {
         setToday(t)
         setGame(t.game)
       },
-      (e) => setLoadError(e instanceof ApiError && e.code === 'no_puzzle_today' ? 'Ainda não há grade para hoje.' : 'Não foi possível carregar a grade.'),
+      (e) =>
+        setLoadError(
+          archivePuzzleId
+            ? 'Essa grade não está disponível no arquivo.'
+            : e instanceof ApiError && e.code === 'no_puzzle_today'
+              ? 'Ainda não há grade para hoje.'
+              : 'Não foi possível carregar a grade.',
+        ),
     )
-  }, [mode])
+  }, [mode, archivePuzzleId])
 
   const toastTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const flash = useCallback((message: string) => {
@@ -88,7 +97,9 @@ export function Home() {
     const question =
       mode === 'practice'
         ? 'Encerrar o treino e ver as respostas?'
-        : 'Desistir e ver as respostas? A partida de hoje será encerrada.'
+        : mode === 'archive'
+          ? 'Desistir e ver as respostas dessa grade do arquivo?'
+          : 'Desistir e ver as respostas? A partida de hoje será encerrada.'
     if (!confirm(question)) return
     setBusy(true)
     try {
@@ -112,6 +123,11 @@ export function Home() {
 
   return (
     <section className="game-fit">
+      {archivePuzzleId && (
+        <Link to="/arquivo" className="mb-2 inline-block text-sm text-white/80 underline hover:text-white">
+          ← Arquivo
+        </Link>
+      )}
       <div className="flex flex-1 flex-col gap-4 md:min-h-0 md:flex-row">
         <div className="flex min-h-0 flex-1 items-center justify-center">
           <div className="game-square aspect-square w-full max-w-xl">
@@ -137,7 +153,7 @@ export function Home() {
           finished={finished}
           busy={busy}
           onGiveUp={giveUp}
-          onModeChange={changeMode}
+          onModeChange={archivePuzzleId ? undefined : changeMode}
         />
       </div>
 
