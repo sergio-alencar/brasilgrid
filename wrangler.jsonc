@@ -6,6 +6,8 @@
   "main": "./worker/index.ts",
   "assets": {
     "binding": "ASSETS",
+    // Onde "npm run build" (vite build) deixa os arquivos da SPA.
+    "directory": "./dist/client",
     "not_found_handling": "single-page-application",
     // O worker roda primeiro nessas rotas (API e, no futuro, as páginas de
     // resultado /r/:id, que vão precisar injetar meta tags de OG). Qualquer
@@ -15,16 +17,14 @@
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
-      // Placeholder — em produção, criar com:
-      //   npx wrangler hyperdrive create brasilgrid-db --connection-string="postgres://...@...neon.tech/brasilgrid?sslmode=require"
-      // e substituir o id abaixo pelo retornado. Localmente (wrangler dev /
+      // Aponta para o Neon de produção (sa-east-1). Localmente (wrangler dev /
       // npm run dev), o binding usa localConnectionString e ignora esse id.
-      "id": "REPLACE_WITH_HYPERDRIVE_ID",
+      "id": "7ce188c4af9f4d8285baa22582434d6e",
       "localConnectionString": "postgres://brasilgrid:brasilgrid@localhost:5433/brasilgrid"
     }
   ],
   "vars": {
-    "PUBLIC_URL": "http://localhost:5173",
+    "PUBLIC_URL": "https://brasilgrid.afasergio.workers.dev",
     // Sem domínio verificado no Resend, só dá para enviar para o e-mail do dono da conta.
     "EMAIL_FROM": "BrasilGrid <onboarding@resend.dev>"
   },
