@@ -79,7 +79,7 @@ export function Profile() {
             onChange={(e) => setNickname(e.target.value)}
             maxLength={20}
             placeholder="Como você aparece no ranking"
-            className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
+            className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal text-slate-900"
           />
         </label>
         <label className="flex items-start gap-2 text-sm">
@@ -102,16 +102,16 @@ export function Profile() {
         )}
       </form>
 
-      <div className="space-y-2 border-t border-slate-200 pt-6 dark:border-slate-800">
+      <div className="space-y-2 border-t border-slate-200 pt-6">
         <h2 className="font-semibold">Seus dados</h2>
         <div className="flex flex-wrap gap-2">
-          <a href="/api/me/export" className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600">
+          <a href="/api/me/export" className="rounded-lg border border-slate-300 px-3 py-2 text-sm">
             Baixar meus dados
           </a>
-          <button type="button" onClick={signOut} className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-600">
+          <button type="button" onClick={signOut} className="rounded-lg border border-slate-300 px-3 py-2 text-sm">
             Sair
           </button>
-          <button type="button" onClick={remove} className="rounded-lg border border-red-300 px-3 py-2 text-sm text-red-700 dark:border-red-800 dark:text-red-400">
+          <button type="button" onClick={remove} className="rounded-lg border border-red-300 px-3 py-2 text-sm text-red-700">
             Apagar conta
           </button>
         </div>

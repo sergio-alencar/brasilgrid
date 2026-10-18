@@ -72,10 +72,8 @@ function RowCells({ label, percents }: { label: string; percents: (number | null
           <div
             key={i}
             className={[
-              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 text-slate-900 dark:text-slate-100',
-              p === null
-                ? 'border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900'
-                : 'border-brand-green bg-emerald-50 dark:bg-emerald-950',
+              'flex aspect-square flex-col items-center justify-center rounded-xl border-2 text-slate-900',
+              p === null ? 'border-slate-200 bg-slate-100' : 'border-brand-green bg-emerald-50',
             ].join(' ')}
           >
             <span className="text-3xl" aria-hidden>

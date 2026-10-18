@@ -14,16 +14,7 @@
 }
 
 :root {
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-brand-green: #184a34;
-    --color-brand-green-bg: #0f2e21;
-    --color-brand-blue: #4a6ea3;
-    --color-brand-yellow: #d4b24f;
-  }
+  color-scheme: light;
 }
 
 body {
@@ -62,7 +53,7 @@ body {
 /* Painéis internos brancos, para texto denso e formulários (login, perfil,
    estatísticas, termos) — continuam legíveis mesmo dentro da caixa verde. */
 .content-panel {
-  @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6 dark:bg-slate-950 dark:text-slate-100;
+  @apply rounded-2xl bg-white p-4 text-slate-900 shadow-md sm:p-6;
 }
 
 /* Painel de resultado: mesmo verde da caixa do jogo, não um cartão branco —

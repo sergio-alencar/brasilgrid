@@ -61,7 +61,7 @@ function Row({
               // branco (legibilidade da bandeira/nome, texto escuro fixo).
               'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl p-1 text-center transition cursor-pointer disabled:cursor-not-allowed',
               hit
-                ? 'bg-white text-emerald-950 animate-pop dark:bg-emerald-950 dark:text-emerald-50'
+                ? 'bg-white text-emerald-950 animate-pop'
                 : 'bg-white/10 text-white hover:bg-white/15 disabled:hover:bg-white/10',
               shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}

@@ -41,7 +41,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
     <dialog
       ref={dialog}
       onClose={onClose}
-      className="m-auto w-[min(28rem,calc(100%-2rem))] rounded-2xl bg-white p-5 text-slate-900 shadow-xl backdrop:bg-black/50 dark:bg-slate-900 dark:text-slate-100"
+      className="m-auto w-[min(28rem,calc(100%-2rem))] rounded-2xl bg-white p-5 text-slate-900 shadow-xl backdrop:bg-black/50"
     >
       {state === 'sent' ? (
         <div className="space-y-3">
@@ -59,7 +59,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <select
               value={cell ?? ''}
               onChange={(e) => setCell(e.target.value === '' ? null : Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-2 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-2 py-2 font-normal text-slate-900"
             >
               <option value="">A grade toda</option>
               {cells.map(({ cell: i }) => (
@@ -74,7 +74,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
             <select
               value={uf}
               onChange={(e) => setUf(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-2 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-2 py-2 font-normal text-slate-900"
             >
               <option value="">—</option>
               {UFS.map((u) => (
@@ -95,7 +95,7 @@ export function ReportDialog({ puzzleId, rows, cols, cells, initialCell, onClose
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Ex.: esta UF também atende às duas categorias porque…"
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal text-slate-900"
             />
           </label>
           {error && (

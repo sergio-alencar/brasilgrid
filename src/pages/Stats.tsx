@@ -53,7 +53,7 @@ export function Stats() {
       <h1 className="text-2xl font-bold">Estatísticas</h1>
 
       {session.user.isAnonymous && (
-        <p className="rounded-lg bg-emerald-50 p-3 text-sm dark:bg-emerald-950">
+        <p className="rounded-lg bg-emerald-50 p-3 text-sm">
           Você está jogando como visitante: estes dados ficam só neste navegador.{' '}
           <Link to="/entrar" className="font-semibold underline">
             Entre para guardá-los
@@ -64,7 +64,7 @@ export function Stats() {
 
       <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {tiles.map(([label, value]) => (
-          <div key={label} className="rounded-xl border border-slate-200 p-3 dark:border-slate-800">
+          <div key={label} className="rounded-xl border border-slate-200 p-3">
             <dt className="text-xs text-slate-500">{label}</dt>
             <dd className="text-2xl font-bold tabular-nums">{value}</dd>
           </div>
@@ -115,7 +115,7 @@ export function Stats() {
             </thead>
             <tbody>
               {stats.history.map((h) => (
-                <tr key={h.puzzleId} className="border-t border-slate-100 dark:border-slate-800">
+                <tr key={h.puzzleId} className="border-t border-slate-100">
                   <td className="py-2">
                     <div className="font-medium">#{h.puzzleId}</div>
                     <div className="text-xs text-slate-500">

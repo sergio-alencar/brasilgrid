@@ -42,10 +42,10 @@ export function Archive() {
       {!error && items.length === 0 && loading && <p className="text-slate-500">Carregando…</p>}
       {!error && items.length === 0 && !loading && <p className="text-slate-500">Ainda não há grades no arquivo.</p>}
 
-      <ul className="divide-y divide-slate-200 dark:divide-slate-800">
+      <ul className="divide-y divide-slate-200">
         {items.map((it) => (
           <li key={it.puzzleId}>
-            <Link to={`/arquivo/${it.puzzleId}`} className="flex items-center justify-between gap-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-900">
+            <Link to={`/arquivo/${it.puzzleId}`} className="flex items-center justify-between gap-3 py-3 hover:bg-slate-50">
               <div>
                 <p className="font-semibold">
                   #{it.puzzleId} — {new Date(`${it.playDate}T12:00:00`).toLocaleDateString('pt-BR', { dateStyle: 'long' })}
@@ -77,7 +77,7 @@ export function Archive() {
             setPage((p) => p + 1)
           }}
           disabled={loading}
-          className="w-full rounded-lg border border-slate-300 py-2 text-sm font-medium hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:hover:bg-slate-900"
+          className="w-full rounded-lg border border-slate-300 py-2 text-sm font-medium hover:bg-slate-50 disabled:opacity-50"
         >
           {loading ? 'Carregando…' : 'Carregar mais'}
         </button>

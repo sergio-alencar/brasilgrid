@@ -59,7 +59,7 @@ export function Login() {
       </div>
 
       {inApp && (
-        <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+        <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
           Você está no navegador de um app, onde o login com Google não funciona. Use o código por e-mail ou abra esta
           página no seu navegador.
         </p>
@@ -69,7 +69,7 @@ export function Login() {
         type="button"
         onClick={google}
         disabled={inApp}
-        className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 font-medium hover:bg-slate-50 disabled:opacity-40 dark:border-slate-600 dark:hover:bg-slate-900"
+        className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 font-medium hover:bg-slate-50 disabled:opacity-40"
       >
         <svg aria-hidden viewBox="0 0 48 48" className="h-5 w-5">
           <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
@@ -81,9 +81,9 @@ export function Login() {
       </button>
 
       <div className="flex items-center gap-3 text-xs text-slate-400">
-        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-700" />
+        <span className="h-px flex-1 bg-slate-200" />
         ou
-        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-700" />
+        <span className="h-px flex-1 bg-slate-200" />
       </div>
 
       {step === 'email' ? (
@@ -96,7 +96,7 @@ export function Login() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 font-normal dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-normal text-slate-900"
             />
           </label>
           <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
@@ -118,7 +118,7 @@ export function Login() {
               required
               value={code}
               onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
-              className="mt-1 w-full rounded-lg border border-slate-300 bg-white text-slate-900 dark:bg-slate-800 dark:text-slate-100 px-3 py-2 text-center font-mono text-2xl tracking-[0.4em] dark:border-slate-600"
+              className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-center font-mono text-2xl tracking-[0.4em] text-slate-900"
             />
           </label>
           <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
