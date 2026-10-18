@@ -19,6 +19,14 @@
       "binding": "HYPERDRIVE",
       // Aponta para o Neon de produção (sa-east-1). Localmente (wrangler dev /
       // npm run dev), o binding usa localConnectionString e ignora esse id.
+      //
+      // IMPORTANTE: esse config tem caching desligado (foi criado com
+      // "wrangler hyperdrive create ... --caching-disabled" e, se precisar
+      // recriar, use a mesma flag, ou "wrangler hyperdrive update <id>
+      // --caching-disabled"). Sem isso, o Hyperdrive cacheia o SELECT de
+      // loadGameState() e o jogador não vê o próprio palpite logo depois de
+      // acertar — pareceu um "não aceitou" que na real nunca existiu, o
+      // gabarito e a partida no banco já estavam certos o tempo todo.
       "id": "7ce188c4af9f4d8285baa22582434d6e",
       "localConnectionString": "postgres://brasilgrid:brasilgrid@localhost:5433/brasilgrid"
     }
