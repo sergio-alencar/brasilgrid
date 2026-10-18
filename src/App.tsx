@@ -23,6 +23,8 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'text-brand-yellow' : ''
   }`
 
+const mobileNavClass = ({ isActive }: { isActive: boolean }) => `block ${navClass({ isActive })}`
+
 const NAV_LINKS: [string, string][] = [
   ['/como-jogar', 'Como jogar'],
   ['/arquivo', 'Arquivo'],
@@ -40,19 +42,29 @@ function Header({ wide }: { wide: boolean }) {
     setMenuOpen(false)
   }
 
+  const closeMenu = () => setMenuOpen(false)
   const accountLink = loggedIn ? (
-    <NavLink to="/perfil" className={navClass} aria-label="Perfil" onClick={() => setMenuOpen(false)}>
+    <NavLink to="/perfil" className={navClass} aria-label="Perfil" onClick={closeMenu}>
       <Avatar image={session.user.image} label={session.user.name || session.user.email} />
     </NavLink>
   ) : (
-    <NavLink to="/entrar" className={navClass} onClick={() => setMenuOpen(false)}>
+    <NavLink to="/entrar" className={navClass} onClick={closeMenu}>
+      Entrar
+    </NavLink>
+  )
+  const mobileAccountLink = loggedIn ? (
+    <NavLink to="/perfil" className={mobileNavClass} onClick={closeMenu}>
+      Perfil
+    </NavLink>
+  ) : (
+    <NavLink to="/entrar" className={mobileNavClass} onClick={closeMenu}>
       Entrar
     </NavLink>
   )
 
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-brand-green shadow-sm">
-      <nav className={`mx-auto flex items-center justify-between gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
+      <nav className={`relative mx-auto flex items-center justify-between gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
         <Link to="/" className="text-xl font-semibold tracking-wide text-white">
           Brasil<span className="text-brand-yellow">Grid</span>
         </Link>
@@ -63,8 +75,8 @@ function Header({ wide }: { wide: boolean }) {
                 {label}
               </NavLink>
             ))}
+            {accountLink}
           </div>
-          {accountLink}
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
@@ -77,18 +89,18 @@ function Header({ wide }: { wide: boolean }) {
             </svg>
           </button>
         </div>
-      </nav>
-      {menuOpen && (
-        <div className="border-t border-white/15 px-4 py-2 sm:hidden">
-          <div className="mx-auto flex max-w-2xl flex-col gap-1">
+        {menuOpen && (
+          <div className="absolute top-full right-4 z-20 mt-1 flex w-44 flex-col gap-0.5 rounded-xl border border-white/15 bg-brand-green p-1.5 shadow-xl sm:hidden">
             {NAV_LINKS.map(([to, label]) => (
-              <NavLink key={to} to={to} className={`${navClass({ isActive: pathname === to })} w-full`}>
+              <NavLink key={to} to={to} className={mobileNavClass}>
                 {label}
               </NavLink>
             ))}
+            <div className="my-0.5 border-t border-white/15" />
+            {mobileAccountLink}
           </div>
-        </div>
-      )}
+        )}
+      </nav>
     </header>
   )
 }
