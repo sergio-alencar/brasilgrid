@@ -32,9 +32,9 @@ export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, b
           </p>
           <p className="text-xs text-white/70">palpites</p>
         </div>
-        <div className="rounded-xl bg-white/10 p-2 text-center md:p-3" aria-label="raridade">
+        <div className="rounded-xl bg-white/10 p-2 text-center md:p-3" aria-label="pontuação">
           <p className="text-3xl font-black">{rarity ?? '—'}</p>
-          <p className="text-xs text-white/70">raridade {rarity !== null && '(parcial)'}</p>
+          <p className="text-xs text-white/70">pontuação {rarity !== null && '(parcial)'}</p>
         </div>
 
         {onModeChange && (
