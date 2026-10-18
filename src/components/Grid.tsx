@@ -72,14 +72,14 @@ function Row({
               // outras caixas translúcidas da página. Preenchida: a bandeira
               // ocupa a célula toda, com o % em selo no topo e o nome em
               // legenda no rodapé — como no Geogrid.
-              'relative aspect-square h-full w-full overflow-hidden rounded-xl text-center transition cursor-pointer disabled:cursor-not-allowed',
-              hit ? 'animate-pop' : 'flex items-center justify-center bg-white/10 text-white hover:bg-white/15 disabled:hover:bg-white/10',
+              'relative aspect-square h-full w-full overflow-hidden rounded-xl bg-white/10 text-center transition cursor-pointer disabled:cursor-not-allowed',
+              hit ? 'animate-pop' : 'flex items-center justify-center text-white hover:bg-white/15 disabled:hover:bg-white/10',
               shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}
           >
             {hit && uf && band && (
               <>
-                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full bg-gray-100 object-contain p-2" />
+                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full object-contain p-2" />
                 <span
                   className="absolute top-1 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm sm:text-[11px]"
                   style={{ backgroundColor: BAND_COLOR[band.band] }}
@@ -87,7 +87,7 @@ function Row({
                 >
                   {band.emoji} {formatPercent(hit.percent)}
                 </span>
-                <span className="absolute inset-x-0 bottom-0 truncate bg-black/60 px-1 py-0.5 text-[9px] font-semibold text-white sm:text-[11px]">
+                <span className="absolute bottom-1 left-1/2 max-w-[90%] -translate-x-1/2 truncate rounded-full bg-black/60 px-2 py-0.5 text-[9px] font-semibold text-white sm:text-[11px]">
                   {uf.name}
                 </span>
               </>
