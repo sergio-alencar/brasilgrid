@@ -64,8 +64,11 @@ function Header({ wide }: { wide: boolean }) {
 
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-brand-green shadow-sm">
-      <nav className={`relative mx-auto flex items-center justify-between gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
-        <Link to="/" className="text-xl font-semibold tracking-wide text-white">
+      <nav className={`relative mx-auto flex items-center justify-end gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
+        <Link
+          to="/"
+          className="absolute left-1/2 -translate-x-1/2 text-xl font-semibold tracking-wide text-white"
+        >
           Brasil<span className="text-brand-yellow">Grid</span>
         </Link>
         <div className="flex items-center gap-1">
