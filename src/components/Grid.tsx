@@ -79,7 +79,7 @@ function Row({
           >
             {hit && uf && band && (
               <>
-                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full bg-white object-contain p-2" />
+                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full bg-gray-100 object-contain p-2" />
                 <span
                   className="absolute top-1 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm sm:text-[11px]"
                   style={{ backgroundColor: BAND_COLOR[band.band] }}
