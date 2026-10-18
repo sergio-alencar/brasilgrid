@@ -75,7 +75,7 @@ export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, o
           }}
           placeholder="Nome do estado…"
           aria-label="Buscar UF"
-          className="mt-3 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none focus:border-brand-green"
+          className="mt-3 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900"
         />
       </div>
       {normalizeSearch(query).length < MIN_QUERY_LENGTH ? (
