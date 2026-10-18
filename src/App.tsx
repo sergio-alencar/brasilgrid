@@ -111,7 +111,7 @@ function AppShell() {
   return (
     <>
       <Header wide={wide} />
-      <div className={`page-box ${wide ? 'page-box--wide' : 'page-box--narrow'}`}>
+      <div className={`page-box flex-1 ${wide ? 'page-box--wide' : 'page-box--narrow'}`}>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />

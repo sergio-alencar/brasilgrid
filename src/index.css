@@ -18,7 +18,11 @@
 }
 
 body {
-  @apply min-h-dvh font-sans antialiased;
+  /* Rodapé "colado" embaixo: o corpo é uma coluna flex de altura mínima
+     igual à tela, e .page-box (flex-1 em App.tsx) cresce pra preencher o
+     espaço sobrando, empurrando o rodapé pro fim — mesmo em páginas com
+     pouco conteúdo (ex.: Como jogar, Termos). */
+  @apply flex min-h-dvh flex-col font-sans antialiased;
   background: var(--color-brand-green-bg);
   /* Nunca deve haver rolagem horizontal — elementos com position: absolute
      (ex.: o balão do tooltip do modo infinito) continuam ocupando espaço
