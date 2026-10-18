@@ -85,7 +85,7 @@ function Row({
                   style={{ backgroundColor: BAND_COLOR[band.band] }}
                   title={band.label}
                 >
-                  {formatPercent(hit.percent)}
+                  {band.emoji} {formatPercent(hit.percent)}
                 </span>
                 <span className="absolute inset-x-0 bottom-0 truncate bg-black/60 px-1 py-0.5 text-[9px] font-semibold text-white sm:text-[11px]">
                   {uf.name}
