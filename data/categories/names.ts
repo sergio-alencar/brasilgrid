@@ -14,17 +14,17 @@ export default defineCategories([
     derive: (uf) => normalize(uf.name).slice(0, 2).toUpperCase() === uf.code,
   },
   {
-    id: "name-tupi-origin",
+    id: "name-indigenous-origin",
     family: "names",
-    label: "Nome de origem Tupi",
-    description: "O nome da UF vem do Tupi (ou Tupi antigo), sem outra hipótese concorrente.",
-    members: ["PA", "PB", "PR", "PE", "PI", "SE", "TO"],
+    label: "Nome de origem indígena",
+    description: "O nome da UF vem de uma língua indígena (Tupi ou outra).",
+    members: ["AC", "AP", "CE", "MA", "PA", "PB", "PR", "PE", "PI", "RR", "SE", "TO"],
     source: {
       name: "Wikipédia — Etimologia das unidades federativas do Brasil",
       url: "https://pt.wikipedia.org/wiki/Etimologia_das_unidades_federativas_do_Brasil",
     },
     notes:
-      "Só entram os nomes que a página atribui ao Tupi sem ressalva. Ficam de fora Ceará, Maranhão e Amapá, que a própria página chama de incertos/disputados (mais de uma hipótese, nenhuma preferida) — não por serem de outra origem, mas por serem duvidosos demais pra um gabarito.",
+      "Segue a própria tabela de classificação da página ('topônimos de origem ameríndia'), não só o Tupi: Acre vem do Apurinã ou Mundurucu, Roraima do Pemon/Ianomâmi/Caribe, o resto do Tupi (ou Tupi antigo). Mesmo quando há mais de uma hipótese (ex.: Acre, Amapá, Ceará, Maranhão), todas as hipóteses da página são de origem indígena, então não há ambiguidade de família de origem — só de qual língua/étnia exata.",
     difficulty: 3,
   },
 ]);

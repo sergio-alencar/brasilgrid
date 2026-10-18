@@ -150,17 +150,17 @@ export default defineCategories([
     difficulty: 2,
   },
   {
-    id: "idhm-2010-over-72",
+    id: "idh-2024-over-08",
     family: "demography",
-    label: "IDHM 2010 acima de 0,72",
-    description: "O Índice de Desenvolvimento Humano Municipal (IDHM) da UF em 2010 passa de 0,72.",
-    members: ["DF", "ES", "GO", "MG", "MS", "MT", "PR", "RJ", "RS", "SC", "SP"],
+    label: "IDH acima de 0,8 (2024)",
+    description: "O Índice de Desenvolvimento Humano Municipal (IDHM) da UF em 2024 passa de 0,8.",
+    members: ["DF", "ES", "GO", "MG", "MT", "PR", "RJ", "RS", "SC", "SP"],
     source: {
-      name: "Wikipédia — Lista de unidades federativas do Brasil por IDH (IDHM 2010, Atlas do Desenvolvimento Humano 2013)",
+      name: "Wikipédia — Lista de unidades federativas do Brasil por IDH (IDHM 2024, PNUD)",
       url: "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_%C3%8Dndice_de_Desenvolvimento_Humano",
     },
     notes:
-      "Usa o IDHM 2010 (Censo 2010, Atlas do Desenvolvimento Humano 2013 — PNUD/Ipea/FJP), que é o número normalmente citado como \"o IDH\" de cada UF no Brasil; a mesma página também lista um IDHM 2024 mais recente, mas com valores mais altos e não é o que costuma ser citado. O mais próximo do limiar por baixo é o Amapá (0,708) — margem de 0,012.",
+      "Usa o IDHM 2024 (dado mais recente do PNUD), não o IDHM 2010 clássico (Atlas do Desenvolvimento Humano 2013), que a mesma página também lista com valores mais baixos. O mais próximo do limiar por baixo é o Mato Grosso do Sul (0,797) — margem de só 0,003, então esse limiar é apertado; revisar se algum dado for revisado.",
     difficulty: 2,
   },
 ]);
