@@ -32,10 +32,12 @@ body {
 }
 
 /* A caixa onde o jogo mora: fundo verde de verdade, não um cartão branco
-   com moldura verde. Cheia no celular; a partir de telas maiores, flutua
-   com espaço em volta (mostrando o verde mais escuro do fundo da página). */
+   com moldura verde. Mesmo tom escuro do fundo da página (só o cabeçalho
+   fica no verde mais claro) — cheia no celular; a partir de telas maiores,
+   flutua com espaço em volta. */
 .page-box {
-  @apply bg-brand-green p-4 text-white shadow-inner;
+  @apply p-4 text-white shadow-inner;
+  background: var(--color-brand-green-bg);
 }
 @media (min-width: 640px) {
   .page-box {
@@ -66,7 +68,8 @@ body {
 /* Painel de resultado: mesmo verde da caixa do jogo, não um cartão branco —
    fica dentro do próprio box verde depois que a partida termina. */
 .game-panel {
-  @apply rounded-2xl bg-brand-green p-4 text-white shadow-md sm:p-6;
+  @apply rounded-2xl p-4 text-white shadow-md sm:p-6;
+  background: var(--color-brand-green-bg);
 }
 
 .game-fit {
