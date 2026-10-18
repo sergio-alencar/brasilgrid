@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import type { GameMode, GameState, TodayResponse } from '../../shared/api.ts'
 import { getUf } from '../../shared/ufs.ts'
 import { CategoriesAtlas } from '../components/CategoriesAtlas.tsx'
+import { ConfirmDialog } from '../components/ConfirmDialog.tsx'
 import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
 import { IntroModal } from '../components/IntroModal.tsx'
@@ -39,6 +40,7 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
   const [busy, setBusy] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
   const [shakeCell, setShakeCell] = useState<number | null>(null)
+  const [confirmingGiveUp, setConfirmingGiveUp] = useState(false)
   const [showIntro, setShowIntro] = useState(() => {
     try {
       return !localStorage.getItem(INTRO_SEEN_KEY)
@@ -125,14 +127,7 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
     }
   }
 
-  const giveUp = async () => {
-    const question =
-      mode === 'practice'
-        ? 'Encerrar o treino e ver as respostas?'
-        : mode === 'archive'
-          ? 'Desistir e ver as respostas dessa grade do arquivo?'
-          : 'Desistir e ver as respostas? A partida de hoje será encerrada.'
-    if (!confirm(question)) return
+  const confirmGiveUp = async () => {
     setBusy(true)
     try {
       await ensureSession()
@@ -183,7 +178,7 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
           mode={mode}
           finished={finished}
           busy={busy}
-          onGiveUp={giveUp}
+          onGiveUp={() => setConfirmingGiveUp(true)}
           onModeChange={archivePuzzleId ? undefined : changeMode}
         />
       </div>
@@ -216,6 +211,22 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
       )}
 
       {showIntro && <IntroModal onClose={dismissIntro} />}
+
+      {confirmingGiveUp && (
+        <ConfirmDialog
+          title={mode === 'practice' ? 'Encerrar o treino?' : 'Desistir?'}
+          message={
+            mode === 'practice'
+              ? 'Vamos mostrar as respostas; o treino não conta nas suas estatísticas.'
+              : mode === 'archive'
+                ? 'Vamos revelar as respostas dessa grade do arquivo.'
+                : 'A partida de hoje será encerrada e vamos revelar as respostas.'
+          }
+          confirmLabel={mode === 'practice' ? 'Encerrar treino' : 'Desistir'}
+          onConfirm={confirmGiveUp}
+          onClose={() => setConfirmingGiveUp(false)}
+        />
+      )}
     </section>
   )
 }

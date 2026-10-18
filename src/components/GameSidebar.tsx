@@ -1,28 +1,46 @@
-import type { GameMode } from '../../shared/api.ts'
+import type { GameMode } from "../../shared/api.ts";
 
 interface Props {
-  guessesLeft: number | null
-  maxGuesses: number
-  rarity: number | null
-  mode: GameMode
-  finished: boolean
-  busy: boolean
-  onGiveUp: () => void
-  onModeChange?: (mode: GameMode) => void
+  guessesLeft: number | null;
+  maxGuesses: number;
+  rarity: number | null;
+  mode: GameMode;
+  finished: boolean;
+  busy: boolean;
+  onGiveUp: () => void;
+  onModeChange?: (mode: GameMode) => void;
 }
 
-export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, busy, onGiveUp, onModeChange }: Props) {
-  const infinite = mode === 'practice'
+export function GameSidebar({
+  guessesLeft,
+  maxGuesses,
+  rarity,
+  mode,
+  finished,
+  busy,
+  onGiveUp,
+  onModeChange,
+}: Props) {
+  const infinite = mode === "practice";
   return (
-    <aside aria-label="Painel do jogo" className="flex flex-col gap-2 overflow-y-auto md:min-h-0 md:w-56 md:flex-shrink-0 md:gap-3">
-      <div className={`grid gap-2 md:grid-cols-1 md:gap-3 ${onModeChange ? 'grid-cols-3' : 'grid-cols-2'}`}>
+    <aside
+      aria-label="Painel do jogo"
+      className="flex flex-col gap-2 overflow-y-auto md:min-h-0 md:w-56 md:flex-shrink-0 md:gap-3"
+    >
+      <div
+        className={`grid gap-2 md:grid-cols-1 md:gap-3 ${onModeChange ? "grid-cols-3" : "grid-cols-2"}`}
+      >
         <div
           className="rounded-xl bg-white/10 p-2 text-center md:p-3"
-          aria-label={guessesLeft === null ? 'palpites ilimitados' : `${guessesLeft} de ${maxGuesses} palpites restantes`}
+          aria-label={
+            guessesLeft === null
+              ? "palpites ilimitados"
+              : `${guessesLeft} de ${maxGuesses} palpites restantes`
+          }
         >
           <p className="text-3xl font-black">
             {guessesLeft === null ? (
-              '∞'
+              "∞"
             ) : (
               <>
                 {guessesLeft}
@@ -33,8 +51,8 @@ export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, b
           <p className="text-xs text-white/70">palpites</p>
         </div>
         <div className="rounded-xl bg-white/10 p-2 text-center md:p-3" aria-label="pontuação">
-          <p className="text-3xl font-black">{rarity ?? '—'}</p>
-          <p className="text-xs text-white/70">pontuação {rarity !== null && '(parcial)'}</p>
+          <p className="text-3xl font-black">{rarity ?? "-"}</p>
+          <p className="text-xs text-white/70">pontuação {rarity !== null && "(parcial)"}</p>
         </div>
 
         {onModeChange && (
@@ -58,15 +76,15 @@ export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, b
             </div>
             <button
               type="button"
-              onClick={() => onModeChange(infinite ? 'normal' : 'practice')}
+              onClick={() => onModeChange(infinite ? "normal" : "practice")}
               disabled={busy}
               role="switch"
               aria-checked={infinite}
               aria-label="Modo infinito"
-              className={`relative h-6 w-11 shrink-0 cursor-pointer rounded-full transition disabled:cursor-not-allowed disabled:opacity-50 ${infinite ? 'bg-brand-yellow' : 'bg-white/20'}`}
+              className={`relative h-6 w-11 shrink-0 cursor-pointer rounded-full transition disabled:cursor-not-allowed disabled:opacity-50 ${infinite ? "bg-brand-yellow" : "bg-white/20"}`}
             >
               <span
-                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition ${infinite ? 'left-5' : 'left-0.5'}`}
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition ${infinite ? "left-5" : "left-0.5"}`}
               />
             </button>
           </div>
@@ -80,9 +98,9 @@ export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, b
           disabled={busy}
           className="cursor-pointer rounded-xl bg-white/10 p-2 text-sm font-semibold hover:bg-white/15 disabled:opacity-50 md:p-3"
         >
-          {infinite ? 'Encerrar treino' : 'Desistir e revelar'}
+          {infinite ? "Encerrar treino" : "Desistir e revelar"}
         </button>
       )}
     </aside>
-  )
+  );
 }

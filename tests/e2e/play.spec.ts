@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './fixtures.ts'
 
 test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', async ({ page }) => {
   await page.goto('/')
@@ -20,8 +20,8 @@ test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', a
   expect(tried.length).toBeGreaterThan(0)
   await expect(page.getByLabel(`${10 - tried.length} de 10 palpites restantes`)).toBeVisible()
 
-  page.once('dialog', (d) => d.accept())
   await page.getByRole('button', { name: 'Desistir e revelar' }).click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Desistir', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Você desistiu' })).toBeVisible()
   await expect(page.getByText(/jogadores? hoje/)).toBeVisible()
 
@@ -56,8 +56,8 @@ test('joga, erra, desiste e vê as respostas sem spoiler no compartilhamento', a
 
 test('link compartilhado mostra o placar sem respostas e tem prévia', async ({ page, request }) => {
   await page.goto('/')
-  page.once('dialog', (d) => d.accept())
   await page.getByRole('button', { name: 'Desistir e revelar' }).click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Desistir', exact: true }).click()
   const share = await page.locator('pre').innerText()
   const url = new URL(share.trim().split('\n').at(-1)!)
 
@@ -89,8 +89,8 @@ test('modo infinito não tem limite de palpites e não interfere na partida norm
   }
   await expect(page.getByLabel('palpites ilimitados')).toBeVisible()
 
-  page.once('dialog', (d) => d.accept())
   await page.getByRole('button', { name: 'Encerrar treino' }).click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Encerrar treino', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Treino encerrado' })).toBeVisible()
   await expect(page.getByText('não conta nas suas estatísticas')).toBeVisible()
   // Treino não tem botão de compartilhar.
