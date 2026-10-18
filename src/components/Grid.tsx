@@ -1,8 +1,20 @@
 import type { CategoryInfo, FilledCell } from '../../shared/api.ts'
-import { bandFor } from '../../shared/rarity.ts'
+import { bandFor, type RarityBand } from '../../shared/rarity.ts'
 import { getUf } from '../../shared/ufs.ts'
 import { formatPercent } from '../lib/format.ts'
 import { CategoryHeader } from './CategoryHeader.tsx'
+
+// Cor do selo de %, por faixa de raridade — mesmo espírito do Geogrid
+// (comum = verde comum até mítico = cor mais chamativa).
+const BAND_COLOR: Record<RarityBand, string> = {
+  common: '#16a34a',
+  uncommon: '#2563eb',
+  rare: '#d97706',
+  epic: '#c026d3',
+  legendary: '#0891b2',
+  mythic: '#e11d48',
+  empty: '#64748b',
+}
 
 interface Props {
   puzzleId: number
@@ -57,25 +69,26 @@ function Row({
             aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
             className={[
               // Vazia: um "azulejo" liso, sem borda, da mesma família das
-              // outras caixas translúcidas da página. Preenchida: cartão
-              // branco (legibilidade da bandeira/nome, texto escuro fixo).
-              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl p-1 text-center transition cursor-pointer disabled:cursor-not-allowed',
-              hit
-                ? 'bg-white text-emerald-950 animate-pop'
-                : 'bg-white/10 text-white hover:bg-white/15 disabled:hover:bg-white/10',
+              // outras caixas translúcidas da página. Preenchida: a bandeira
+              // ocupa a célula toda, com o % em selo no topo e o nome em
+              // legenda no rodapé — como no Geogrid.
+              'relative aspect-square h-full w-full overflow-hidden rounded-xl text-center transition cursor-pointer disabled:cursor-not-allowed',
+              hit ? 'animate-pop' : 'flex items-center justify-center bg-white/10 text-white hover:bg-white/15 disabled:hover:bg-white/10',
               shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}
           >
             {hit && uf && band && (
               <>
-                <img
-                  src={`/flags/${uf.code}.svg`}
-                  alt=""
-                  className="h-7 w-10 rounded-sm object-cover shadow-sm ring-1 ring-black/10 sm:h-10 sm:w-14"
-                />
-                <span className="mt-1 line-clamp-2 text-[10px] leading-tight font-semibold sm:text-xs">{uf.name}</span>
-                <span className="mt-1 text-[10px] sm:text-xs" title={band.label}>
-                  {band.emoji} {formatPercent(hit.percent)}
+                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                <span
+                  className="absolute top-1 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[9px] font-bold text-white shadow-sm sm:text-[11px]"
+                  style={{ backgroundColor: BAND_COLOR[band.band] }}
+                  title={band.label}
+                >
+                  {formatPercent(hit.percent)}
+                </span>
+                <span className="absolute inset-x-0 bottom-0 truncate bg-black/60 px-1 py-0.5 text-[9px] font-semibold text-white sm:text-[11px]">
+                  {uf.name}
                 </span>
               </>
             )}
