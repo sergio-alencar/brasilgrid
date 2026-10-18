@@ -21,7 +21,7 @@ export function ShareButtons({ text }: { text: string }) {
 
   return (
     <div className="space-y-2">
-      <pre className="rounded-lg bg-white p-3 text-sm whitespace-pre-wrap text-slate-900">{text}</pre>
+      <pre className="rounded-lg bg-white p-3 text-sm whitespace-pre-wrap wrap-break-word text-slate-900">{text}</pre>
       <div className="flex flex-wrap gap-2">
         {canShare && (
           <button
