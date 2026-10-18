@@ -135,4 +135,18 @@ export default defineCategories([
     difficulty: 3,
     derive: (uf) => uf.production.topCattleProducer,
   },
+  {
+    id: "gdp-per-capita-over-50k",
+    family: "demography",
+    label: "PIB per capita > R$ 50 mil",
+    description: "O PIB per capita da UF em 2023 passa de R$ 50 mil (IBGE/SIDRA).",
+    members: ["DF", "ES", "MS", "MT", "PR", "RJ", "RS", "SC", "SP"],
+    source: {
+      name: "IBGE/SIDRA — Produto Interno Bruto dos Municípios, tabela 5938",
+      url: "https://sidra.ibge.gov.br/tabela/5938",
+    },
+    notes:
+      "Calculado a partir do PIB total de 2023 (tabela 5938, variável 37) dividido pela população do Censo 2022. O mais próximo do limiar por baixo é Rondônia (≈R$ 48,4 mil) e por cima é o Espírito Santo (≈R$ 54,7 mil) — margem de ~6 mil reais.",
+    difficulty: 2,
+  },
 ]);

@@ -19,6 +19,7 @@ const FAMILIES: [string, string][] = [
   ['coast', 'Litoral e posição'],
   ['hydrography', 'Hidrografia'],
   ['biomes', 'Biomas'],
+  ['geology', 'Relevo e geologia'],
   ['borders', 'Fronteiras e divisas'],
   ['capitals', 'Capitais'],
   ['names', 'Nome e sigla'],
