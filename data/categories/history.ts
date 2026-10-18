@@ -27,4 +27,18 @@ export default defineCategories([
     notes: "Vale a data da lei de criação.",
     difficulty: 2,
   },
+  {
+    id: "birthplace-of-president",
+    family: "history",
+    label: "Berço de presidente da República",
+    description: "A UF é o estado natal de pelo menos um presidente da República que tomou posse de fato.",
+    members: ["AL", "BA", "CE", "MA", "MG", "MS", "MT", "PB", "PE", "RJ", "RN", "RS", "SC", "SP"],
+    source: {
+      name: "Wikipédia — Lista de presidentes do Brasil por nascimento",
+      url: "https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil_por_nascimento",
+    },
+    notes:
+      "Só conta quem de fato tomou posse (fica de fora Júlio Prestes, Tancredo Neves e Pedro Aleixo, que nunca assumiram, e as juntas governativas de 1930 e 1969, que não são presidentes individuais). Itamar Franco: o registro oficial diz Bahia, embora haja uma hipótese de Minas Gerais (certidão de batismo); usamos o registro oficial. Jânio Quadros nasceu em Campo Grande quando ainda era Mato Grosso (antes da divisão de 1977); contamos pelo estado atual (MS).",
+    difficulty: 2,
+  },
 ]);

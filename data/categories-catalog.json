@@ -116,6 +116,18 @@
     "difficulty": 2
   },
   {
+    "id": "birthplace-of-president",
+    "family": "history",
+    "label": "Berço de presidente da República",
+    "description": "A UF é o estado natal de pelo menos um presidente da República que tomou posse de fato.",
+    "source": {
+      "name": "Wikipédia — Lista de presidentes do Brasil por nascimento",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil_por_nascimento"
+    },
+    "notes": "Só conta quem de fato tomou posse (fica de fora Júlio Prestes, Tancredo Neves e Pedro Aleixo, que nunca assumiram, e as juntas governativas de 1930 e 1969, que não são presidentes individuais). Itamar Franco: o registro oficial diz Bahia, embora haja uma hipótese de Minas Gerais (certidão de batismo); usamos o registro oficial. Jânio Quadros nasceu em Campo Grande quando ainda era Mato Grosso (antes da divisão de 1977); contamos pelo estado atual (MS).",
+    "difficulty": 2
+  },
+  {
     "id": "capital-same-initial",
     "family": "capitals",
     "label": "Capital com a mesma inicial",
@@ -420,6 +432,18 @@
     "difficulty": 2
   },
   {
+    "id": "idhm-2010-over-72",
+    "family": "demography",
+    "label": "IDHM 2010 acima de 0,72",
+    "description": "O Índice de Desenvolvimento Humano Municipal (IDHM) da UF em 2010 passa de 0,72.",
+    "source": {
+      "name": "Wikipédia — Lista de unidades federativas do Brasil por IDH (IDHM 2010, Atlas do Desenvolvimento Humano 2013)",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_%C3%8Dndice_de_Desenvolvimento_Humano"
+    },
+    "notes": "Usa o IDHM 2010 (Censo 2010, Atlas do Desenvolvimento Humano 2013 — PNUD/Ipea/FJP), que é o número normalmente citado como \"o IDH\" de cada UF no Brasil; a mesma página também lista um IDHM 2024 mais recente, mas com valores mais altos e não é o que costuma ser citado. O mais próximo do limiar por baixo é o Amapá (0,708) — margem de 0,012.",
+    "difficulty": 2
+  },
+  {
     "id": "former-federal-territory",
     "family": "history",
     "label": "Já foi território federal",
@@ -532,6 +556,18 @@
     },
     "notes": "",
     "difficulty": 2
+  },
+  {
+    "id": "name-tupi-origin",
+    "family": "names",
+    "label": "Nome de origem Tupi",
+    "description": "O nome da UF vem do Tupi (ou Tupi antigo), sem outra hipótese concorrente.",
+    "source": {
+      "name": "Wikipédia — Etimologia das unidades federativas do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Etimologia_das_unidades_federativas_do_Brasil"
+    },
+    "notes": "Só entram os nomes que a página atribui ao Tupi sem ressalva. Ficam de fora Ceará, Maranhão e Amapá, que a própria página chama de incertos/disputados (mais de uma hipótese, nenhuma preferida) — não por serem de outra origem, mas por serem duvidosos demais pra um gabarito.",
+    "difficulty": 3
   },
   {
     "id": "legal-amazon",

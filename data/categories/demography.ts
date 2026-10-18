@@ -149,4 +149,18 @@ export default defineCategories([
       "Calculado a partir do PIB total de 2023 (tabela 5938, variável 37) dividido pela população do Censo 2022. O mais próximo do limiar por baixo é Rondônia (≈R$ 48,4 mil) e por cima é o Espírito Santo (≈R$ 54,7 mil) — margem de ~6 mil reais.",
     difficulty: 2,
   },
+  {
+    id: "idhm-2010-over-72",
+    family: "demography",
+    label: "IDHM 2010 acima de 0,72",
+    description: "O Índice de Desenvolvimento Humano Municipal (IDHM) da UF em 2010 passa de 0,72.",
+    members: ["DF", "ES", "GO", "MG", "MS", "MT", "PR", "RJ", "RS", "SC", "SP"],
+    source: {
+      name: "Wikipédia — Lista de unidades federativas do Brasil por IDH (IDHM 2010, Atlas do Desenvolvimento Humano 2013)",
+      url: "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_%C3%8Dndice_de_Desenvolvimento_Humano",
+    },
+    notes:
+      "Usa o IDHM 2010 (Censo 2010, Atlas do Desenvolvimento Humano 2013 — PNUD/Ipea/FJP), que é o número normalmente citado como \"o IDH\" de cada UF no Brasil; a mesma página também lista um IDHM 2024 mais recente, mas com valores mais altos e não é o que costuma ser citado. O mais próximo do limiar por baixo é o Amapá (0,708) — margem de 0,012.",
+    difficulty: 2,
+  },
 ]);
