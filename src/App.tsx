@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { Avatar } from './components/Avatar.tsx'
 import { authClient } from './lib/authClient.ts'
@@ -23,9 +23,33 @@ const navClass = ({ isActive }: { isActive: boolean }) =>
     isActive ? 'text-brand-yellow' : ''
   }`
 
+const NAV_LINKS: [string, string][] = [
+  ['/como-jogar', 'Como jogar'],
+  ['/arquivo', 'Arquivo'],
+  ['/estatisticas', 'Estatísticas'],
+]
+
 function Header({ wide }: { wide: boolean }) {
   const { data: session } = authClient.useSession()
   const loggedIn = session && !session.user.isAnonymous
+  const { pathname } = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuPathname, setMenuPathname] = useState(pathname)
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname)
+    setMenuOpen(false)
+  }
+
+  const accountLink = loggedIn ? (
+    <NavLink to="/perfil" className={navClass} aria-label="Perfil" onClick={() => setMenuOpen(false)}>
+      <Avatar image={session.user.image} label={session.user.name || session.user.email} />
+    </NavLink>
+  ) : (
+    <NavLink to="/entrar" className={navClass} onClick={() => setMenuOpen(false)}>
+      Entrar
+    </NavLink>
+  )
+
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-brand-green shadow-sm">
       <nav className={`mx-auto flex items-center justify-between gap-2 px-4 py-3 sm:px-6 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
@@ -33,26 +57,38 @@ function Header({ wide }: { wide: boolean }) {
           Brasil<span className="text-brand-yellow">Grid</span>
         </Link>
         <div className="flex items-center gap-1">
-          <NavLink to="/como-jogar" className={navClass}>
-            Como jogar
-          </NavLink>
-          <NavLink to="/arquivo" className={navClass}>
-            Arquivo
-          </NavLink>
-          <NavLink to="/estatisticas" className={navClass}>
-            Estatísticas
-          </NavLink>
-          {loggedIn ? (
-            <NavLink to="/perfil" className={navClass} aria-label="Perfil">
-              <Avatar image={session.user.image} label={session.user.name || session.user.email} />
-            </NavLink>
-          ) : (
-            <NavLink to="/entrar" className={navClass}>
-              Entrar
-            </NavLink>
-          )}
+          <div className="hidden items-center gap-1 sm:flex">
+            {NAV_LINKS.map(([to, label]) => (
+              <NavLink key={to} to={to} className={navClass}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+          {accountLink}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+            className="cursor-pointer rounded-md p-1.5 text-white/90 hover:bg-white/15 hover:text-white sm:hidden"
+          >
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+              {menuOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
+            </svg>
+          </button>
         </div>
       </nav>
+      {menuOpen && (
+        <div className="border-t border-white/15 px-4 py-2 sm:hidden">
+          <div className="mx-auto flex max-w-2xl flex-col gap-1">
+            {NAV_LINKS.map(([to, label]) => (
+              <NavLink key={to} to={to} className={`${navClass({ isActive: pathname === to })} w-full`}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   )
 }
