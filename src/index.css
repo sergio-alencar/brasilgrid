@@ -18,16 +18,24 @@
 }
 
 body {
-  /* Rodapé "colado" embaixo: o corpo é uma coluna flex de altura mínima
-     igual à tela, e .page-box (flex-1 em App.tsx) cresce pra preencher o
-     espaço sobrando, empurrando o rodapé pro fim — mesmo em páginas com
-     pouco conteúdo (ex.: Como jogar, Termos). */
-  @apply flex min-h-dvh flex-col font-sans antialiased;
+  @apply min-h-dvh font-sans antialiased;
   background: var(--color-brand-green-bg);
   /* Nunca deve haver rolagem horizontal — elementos com position: absolute
      (ex.: o balão do tooltip do modo infinito) continuam ocupando espaço
      fora da tela mesmo invisíveis, e isso já causou sidescroll no celular. */
   overflow-x: hidden;
+}
+
+/* O React monta tudo dentro de <div id="root">, que fica entre <body> e o
+   cabeçalho/rodapé — por isso é #root que precisa ser a coluna flex de
+   altura mínima igual à tela (não <body>, que só tem essa div como único
+   filho). .page-box (flex-1 em App.tsx) cresce pra preencher o espaço
+   sobrando, empurrando o rodapé pro fim mesmo em páginas com pouco
+   conteúdo (ex.: Como jogar, Termos). */
+#root {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
 }
 
 /* A caixa onde o jogo mora: fundo verde de verdade, não um cartão branco
