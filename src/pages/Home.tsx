@@ -177,7 +177,6 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
         </div>
 
         <GameSidebar
-          playDate={puzzle.playDate}
           guessesLeft={guessesLeft}
           maxGuesses={maxGuesses}
           rarity={game?.rarity ?? null}

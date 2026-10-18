@@ -140,13 +140,13 @@ function AppShell() {
         </main>
       </div>
       <footer className={`mx-auto flex justify-center gap-4 px-4 py-6 text-xs text-white/70 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
-        <Link to="/fontes" className="underline decoration-white/40 hover:text-white">
+        <Link to="/fontes" className="hover:text-white hover:underline">
           Fontes e créditos
         </Link>
-        <Link to="/privacidade" className="underline decoration-white/40 hover:text-white">
+        <Link to="/privacidade" className="hover:text-white hover:underline">
           Privacidade
         </Link>
-        <Link to="/termos" className="underline decoration-white/40 hover:text-white">
+        <Link to="/termos" className="hover:text-white hover:underline">
           Termos
         </Link>
       </footer>
