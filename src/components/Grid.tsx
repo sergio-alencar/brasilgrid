@@ -17,7 +17,7 @@ interface Props {
 
 export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect, onOpenAtlas }: Props) {
   return (
-    <div className="grid h-full grid-cols-4 grid-rows-4 gap-1.5 sm:gap-2">
+    <div className="grid h-full grid-cols-4 grid-rows-4 gap-1 sm:gap-1.5">
       <div className="flex aspect-square h-full w-full items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
         <span className="text-lg sm:text-2xl">#{puzzleId}</span>
       </div>
@@ -56,17 +56,17 @@ function Row({
             onClick={() => onSelect(cell)}
             aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
             className={[
-              // As células são sempre um "azulejo" claro, tingido de verde
-              // (nunca cinza-azulado) — texto escuro fixo, não herda o
-              // branco do box verde por trás.
-              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-1 text-center text-emerald-950 transition dark:text-emerald-50 cursor-pointer disabled:cursor-not-allowed',
+              // Vazia: um "azulejo" liso, sem borda, da mesma família das
+              // outras caixas translúcidas da página. Preenchida: cartão
+              // branco (legibilidade da bandeira/nome, texto escuro fixo).
+              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl p-1 text-center transition cursor-pointer disabled:cursor-not-allowed',
               hit
-                ? 'border-brand-green bg-emerald-100 animate-pop dark:bg-emerald-950'
-                : 'border-emerald-100/70 bg-white hover:border-brand-yellow hover:bg-emerald-50 disabled:hover:border-emerald-100/70 dark:border-emerald-900 dark:bg-emerald-950/40 dark:hover:bg-emerald-950/70',
-              shakeCell === cell ? 'animate-shake border-red-500' : '',
+                ? 'bg-white text-emerald-950 animate-pop dark:bg-emerald-950 dark:text-emerald-50'
+                : 'bg-white/10 text-white hover:bg-white/15 disabled:hover:bg-white/10',
+              shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}
           >
-            {hit && uf && band ? (
+            {hit && uf && band && (
               <>
                 <img
                   src={`/flags/${uf.code}.svg`}
@@ -78,10 +78,6 @@ function Row({
                   {band.emoji} {formatPercent(hit.percent)}
                 </span>
               </>
-            ) : (
-              <span aria-hidden className="text-2xl text-emerald-200 dark:text-emerald-800">
-                +
-              </span>
             )}
           </button>
         )
