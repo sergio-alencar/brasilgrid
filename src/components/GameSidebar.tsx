@@ -51,7 +51,7 @@ export function GameSidebar({ guessesLeft, maxGuesses, rarity, mode, finished, b
               </button>
               <div
                 role="tooltip"
-                className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 w-40 -translate-x-1/2 rounded-lg bg-slate-900 p-2 text-xs text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100"
+                className="pointer-events-none absolute bottom-full right-0 z-10 mb-1.5 w-40 max-w-[calc(100vw-2rem)] rounded-lg bg-slate-900 p-2 text-xs text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100"
               >
                 Sem limite de palpites; não conta nas estatísticas.
               </div>

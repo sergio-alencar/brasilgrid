@@ -20,6 +20,10 @@
 body {
   @apply min-h-dvh font-sans antialiased;
   background: var(--color-brand-green-bg);
+  /* Nunca deve haver rolagem horizontal — elementos com position: absolute
+     (ex.: o balão do tooltip do modo infinito) continuam ocupando espaço
+     fora da tela mesmo invisíveis, e isso já causou sidescroll no celular. */
+  overflow-x: hidden;
 }
 
 /* A caixa onde o jogo mora: fundo verde de verdade, não um cartão branco
