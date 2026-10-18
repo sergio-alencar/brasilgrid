@@ -5,10 +5,13 @@ import { getUf } from '../../shared/ufs.ts'
 import { CategoriesAtlas } from '../components/CategoriesAtlas.tsx'
 import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
+import { IntroModal } from '../components/IntroModal.tsx'
 import { ResultsPanel } from '../components/ResultsPanel.tsx'
 import { SearchDialog } from '../components/SearchDialog.tsx'
 import { ApiError, api } from '../lib/api.ts'
 import { ensureSession } from '../lib/authClient.ts'
+
+const INTRO_SEEN_KEY = 'brasilgrid:intro-seen'
 
 const MESSAGES: Record<string, string> = {
   uf_used: 'Essa UF já foi usada nesta grade.',
@@ -36,6 +39,23 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
   const [busy, setBusy] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
   const [shakeCell, setShakeCell] = useState<number | null>(null)
+  const [showIntro, setShowIntro] = useState(() => {
+    try {
+      return !localStorage.getItem(INTRO_SEEN_KEY)
+    } catch {
+      // Sem localStorage (ex.: navegação privada): não insiste no modal.
+      return false
+    }
+  })
+
+  const dismissIntro = () => {
+    setShowIntro(false)
+    try {
+      localStorage.setItem(INTRO_SEEN_KEY, '1')
+    } catch {
+      // Sem localStorage: tudo bem, só não lembra entre sessões.
+    }
+  }
 
   useEffect(() => {
     const load = archivePuzzleId ? api.puzzle(archivePuzzleId) : api.today(mode)
@@ -65,8 +85,20 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
   const finished = !!game && game.status !== 'in_progress'
   useNoScrollWhilePlaying(!!today && !finished)
 
-  if (loadError) return <p className="text-center text-white/80">{loadError}</p>
-  if (!today) return <p className="text-center text-white/80">Carregando a grade…</p>
+  if (loadError)
+    return (
+      <>
+        <p className="text-center text-white/80">{loadError}</p>
+        {showIntro && <IntroModal onClose={dismissIntro} />}
+      </>
+    )
+  if (!today)
+    return (
+      <>
+        <p className="text-center text-white/80">Carregando a grade…</p>
+        {showIntro && <IntroModal onClose={dismissIntro} />}
+      </>
+    )
 
   const { puzzle, maxGuesses } = today
   const guessesLeft = game?.guessesLeft ?? (mode === 'practice' ? null : maxGuesses)
@@ -183,6 +215,8 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
           {toast}
         </div>
       )}
+
+      {showIntro && <IntroModal onClose={dismissIntro} />}
     </section>
   )
 }
