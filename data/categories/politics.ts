@@ -7,6 +7,12 @@ export default defineCategories([
     label: "Parte da Amazônia Legal",
     description:
       "A UF tem ao menos um município na Amazônia Legal, segundo a lista oficial do IBGE (2024).",
+    labelEn: "Part of the Legal Amazon",
+    descriptionEn:
+      "The state has at least one municipality within the Legal Amazon, per the official IBGE list (2024).",
+    labelEs: "Parte de la Amazonia Legal",
+    descriptionEs:
+      "La UF tiene al menos un municipio en la Amazonia Legal, según la lista oficial del IBGE (2024).",
     members: ["AC", "AM", "AP", "MA", "MT", "PA", "RO", "RR", "TO"],
     source: {
       name: "IBGE — Municípios da Amazônia Legal (2024)",
@@ -22,6 +28,12 @@ export default defineCategories([
     label: "Área de atuação da SUDENE",
     description:
       "A UF tem ao menos um município na área de atuação da SUDENE, segundo a lista oficial do IBGE (2021).",
+    labelEn: "Within SUDENE's jurisdiction",
+    descriptionEn:
+      "The state has at least one municipality within SUDENE's area of operation, per the official IBGE list (2021).",
+    labelEs: "Área de actuación de la SUDENE",
+    descriptionEs:
+      "La UF tiene al menos un municipio en el área de actuación de la SUDENE, según la lista oficial del IBGE (2021).",
     members: ["AL", "BA", "CE", "ES", "MA", "MG", "PB", "PE", "PI", "RN", "SE"],
     source: {
       name: "IBGE — Área de atuação da SUDENE (2021)",
@@ -36,6 +48,10 @@ export default defineCategories([
     family: "politics",
     label: "Sede de um TRF",
     description: "A capital da UF sedia um dos seis Tribunais Regionais Federais.",
+    labelEn: "Seat of a Federal Regional Court",
+    descriptionEn: "The state capital hosts one of Brazil's six Federal Regional Courts (TRFs).",
+    labelEs: "Sede de un Tribunal Federal",
+    descriptionEs: "La capital de la UF es sede de uno de los seis Tribunales Regionales Federales (TRFs).",
     members: ["DF", "MG", "PE", "RJ", "RS", "SP"],
     source: { name: "CJF — Tribunais Regionais Federais", url: "https://www.cjf.jus.br/cjf/" },
     notes: "",
@@ -46,6 +62,10 @@ export default defineCategories([
     family: "coast",
     label: "Capital em outro fuso horário",
     description: "A capital da UF usa um fuso diferente do horário de Brasília (UTC−3).",
+    labelEn: "Capital in a different time zone",
+    descriptionEn: "The state capital uses a time zone other than Brasília time (UTC−3).",
+    labelEs: "Capital en otro huso horario",
+    descriptionEs: "La capital de la UF usa un huso horario distinto al de Brasília (UTC−3).",
     members: ["AC", "AM", "MS", "MT", "RO", "RR"],
     source: {
       name: "Lei 12.876/2013 (fusos horários)",
@@ -59,6 +79,10 @@ export default defineCategories([
     family: "capitals",
     label: "Capital fica numa ilha",
     description: "A sede da capital fica numa ilha.",
+    labelEn: "Capital is on an island",
+    descriptionEn: "The seat of the state capital sits on an island.",
+    labelEs: "Capital en una isla",
+    descriptionEs: "La sede de la capital se ubica en una isla.",
     members: ["ES", "MA", "SC"],
     source: {
       name: "Wikipédia — Capitais do Brasil",
@@ -72,6 +96,10 @@ export default defineCategories([
     family: "demography",
     label: "Mais de 50 hab./km²",
     description: "A densidade demográfica da UF passa de 50 habitantes por km² (Censo 2022).",
+    labelEn: "Over 50 people/km²",
+    descriptionEn: "The state's population density is above 50 people per km² (2022 Census).",
+    labelEs: "Más de 50 hab./km²",
+    descriptionEs: "La densidad demográfica de la UF supera los 50 habitantes por km² (Censo 2022).",
     members: ["AL", "CE", "DF", "ES", "PB", "PE", "PR", "RJ", "RN", "SC", "SE", "SP"],
     source: {
       name: "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",

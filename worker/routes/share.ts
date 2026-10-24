@@ -16,8 +16,9 @@ interface Row extends Record<string, unknown> {
   cols: string[]
 }
 
-export async function loadSharedResult(db: Db, shareId: string): Promise<SharedResult | null> {
+export async function loadSharedResult(db: Db, shareId: string, locale?: string): Promise<SharedResult | null> {
   if (!/^[a-z0-9]{6,20}$/.test(shareId)) return null
+  const labelCol = locale === 'en' ? sql`label_en` : locale === 'es' ? sql`label_es` : sql`label`
   const { rows } = await db.execute<Row>(sql`
     select g.puzzle_id, p.play_date::text as play_date, g.status, g.correct_count,
       coalesce(g.final_rarity, game_rarity(g.id)) as rarity,
@@ -28,8 +29,8 @@ export async function loadSharedResult(db: Db, shareId: string): Promise<SharedR
         left join puzzle_stats ps on ps.puzzle_id = g.puzzle_id
         where gu.game_id = g.id and gu.is_correct
       ) as cells,
-      array(select label from puzzle_category where puzzle_id = g.puzzle_id and axis = 'row' order by position) as rows,
-      array(select label from puzzle_category where puzzle_id = g.puzzle_id and axis = 'col' order by position) as cols
+      array(select ${labelCol} from puzzle_category where puzzle_id = g.puzzle_id and axis = 'row' order by position) as rows,
+      array(select ${labelCol} from puzzle_category where puzzle_id = g.puzzle_id and axis = 'col' order by position) as cols
     from game g
     join puzzle p on p.id = g.puzzle_id
     where g.share_id = ${shareId} and g.mode = 'normal' and g.status <> 'in_progress'
@@ -53,7 +54,7 @@ export async function loadSharedResult(db: Db, shareId: string): Promise<SharedR
 export const shareRoutes = new Hono<AppEnv>()
 
 shareRoutes.get('/:shareId', async (c) => {
-  const result = await loadSharedResult(c.get('db'), c.req.param('shareId'))
+  const result = await loadSharedResult(c.get('db'), c.req.param('shareId'), c.req.query('locale'))
   if (!result) return c.json({ error: 'not_found' }, 404)
   c.header('Cache-Control', 'public, max-age=60')
   return c.json(result)

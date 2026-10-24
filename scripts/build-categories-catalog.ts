@@ -3,15 +3,23 @@
 import { CATEGORIES } from '../data/categories/index.ts'
 import { ROOT, writeJson } from './lib/io.ts'
 
-const catalog = CATEGORIES.map(({ id, family, label, description, source, notes, difficulty }) => ({
-  id,
-  family,
-  label,
-  description,
-  source,
-  notes,
-  difficulty,
-})).sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'))
+const catalog = CATEGORIES.map(
+  ({ id, family, label, description, labelEn, descriptionEn, labelEs, descriptionEs, source, notes, notesEn, notesEs, difficulty }) => ({
+    id,
+    family,
+    label,
+    description,
+    labelEn,
+    descriptionEn,
+    labelEs,
+    descriptionEs,
+    source,
+    notes,
+    notesEn,
+    notesEs,
+    difficulty,
+  }),
+).sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'))
 
 await writeJson(`${ROOT}/data/categories-catalog.json`, catalog)
 console.log(`data/categories-catalog.json: ${catalog.length} categorias`)

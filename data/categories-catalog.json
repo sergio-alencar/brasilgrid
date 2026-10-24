@@ -4,6 +4,10 @@
     "family": "politics",
     "label": "Área de atuação da SUDENE",
     "description": "A UF tem ao menos um município na área de atuação da SUDENE, segundo a lista oficial do IBGE (2021).",
+    "labelEn": "Within SUDENE's jurisdiction",
+    "descriptionEn": "The state has at least one municipality within SUDENE's area of operation, per the official IBGE list (2021).",
+    "labelEs": "Área de actuación de la SUDENE",
+    "descriptionEs": "La UF tiene al menos un municipio en el área de actuación de la SUDENE, según la lista oficial del IBGE (2021).",
     "source": {
       "name": "IBGE — Área de atuação da SUDENE (2021)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/area_atuacao_SUDENE/2021/"
@@ -16,6 +20,10 @@
     "family": "demography",
     "label": "Área maior que 300 mil km²",
     "description": "A área territorial da UF passa de 300 mil km² (IBGE, 2022).",
+    "labelEn": "Area over 300,000 km²",
+    "descriptionEn": "The state's territory is larger than 300,000 km² (IBGE, 2022).",
+    "labelEs": "Área mayor a 300.000 km²",
+    "descriptionEs": "El territorio de la UF supera los 300.000 km² (IBGE, 2022).",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -27,6 +35,10 @@
     "family": "demography",
     "label": "Área menor que 120 mil km²",
     "description": "A área territorial da UF é menor que 120 mil km² (IBGE, 2022).",
+    "labelEn": "Area under 120,000 km²",
+    "descriptionEn": "The state's territory is smaller than 120,000 km² (IBGE, 2022).",
+    "labelEs": "Área menor a 120.000 km²",
+    "descriptionEs": "El territorio de la UF es menor a 120.000 km² (IBGE, 2022).",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -38,6 +50,10 @@
     "family": "demography",
     "label": "Área menor que 60 mil km²",
     "description": "A área territorial da UF é menor que 60 mil km² (IBGE, 2022).",
+    "labelEn": "Area under 60,000 km²",
+    "descriptionEn": "The state's territory is smaller than 60,000 km² (IBGE, 2022).",
+    "labelEs": "Área menor a 60.000 km²",
+    "descriptionEs": "El territorio de la UF es menor a 60.000 km² (IBGE, 2022).",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -49,6 +65,10 @@
     "family": "coast",
     "label": "Banhado pelo oceano",
     "description": "A UF tem litoral no Oceano Atlântico.",
+    "labelEn": "Borders the ocean",
+    "descriptionEn": "The state has a coastline on the Atlantic Ocean.",
+    "labelEs": "Con costa atlántica",
+    "descriptionEs": "La UF tiene litoral en el Océano Atlántico.",
     "source": {
       "name": "IBGE — Municípios defrontantes com o mar (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/"
@@ -60,6 +80,10 @@
     "family": "hydrography",
     "label": "Banhado pelo Paraíba do Sul",
     "description": "O Rio Paraíba do Sul atravessa a UF ou forma parte de sua divisa.",
+    "labelEn": "On the Paraíba do Sul River",
+    "descriptionEn": "The Paraíba do Sul River runs through the state or forms part of its border.",
+    "labelEs": "Bañado por el Paraíba do Sul",
+    "descriptionEs": "El Río Paraíba do Sul atraviesa la UF o forma parte de su frontera.",
     "source": {
       "name": "Wikipédia — Rio Paraíba do Sul",
       "url": "https://pt.wikipedia.org/wiki/Rio_Para%C3%ADba_do_Sul"
@@ -72,6 +96,10 @@
     "family": "hydrography",
     "label": "Banhado pelo Rio Araguaia",
     "description": "O Rio Araguaia atravessa a UF ou forma parte de sua divisa.",
+    "labelEn": "Touched by the Araguaia River",
+    "descriptionEn": "The Araguaia River runs through the state or forms part of its border.",
+    "labelEs": "Bañado por el río Araguaia",
+    "descriptionEs": "El Río Araguaia atraviesa la UF o forma parte de su frontera.",
     "source": {
       "name": "Wikipédia — Rio Araguaia",
       "url": "https://pt.wikipedia.org/wiki/Rio_Araguaia"
@@ -84,6 +112,10 @@
     "family": "hydrography",
     "label": "Banhado pelo Rio Paraná",
     "description": "O Rio Paraná atravessa a UF ou forma parte de sua divisa.",
+    "labelEn": "Touched by the Paraná River",
+    "descriptionEn": "The Paraná River runs through the state or forms part of its border.",
+    "labelEs": "Bañado por el río Paraná",
+    "descriptionEs": "El Río Paraná atraviesa la UF o forma parte de su frontera.",
     "source": {
       "name": "Wikipédia — Rio Paraná",
       "url": "https://pt.wikipedia.org/wiki/Rio_Paran%C3%A1"
@@ -96,6 +128,10 @@
     "family": "hydrography",
     "label": "Banhado pelo Rio Tocantins",
     "description": "O Rio Tocantins atravessa a UF ou forma parte de sua divisa.",
+    "labelEn": "Touched by the Tocantins River",
+    "descriptionEn": "The Tocantins River runs through the state or forms part of its border.",
+    "labelEs": "Bañado por el río Tocantins",
+    "descriptionEs": "El Río Tocantins atraviesa la UF o forma parte de su frontera.",
     "source": {
       "name": "Wikipédia — Rio Tocantins",
       "url": "https://pt.wikipedia.org/wiki/Rio_Tocantins"
@@ -108,6 +144,10 @@
     "family": "hydrography",
     "label": "Banhado pelo São Francisco",
     "description": "O Rio São Francisco atravessa a UF ou forma parte de sua divisa.",
+    "labelEn": "On the São Francisco River",
+    "descriptionEn": "The São Francisco River runs through the state or forms part of its border.",
+    "labelEs": "Bañado por el San Francisco",
+    "descriptionEs": "El Río São Francisco atraviesa la UF o forma parte de su frontera.",
     "source": {
       "name": "Wikipédia — Rio São Francisco",
       "url": "https://pt.wikipedia.org/wiki/Rio_S%C3%A3o_Francisco"
@@ -116,10 +156,32 @@
     "difficulty": 2
   },
   {
+    "id": "birthplace-of-president",
+    "family": "history",
+    "label": "Berço de presidente da República",
+    "description": "A UF é o estado natal de pelo menos um presidente da República que tomou posse de fato.",
+    "labelEn": "Birthplace of a president",
+    "descriptionEn": "The state is the birthplace of at least one president of Brazil who actually took office.",
+    "labelEs": "Cuna de presidente",
+    "descriptionEs": "La UF es el estado natal de al menos un presidente de Brasil que tomó posesión de hecho.",
+    "source": {
+      "name": "Wikipédia — Lista de presidentes do Brasil por nascimento",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_presidentes_do_Brasil_por_nascimento"
+    },
+    "notes": "Só conta quem de fato tomou posse (fica de fora Júlio Prestes, Tancredo Neves e Pedro Aleixo, que nunca assumiram, e as juntas governativas de 1930 e 1969, que não são presidentes individuais). Itamar Franco: o registro oficial diz Bahia, embora haja uma hipótese de Minas Gerais (certidão de batismo); usamos o registro oficial. Jânio Quadros nasceu em Campo Grande quando ainda era Mato Grosso (antes da divisão de 1977); contamos pelo estado atual (MS).",
+    "notesEn": "Only counts presidents who actually took office (leaving out Júlio Prestes, Tancredo Neves, and Pedro Aleixo, who never did, and the 1930 and 1969 governing juntas, which aren't individual presidents). Itamar Franco: the official record says Bahia, though there's a hypothesis for Minas Gerais (baptism certificate); we use the official record. Jânio Quadros was born in Campo Grande back when it was still Mato Grosso (before the 1977 split); we count him under the current state (MS).",
+    "notesEs": "Solo cuenta quienes efectivamente tomaron posesión (quedan fuera Júlio Prestes, Tancredo Neves y Pedro Aleixo, que nunca asumieron, y las juntas de gobierno de 1930 y 1969, que no son presidentes individuales). Itamar Franco: el registro oficial dice Bahia, aunque existe una hipótesis de Minas Gerais (acta de bautismo); usamos el registro oficial. Jânio Quadros nació en Campo Grande cuando todavía era Mato Grosso (antes de la división de 1977); lo contamos en el estado actual (MS).",
+    "difficulty": 2
+  },
+  {
     "id": "capital-same-initial",
     "family": "capitals",
     "label": "Capital com a mesma inicial",
     "description": "O nome da capital começa com a mesma letra do nome da UF.",
+    "labelEn": "Capital shares first letter",
+    "descriptionEn": "The capital's name starts with the same letter as the state's name.",
+    "labelEs": "Capital con la misma inicial",
+    "descriptionEs": "El nombre de la capital comienza con la misma letra que el nombre de la UF.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -131,6 +193,10 @@
     "family": "capitals",
     "label": "Capital com mais de 1 milhão",
     "description": "A capital tinha mais de 1 milhão de habitantes no Censo 2022.",
+    "labelEn": "Capital with 1M+ people",
+    "descriptionEn": "The capital had more than 1 million people in the 2022 Census.",
+    "labelEs": "Capital con más de 1 millón",
+    "descriptionEs": "La capital tenía más de 1 millón de habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -143,6 +209,10 @@
     "family": "capitals",
     "label": "Capital com menos de 500 mil",
     "description": "A capital tinha menos de 500 mil habitantes no Censo 2022.",
+    "labelEn": "Capital with under 500k people",
+    "descriptionEn": "The capital had fewer than 500,000 people in the 2022 Census.",
+    "labelEs": "Capital con menos de 500 mil",
+    "descriptionEs": "La capital tenía menos de 500.000 habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -155,6 +225,10 @@
     "family": "capitals",
     "label": "Capital com nome composto",
     "description": "O nome da capital tem duas ou mais palavras.",
+    "labelEn": "Capital has a multi-word name",
+    "descriptionEn": "The capital's name has two or more words.",
+    "labelEs": "Capital con nombre compuesto",
+    "descriptionEs": "El nombre de la capital tiene dos o más palabras.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -166,6 +240,10 @@
     "family": "coast",
     "label": "Capital em outro fuso horário",
     "description": "A capital da UF usa um fuso diferente do horário de Brasília (UTC−3).",
+    "labelEn": "Capital in a different time zone",
+    "descriptionEn": "The state capital uses a time zone other than Brasília time (UTC−3).",
+    "labelEs": "Capital en otro huso horario",
+    "descriptionEs": "La capital de la UF usa un huso horario distinto al de Brasília (UTC−3).",
     "source": {
       "name": "Lei 12.876/2013 (fusos horários)",
       "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12876.htm"
@@ -178,6 +256,10 @@
     "family": "capitals",
     "label": "Capital fica numa ilha",
     "description": "A sede da capital fica numa ilha.",
+    "labelEn": "Capital is on an island",
+    "descriptionEn": "The seat of the state capital sits on an island.",
+    "labelEs": "Capital en una isla",
+    "descriptionEs": "La sede de la capital se ubica en una isla.",
     "source": {
       "name": "Wikipédia — Capitais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
@@ -190,6 +272,10 @@
     "family": "capitals",
     "label": "Capital não é a maior cidade",
     "description": "Algum outro município da UF tem mais habitantes que a capital (Censo 2022).",
+    "labelEn": "Capital is not the largest city",
+    "descriptionEn": "Some other municipality in the state has more people than the capital (2022 Census).",
+    "labelEs": "Capital no es la mayor ciudad",
+    "descriptionEs": "Algún otro municipio de la UF tiene más habitantes que la capital (Censo 2022).",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -202,6 +288,10 @@
     "family": "capitals",
     "label": "Capital planejada",
     "description": "A capital foi projetada e construída como cidade planejada, não cresceu de um povoado antigo.",
+    "labelEn": "Planned capital",
+    "descriptionEn": "The capital was designed and built as a planned city, rather than growing out of an older settlement.",
+    "labelEs": "Capital planificada",
+    "descriptionEs": "La capital fue proyectada y construida como ciudad planificada, no creció a partir de un asentamiento antiguo.",
     "source": {
       "name": "Wikipédia — Cidade planejada",
       "url": "https://pt.wikipedia.org/wiki/Cidade_planejada"
@@ -214,6 +304,10 @@
     "family": "capitals",
     "label": "Capital termina com \"a\"",
     "description": "O nome da capital termina com \"a\", com ou sem acento.",
+    "labelEn": "Capital name ends in \"a\"",
+    "descriptionEn": "The capital's name ends in the letter \"a\", accented or not.",
+    "labelEs": "Capital termina en \"a\"",
+    "descriptionEs": "El nombre de la capital termina con la letra \"a\", con o sin acento.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -225,6 +319,10 @@
     "family": "coast",
     "label": "Cortado pela Linha do Equador",
     "description": "A Linha do Equador atravessa o território da UF.",
+    "labelEn": "Crossed by the Equator",
+    "descriptionEn": "The Equator line runs through the state's territory.",
+    "labelEs": "Cruzado por el Ecuador",
+    "descriptionEs": "La línea del Ecuador atraviesa el territorio de la UF.",
     "source": {
       "name": "IBGE — Municípios localizados no hemisfério norte (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_localizados_no_hemisferio_norte/2024/"
@@ -237,6 +335,10 @@
     "family": "coast",
     "label": "Cruza o Trópico de Capricórnio",
     "description": "O Trópico de Capricórnio atravessa o território da UF.",
+    "labelEn": "Crosses Tropic of Capricorn",
+    "descriptionEn": "The Tropic of Capricorn runs through the state's territory.",
+    "labelEs": "Cruza el Trópico de Capricornio",
+    "descriptionEs": "El Trópico de Capricornio atraviesa el territorio de la UF.",
     "source": {
       "name": "IBGE — Atlas Geográfico Escolar",
       "url": "https://atlasescolar.ibge.gov.br/"
@@ -248,6 +350,10 @@
     "family": "borders",
     "label": "Divisa com 6 ou mais UFs",
     "description": "A UF faz divisa com pelo menos seis outras UFs.",
+    "labelEn": "Borders 6+ states",
+    "descriptionEn": "The state shares a border with at least six other states.",
+    "labelEs": "Limita con 6 o más estados",
+    "descriptionEs": "La UF comparte frontera con al menos otros seis estados.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -259,6 +365,10 @@
     "family": "borders",
     "label": "Divisa com Mato Grosso do Sul",
     "description": "A UF tem limite com Mato Grosso do Sul.",
+    "labelEn": "Borders Mato Grosso do Sul",
+    "descriptionEn": "The state shares a border with Mato Grosso do Sul.",
+    "labelEs": "Limita con Mato Grosso do Sul",
+    "descriptionEs": "La UF comparte frontera con Mato Grosso do Sul.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -270,6 +380,10 @@
     "family": "borders",
     "label": "Divisa com só 1 ou 2 UFs",
     "description": "A UF faz divisa com no máximo duas outras UFs (fronteiras com outros países não contam).",
+    "labelEn": "Borders only 1 or 2 states",
+    "descriptionEn": "The state shares a border with at most two other states (foreign-country borders don't count).",
+    "labelEs": "Solo limita con 1 o 2 estados",
+    "descriptionEs": "La UF comparte frontera con a lo sumo otros dos estados (las fronteras internacionales no cuentan).",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -281,6 +395,10 @@
     "family": "borders",
     "label": "Faz divisa com a Bahia",
     "description": "A UF tem limite com a Bahia.",
+    "labelEn": "Borders Bahia",
+    "descriptionEn": "The state shares a border with Bahia.",
+    "labelEs": "Limita con Bahia",
+    "descriptionEs": "La UF comparte frontera con Bahia.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -292,6 +410,10 @@
     "family": "borders",
     "label": "Faz divisa com Goiás",
     "description": "A UF tem limite com Goiás.",
+    "labelEn": "Borders Goiás",
+    "descriptionEn": "The state shares a border with Goiás.",
+    "labelEs": "Limita con Goiás",
+    "descriptionEs": "La UF comparte frontera con Goiás.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -303,6 +425,10 @@
     "family": "borders",
     "label": "Faz divisa com Mato Grosso",
     "description": "A UF tem limite com Mato Grosso.",
+    "labelEn": "Borders Mato Grosso",
+    "descriptionEn": "The state shares a border with Mato Grosso.",
+    "labelEs": "Limita con Mato Grosso",
+    "descriptionEs": "La UF comparte frontera con Mato Grosso.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -314,6 +440,10 @@
     "family": "borders",
     "label": "Faz divisa com Minas Gerais",
     "description": "A UF tem limite com Minas Gerais.",
+    "labelEn": "Borders Minas Gerais",
+    "descriptionEn": "The state shares a border with Minas Gerais.",
+    "labelEs": "Limita con Minas Gerais",
+    "descriptionEs": "La UF comparte frontera con Minas Gerais.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -325,6 +455,10 @@
     "family": "borders",
     "label": "Faz divisa com o Amazonas",
     "description": "A UF tem limite com o Amazonas.",
+    "labelEn": "Borders Amazonas",
+    "descriptionEn": "The state shares a border with Amazonas.",
+    "labelEs": "Limita con Amazonas",
+    "descriptionEs": "La UF comparte frontera con Amazonas.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -336,6 +470,10 @@
     "family": "borders",
     "label": "Faz divisa com o Pará",
     "description": "A UF tem limite com o Pará.",
+    "labelEn": "Borders Pará",
+    "descriptionEn": "The state shares a border with Pará.",
+    "labelEs": "Limita con Pará",
+    "descriptionEs": "La UF comparte frontera con Pará.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -347,6 +485,10 @@
     "family": "borders",
     "label": "Faz divisa com o Piauí",
     "description": "A UF tem limite com o Piauí.",
+    "labelEn": "Borders Piauí",
+    "descriptionEn": "The state shares a border with Piauí.",
+    "labelEs": "Limita con Piauí",
+    "descriptionEs": "La UF comparte frontera con Piauí.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -358,6 +500,10 @@
     "family": "borders",
     "label": "Faz divisa com Pernambuco",
     "description": "A UF tem limite com Pernambuco.",
+    "labelEn": "Borders Pernambuco",
+    "descriptionEn": "The state shares a border with Pernambuco.",
+    "labelEs": "Limita con Pernambuco",
+    "descriptionEs": "La UF comparte frontera con Pernambuco.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -369,6 +515,10 @@
     "family": "borders",
     "label": "Faz divisa com São Paulo",
     "description": "A UF tem limite com São Paulo.",
+    "labelEn": "Borders São Paulo",
+    "descriptionEn": "The state shares a border with São Paulo.",
+    "labelEs": "Limita con São Paulo",
+    "descriptionEs": "La UF comparte frontera con São Paulo.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -380,6 +530,10 @@
     "family": "borders",
     "label": "Faz divisa com Tocantins",
     "description": "A UF tem limite com o Tocantins.",
+    "labelEn": "Borders Tocantins",
+    "descriptionEn": "The state shares a border with Tocantins.",
+    "labelEs": "Limita con Tocantins",
+    "descriptionEs": "La UF comparte frontera con Tocantins.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -391,6 +545,10 @@
     "family": "borders",
     "label": "Faz fronteira com a Bolívia",
     "description": "A UF tem limite com a Bolívia.",
+    "labelEn": "Borders Bolivia",
+    "descriptionEn": "The state shares a border with Bolivia.",
+    "labelEs": "Limita con Bolivia",
+    "descriptionEs": "La UF comparte frontera con Bolivia.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -402,6 +560,10 @@
     "family": "borders",
     "label": "Faz fronteira com outro país",
     "description": "A UF tem limite terrestre ou fluvial com algum país vizinho.",
+    "labelEn": "Borders a foreign country",
+    "descriptionEn": "The state has a land or river border with a neighboring country.",
+    "labelEs": "Limita con otro país",
+    "descriptionEs": "La UF tiene frontera terrestre o fluvial con algún país vecino.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -413,6 +575,10 @@
     "family": "borders",
     "label": "Fronteira com país hispânico",
     "description": "A UF faz fronteira com pelo menos um país de língua oficial espanhola.",
+    "labelEn": "Borders a Hispanic country",
+    "descriptionEn": "The state borders at least one country whose official language is Spanish.",
+    "labelEs": "Frontera con país hispano",
+    "descriptionEs": "La UF limita con al menos un país de lengua oficial española.",
     "source": {
       "name": "Wikidata — propriedade P47 (faz fronteira com)",
       "url": "https://www.wikidata.org/wiki/Property:P47"
@@ -420,10 +586,32 @@
     "difficulty": 2
   },
   {
+    "id": "idh-2024-over-08",
+    "family": "demography",
+    "label": "IDH acima de 0,8 (2024)",
+    "description": "O Índice de Desenvolvimento Humano Municipal (IDHM) da UF em 2024 passa de 0,8.",
+    "labelEn": "HDI above 0.8 (2024)",
+    "descriptionEn": "The state's 2024 Municipal Human Development Index (IDHM) is above 0.8.",
+    "labelEs": "IDH por encima de 0,8 (2024)",
+    "descriptionEs": "El Índice de Desarrollo Humano Municipal (IDHM) de la UF en 2024 supera 0,8.",
+    "source": {
+      "name": "Wikipédia — Lista de unidades federativas do Brasil por IDH (IDHM 2024, PNUD)",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_%C3%8Dndice_de_Desenvolvimento_Humano"
+    },
+    "notes": "Usa o IDHM 2024 (dado mais recente do PNUD), não o IDHM 2010 clássico (Atlas do Desenvolvimento Humano 2013), que a mesma página também lista com valores mais baixos. O mais próximo do limiar por baixo é o Mato Grosso do Sul (0,797) — margem de só 0,003, então esse limiar é apertado; revisar se algum dado for revisado.",
+    "notesEn": "Uses the 2024 HDI (the most recent PNUD figure), not the classic 2010 HDI (2013 Human Development Atlas), which the same page also lists with lower values. The closest state below the cutoff is Mato Grosso do Sul (0.797) — a margin of only 0.003, so this cutoff is tight; revisit if the data gets revised.",
+    "notesEs": "Usa el IDHM 2024 (dato más reciente del PNUD), no el IDHM 2010 clásico (Atlas del Desarrollo Humano 2013), que la misma página también lista con valores más bajos. La UF más cercana por debajo del umbral es Mato Grosso do Sul (0,797) — margen de solo 0,003, por lo que este umbral es ajustado; revisar si algún dato es revisado.",
+    "difficulty": 2
+  },
+  {
     "id": "former-federal-territory",
     "family": "history",
     "label": "Já foi território federal",
     "description": "A UF foi território federal antes de virar estado.",
+    "labelEn": "Was once a federal territory",
+    "descriptionEn": "The state was a federal territory before becoming a state.",
+    "labelEs": "Fue territorio federal",
+    "descriptionEs": "La UF fue territorio federal antes de convertirse en estado.",
     "source": {
       "name": "Wikipédia — Territórios federais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Territ%C3%B3rios_federais_do_Brasil"
@@ -436,18 +624,46 @@
     "family": "capitals",
     "label": "Já sediou a capital do Brasil",
     "description": "A capital da UF já foi capital do Brasil.",
+    "labelEn": "Once hosted Brazil's capital",
+    "descriptionEn": "The state's capital city was once the capital of Brazil.",
+    "labelEs": "Fue capital de Brasil",
+    "descriptionEs": "La capital de la UF fue en algún momento la capital de Brasil.",
     "source": {
       "name": "Wikipédia — Capitais do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Capitais_do_Brasil"
     },
     "notes": "Não conta a transferência simbólica de um dia para outras cidades.",
+    "notesEn": "Doesn't count the one-day symbolic transfers to other cities.",
+    "notesEs": "No cuenta la transferencia simbólica de un día a otras ciudades.",
     "difficulty": 1
+  },
+  {
+    "id": "had-woman-governor",
+    "family": "history",
+    "label": "Já teve governadora mulher",
+    "description": "A UF já teve uma mulher como governadora, eleita ou que assumiu o cargo.",
+    "labelEn": "Has had a woman governor",
+    "descriptionEn": "The state has had a woman as governor, either elected or who assumed the office.",
+    "labelEs": "Ya tuvo gobernadora mujer",
+    "descriptionEs": "La UF ya tuvo una mujer como gobernadora, elegida o que asumió el cargo.",
+    "source": {
+      "name": "Wikipédia — Lista de governadoras das unidades federativas do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_governadoras_das_unidades_federativas_do_Brasil"
+    },
+    "notes": "A própria página resume: \"apenas 12 estados + Distrito Federal\" já tiveram governadora mulher — bate com os 13 membros aqui. Conta tanto quem venceu eleição quanto vice-governadora que assumiu o cargo (não vice que nunca assumiu). Rondônia fica de fora de propósito: aparece só num artigo avulso e malsourceado sobre uma governadora interina de 1984, que nem está na lista consolidada e se contradiz sobre ser \"a primeira\" ou \"a segunda\" mulher no cargo no Brasil.",
+    "notesEn": "The page itself sums it up: \"only 12 states + the Federal District\" have had a woman governor — matches the 13 members here (12 states plus DF). Counts both elected governors and vice-governors who assumed the office (not vices who never did). Rondônia is deliberately left out: it only shows up in a standalone, poorly sourced article about a 1984 interim governor, who isn't even in the consolidated list and whose own article contradicts itself on whether she was \"the first\" or \"the second\" woman to hold the office in Brazil.",
+    "notesEs": "La propia página resume: \"solo 12 estados + el Distrito Federal\" han tenido gobernadora mujer — coincide con los 13 miembros aquí (12 estados más el DF). Cuenta tanto a quienes ganaron la elección como a las vicegobernadadoras que asumieron el cargo (no las que nunca asumieron). Rondônia queda fuera de manera deliberada: solo aparece en un artículo aislado y mal documentado sobre una gobernadora interina de 1984, que ni siquiera está en la lista consolidada y cuyo propio artículo se contradice sobre si fue \"la primera\" o \"la segunda\" mujer en el cargo en Brasil.",
+    "difficulty": 2
   },
   {
     "id": "population-over-10m",
     "family": "demography",
     "label": "Mais de 10 milhões de hab.",
     "description": "A UF tinha mais de 10 milhões de habitantes no Censo 2022.",
+    "labelEn": "Over 10 million people",
+    "descriptionEn": "The state had more than 10 million people in the 2022 Census.",
+    "labelEs": "Más de 10 millones de hab.",
+    "descriptionEs": "La UF tenía más de 10 millones de habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -459,6 +675,10 @@
     "family": "demography",
     "label": "Mais de 350 municípios",
     "description": "A UF tem mais de 350 municípios.",
+    "labelEn": "Over 350 municipalities",
+    "descriptionEn": "The state has more than 350 municipalities.",
+    "labelEs": "Más de 350 municipios",
+    "descriptionEs": "La UF tiene más de 350 municipios.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -470,6 +690,10 @@
     "family": "demography",
     "label": "Mais de 5 milhões de hab.",
     "description": "A UF tinha mais de 5 milhões de habitantes no Censo 2022.",
+    "labelEn": "Over 5 million people",
+    "descriptionEn": "The state had more than 5 million people in the 2022 Census.",
+    "labelEs": "Más de 5 millones de hab.",
+    "descriptionEs": "La UF tenía más de 5 millones de habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -481,6 +705,10 @@
     "family": "demography",
     "label": "Mais de 50 hab./km²",
     "description": "A densidade demográfica da UF passa de 50 habitantes por km² (Censo 2022).",
+    "labelEn": "Over 50 people/km²",
+    "descriptionEn": "The state's population density is above 50 people per km² (2022 Census).",
+    "labelEs": "Más de 50 hab./km²",
+    "descriptionEs": "La densidad demográfica de la UF supera los 50 habitantes por km² (Censo 2022).",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -492,6 +720,10 @@
     "family": "demography",
     "label": "Menos de 1 milhão de hab.",
     "description": "A UF tinha menos de 1 milhão de habitantes no Censo 2022.",
+    "labelEn": "Under 1 million people",
+    "descriptionEn": "The state had fewer than 1 million people in the 2022 Census.",
+    "labelEs": "Menos de 1 millón de hab.",
+    "descriptionEs": "La UF tenía menos de 1 millón de habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -503,6 +735,10 @@
     "family": "demography",
     "label": "Menos de 3 milhões de hab.",
     "description": "A UF tinha menos de 3 milhões de habitantes no Censo 2022.",
+    "labelEn": "Under 3 million people",
+    "descriptionEn": "The state had fewer than 3 million people in the 2022 Census.",
+    "labelEs": "Menos de 3 millones de hab.",
+    "descriptionEs": "La UF tenía menos de 3 millones de habitantes en el Censo 2022.",
     "source": {
       "name": "IBGE — Censo Demográfico 2022 (SIDRA, tabela 4714)",
       "url": "https://sidra.ibge.gov.br/tabela/4714"
@@ -515,6 +751,10 @@
     "family": "demography",
     "label": "Menos de 70 municípios",
     "description": "A UF tem menos de 70 municípios (o Distrito Federal conta como um).",
+    "labelEn": "Under 70 municipalities",
+    "descriptionEn": "The state has fewer than 70 municipalities (the Federal District counts as one).",
+    "labelEs": "Menos de 70 municipios",
+    "descriptionEs": "La UF tiene menos de 70 municipios (el Distrito Federal cuenta como uno).",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -526,6 +766,10 @@
     "family": "hydrography",
     "label": "Na bacia do São Francisco",
     "description": "A UF tem parte do território na bacia hidrográfica do Rio São Francisco.",
+    "labelEn": "In the São Francisco basin",
+    "descriptionEn": "Part of the state lies within the São Francisco River basin.",
+    "labelEs": "En la cuenca del San Francisco",
+    "descriptionEs": "La UF tiene parte de su territorio en la cuenca hidrográfica del Río São Francisco.",
     "source": {
       "name": "CBHSF — Comitê da Bacia Hidrográfica do Rio São Francisco",
       "url": "https://cbhsaofrancisco.org.br/a-bacia/"
@@ -534,10 +778,32 @@
     "difficulty": 2
   },
   {
+    "id": "name-indigenous-origin",
+    "family": "names",
+    "label": "Nome de origem indígena",
+    "description": "O nome da UF vem de uma língua indígena (Tupi ou outra).",
+    "labelEn": "Name of indigenous origin",
+    "descriptionEn": "The state's name comes from an indigenous language (Tupi or another).",
+    "labelEs": "Nombre de origen indígena",
+    "descriptionEs": "El nombre de la UF proviene de una lengua indígena (Tupí u otra).",
+    "source": {
+      "name": "Wikipédia — Etimologia das unidades federativas do Brasil",
+      "url": "https://pt.wikipedia.org/wiki/Etimologia_das_unidades_federativas_do_Brasil"
+    },
+    "notes": "Segue a própria tabela de classificação da página ('topônimos de origem ameríndia'), não só o Tupi: Acre vem do Apurinã ou Mundurucu, Roraima do Pemon/Ianomâmi/Caribe, o resto do Tupi (ou Tupi antigo). Mesmo quando há mais de uma hipótese (ex.: Acre, Amapá, Ceará, Maranhão), todas as hipóteses da página são de origem indígena, então não há ambiguidade de família de origem — só de qual língua/étnia exata.",
+    "notesEn": "Follows the page's own classification table ('Amerindian-origin place names'), not just Tupi: Acre comes from Apurinã or Mundurucu, Roraima from Pemon/Yanomami/Carib, the rest from Tupi (or Old Tupi). Even where there's more than one hypothesis (e.g. Acre, Amapá, Ceará, Maranhão), every hypothesis on the page is of indigenous origin, so there's no ambiguity about the origin family — only about the exact language/ethnic group.",
+    "notesEs": "Sigue la propia tabla de clasificación de la página ('topónimos de origen amerindio'), no solo el Tupí: Acre proviene del Apurinã o Munduruku, Roraima del Pemon/Yanomami/Caribe, el resto del Tupí (o Tupí antiguo). Incluso cuando hay más de una hipótesis (ej.: Acre, Amapá, Ceará, Maranhão), todas las hipótesis de la página son de origen indígena, por lo que no hay ambigüedad en la familia de origen — solo en la lengua/etnia exacta.",
+    "difficulty": 3
+  },
+  {
     "id": "legal-amazon",
     "family": "politics",
     "label": "Parte da Amazônia Legal",
     "description": "A UF tem ao menos um município na Amazônia Legal, segundo a lista oficial do IBGE (2024).",
+    "labelEn": "Part of the Legal Amazon",
+    "descriptionEn": "The state has at least one municipality within the Legal Amazon, per the official IBGE list (2024).",
+    "labelEs": "Parte de la Amazonia Legal",
+    "descriptionEs": "La UF tiene al menos un municipio en la Amazonia Legal, según la lista oficial del IBGE (2024).",
     "source": {
       "name": "IBGE — Municípios da Amazônia Legal (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2024/"
@@ -550,6 +816,10 @@
     "family": "culture",
     "label": "Patrimônio Cultural da UNESCO",
     "description": "A UF tem um bem cultural ou misto inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "labelEn": "UNESCO Cultural Heritage site",
+    "descriptionEn": "The state has a cultural or mixed site inscribed on the UNESCO World Heritage list.",
+    "labelEs": "Patrimonio Cultural UNESCO",
+    "descriptionEs": "La UF tiene un bien cultural o mixto inscrito en la lista del Patrimonio Mundial de la UNESCO.",
     "source": {
       "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
       "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
@@ -562,6 +832,10 @@
     "family": "culture",
     "label": "Patrimônio Natural da UNESCO",
     "description": "A UF tem um bem natural ou misto inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "labelEn": "UNESCO Natural Heritage site",
+    "descriptionEn": "The state has a natural or mixed site inscribed on the UNESCO World Heritage list.",
+    "labelEs": "Patrimonio Natural UNESCO",
+    "descriptionEs": "La UF tiene un bien natural o mixto inscrito en la lista del Patrimonio Mundial de la UNESCO.",
     "source": {
       "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
       "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
@@ -570,10 +844,50 @@
     "difficulty": 3
   },
   {
+    "id": "gdp-per-capita-over-50k",
+    "family": "demography",
+    "label": "PIB per capita > R$ 50 mil",
+    "description": "O PIB per capita da UF em 2023 passa de R$ 50 mil (IBGE/SIDRA).",
+    "labelEn": "GDP per capita > R$ 50,000",
+    "descriptionEn": "The state's 2023 GDP per capita is above R$ 50,000 (IBGE/SIDRA).",
+    "labelEs": "PIB per cápita > R$ 50.000",
+    "descriptionEs": "El PIB per cápita de la UF en 2023 supera los R$ 50.000 (IBGE/SIDRA).",
+    "source": {
+      "name": "IBGE/SIDRA — Produto Interno Bruto dos Municípios, tabela 5938",
+      "url": "https://sidra.ibge.gov.br/tabela/5938"
+    },
+    "notes": "Calculado a partir do PIB total de 2023 (tabela 5938, variável 37) dividido pela população do Censo 2022. O mais próximo do limiar por baixo é Rondônia (≈R$ 48,4 mil) e por cima é o Espírito Santo (≈R$ 54,7 mil) — margem de ~6 mil reais.",
+    "notesEn": "Calculated from total 2023 GDP (table 5938, variable 37) divided by the 2022 Census population. The closest state below the cutoff is Rondônia (≈R$ 48,400) and above it is Espírito Santo (≈R$ 54,700) — a margin of about R$ 6,000.",
+    "notesEs": "Calculado a partir del PIB total de 2023 (tabla 5938, variable 37) dividido por la población del Censo 2022. La UF más cercana por debajo del umbral es Rondônia (≈R$ 48.400) y por encima está Espírito Santo (≈R$ 54.700) — un margen de ~R$ 6.000.",
+    "difficulty": 2
+  },
+  {
+    "id": "highest-point-over-2000m",
+    "family": "geology",
+    "label": "Ponto mais alto acima de 2.000 m",
+    "description": "O ponto culminante (mais alto) da UF passa de 2.000 metros de altitude.",
+    "labelEn": "Highest point above 2,000 m",
+    "descriptionEn": "The state's highest point is above 2,000 meters in elevation.",
+    "labelEs": "Punto más alto sobre 2.000 m",
+    "descriptionEs": "El punto culminante (más alto) de la UF supera los 2.000 metros de altitud.",
+    "source": {
+      "name": "Wikipédia — Lista de unidades federativas do Brasil por altitude",
+      "url": "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_altitude"
+    },
+    "notes": "Espírito Santo e Minas Gerais compartilham o mesmo ponto culminante (Pico da Bandeira, na divisa dos dois). O próximo mais alto fora da lista é o Paraná (1.877 m), então a margem para o limiar é confortável (~210 m).",
+    "notesEn": "Espírito Santo and Minas Gerais share the same highest point (Pico da Bandeira, right on their border). The next-highest point left out is Paraná (1,877 m), so there's a comfortable margin (~210 m) to the cutoff.",
+    "notesEs": "Espírito Santo y Minas Gerais comparten el mismo punto culminante (Pico da Bandeira, en la frontera entre ambos). El siguiente más alto fuera de la lista es Paraná (1.877 m), por lo que el margen al umbral es cómodo (~210 m).",
+    "difficulty": 2
+  },
+  {
     "id": "region-center-west",
     "family": "regions",
     "label": "Região Centro-Oeste",
     "description": "A UF pertence à Região Centro-Oeste, segundo o IBGE.",
+    "labelEn": "Center-West Region",
+    "descriptionEn": "The state belongs to Brazil's Center-West Region, per IBGE.",
+    "labelEs": "Región Centro-Oeste",
+    "descriptionEs": "La UF pertenece a la Región Centro-Oeste, según el IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -585,6 +899,10 @@
     "family": "regions",
     "label": "Região Nordeste",
     "description": "A UF pertence à Região Nordeste, segundo o IBGE.",
+    "labelEn": "Northeast Region",
+    "descriptionEn": "The state belongs to Brazil's Northeast Region, per IBGE.",
+    "labelEs": "Región Nordeste",
+    "descriptionEs": "La UF pertenece a la Región Nordeste, según el IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -596,6 +914,10 @@
     "family": "regions",
     "label": "Região Norte",
     "description": "A UF pertence à Região Norte, segundo o IBGE.",
+    "labelEn": "North Region",
+    "descriptionEn": "The state belongs to Brazil's North Region, per IBGE.",
+    "labelEs": "Región Norte",
+    "descriptionEs": "La UF pertenece a la Región Norte, según el IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -607,6 +929,10 @@
     "family": "regions",
     "label": "Região Sudeste",
     "description": "A UF pertence à Região Sudeste, segundo o IBGE.",
+    "labelEn": "Southeast Region",
+    "descriptionEn": "The state belongs to Brazil's Southeast Region, per IBGE.",
+    "labelEs": "Región Sudeste",
+    "descriptionEs": "La UF pertenece a la Región Sudeste, según el IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -618,6 +944,10 @@
     "family": "regions",
     "label": "Região Sul",
     "description": "A UF pertence à Região Sul, segundo o IBGE.",
+    "labelEn": "South Region",
+    "descriptionEn": "The state belongs to Brazil's South Region, per IBGE.",
+    "labelEs": "Región Sur",
+    "descriptionEs": "La UF pertenece a la Región Sur, según el IBGE.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -629,6 +959,10 @@
     "family": "politics",
     "label": "Sede de um TRF",
     "description": "A capital da UF sedia um dos seis Tribunais Regionais Federais.",
+    "labelEn": "Seat of a Federal Regional Court",
+    "descriptionEn": "The state capital hosts one of Brazil's six Federal Regional Courts (TRFs).",
+    "labelEs": "Sede de un Tribunal Federal",
+    "descriptionEs": "La capital de la UF es sede de uno de los seis Tribunales Regionales Federales (TRFs).",
     "source": {
       "name": "CJF — Tribunais Regionais Federais",
       "url": "https://www.cjf.jus.br/cjf/"
@@ -641,6 +975,10 @@
     "family": "sports",
     "label": "Sediou jogos da Copa de 2014",
     "description": "Uma cidade da UF foi sede de jogos da Copa do Mundo FIFA de 2014.",
+    "labelEn": "Hosted 2014 World Cup matches",
+    "descriptionEn": "A city in the state hosted matches of the 2014 FIFA World Cup.",
+    "labelEs": "Sede de la Copa 2014",
+    "descriptionEs": "Una ciudad de la UF fue sede de partidos de la Copa del Mundo FIFA 2014.",
     "source": {
       "name": "Wikipédia — Copa do Mundo FIFA de 2014",
       "url": "https://pt.wikipedia.org/wiki/Copa_do_Mundo_FIFA_de_2014"
@@ -653,6 +991,10 @@
     "family": "coast",
     "label": "Sem litoral",
     "description": "A UF não tem litoral no oceano.",
+    "labelEn": "Landlocked",
+    "descriptionEn": "The state has no ocean coastline.",
+    "labelEs": "Sin litoral",
+    "descriptionEs": "La UF no tiene costa en el océano.",
     "source": {
       "name": "IBGE — Municípios defrontantes com o mar (2024)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/municipios_defrontantes_com_o_mar/2024/"
@@ -665,6 +1007,10 @@
     "family": "culture",
     "label": "Sem Patrimônio Mundial",
     "description": "A UF não tem nenhum bem inscrito na lista do Patrimônio Mundial da UNESCO.",
+    "labelEn": "No World Heritage site",
+    "descriptionEn": "The state has no site inscribed on the UNESCO World Heritage list.",
+    "labelEs": "Sin Patrimonio Mundial",
+    "descriptionEs": "La UF no tiene ningún bien inscrito en la lista del Patrimonio Mundial de la UNESCO.",
     "source": {
       "name": "Wikipédia — Lista do Patrimônio Mundial no Brasil",
       "url": "https://pt.wikipedia.org/wiki/Lista_do_Patrim%C3%B4nio_Mundial_no_Brasil"
@@ -676,6 +1022,10 @@
     "family": "names",
     "label": "Sigla = duas primeiras letras",
     "description": "A sigla da UF são as duas primeiras letras do nome.",
+    "labelEn": "Code = first two letters",
+    "descriptionEn": "The state's postal code is the first two letters of its name.",
+    "labelEs": "Sigla = dos primeras letras",
+    "descriptionEs": "La sigla de la UF son las dos primeras letras del nombre.",
     "source": {
       "name": "IBGE — API de localidades",
       "url": "https://servicodados.ibge.gov.br/api/docs/localidades"
@@ -687,6 +1037,10 @@
     "family": "biomes",
     "label": "Tem Amazônia",
     "description": "A UF tem municípios no bioma Amazônia. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Has Amazon biome",
+    "descriptionEn": "The state has municipalities in the Amazon biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tiene bioma Amazônia",
+    "descriptionEs": "La UF tiene municipios en el bioma Amazônia. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -698,6 +1052,10 @@
     "family": "biomes",
     "label": "Tem área no Semiárido",
     "description": "A UF tem ao menos um município na delimitação oficial do Semiárido brasileiro (SUDENE, 2022).",
+    "labelEn": "Has Semiarid territory",
+    "descriptionEn": "The state has at least one municipality within the official boundary of the Brazilian Semiarid region (SUDENE, 2022).",
+    "labelEs": "Tiene territorio Semiárido",
+    "descriptionEs": "La UF tiene al menos un municipio dentro de la delimitación oficial del Semiárido brasileño (SUDENE, 2022).",
     "source": {
       "name": "IBGE — Municípios do Semiárido (2022)",
       "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/semiarido_brasileiro/Situacao_2022/"
@@ -710,6 +1068,10 @@
     "family": "biomes",
     "label": "Tem Caatinga",
     "description": "A UF tem municípios no bioma Caatinga. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Has Caatinga biome",
+    "descriptionEn": "The state has municipalities in the Caatinga biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tiene bioma Caatinga",
+    "descriptionEs": "La UF tiene municipios en el bioma Caatinga. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -722,6 +1084,10 @@
     "family": "sports",
     "label": "Tem campeão da Copa do Brasil",
     "description": "Algum clube da UF já venceu a Copa do Brasil.",
+    "labelEn": "Copa do Brasil champion club",
+    "descriptionEn": "Some club from the state has won the Copa do Brasil.",
+    "labelEs": "Campeón de la Copa de Brasil",
+    "descriptionEs": "Algún club de la UF ha ganado la Copa do Brasil.",
     "source": {
       "name": "Wikipédia — Copa do Brasil de Futebol",
       "url": "https://pt.wikipedia.org/wiki/Copa_do_Brasil_de_Futebol"
@@ -734,6 +1100,10 @@
     "family": "sports",
     "label": "Tem campeão da Libertadores",
     "description": "Algum clube da UF já venceu a Copa Libertadores da América.",
+    "labelEn": "Has a Libertadores champion club",
+    "descriptionEn": "Some club from the state has won the Copa Libertadores.",
+    "labelEs": "Tiene campeón de Libertadores",
+    "descriptionEs": "Algún club de la UF ha ganado la Copa Libertadores de América.",
     "source": {
       "name": "Wikipédia — Copa Libertadores da América",
       "url": "https://pt.wikipedia.org/wiki/Copa_Libertadores_da_Am%C3%A9rica"
@@ -745,6 +1115,10 @@
     "family": "biomes",
     "label": "Tem Cerrado",
     "description": "A UF tem municípios no bioma Cerrado. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Has Cerrado biome",
+    "descriptionEn": "The state has municipalities in the Cerrado biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tiene bioma Cerrado",
+    "descriptionEs": "La UF tiene municipios en el bioma Cerrado. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -757,6 +1131,10 @@
     "family": "sports",
     "label": "Tem clube campeão brasileiro",
     "description": "Algum clube da UF tem título de campeão brasileiro reconhecido pela CBF (inclui Taça Brasil e Robertão).",
+    "labelEn": "Has a national champion club",
+    "descriptionEn": "Some club from the state has a Brazilian championship title recognized by the CBF (includes the Taça Brasil and Robertão eras).",
+    "labelEs": "Tiene campeón brasileño",
+    "descriptionEs": "Algún club de la UF tiene título de campeón brasileño reconocido por la CBF (incluye la Taça Brasil y el Robertão).",
     "source": {
       "name": "Wikipédia — Campeonato Brasileiro de Futebol",
       "url": "https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol"
@@ -769,6 +1147,10 @@
     "family": "biomes",
     "label": "Tem Mata Atlântica",
     "description": "A UF tem municípios no bioma Mata Atlântica. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Has Atlantic Forest biome",
+    "descriptionEn": "The state has municipalities in the Atlantic Forest biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tiene Mata Atlântica",
+    "descriptionEs": "La UF tiene municipios en el bioma Mata Atlântica. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -780,6 +1162,10 @@
     "family": "biomes",
     "label": "Tem Pantanal",
     "description": "A UF tem municípios no bioma Pantanal. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Has Pantanal biome",
+    "descriptionEn": "The state has municipalities in the Pantanal biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tiene bioma Pantanal",
+    "descriptionEs": "La UF tiene municipios en el bioma Pantanal. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -787,22 +1173,14 @@
     "difficulty": 3
   },
   {
-    "id": "top5-cattle-producer",
-    "family": "demography",
-    "label": "Top 5 em bovinos (2023)",
-    "description": "Uma das 5 UFs com o maior rebanho de bovinos em 2023 (IBGE/SIDRA).",
-    "source": {
-      "name": "IBGE/SIDRA — Efetivo dos Rebanhos, tabela 3939",
-      "url": "https://sidra.ibge.gov.br/tabela/3939"
-    },
-    "notes": "",
-    "difficulty": 3
-  },
-  {
     "id": "top5-coffee-producer",
     "family": "demography",
-    "label": "Top 5 em café (2023)",
+    "label": "Top 5 em produção de café (2023)",
     "description": "Uma das 5 UFs que mais produziram café em 2023, em toneladas (IBGE/SIDRA).",
+    "labelEn": "Top 5 coffee producer (2023)",
+    "descriptionEn": "One of the 5 states that produced the most coffee in 2023, by weight (IBGE/SIDRA).",
+    "labelEs": "Top 5 producción de café (2023)",
+    "descriptionEs": "Una de las 5 UFs que más café produjeron en 2023, en toneladas (IBGE/SIDRA).",
     "source": {
       "name": "IBGE/SIDRA — Produção das Lavouras Permanentes, tabela 1613",
       "url": "https://sidra.ibge.gov.br/tabela/1613"
@@ -813,8 +1191,12 @@
   {
     "id": "top5-soybean-producer",
     "family": "demography",
-    "label": "Top 5 em soja (2024)",
+    "label": "Top 5 em produção de soja (2024)",
     "description": "Uma das 5 UFs que mais produziram soja em 2024, em toneladas (IBGE/SIDRA).",
+    "labelEn": "Top 5 soybean producer (2024)",
+    "descriptionEn": "One of the 5 states that produced the most soybeans in 2024, by weight (IBGE/SIDRA).",
+    "labelEs": "Top 5 producción de soja (2024)",
+    "descriptionEs": "Una de las 5 UFs que más soja produjeron en 2024, en toneladas (IBGE/SIDRA).",
     "source": {
       "name": "IBGE/SIDRA — Produção Agrícola Municipal, tabela 1612",
       "url": "https://sidra.ibge.gov.br/tabela/1612"
@@ -823,10 +1205,30 @@
     "difficulty": 2
   },
   {
+    "id": "top5-cattle-producer",
+    "family": "demography",
+    "label": "Top 5 em rebanho bovino (2023)",
+    "description": "Uma das 5 UFs com o maior rebanho de bovinos em 2023 (IBGE/SIDRA).",
+    "labelEn": "Top 5 cattle herd (2023)",
+    "descriptionEn": "One of the 5 states with the largest cattle herd in 2023 (IBGE/SIDRA).",
+    "labelEs": "Top 5 rebaño bovino (2023)",
+    "descriptionEs": "Una de las 5 UFs con el mayor rebaño bovino en 2023 (IBGE/SIDRA).",
+    "source": {
+      "name": "IBGE/SIDRA — Efetivo dos Rebanhos, tabela 3939",
+      "url": "https://sidra.ibge.gov.br/tabela/3939"
+    },
+    "notes": "",
+    "difficulty": 3
+  },
+  {
     "id": "three-biomes",
     "family": "biomes",
     "label": "Três biomas ou mais",
     "description": "Os municípios da UF se dividem em pelo menos três biomas predominantes. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "3+ biomes",
+    "descriptionEn": "The municipalities in the state are split across at least three predominant biomes. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Tres biomas o más",
+    "descriptionEs": "Los municipios de la UF se reparten en al menos tres biomas predominantes. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"
@@ -838,11 +1240,17 @@
     "family": "history",
     "label": "UF criada a partir de 1960",
     "description": "A UF passou a existir como estado em 1960 ou depois.",
+    "labelEn": "Created in 1960 or later",
+    "descriptionEn": "The state came into existence in 1960 or later.",
+    "labelEs": "UF creada en 1960 o después",
+    "descriptionEs": "La UF pasó a existir como estado en 1960 o después.",
     "source": {
       "name": "Wikipédia — Unidades federativas do Brasil",
       "url": "https://pt.wikipedia.org/wiki/Unidades_federativas_do_Brasil"
     },
     "notes": "Vale a data da lei de criação.",
+    "notesEn": "Uses the date of the law that created the state.",
+    "notesEs": "Se usa la fecha de la ley de creación.",
     "difficulty": 2
   },
   {
@@ -850,6 +1258,10 @@
     "family": "biomes",
     "label": "Um único bioma",
     "description": "Todos os municípios da UF têm o mesmo bioma predominante. Conta se ao menos um município da UF tem esse bioma como predominante, segundo o IBGE (2024). Faixas pequenas de um bioma dentro de municípios onde outro predomina não contam.",
+    "labelEn": "Only one biome",
+    "descriptionEn": "Every municipality in the state shares the same predominant biome. Counts if at least one municipality in the state has this biome as predominant, per IBGE (2024). Small patches of a biome inside municipalities where another one predominates do not count.",
+    "labelEs": "Un único bioma",
+    "descriptionEs": "Todos los municipios de la UF tienen el mismo bioma predominante. Cuenta si al menos un municipio de la UF tiene este bioma como predominante, según el IBGE (2024). Las pequeñas franjas de un bioma dentro de municipios donde predomina otro no cuentan.",
     "source": {
       "name": "IBGE — Bioma predominante por município para fins estatísticos (2024)",
       "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/"

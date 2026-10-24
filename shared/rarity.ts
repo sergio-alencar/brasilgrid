@@ -6,21 +6,23 @@ export type RarityBand = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' |
 export interface BandInfo {
   band: RarityBand
   label: string
+  labelEn: string
+  labelEs: string
   emoji: string
   minPercent: number
 }
 
 // Faixas do Geogrid; revisar depois do lançamento (com 27 UFs os % tendem a ser maiores).
 export const BANDS: readonly BandInfo[] = [
-  { band: 'common', label: 'Comum', emoji: '🟩', minPercent: 25 },
-  { band: 'uncommon', label: 'Incomum', emoji: '🔷', minPercent: 10 },
-  { band: 'rare', label: 'Raro', emoji: '⚡', minPercent: 5 },
-  { band: 'epic', label: 'Épico', emoji: '🌈', minPercent: 2 },
-  { band: 'legendary', label: 'Lendário', emoji: '💎', minPercent: 0.5 },
-  { band: 'mythic', label: 'Mítico', emoji: '🦄', minPercent: 0 },
+  { band: 'common', label: 'Comum', labelEn: 'Common', labelEs: 'Común', emoji: '🟩', minPercent: 25 },
+  { band: 'uncommon', label: 'Incomum', labelEn: 'Uncommon', labelEs: 'Poco común', emoji: '🔷', minPercent: 10 },
+  { band: 'rare', label: 'Raro', labelEn: 'Rare', labelEs: 'Raro', emoji: '⚡', minPercent: 5 },
+  { band: 'epic', label: 'Épico', labelEn: 'Epic', labelEs: 'Épico', emoji: '🌈', minPercent: 2 },
+  { band: 'legendary', label: 'Lendário', labelEn: 'Legendary', labelEs: 'Legendario', emoji: '💎', minPercent: 0.5 },
+  { band: 'mythic', label: 'Mítico', labelEn: 'Mythic', labelEs: 'Mítico', emoji: '🦄', minPercent: 0 },
 ]
 
-export const EMPTY_BAND: BandInfo = { band: 'empty', label: 'Vazio', emoji: '⬛', minPercent: 0 }
+export const EMPTY_BAND: BandInfo = { band: 'empty', label: 'Vazio', labelEn: 'Empty', labelEs: 'Vacío', emoji: '⬛', minPercent: 0 }
 
 /** % de jogadores que usaram essa UF nessa célula; null = célula vazia. */
 export function pickPercent(picks: number, players: number): number {

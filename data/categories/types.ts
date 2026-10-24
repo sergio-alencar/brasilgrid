@@ -35,11 +35,23 @@ export interface CategoryDef {
   label: string
   /** Regra exata, exibida no botão (i). */
   description: string
+  /** Mesma coisa que label, em inglês (≤ 32 caracteres). Nomes próprios de UF/cidade não se traduzem. */
+  labelEn: string
+  /** Mesma coisa que description, em inglês. */
+  descriptionEn: string
+  /** Mesma coisa que label, em espanhol (≤ 32 caracteres). Nomes próprios de UF/cidade não se traduzem. */
+  labelEs: string
+  /** Mesma coisa que description, em espanhol. */
+  descriptionEs: string
   /** Gabarito escrito à mão. */
   members: UfCode[]
   source: Source
   /** Casos de borda e decisões tomadas. */
   notes?: string
+  /** Mesma coisa que notes, em inglês. Obrigatório sempre que notes existir e não for "". */
+  notesEn?: string
+  /** Mesma coisa que notes, em espanhol. Obrigatório sempre que notes existir e não for "". */
+  notesEs?: string
   difficulty: 1 | 2 | 3
   /** Cálculo independente a partir de data/ufs.json; precisa bater com members. */
   derive?: (uf: UfRecord) => boolean

@@ -1,0 +1,43 @@
+import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { MAX_GUESSES } from '../../shared/rarity.ts'
+import { useLocale } from '../lib/locale.tsx'
+
+export function IntroModal({ onClose }: { onClose: () => void }) {
+  const { t } = useLocale()
+  const dialog = useRef<HTMLDialogElement>(null)
+  const [intro, ...rules] = t.intro.body(MAX_GUESSES)
+
+  useEffect(() => dialog.current?.showModal(), [])
+
+  return (
+    <dialog
+      ref={dialog}
+      onClose={onClose}
+      onClick={(e) => e.target === dialog.current && dialog.current?.close()}
+      className="m-auto w-[min(28rem,calc(100%-2rem))] rounded-2xl bg-brand-green p-5 text-white shadow-xl backdrop:bg-black/60"
+    >
+      <h2 className="text-xl font-bold">
+        {t.intro.welcome} Brasil<span className="text-brand-yellow">Grid</span>!
+      </h2>
+      <p className="mt-2 text-sm text-white/80">{intro}</p>
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/90">
+        {rules.map((rule) => (
+          <li key={rule}>{rule}</li>
+        ))}
+      </ul>
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <Link to="/como-jogar" className="text-sm text-white/80 underline hover:text-white">
+          {t.intro.fullRules}
+        </Link>
+        <button
+          type="button"
+          onClick={() => dialog.current?.close()}
+          className="cursor-pointer rounded-lg bg-brand-yellow px-4 py-2 text-sm font-semibold text-brand-green hover:brightness-95"
+        >
+          {t.intro.gotIt}
+        </button>
+      </div>
+    </dialog>
+  )
+}

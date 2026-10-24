@@ -1,12 +1,17 @@
 // Contratos da API, usados pelo Worker e pela SPA.
 
 export type GameStatus = 'in_progress' | 'completed' | 'out_of_guesses' | 'gave_up'
-export type GameMode = 'normal' | 'practice'
+export type GameMode = 'normal' | 'practice' | 'archive'
+export type Locale = 'pt' | 'en' | 'es'
 
 export interface CategoryInfo {
   categoryId: string
   label: string
   description: string
+  labelEn: string
+  descriptionEn: string
+  labelEs: string
+  descriptionEs: string
   sourceName: string
   sourceUrl: string
 }
@@ -98,6 +103,20 @@ export interface StatsResponse {
 export interface MeResponse {
   user: { id: string; name: string; email: string | null; image: string | null; isAnonymous: boolean }
   profile: { nickname: string | null; showInRanking: boolean }
+}
+
+export interface ArchiveEntry {
+  puzzleId: number
+  playDate: string
+  rows: string[]
+  cols: string[]
+  myStatus: GameStatus | null
+  myCorrectCount: number | null
+}
+
+export interface ArchiveResponse {
+  items: ArchiveEntry[]
+  hasMore: boolean
 }
 
 /** Resultado público de uma partida: só números e faixas, nunca UFs. */

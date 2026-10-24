@@ -1,7 +1,9 @@
 import type {
+  ArchiveResponse,
   GameMode,
   GameState,
   GuessResponse,
+  Locale,
   MeResponse,
   SharedResult,
   ResultsResponse,
@@ -38,6 +40,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const api = {
   today: (mode: GameMode = 'normal') => request<TodayResponse>(`/api/puzzle/today?mode=${mode}`),
+  archive: (page = 0, locale: Locale = 'pt') => request<ArchiveResponse>(`/api/archive?page=${page}&locale=${locale}`),
+  puzzle: (puzzleId: number) => request<TodayResponse>(`/api/puzzle/${puzzleId}`),
   guess: (puzzleId: number, cell: number, uf: string, mode: GameMode = 'normal') =>
     request<GuessResponse>('/api/game/guess', { method: 'POST', body: JSON.stringify({ puzzleId, cell, uf, mode }) }),
   giveUp: (puzzleId: number, mode: GameMode = 'normal') =>
@@ -45,7 +49,7 @@ export const api = {
   results: (puzzleId: number, mode: GameMode = 'normal') =>
     request<ResultsResponse>(`/api/game/${puzzleId}/results?mode=${mode}`),
   me: () => request<MeResponse>('/api/me'),
-  shared: (shareId: string) => request<SharedResult>(`/api/share/${encodeURIComponent(shareId)}`),
+  shared: (shareId: string, locale: Locale = 'pt') => request<SharedResult>(`/api/share/${encodeURIComponent(shareId)}?locale=${locale}`),
   stats: () => request<StatsResponse>('/api/me/stats'),
   updateProfile: (data: { nickname?: string | null; showInRanking?: boolean }) =>
     request<{ ok: true }>('/api/me/profile', { method: 'PATCH', body: JSON.stringify(data) }),

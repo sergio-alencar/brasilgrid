@@ -1,31 +1,39 @@
 import { useEffect, useRef, useState } from 'react'
 import catalogData from '../../data/categories-catalog.json'
+import { useLocale } from '../lib/locale.tsx'
 
 interface CategoryEntry {
   id: string
   family: string
   label: string
   description: string
+  labelEn: string
+  descriptionEn: string
+  labelEs: string
+  descriptionEs: string
   source: { name: string; url: string }
   notes?: string
+  notesEn?: string
+  notesEs?: string
 }
 
 const catalog = catalogData as CategoryEntry[]
 
-// Ordem e nome de exibição de cada família, igual ao catálogo do plano.
-const FAMILIES: [string, string][] = [
-  ['regions', 'Regiões'],
-  ['politics', 'Geopolítica'],
-  ['coast', 'Litoral e posição'],
-  ['hydrography', 'Hidrografia'],
-  ['biomes', 'Biomas'],
-  ['borders', 'Fronteiras e divisas'],
-  ['capitals', 'Capitais'],
-  ['names', 'Nome e sigla'],
-  ['demography', 'Demografia e economia'],
-  ['history', 'História'],
-  ['sports', 'Esportes'],
-  ['culture', 'Cultura'],
+// Ordem de exibição de cada família (o nome vem de t.atlas.families).
+const FAMILY_ORDER = [
+  'regions',
+  'politics',
+  'coast',
+  'hydrography',
+  'biomes',
+  'geology',
+  'borders',
+  'capitals',
+  'names',
+  'demography',
+  'history',
+  'sports',
+  'culture',
 ]
 
 interface Props {
@@ -34,9 +42,13 @@ interface Props {
 }
 
 export function CategoriesAtlas({ initialCategoryId, onClose }: Props) {
+  const { t, locale } = useLocale()
   const [selected, setSelected] = useState(initialCategoryId ?? catalog[0]?.id)
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set())
   const dialog = useRef<HTMLDialogElement>(null)
+  const catLabel = (c: CategoryEntry) => (locale === 'en' ? c.labelEn : locale === 'es' ? c.labelEs : c.label)
+  const catDescription = (c: CategoryEntry) => (locale === 'en' ? c.descriptionEn : locale === 'es' ? c.descriptionEs : c.description)
+  const catNotes = (c: CategoryEntry) => (locale === 'en' ? c.notesEn : locale === 'es' ? c.notesEs : c.notes)
 
   useEffect(() => {
     dialog.current?.showModal()
@@ -66,19 +78,20 @@ export function CategoriesAtlas({ initialCategoryId, onClose }: Props) {
     >
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-white/20 p-4">
-          <h2 className="text-lg font-bold">Atlas de categorias</h2>
+          <h2 className="text-lg font-bold">{t.atlas.title}</h2>
           <button
             type="button"
             onClick={() => dialog.current?.close()}
-            aria-label="Fechar"
+            aria-label={t.atlas.close}
             className="rounded-full p-1 text-white/70 hover:bg-white/15 hover:text-white"
           >
             ✕
           </button>
         </div>
         <div className="flex min-h-0 flex-1">
-          <nav aria-label="Categorias" className="w-1/3 min-w-[9rem] overflow-y-auto border-r border-white/20 p-2 sm:w-2/5">
-            {FAMILIES.map(([family, familyLabel]) => {
+          <nav aria-label={t.atlas.categoriesAria} className="w-1/3 min-w-[9rem] overflow-y-auto border-r border-white/20 p-2 sm:w-2/5">
+            {FAMILY_ORDER.map((family) => {
+              const familyLabel = t.atlas.families[family]
               const items = catalog.filter((c) => c.family === family)
               if (items.length === 0) return null
               const isCollapsed = collapsed.has(family)
@@ -107,7 +120,7 @@ export function CategoriesAtlas({ initialCategoryId, onClose }: Props) {
                           c.id === selected ? 'bg-white font-semibold text-brand-green' : 'text-white/90 hover:bg-white/10'
                         }`}
                       >
-                        {c.label}
+                        {catLabel(c)}
                       </button>
                     ))}
                 </div>
@@ -117,12 +130,12 @@ export function CategoriesAtlas({ initialCategoryId, onClose }: Props) {
           <div className="flex-1 overflow-y-auto p-5">
             {current && (
               <>
-                <h3 className="text-xl font-bold">{current.label}</h3>
+                <h3 className="text-xl font-bold">{catLabel(current)}</h3>
                 <hr className="mt-2 mb-3 border-white/20" />
-                <p>{current.description}</p>
-                {current.notes && <p className="mt-3 text-sm text-white/70 italic">{current.notes}</p>}
+                <p>{catDescription(current)}</p>
+                {catNotes(current) && <p className="mt-3 text-sm text-white/70 italic">{catNotes(current)}</p>}
                 <p className="mt-4 text-sm text-white/70">
-                  Fonte:{' '}
+                  {t.atlas.source}{' '}
                   <a href={current.source.url} target="_blank" rel="noreferrer" className="underline hover:text-white">
                     {current.source.name}
                   </a>

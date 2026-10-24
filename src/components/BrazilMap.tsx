@@ -13,18 +13,12 @@ export default function BrazilMap({ valid, mine, title }: Props) {
   const names = valid.map((c) => getUf(c)?.name).join(', ')
   return (
     <svg viewBox={MAP_VIEWBOX} role="img" aria-label={`${title}: ${names}`} className="h-auto w-full max-w-xs">
-      <g transform={MAP_TRANSFORM} strokeWidth={900} stroke="currentColor" className="text-white dark:text-slate-950">
+      <g transform={MAP_TRANSFORM} strokeWidth={900} stroke="currentColor" className="text-white">
         {Object.entries(MAP_PATHS).map(([code, d]) => (
           <path
             key={code}
             d={d}
-            className={
-              code === mine
-                ? 'fill-brand-green'
-                : valid.includes(code)
-                  ? 'fill-emerald-300 dark:fill-emerald-700'
-                  : 'fill-slate-200 dark:fill-slate-800'
-            }
+            className={code === mine ? 'fill-brand-green' : valid.includes(code) ? 'fill-emerald-300' : 'fill-slate-200'}
           >
             <title>{getUf(code)?.name}</title>
           </path>

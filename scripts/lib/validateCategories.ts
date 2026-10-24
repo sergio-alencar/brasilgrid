@@ -22,6 +22,12 @@ export function validateCategories(categories: CategoryDef[], ufs: UfRecord[]): 
 
     if (cat.label.length > MAX_LABEL) errors.push(`${at} rótulo com ${cat.label.length} caracteres (máx. ${MAX_LABEL})`)
     if (!cat.description.trim()) errors.push(`${at} sem descrição`)
+    if (cat.labelEn.length > MAX_LABEL) errors.push(`${at} labelEn com ${cat.labelEn.length} caracteres (máx. ${MAX_LABEL})`)
+    if (!cat.descriptionEn.trim()) errors.push(`${at} sem descriptionEn`)
+    if (cat.notes && cat.notes.trim() && !cat.notesEn?.trim()) errors.push(`${at} tem notes mas falta notesEn`)
+    if (cat.labelEs.length > MAX_LABEL) errors.push(`${at} labelEs com ${cat.labelEs.length} caracteres (máx. ${MAX_LABEL})`)
+    if (!cat.descriptionEs.trim()) errors.push(`${at} sem descriptionEs`)
+    if (cat.notes && cat.notes.trim() && !cat.notesEs?.trim()) errors.push(`${at} tem notes mas falta notesEs`)
     if (!cat.source.url.startsWith('https://')) errors.push(`${at} fonte sem URL https`)
 
     const members = new Set<string>(cat.members)

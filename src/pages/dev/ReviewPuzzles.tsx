@@ -40,7 +40,7 @@ export default function ReviewPuzzles() {
       <div className="flex flex-wrap items-end gap-3 text-sm">
         <label>
           Lote
-          <select value={file} onChange={(e) => (setFile(e.target.value), setRejected(new Set()))} className="ml-2 rounded border px-2 py-1 dark:bg-slate-900">
+          <select value={file} onChange={(e) => (setFile(e.target.value), setRejected(new Set()))} className="ml-2 rounded border px-2 py-1">
             {files.map((f) => (
               <option key={f} value={f}>
                 {f.replace('../../../puzzles/', '')}
@@ -50,7 +50,7 @@ export default function ReviewPuzzles() {
         </label>
         <label>
           Lançamento
-          <input type="date" value={launch} onChange={(e) => setLaunch(e.target.value)} className="ml-2 rounded border px-2 py-1 dark:bg-slate-900" />
+          <input type="date" value={launch} onChange={(e) => setLaunch(e.target.value)} className="ml-2 rounded border px-2 py-1" />
         </label>
       </div>
       <p className="text-sm text-slate-500">
@@ -62,20 +62,20 @@ export default function ReviewPuzzles() {
             1. Rode o comando abaixo para <strong>gerar substitutas</strong> só para as datas rejeitadas (elas nunca
             saem iguais às que estão marcadas):
           </p>
-          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs dark:bg-slate-800">{regenerateCommand}</pre>
+          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs">{regenerateCommand}</pre>
           <p className="text-sm">2. Recarregue esta página, revise as novas e desmarque-as antes de publicar.</p>
         </div>
       ) : (
         <div className="space-y-1">
           <p className="text-sm">Nenhuma grade rejeitada. Comando para publicar o lote inteiro:</p>
-          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs dark:bg-slate-800">{publishCommand}</pre>
+          <pre className="overflow-x-auto rounded bg-slate-100 p-3 text-xs">{publishCommand}</pre>
         </div>
       )}
 
       {batch.puzzles.map((p) => {
         const out = rejected.has(p.playDate)
         return (
-          <article key={p.playDate} className={`rounded-xl border p-3 dark:border-slate-700 ${out ? 'opacity-40' : ''}`}>
+          <article key={p.playDate} className={`rounded-xl border p-3 ${out ? 'opacity-40' : ''}`}>
             <header className="mb-2 flex items-center justify-between text-sm">
               <strong>{new Date(`${p.playDate}T12:00:00`).toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit' })}</strong>
               <span className="text-xs text-slate-500">
@@ -98,7 +98,7 @@ export default function ReviewPuzzles() {
               </thead>
               <tbody>
                 {p.rows.map((rid, r) => (
-                  <tr key={rid} className="border-t dark:border-slate-700">
+                  <tr key={rid} className="border-t">
                     <th className="p-1 text-left align-top" title={byId.get(rid)?.description}>
                       {byId.get(rid)?.label}
                     </th>

@@ -1,8 +1,21 @@
-import type { CategoryInfo, FilledCell } from '../../shared/api.ts'
-import { bandFor } from '../../shared/rarity.ts'
+import type { CategoryInfo, FilledCell, Locale } from '../../shared/api.ts'
+import { bandFor, type RarityBand } from '../../shared/rarity.ts'
 import { getUf } from '../../shared/ufs.ts'
+import { useLocale } from '../lib/locale.tsx'
 import { formatPercent } from '../lib/format.ts'
 import { CategoryHeader } from './CategoryHeader.tsx'
+
+// Cor do selo de %, por faixa de raridade — mesmo espírito do Geogrid
+// (comum = verde comum até mítico = cor mais chamativa).
+const BAND_COLOR: Record<RarityBand, string> = {
+  common: '#16a34a',
+  uncommon: '#2563eb',
+  rare: '#d97706',
+  epic: '#c026d3',
+  legendary: '#0891b2',
+  mythic: '#e11d48',
+  empty: '#64748b',
+}
 
 interface Props {
   puzzleId: number
@@ -11,21 +24,22 @@ interface Props {
   filled: FilledCell[]
   disabled: boolean
   shakeCell: number | null
+  locale: Locale
   onSelect: (cell: number) => void
   onOpenAtlas: (categoryId: string) => void
 }
 
-export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect, onOpenAtlas }: Props) {
+export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, locale, onSelect, onOpenAtlas }: Props) {
   return (
-    <div className="grid h-full grid-cols-4 grid-rows-4 gap-1.5 sm:gap-2">
+    <div className="grid h-full grid-cols-4 grid-rows-4 gap-1 sm:gap-1.5">
       <div className="flex aspect-square h-full w-full items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
         <span className="text-lg sm:text-2xl">#{puzzleId}</span>
       </div>
       {cols.map((c, i) => (
-        <CategoryHeader key={`c${i}`} category={c} onOpenAtlas={onOpenAtlas} />
+        <CategoryHeader key={`c${i}`} category={c} locale={locale} onOpenAtlas={onOpenAtlas} />
       ))}
       {rows.map((r, row) => (
-        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} onSelect={onSelect} onOpenAtlas={onOpenAtlas} />
+        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} locale={locale} onSelect={onSelect} onOpenAtlas={onOpenAtlas} />
       ))}
     </div>
   )
@@ -37,12 +51,14 @@ function Row({
   filled,
   disabled,
   shakeCell,
+  locale,
   onSelect,
   onOpenAtlas,
 }: { row: number; category: CategoryInfo } & Omit<Props, 'puzzleId' | 'rows' | 'cols'>) {
+  const { t } = useLocale()
   return (
     <>
-      <CategoryHeader category={category} onOpenAtlas={onOpenAtlas} />
+      <CategoryHeader category={category} locale={locale} onOpenAtlas={onOpenAtlas} />
       {[0, 1, 2].map((col) => {
         const cell = row * 3 + col
         const hit = filled.find((f) => f.cell === cell)
@@ -54,34 +70,31 @@ function Row({
             type="button"
             disabled={disabled || !!hit}
             onClick={() => onSelect(cell)}
-            aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
+            aria-label={hit ? t.grid.filledCellAria(uf?.name ?? hit.uf, formatPercent(hit.percent)) : t.grid.cellAria(cell + 1)}
             className={[
-              // As células são sempre um "azulejo" claro, tingido de verde
-              // (nunca cinza-azulado) — texto escuro fixo, não herda o
-              // branco do box verde por trás.
-              'flex aspect-square h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-1 text-center text-emerald-950 transition dark:text-emerald-50',
-              hit
-                ? 'border-brand-green bg-emerald-100 animate-pop dark:bg-emerald-950'
-                : 'border-emerald-100/70 bg-white hover:border-brand-yellow hover:bg-emerald-50 disabled:hover:border-emerald-100/70 dark:border-emerald-900 dark:bg-emerald-950/40 dark:hover:bg-emerald-950/70',
-              shakeCell === cell ? 'animate-shake border-red-500' : '',
+              // Vazia: um "azulejo" liso, sem borda, da mesma família das
+              // outras caixas translúcidas da página. Preenchida: a bandeira
+              // ocupa a célula toda, com o % em selo no topo e o nome em
+              // legenda no rodapé — como no Geogrid.
+              'relative aspect-square h-full w-full overflow-hidden rounded-xl bg-white/5 text-center transition cursor-pointer disabled:cursor-not-allowed',
+              hit ? 'animate-pop' : 'flex items-center justify-center text-white hover:bg-white/20 disabled:hover:bg-white/5',
+              shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}
           >
-            {hit && uf && band ? (
+            {hit && uf && band && (
               <>
-                <img
-                  src={`/flags/${uf.code}.svg`}
-                  alt=""
-                  className="h-7 w-10 rounded-sm object-cover shadow-sm ring-1 ring-black/10 sm:h-10 sm:w-14"
-                />
-                <span className="mt-1 line-clamp-2 text-[10px] leading-tight font-semibold sm:text-xs">{uf.name}</span>
-                <span className="mt-1 text-[10px] sm:text-xs" title={band.label}>
+                <img src={`/flags/${uf.code}.svg`} alt="" className="absolute inset-0 h-full w-full object-contain p-2" />
+                <span
+                  className="absolute top-1 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[8px] leading-none font-bold whitespace-nowrap text-white shadow-sm sm:text-[11px]"
+                  style={{ backgroundColor: BAND_COLOR[band.band] }}
+                  title={locale === 'en' ? band.labelEn : locale === 'es' ? band.labelEs : band.label}
+                >
                   {band.emoji} {formatPercent(hit.percent)}
                 </span>
+                <span className="absolute bottom-1 left-1/2 max-w-[90%] -translate-x-1/2 truncate rounded-full bg-black/60 px-2 py-0.5 text-[9px] font-semibold text-white sm:text-[11px]">
+                  {uf.name}
+                </span>
               </>
-            ) : (
-              <span aria-hidden className="text-2xl text-emerald-200 dark:text-emerald-800">
-                +
-              </span>
             )}
           </button>
         )
