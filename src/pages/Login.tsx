@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { authClient, isInAppBrowser } from '../lib/authClient.ts'
+import { useLocale } from '../lib/locale.tsx'
 
 export function Login() {
+  const { t } = useLocale()
   const navigate = useNavigate()
   const { data: session } = authClient.useSession()
   const [email, setEmail] = useState('')
@@ -15,9 +17,9 @@ export function Login() {
   if (session && !session.user.isAnonymous) {
     return (
       <section className="content-panel space-y-2">
-        <h1 className="text-2xl font-bold">Você já entrou</h1>
+        <h1 className="text-2xl font-bold">{t.login.alreadyLoggedInTitle}</h1>
         <Link to="/perfil" className="underline">
-          Ver perfil
+          {t.login.viewProfile}
         </Link>
       </section>
     )
@@ -26,7 +28,7 @@ export function Login() {
   const google = async () => {
     setError(null)
     const { error } = await authClient.signIn.social({ provider: 'google', callbackURL: '/' })
-    if (error) setError('Não foi possível entrar com o Google.')
+    if (error) setError(t.login.googleFailed)
   }
 
   const sendCode = async (e: React.FormEvent) => {
@@ -35,7 +37,7 @@ export function Login() {
     setError(null)
     const { error } = await authClient.emailOtp.sendVerificationOtp({ email: email.trim(), type: 'sign-in' })
     setBusy(false)
-    if (error) setError('Não foi possível enviar o código. Confira o e-mail e tente de novo.')
+    if (error) setError(t.login.codeFailed)
     else setStep('code')
   }
 
@@ -45,25 +47,18 @@ export function Login() {
     setError(null)
     const { error } = await authClient.signIn.emailOtp({ email: email.trim(), otp: code.trim() })
     setBusy(false)
-    if (error) setError(error.code === 'TOO_MANY_ATTEMPTS' ? 'Tentativas demais. Peça um novo código.' : 'Código inválido ou expirado.')
+    if (error) setError(error.code === 'TOO_MANY_ATTEMPTS' ? t.login.tooManyAttempts : t.login.invalidCode)
     else navigate('/')
   }
 
   return (
     <section className="content-panel mx-auto max-w-sm space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Entrar</h1>
-        <p className="mt-1 text-sm text-slate-500">
-          Com uma conta, seu histórico e sua sequência de dias ficam guardados. A partida de hoje vem junto.
-        </p>
+        <h1 className="text-2xl font-bold">{t.login.title}</h1>
+        <p className="mt-1 text-sm text-slate-500">{t.login.subtitle}</p>
       </div>
 
-      {inApp && (
-        <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
-          Você está no navegador de um app, onde o login com Google não funciona. Use o código por e-mail ou abra esta
-          página no seu navegador.
-        </p>
-      )}
+      {inApp && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{t.login.inAppBrowserWarning}</p>}
 
       <button
         type="button"
@@ -77,19 +72,19 @@ export function Login() {
           <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
           <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
         </svg>
-        Entrar com Google
+        {t.login.continueWithGoogle}
       </button>
 
       <div className="flex items-center gap-3 text-xs text-slate-400">
         <span className="h-px flex-1 bg-slate-200" />
-        ou
+        {t.login.or}
         <span className="h-px flex-1 bg-slate-200" />
       </div>
 
       {step === 'email' ? (
         <form onSubmit={sendCode} className="space-y-3">
           <label className="block text-sm font-medium">
-            E-mail
+            {t.login.email}
             <input
               type="email"
               required
@@ -100,16 +95,14 @@ export function Login() {
             />
           </label>
           <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
-            {busy ? 'Enviando…' : 'Receber código por e-mail'}
+            {busy ? t.login.sendingCode : t.login.receiveCode}
           </button>
         </form>
       ) : (
         <form onSubmit={verify} className="space-y-3">
-          <p className="text-sm">
-            Enviamos um código de 6 dígitos para <strong>{email}</strong>.
-          </p>
+          <p className="text-sm">{t.login.codeSentTo(email)}</p>
           <label className="block text-sm font-medium">
-            Código
+            {t.login.code}
             <input
               inputMode="numeric"
               autoComplete="one-time-code"
@@ -122,10 +115,10 @@ export function Login() {
             />
           </label>
           <button disabled={busy} className="w-full rounded-lg bg-brand-green px-4 py-2.5 font-semibold text-white disabled:opacity-50">
-            {busy ? 'Entrando…' : 'Entrar'}
+            {busy ? t.login.enteringCode : t.login.enter}
           </button>
           <button type="button" onClick={() => setStep('email')} className="w-full text-sm text-slate-500 underline">
-            Usar outro e-mail ou reenviar
+            {t.login.useAnotherEmail}
           </button>
         </form>
       )}
@@ -136,15 +129,14 @@ export function Login() {
         </p>
       )}
       <p className="text-xs text-slate-500">
-        Ao entrar, você concorda com os{' '}
-        <Link to="/termos" className="underline">
-          Termos de uso
-        </Link>{' '}
-        e a{' '}
-        <Link to="/privacidade" className="underline">
-          Política de privacidade
-        </Link>
-        .
+        {t.login.termsAgreement(
+          <Link to="/termos" className="underline">
+            {t.login.termsOfUse}
+          </Link>,
+          <Link to="/privacidade" className="underline">
+            {t.login.privacyPolicy}
+          </Link>,
+        )}
       </p>
     </section>
   )

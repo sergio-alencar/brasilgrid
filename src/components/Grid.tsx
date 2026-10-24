@@ -1,6 +1,7 @@
-import type { CategoryInfo, FilledCell } from '../../shared/api.ts'
+import type { CategoryInfo, FilledCell, Locale } from '../../shared/api.ts'
 import { bandFor, type RarityBand } from '../../shared/rarity.ts'
 import { getUf } from '../../shared/ufs.ts'
+import { useLocale } from '../lib/locale.tsx'
 import { formatPercent } from '../lib/format.ts'
 import { CategoryHeader } from './CategoryHeader.tsx'
 
@@ -23,21 +24,22 @@ interface Props {
   filled: FilledCell[]
   disabled: boolean
   shakeCell: number | null
+  locale: Locale
   onSelect: (cell: number) => void
   onOpenAtlas: (categoryId: string) => void
 }
 
-export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, onSelect, onOpenAtlas }: Props) {
+export function Grid({ puzzleId, rows, cols, filled, disabled, shakeCell, locale, onSelect, onOpenAtlas }: Props) {
   return (
     <div className="grid h-full grid-cols-4 grid-rows-4 gap-1 sm:gap-1.5">
       <div className="flex aspect-square h-full w-full items-center justify-center rounded-xl bg-brand-yellow p-1 text-center font-black text-brand-green">
         <span className="text-lg sm:text-2xl">#{puzzleId}</span>
       </div>
       {cols.map((c, i) => (
-        <CategoryHeader key={`c${i}`} category={c} onOpenAtlas={onOpenAtlas} />
+        <CategoryHeader key={`c${i}`} category={c} locale={locale} onOpenAtlas={onOpenAtlas} />
       ))}
       {rows.map((r, row) => (
-        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} onSelect={onSelect} onOpenAtlas={onOpenAtlas} />
+        <Row key={`r${row}`} row={row} category={r} filled={filled} disabled={disabled} shakeCell={shakeCell} locale={locale} onSelect={onSelect} onOpenAtlas={onOpenAtlas} />
       ))}
     </div>
   )
@@ -49,12 +51,14 @@ function Row({
   filled,
   disabled,
   shakeCell,
+  locale,
   onSelect,
   onOpenAtlas,
 }: { row: number; category: CategoryInfo } & Omit<Props, 'puzzleId' | 'rows' | 'cols'>) {
+  const { t } = useLocale()
   return (
     <>
-      <CategoryHeader category={category} onOpenAtlas={onOpenAtlas} />
+      <CategoryHeader category={category} locale={locale} onOpenAtlas={onOpenAtlas} />
       {[0, 1, 2].map((col) => {
         const cell = row * 3 + col
         const hit = filled.find((f) => f.cell === cell)
@@ -66,14 +70,14 @@ function Row({
             type="button"
             disabled={disabled || !!hit}
             onClick={() => onSelect(cell)}
-            aria-label={hit ? `${uf?.name}, ${formatPercent(hit.percent)}` : `Célula ${cell + 1}: escolher UF`}
+            aria-label={hit ? t.grid.filledCellAria(uf?.name ?? hit.uf, formatPercent(hit.percent)) : t.grid.cellAria(cell + 1)}
             className={[
               // Vazia: um "azulejo" liso, sem borda, da mesma família das
               // outras caixas translúcidas da página. Preenchida: a bandeira
               // ocupa a célula toda, com o % em selo no topo e o nome em
               // legenda no rodapé — como no Geogrid.
-              'relative aspect-square h-full w-full overflow-hidden rounded-xl bg-white/10 text-center transition cursor-pointer disabled:cursor-not-allowed',
-              hit ? 'animate-pop' : 'flex items-center justify-center text-white hover:bg-white/15 disabled:hover:bg-white/10',
+              'relative aspect-square h-full w-full overflow-hidden rounded-xl bg-white/5 text-center transition cursor-pointer disabled:cursor-not-allowed',
+              hit ? 'animate-pop' : 'flex items-center justify-center text-white hover:bg-white/20 disabled:hover:bg-white/5',
               shakeCell === cell ? 'animate-shake bg-red-500/25' : '',
             ].join(' ')}
           >
@@ -83,7 +87,7 @@ function Row({
                 <span
                   className="absolute top-1 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[8px] leading-none font-bold whitespace-nowrap text-white shadow-sm sm:text-[11px]"
                   style={{ backgroundColor: BAND_COLOR[band.band] }}
-                  title={band.label}
+                  title={locale === 'en' ? band.labelEn : locale === 'es' ? band.labelEs : band.label}
                 >
                   {band.emoji} {formatPercent(hit.percent)}
                 </span>

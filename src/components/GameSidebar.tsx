@@ -1,4 +1,5 @@
 import type { GameMode } from "../../shared/api.ts";
+import { useLocale } from "../lib/locale.tsx";
 
 interface Props {
   guessesLeft: number | null;
@@ -21,10 +22,11 @@ export function GameSidebar({
   onGiveUp,
   onModeChange,
 }: Props) {
+  const { t } = useLocale();
   const infinite = mode === "practice";
   return (
     <aside
-      aria-label="Painel do jogo"
+      aria-label={t.sidebar.panelAria}
       className="flex flex-col gap-2 overflow-y-auto md:min-h-0 md:w-56 md:flex-shrink-0 md:gap-3"
     >
       <div
@@ -34,8 +36,8 @@ export function GameSidebar({
           className="rounded-xl bg-white/10 p-2 text-center md:p-3"
           aria-label={
             guessesLeft === null
-              ? "palpites ilimitados"
-              : `${guessesLeft} de ${maxGuesses} palpites restantes`
+              ? t.sidebar.unlimitedGuessesAria
+              : t.sidebar.guessesLeftAria(guessesLeft, maxGuesses)
           }
         >
           <p className="text-3xl font-black">
@@ -48,21 +50,23 @@ export function GameSidebar({
               </>
             )}
           </p>
-          <p className="text-xs text-white/70">palpites</p>
+          <p className="text-xs text-white/70">{t.sidebar.guesses}</p>
         </div>
-        <div className="rounded-xl bg-white/10 p-2 text-center md:p-3" aria-label="pontuação">
+        <div className="rounded-xl bg-white/10 p-2 text-center md:p-3" aria-label={t.sidebar.scoreAria}>
           <p className="text-3xl font-black">{rarity ?? "-"}</p>
-          <p className="text-xs text-white/70">pontuação {rarity !== null && "(parcial)"}</p>
+          <p className="text-xs text-white/70">
+            {t.sidebar.score} {rarity !== null && t.sidebar.scorePartial}
+          </p>
         </div>
 
         {onModeChange && (
           <div className="flex flex-col items-center justify-center gap-1.5 rounded-xl bg-white/10 p-2 text-center md:p-3">
             <div className="group relative flex items-center gap-1">
-              <p className="text-xs text-white/70">Infinito</p>
+              <p className="text-xs text-white/70">{t.sidebar.infinite}</p>
               <button
                 type="button"
                 tabIndex={0}
-                aria-label="O que é o modo infinito? Sem limite de palpites; não conta nas estatísticas."
+                aria-label={t.sidebar.infiniteTooltipAria}
                 className="flex h-3.5 w-3.5 cursor-help items-center justify-center rounded-full border border-white/50 text-[9px] leading-none font-bold text-white/80 hover:border-white hover:text-white"
               >
                 i
@@ -71,7 +75,7 @@ export function GameSidebar({
                 role="tooltip"
                 className="pointer-events-none absolute bottom-full right-0 z-10 mb-1.5 w-40 max-w-[calc(100vw-2rem)] rounded-lg bg-slate-900 p-2 text-xs text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100"
               >
-                Sem limite de palpites; não conta nas estatísticas.
+                {t.sidebar.infiniteTooltip}
               </div>
             </div>
             <button
@@ -80,7 +84,7 @@ export function GameSidebar({
               disabled={busy}
               role="switch"
               aria-checked={infinite}
-              aria-label="Modo infinito"
+              aria-label={t.sidebar.infiniteSwitchAria}
               className={`relative h-6 w-11 shrink-0 cursor-pointer rounded-full transition disabled:cursor-not-allowed disabled:opacity-50 ${infinite ? "bg-brand-yellow" : "bg-white/20"}`}
             >
               <span
@@ -98,7 +102,7 @@ export function GameSidebar({
           disabled={busy}
           className="cursor-pointer rounded-xl bg-white/10 p-2 text-sm font-semibold hover:bg-white/15 disabled:opacity-50 md:p-3"
         >
-          {infinite ? "Encerrar treino" : "Desistir e revelar"}
+          {infinite ? t.sidebar.endPractice : t.sidebar.giveUp}
         </button>
       )}
     </aside>

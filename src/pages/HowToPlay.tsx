@@ -1,27 +1,24 @@
 import { BANDS, MAX_GUESSES } from '../../shared/rarity.ts'
+import { useLocale } from '../lib/locale.tsx'
 
 export function HowToPlay() {
+  const { t, locale } = useLocale()
   return (
     <article className="space-y-4">
-      <h1 className="text-2xl font-bold">Como jogar</h1>
-      <p>
-        Preencha a grade 3×3 com estados brasileiros (ou o Distrito Federal). Cada célula pede uma UF que atenda à
-        categoria da linha <strong>e</strong> à da coluna.
-      </p>
+      <h1 className="text-2xl font-bold">{t.howToPlay.title}</h1>
+      <p>{t.howToPlay.intro}</p>
       <ul className="list-disc space-y-1 pl-5">
-        <li>Você tem {MAX_GUESSES} palpites; cada erro gasta um.</li>
-        <li>Cada UF só pode ser usada uma vez por grade.</li>
-        <li>Uma grade nova aparece todo dia à meia-noite (horário de Brasília).</li>
+        {t.howToPlay.rules(MAX_GUESSES).map((rule) => (
+          <li key={rule}>{rule}</li>
+        ))}
       </ul>
-      <h2 className="text-lg font-semibold">Raridade</h2>
-      <p>
-        Cada acerto vale o percentual de jogadores que escolheram a mesma UF naquela célula; célula vazia vale 100.
-        Some tudo: quanto <strong>menor</strong> a raridade, melhor.
-      </p>
+      <h2 className="text-lg font-semibold">{t.howToPlay.rarityTitle}</h2>
+      <p>{t.howToPlay.rarityBody}</p>
       <ul className="grid grid-cols-2 gap-1 text-sm">
         {BANDS.map((b) => (
           <li key={b.band}>
-            {b.emoji} {b.label} {b.minPercent > 0 ? `(≥ ${b.minPercent.toLocaleString('pt-BR')}%)` : '(< 0,5%)'}
+            {b.emoji} {locale === 'en' ? b.labelEn : locale === 'es' ? b.labelEs : b.label}{' '}
+            {b.minPercent > 0 ? `(≥ ${b.minPercent.toLocaleString(locale === 'en' ? 'en-US' : locale === 'es' ? 'es-419' : 'pt-BR')}%)` : `(${t.howToPlay.under})`}
           </li>
         ))}
       </ul>

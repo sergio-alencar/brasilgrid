@@ -43,12 +43,12 @@ body {
    fica no verde mais claro) — cheia no celular; a partir de telas maiores,
    flutua com espaço em volta. */
 .page-box {
-  @apply p-4 text-white shadow-inner;
+  @apply p-4 text-white;
   background: var(--color-brand-green-bg);
 }
 @media (min-width: 640px) {
   .page-box {
-    @apply mx-auto my-6 rounded-3xl p-6 shadow-xl;
+    @apply mx-auto my-6 rounded-3xl p-6;
   }
 }
 /* Páginas de texto e formulário ficam numa largura confortável de leitura;
@@ -108,6 +108,28 @@ body {
   outline-offset: 2px;
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Spinner: o contorno do Brasil se "desenha" em loop, como um lápis. */
+.brazil-spinner__path {
+  stroke-dashoffset: 1;
+  animation: draw-brazil 2.8s ease-in-out infinite;
+}
+
+@keyframes draw-brazil {
+  0%   { stroke-dashoffset: 1; opacity: 0.4; }
+  15%  { opacity: 1; }
+  80%  { stroke-dashoffset: 0; opacity: 1; }
+  92%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brazil-spinner__path {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
 }
 
 @theme {

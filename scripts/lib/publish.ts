@@ -41,9 +41,23 @@ export async function publishPuzzles(
           if (!cat) throw new Error(`Categoria desconhecida: ${categoryId}`)
           await client.query(
             `insert into puzzle_category
-               (puzzle_id, axis, position, category_id, label, description, source_name, source_url, members)
-             values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-            [id, axis, position, cat.id, cat.label, cat.description, cat.source.name, cat.source.url, cat.members],
+               (puzzle_id, axis, position, category_id, label, description, label_en, description_en, label_es, description_es, source_name, source_url, members)
+             values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+            [
+              id,
+              axis,
+              position,
+              cat.id,
+              cat.label,
+              cat.description,
+              cat.labelEn,
+              cat.descriptionEn,
+              cat.labelEs,
+              cat.descriptionEs,
+              cat.source.name,
+              cat.source.url,
+              cat.members,
+            ],
           )
         }
       }

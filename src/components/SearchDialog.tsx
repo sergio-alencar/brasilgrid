@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { MIN_QUERY_LENGTH, normalizeSearch, searchUfs } from '../../shared/search.ts'
+import { useLocale } from '../lib/locale.tsx'
 
 interface Props {
   rowLabel: string
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, onClose }: Props) {
+  const { t } = useLocale()
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
   const dialog = useRef<HTMLDialogElement>(null)
@@ -39,11 +41,11 @@ export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, o
     >
       <div className="p-4">
         <div className="flex items-start justify-between gap-2">
-          <p className="text-sm text-slate-500">Encontre uma UF que atenda a:</p>
+          <p className="text-sm text-slate-500">{t.search.prompt}</p>
           <button
             type="button"
             onClick={() => dialog.current?.close()}
-            aria-label="Fechar"
+            aria-label={t.search.close}
             className="-mt-1 -mr-1 rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-900"
           >
             ✕
@@ -73,17 +75,15 @@ export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, o
             if (e.key === 'ArrowUp') setActive((a) => Math.max(a - 1, 0))
             if (e.key === 'Enter' && selectable[active]) choose(selectable[active].code)
           }}
-          placeholder="Nome do estado…"
-          aria-label="Buscar UF"
+          placeholder={t.search.placeholder}
+          aria-label={t.search.inputAria}
           className="mt-3 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900"
         />
       </div>
       {normalizeSearch(query).length < MIN_QUERY_LENGTH ? (
-        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500">
-          Digite pelo menos {MIN_QUERY_LENGTH} letras.
-        </p>
+        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500">{t.search.minLength(MIN_QUERY_LENGTH)}</p>
       ) : results.length === 0 ? (
-        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500">Nenhuma UF encontrada.</p>
+        <p className="border-t border-slate-200 px-4 py-3 text-sm text-slate-500">{t.search.noResults}</p>
       ) : (
         <ul className="max-h-72 overflow-y-auto border-t border-slate-200" role="listbox">
           {results.map((u) => {
@@ -101,8 +101,8 @@ export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, o
               >
                 <span className={disabled ? 'text-slate-400' : 'text-slate-900'}>
                   {u.name}
-                  {used && <span className="ml-2 text-xs">já usada</span>}
-                  {wrong && <span className="ml-2 text-xs">errou aqui</span>}
+                  {used && <span className="ml-2 text-xs">{t.search.alreadyUsed}</span>}
+                  {wrong && <span className="ml-2 text-xs">{t.search.wrongHere}</span>}
                 </span>
                 <button
                   type="button"
@@ -110,7 +110,7 @@ export function SearchDialog({ rowLabel, colLabel, usedUfs, wrongHere, onPick, o
                   onClick={() => choose(u.code)}
                   className="shrink-0 rounded-lg bg-brand-green px-3 py-1.5 text-sm font-semibold text-white disabled:bg-slate-200 disabled:text-slate-400"
                 >
-                  Chutar
+                  {t.search.guess}
                 </button>
               </li>
             )

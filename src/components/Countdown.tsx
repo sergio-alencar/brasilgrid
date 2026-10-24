@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { msUntilNextBrasiliaMidnight } from '../../shared/brasiliaDay.ts'
+import { useLocale } from '../lib/locale.tsx'
 
 export function Countdown() {
+  const { t } = useLocale()
   const [ms, setMs] = useState(() => msUntilNextBrasiliaMidnight())
   useEffect(() => {
     const t = setInterval(() => setMs(msUntilNextBrasiliaMidnight()), 1000)
@@ -13,7 +15,7 @@ export function Countdown() {
   const m = Math.floor((s % 3600) / 60)
   const sec = s % 60
   return (
-    <span aria-label={`${h} horas, ${m} minutos e ${sec} segundos até a próxima grade`}>
+    <span aria-label={t.countdown.ariaLabel(h, m, sec)}>
       <span aria-hidden className="font-mono">
         {pad(h)}:{pad(m)}:{pad(sec)}
       </span>

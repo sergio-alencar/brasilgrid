@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import type { CategoryInfo, GameMode, GameState, ResultsResponse } from "../../shared/api.ts";
+import type { CategoryInfo, GameMode, GameState, Locale, ResultsResponse } from "../../shared/api.ts";
 import { bandFor } from "../../shared/rarity.ts";
 import { buildShareText } from "../../shared/shareText.ts";
 import { getUf } from "../../shared/ufs.ts";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { api } from "../lib/api.ts";
 import { authClient } from "../lib/authClient.ts";
 import { formatPercent } from "../lib/format.ts";
+import { useLocale } from "../lib/locale.tsx";
 import { Countdown } from "./Countdown.tsx";
 import { ReportDialog } from "./ReportDialog.tsx";
 import { ShareButtons } from "./ShareButtons.tsx";
@@ -14,12 +15,6 @@ import { ShareButtons } from "./ShareButtons.tsx";
 const BrazilMap = lazy(() => import("./BrazilMap.tsx"));
 
 type Tab = "popular" | "rare" | "all" | "wrong";
-const TABS: [Tab, string][] = [
-  ["popular", "Mais escolhidas"],
-  ["rare", "Menos escolhidas"],
-  ["all", "Todas"],
-  ["wrong", "Seus erros"],
-];
 
 interface Props {
   puzzleId: number;
@@ -27,9 +22,11 @@ interface Props {
   cols: CategoryInfo[];
   game: GameState;
   mode: GameMode;
+  locale: Locale;
 }
 
-export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
+export function ResultsPanel({ puzzleId, rows, cols, game, mode, locale }: Props) {
+  const { t } = useLocale();
   const [results, setResults] = useState<ResultsResponse | null>(null);
   const [error, setError] = useState(false);
   const [tab, setTab] = useState<Tab>("popular");
@@ -38,6 +35,15 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
   const { data: session } = authClient.useSession();
   const practice = mode === "practice";
   const archive = mode === "archive";
+  const catLabel = (cat: CategoryInfo) => (locale === 'en' ? cat.labelEn : locale === 'es' ? cat.labelEs : cat.label)
+  const cellLabel = (cell: number) => `${catLabel(rows[Math.floor(cell / 3)])} × ${catLabel(cols[cell % 3])}`
+
+  const TABS: [Tab, string][] = [
+    ["popular", t.results.tabPopular],
+    ["rare", t.results.tabRare],
+    ["all", t.results.tabAll],
+    ["wrong", t.results.tabWrong],
+  ];
 
   useEffect(() => {
     api.results(puzzleId, mode).then(setResults, () => setError(true));
@@ -55,73 +61,66 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
   });
 
   const title = practice
-    ? "Treino encerrado"
+    ? t.results.titlePractice
     : game.status === "completed"
-      ? "Grade completa!"
+      ? t.results.titleCompleted
       : game.status === "gave_up"
-        ? "Você desistiu"
-        : "Acabaram os palpites";
+        ? t.results.titleGaveUp
+        : t.results.titleOutOfGuesses;
 
   return (
     <section className="game-panel mt-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="text-sm text-white/70">
-          {game.correctCount}/9 acertos · raridade {game.rarity} (parcial){" "}
+          {t.results.correctCount(game.correctCount)} · {t.results.scorePartial(game.rarity)}{" "}
           {archive ? (
             <>
               ·{" "}
               <Link to="/arquivo" className="underline">
-                voltar ao arquivo
+                {t.results.backToArchive}
               </Link>
             </>
           ) : (
             <>
-              · próxima grade em <Countdown />
+              · {t.results.nextPuzzleIn} <Countdown />
             </>
           )}
         </p>
-        {practice && (
-          <p className="mt-1 text-sm text-white/70">
-            Isso foi um treino no modo infinito: não conta nas suas estatísticas nem pode ser
-            compartilhado.
-          </p>
-        )}
+        {practice && <p className="mt-1 text-sm text-white/70">{t.results.practiceNote}</p>}
       </div>
 
       {!practice && <ShareButtons text={shareText} />}
 
       {!practice && session?.user.isAnonymous && (
         <p className="rounded-lg bg-white p-3 text-sm text-slate-900">
-          Quer guardar seu histórico e sua sequência de dias?{" "}
+          {t.results.keepHistoryPrompt}{" "}
           <Link to="/entrar" className="font-semibold text-brand-green underline">
-            Entre ou crie uma conta
-          </Link>{" "}
-          . A partida de hoje vem junto.
+            {t.results.loginOrCreate}
+          </Link>
+          {t.results.todaysGameIncluded}
         </p>
       )}
 
       <div>
-        <h3 className="font-semibold">Respostas</h3>
-        {error && <p className="text-sm text-red-200">Não foi possível carregar as respostas.</p>}
-        {!results && !error && <p className="text-sm text-white/70">Carregando…</p>}
+        <h3 className="font-semibold">{t.results.answers}</h3>
+        {error && <p className="text-sm text-red-200">{t.results.loadFailed}</p>}
+        {!results && !error && <p className="text-sm text-white/70">{t.results.loading}</p>}
         {results && (
           <>
             <p className="text-xs text-white/70">
-              {results.players} {results.players === 1 ? "jogador" : "jogadores"}
-              {mode === "normal" ? " hoje" : ""} · toque numa célula para ver no mapa
+              {results.players} {t.results.players(results.players)}
+              {mode === "normal" ? t.results.today : ""} · {t.results.tapToSeeOnMap}
             </p>
             <figure className="mt-3 flex flex-col items-center">
               <Suspense fallback={<div className="aspect-square w-full max-w-xs" />}>
                 <BrazilMap
-                  title={`${rows[Math.floor(mapCell / 3)].label} × ${cols[mapCell % 3].label}`}
+                  title={cellLabel(mapCell)}
                   valid={results.cells[mapCell].answers.map((a) => a.uf)}
                   mine={game.filled.find((f) => f.cell === mapCell)?.uf}
                 />
               </Suspense>
-              <figcaption className="mt-1 text-center text-xs text-white/70">
-                {rows[Math.floor(mapCell / 3)].label} × {cols[mapCell % 3].label}
-              </figcaption>
+              <figcaption className="mt-1 text-center text-xs text-white/70">{cellLabel(mapCell)}</figcaption>
             </figure>
             <div role="tablist" className="mt-2 flex flex-wrap gap-1">
               {TABS.map(([id, label]) => (
@@ -142,7 +141,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
               ))}
             </div>
             {tab === "wrong" ? (
-              <WrongList results={results} rows={rows} cols={cols} />
+              <WrongList results={results} rows={rows} cols={cols} locale={locale} />
             ) : (
               <ol className="mt-3 grid gap-3 sm:grid-cols-3">
                 {results.cells.map(({ cell, answers }) => {
@@ -164,9 +163,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                           mapCell === cell ? "bg-amber-50 ring-2 ring-brand-yellow" : "bg-white",
                         ].join(" ")}
                       >
-                        <p className="font-semibold">
-                          {rows[Math.floor(cell / 3)].label} × {cols[cell % 3].label}
-                        </p>
+                        <p className="font-semibold">{cellLabel(cell)}</p>
                         <ul className="mt-1 space-y-0.5">
                           {shown.map((a) => (
                             <li
@@ -174,7 +171,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                               className={a.uf === mine ? "font-bold text-brand-green" : ""}
                             >
                               {a.picks > 0 ? bandFor(a.percent).emoji : "·"} {getUf(a.uf)?.name}:{" "}
-                              {a.picks > 0 ? formatPercent(a.percent) : "ninguém escolheu"}
+                              {a.picks > 0 ? formatPercent(a.percent) : t.results.nobodyChose}
                             </li>
                           ))}
                         </ul>
@@ -185,9 +182,9 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
               </ol>
             )}
             <p className="mt-4 text-center text-xs text-white/70">
-              Achou um erro no gabarito?{" "}
+              {t.results.foundAnError}{" "}
               <button type="button" onClick={() => setReporting(true)} className="underline">
-                Avise a gente
+                {t.results.reportIt}
               </button>
             </p>
             {reporting && (
@@ -197,6 +194,7 @@ export function ResultsPanel({ puzzleId, rows, cols, game, mode }: Props) {
                 cols={cols}
                 cells={results.cells}
                 initialCell={mapCell}
+                locale={locale}
                 onClose={() => setReporting(false)}
               />
             )}
@@ -211,22 +209,26 @@ function WrongList({
   results,
   rows,
   cols,
+  locale,
 }: {
   results: ResultsResponse;
   rows: CategoryInfo[];
   cols: CategoryInfo[];
+  locale: Locale;
 }) {
+  const { t } = useLocale();
+  const catLabel = (cat: CategoryInfo) => (locale === 'en' ? cat.labelEn : locale === 'es' ? cat.labelEs : cat.label)
   if (!results.wrongGuesses.length)
-    return <p className="mt-3 text-sm text-white/70">Nenhum palpite errado. 👏</p>;
+    return <p className="mt-3 text-sm text-white/70">{t.results.noWrongGuesses}</p>;
   return (
     <ul className="mt-3 space-y-1 text-sm">
       {results.wrongGuesses.map((w, i) => {
         const failed = w.failed.map((axis) =>
-          axis === "row" ? rows[Math.floor(w.cell / 3)].label : cols[w.cell % 3].label,
+          axis === "row" ? catLabel(rows[Math.floor(w.cell / 3)]) : catLabel(cols[w.cell % 3]),
         );
         return (
           <li key={i}>
-            <strong>{getUf(w.uf)?.name}</strong> não atende: {failed.join(" e ")}
+            <strong>{getUf(w.uf)?.name}</strong> {t.results.doesNotMatch}: {failed.join(` ${t.results.and} `)}
           </li>
         );
       })}

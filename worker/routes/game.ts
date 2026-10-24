@@ -92,7 +92,17 @@ async function puzzleResponse(
   const info = (axis: 'row' | 'col'): CategoryInfo[] =>
     cats
       .filter((x) => x.axis === axis)
-      .map(({ categoryId, label, description, sourceName, sourceUrl }) => ({ categoryId, label, description, sourceName, sourceUrl }))
+      .map(({ categoryId, label, description, labelEn, descriptionEn, labelEs, descriptionEs, sourceName, sourceUrl }) => ({
+        categoryId,
+        label,
+        description,
+        labelEn,
+        descriptionEn,
+        labelEs,
+        descriptionEs,
+        sourceName,
+        sourceUrl,
+      }))
 
   return {
     puzzle: { id: p.id, playDate: p.playDate, rows: info('row'), cols: info('col') },
@@ -128,6 +138,8 @@ gameRoutes.get('/archive', async (c) => {
   const pageSize = 20
   const db = c.get('db')
   const session = c.get('session')
+  const loc = c.req.query('locale')
+  const labelCol = loc === 'en' ? sql`label_en` : loc === 'es' ? sql`label_es` : sql`label`
 
   const { rows } = await db.execute<{
     puzzle_id: number
@@ -138,8 +150,8 @@ gameRoutes.get('/archive', async (c) => {
     my_correct_count: number | null
   }>(sql`
     select p.id as puzzle_id, p.play_date::text as play_date,
-      (select array_agg(label order by position) from puzzle_category where puzzle_id = p.id and axis = 'row') as rows,
-      (select array_agg(label order by position) from puzzle_category where puzzle_id = p.id and axis = 'col') as cols,
+      (select array_agg(${labelCol} order by position) from puzzle_category where puzzle_id = p.id and axis = 'row') as rows,
+      (select array_agg(${labelCol} order by position) from puzzle_category where puzzle_id = p.id and axis = 'col') as cols,
       g.status as my_status, g.correct_count as my_correct_count
     from puzzle p
     left join game g on g.puzzle_id = p.id and g.user_id = ${session?.user.id ?? null} and g.mode = 'archive'

@@ -7,19 +7,14 @@ import { ConfirmDialog } from '../components/ConfirmDialog.tsx'
 import { GameSidebar } from '../components/GameSidebar.tsx'
 import { Grid } from '../components/Grid.tsx'
 import { IntroModal } from '../components/IntroModal.tsx'
+import { BrazilSpinner } from '../components/BrazilSpinner.tsx'
 import { ResultsPanel } from '../components/ResultsPanel.tsx'
 import { SearchDialog } from '../components/SearchDialog.tsx'
 import { ApiError, api } from '../lib/api.ts'
 import { ensureSession } from '../lib/authClient.ts'
+import { useLocale } from '../lib/locale.tsx'
 
 const INTRO_SEEN_KEY = 'brasilgrid:intro-seen'
-
-const MESSAGES: Record<string, string> = {
-  uf_used: 'Essa UF já foi usada nesta grade.',
-  cell_filled: 'Essa célula já está preenchida.',
-  game_over: 'A partida já terminou.',
-  puzzle_unavailable: 'Esta grade não está mais disponível. Recarregue a página.',
-}
 
 /** No desktop, a grade ocupa a tela toda sem rolar — só depois de terminar
  * é que aparece o resto (respostas) e a página passa a rolar normalmente. */
@@ -31,6 +26,7 @@ function useNoScrollWhilePlaying(active: boolean) {
 }
 
 export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
+  const { t, locale } = useLocale()
   const [mode, setMode] = useState<GameMode>(archivePuzzleId ? 'archive' : 'normal')
   const [today, setToday] = useState<TodayResponse | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
@@ -69,12 +65,13 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
       (e) =>
         setLoadError(
           archivePuzzleId
-            ? 'Essa grade não está disponível no arquivo.'
+            ? t.home.archiveUnavailable
             : e instanceof ApiError && e.code === 'no_puzzle_today'
-              ? 'Ainda não há grade para hoje.'
-              : 'Não foi possível carregar a grade.',
+              ? t.home.noPuzzleToday
+              : t.home.loadFailed,
         ),
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode, archivePuzzleId])
 
   const toastTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -97,13 +94,20 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
   if (!today)
     return (
       <>
-        <p className="text-center text-white/80">Carregando a grade…</p>
+        <div className="flex justify-center py-16"><BrazilSpinner size={120} /></div>
         {showIntro && <IntroModal onClose={dismissIntro} />}
       </>
     )
 
   const { puzzle, maxGuesses } = today
   const guessesLeft = game?.guessesLeft ?? (mode === 'practice' ? null : maxGuesses)
+
+  const MESSAGES: Record<string, string> = {
+    uf_used: t.home.ufUsed,
+    cell_filled: t.home.cellFilled,
+    game_over: t.home.gameOver,
+    puzzle_unavailable: t.home.puzzleUnavailable,
+  }
 
   const pick = async (uf: string) => {
     if (selected === null) return
@@ -114,14 +118,14 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
       await ensureSession()
       const res = await api.guess(puzzle.id, cell, uf, mode)
       if (res.game) setGame(res.game)
-      if (res.result !== 'ok') flash(MESSAGES[res.result] ?? 'Palpite não aceito.')
+      if (res.result !== 'ok') flash(MESSAGES[res.result] ?? t.home.guessRejected)
       else if (!res.correct) {
-        flash(`${getUf(uf)?.name} não serve aqui.`)
+        flash(t.home.wrongUf(getUf(uf)?.name ?? uf))
         setShakeCell(cell)
         setTimeout(() => setShakeCell(null), 500)
       }
     } catch (e) {
-      flash(e instanceof ApiError && e.code === 'puzzle_unavailable' ? MESSAGES.puzzle_unavailable : 'Erro ao enviar o palpite.')
+      flash(e instanceof ApiError && e.code === 'puzzle_unavailable' ? MESSAGES.puzzle_unavailable : t.home.guessFailed)
     } finally {
       setBusy(false)
     }
@@ -133,7 +137,7 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
       await ensureSession()
       setGame((await api.giveUp(puzzle.id, mode)).game)
     } catch {
-      flash('Não foi possível desistir agora.')
+      flash(t.home.giveUpFailed)
     } finally {
       setBusy(false)
     }
@@ -147,12 +151,14 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
 
   const rowOf = (cell: number) => puzzle.rows[Math.floor(cell / 3)]
   const colOf = (cell: number) => puzzle.cols[cell % 3]
+  const catLabel = (cat: { label: string; labelEn: string; labelEs: string }) =>
+    locale === 'en' ? cat.labelEn : locale === 'es' ? cat.labelEs : cat.label
 
   return (
     <section className="game-fit">
       {archivePuzzleId && (
         <Link to="/arquivo" className="mb-2 inline-block text-sm text-white/80 underline hover:text-white">
-          ← Arquivo
+          {t.home.backToArchive}
         </Link>
       )}
       <div className="flex flex-1 flex-col gap-4 md:min-h-0 md:flex-row">
@@ -165,6 +171,7 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
               filled={game?.filled ?? []}
               disabled={busy || finished}
               shakeCell={shakeCell}
+              locale={locale}
               onSelect={setSelected}
               onOpenAtlas={setAtlasCategory}
             />
@@ -185,14 +192,14 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
 
       {finished && game && (
         <div className="mt-4">
-          <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} mode={mode} />
+          <ResultsPanel puzzleId={puzzle.id} rows={puzzle.rows} cols={puzzle.cols} game={game} mode={mode} locale={locale} />
         </div>
       )}
 
       {selected !== null && (
         <SearchDialog
-          rowLabel={rowOf(selected).label}
-          colLabel={colOf(selected).label}
+          rowLabel={catLabel(rowOf(selected))}
+          colLabel={catLabel(colOf(selected))}
           usedUfs={game?.usedUfs ?? []}
           wrongHere={(game?.wrongGuesses ?? []).filter((w) => w.cell === selected).map((w) => w.uf)}
           onPick={pick}
@@ -214,15 +221,16 @@ export function Home({ archivePuzzleId }: { archivePuzzleId?: number } = {}) {
 
       {confirmingGiveUp && (
         <ConfirmDialog
-          title={mode === 'practice' ? 'Encerrar o treino?' : 'Desistir?'}
+          title={mode === 'practice' ? t.home.giveUpTitlePractice : t.home.giveUpTitleDefault}
           message={
             mode === 'practice'
-              ? 'Vamos mostrar as respostas; o treino não conta nas suas estatísticas.'
+              ? t.home.giveUpMessagePractice
               : mode === 'archive'
-                ? 'Vamos revelar as respostas dessa grade do arquivo.'
-                : 'A partida de hoje será encerrada e vamos revelar as respostas.'
+                ? t.home.giveUpMessageArchive
+                : t.home.giveUpMessageNormal
           }
-          confirmLabel={mode === 'practice' ? 'Encerrar treino' : 'Desistir'}
+          confirmLabel={mode === 'practice' ? t.home.giveUpConfirmPractice : t.home.giveUpConfirmDefault}
+          cancelLabel={t.home.cancel}
           onConfirm={confirmGiveUp}
           onClose={() => setConfirmingGiveUp(false)}
         />

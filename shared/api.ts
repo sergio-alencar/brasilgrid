@@ -2,11 +2,16 @@
 
 export type GameStatus = 'in_progress' | 'completed' | 'out_of_guesses' | 'gave_up'
 export type GameMode = 'normal' | 'practice' | 'archive'
+export type Locale = 'pt' | 'en' | 'es'
 
 export interface CategoryInfo {
   categoryId: string
   label: string
   description: string
+  labelEn: string
+  descriptionEn: string
+  labelEs: string
+  descriptionEs: string
   sourceName: string
   sourceUrl: string
 }

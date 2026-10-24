@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useLocale } from '../lib/locale.tsx'
 
 export function ShareButtons({ text }: { text: string }) {
+  const { t } = useLocale()
   const [copied, setCopied] = useState(false)
   const encoded = encodeURIComponent(text)
   const canShare = typeof navigator !== 'undefined' && 'share' in navigator
@@ -29,11 +31,11 @@ export function ShareButtons({ text }: { text: string }) {
             onClick={() => navigator.share({ text }).catch(() => {})}
             className="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-brand-green"
           >
-            Compartilhar
+            {t.share.share}
           </button>
         )}
         <button type="button" onClick={copy} className="rounded-lg border border-white/40 px-3 py-2 text-sm text-white hover:bg-white/10">
-          {copied ? 'Copiado!' : 'Copiar'}
+          {copied ? t.share.copied : t.share.copy}
         </button>
         {links.map(([name, href]) => (
           <a

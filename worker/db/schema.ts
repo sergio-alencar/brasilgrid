@@ -112,6 +112,10 @@ export const puzzleCategory = pgTable(
     categoryId: text('category_id').notNull(),
     label: text('label').notNull(),
     description: text('description').notNull(),
+    labelEn: text('label_en').notNull(),
+    descriptionEn: text('description_en').notNull(),
+    labelEs: text('label_es').notNull(),
+    descriptionEs: text('description_es').notNull(),
     sourceName: text('source_name').notNull(),
     sourceUrl: text('source_url').notNull(),
     /** Membros da categoria (usados para explicar erros depois do jogo). */
