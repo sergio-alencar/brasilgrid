@@ -16,6 +16,17 @@ type AppEnv = { Bindings: Env; Variables: { db: Db; session: AuthSession | null 
 
 const app = new Hono<AppEnv>()
 
+// Redireciona o domínio workers.dev para o domínio canônico.
+app.use('*', async (c, next) => {
+  const host = new URL(c.req.url).hostname
+  if (host.endsWith('.workers.dev') && c.env.PUBLIC_URL) {
+    const canonical = new URL(c.req.url)
+    canonical.host = new URL(c.env.PUBLIC_URL).host
+    return c.redirect(canonical.toString(), 301)
+  }
+  await next()
+})
+
 const sessionMiddleware = createMiddleware<AppEnv>(async (c, next) => {
   const auth = createAuth(c.env, c.get('db'))
   c.set('session', await auth.api.getSession({ headers: c.req.raw.headers }))
