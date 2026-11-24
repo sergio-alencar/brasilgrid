@@ -183,7 +183,7 @@ function AppShell() {
           className="flex items-center gap-1.5 transition hover:text-white"
         >
           {t.footer.developedBy}
-          <img src="/speivox.svg" alt="SpeiVox" className="h-3.5 w-auto" />
+          <img src="/speivox.svg" alt="SpeiVox" className="h-3 w-auto translate-y-px" />
         </a>
       </footer>
     </>
