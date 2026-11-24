@@ -65,6 +65,7 @@ function Header() {
     ['/como-jogar', t.nav.howToPlay],
     ['/arquivo', t.nav.archive],
     ['/estatisticas', t.nav.stats],
+    ['/fontes', t.footer.sources],
   ]
 
   const closeMenu = () => setMenuOpen(false)
@@ -166,23 +167,20 @@ function AppShell() {
           </Routes>
         </main>
       </div>
-      <footer className={`mx-auto flex flex-col items-center gap-3 px-4 py-6 text-xs text-white/70 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
-        <div className="flex justify-center gap-4">
-          <Link to="/fontes" className="hover:text-white hover:underline">
-            {t.footer.sources}
-          </Link>
-          <Link to="/privacidade" className="hover:text-white hover:underline">
-            {t.footer.privacy}
-          </Link>
-          <Link to="/termos" className="hover:text-white hover:underline">
-            {t.footer.terms}
-          </Link>
-        </div>
+      <footer className={`mx-auto flex flex-wrap items-center justify-center gap-x-2 gap-y-2 px-4 py-6 text-xs text-white/70 ${wide ? 'max-w-2xl lg:max-w-6xl' : 'max-w-2xl'}`}>
+        <Link to="/privacidade" className="hover:text-white hover:underline">
+          {t.footer.privacy}
+        </Link>
+        <span aria-hidden>·</span>
+        <Link to="/termos" className="hover:text-white hover:underline">
+          {t.footer.terms}
+        </Link>
+        <span aria-hidden>·</span>
         <a
           href="https://speivox.com"
           target="_blank"
           rel="noopener"
-          className="flex items-center gap-1.5 opacity-80 transition hover:text-white hover:opacity-100"
+          className="flex items-center gap-1.5 transition hover:text-white"
         >
           {t.footer.developedBy}
           <img src="/speivox.svg" alt="SpeiVox" className="h-3.5 w-auto" />
