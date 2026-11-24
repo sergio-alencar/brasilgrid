@@ -1,0 +1,29 @@
+name: Publish puzzles
+
+on:
+  schedule:
+    # Segunda-feira às 06:00 UTC (03:00 Brasília) — publica puzzles da semana
+    - cron: '0 6 * * 1'
+  workflow_dispatch:  # permite rodar manualmente pelo GitHub
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Publish latest puzzle batch
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          # Pega o arquivo mais recente da pasta puzzles/
+          LATEST=$(ls puzzles/*.json | sort | tail -1)
+          echo "Publicando $LATEST (launch=2026-10-18)…"
+          npm run puzzles:publish -- --file "$LATEST" --launch 2026-10-18
