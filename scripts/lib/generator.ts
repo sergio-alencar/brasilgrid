@@ -189,9 +189,22 @@ function pickWithFallback(
   return best
 }
 
-export function generatePuzzles(categories: CategoryDef[], opts: GeneratorOptions): GeneratedPuzzle[] {
+/** Grades já publicadas antes de opts.from, para o intervalo valer entre lotes. */
+export interface UsageHistory {
+  playDate: string
+  categoryIds: string[]
+}
+
+export function generatePuzzles(
+  categories: CategoryDef[],
+  opts: GeneratorOptions,
+  history: UsageHistory[] = [],
+): GeneratedPuzzle[] {
   const rand = mulberry32(opts.seed)
   const lastUsed = new Map<string, number>()
+  for (const h of [...history].sort((a, b) => a.playDate.localeCompare(b.playDate))) {
+    for (const id of h.categoryIds) lastUsed.set(id, diffDays(h.playDate, opts.from))
+  }
   const puzzles: GeneratedPuzzle[] = []
 
   for (let day = 0; day < opts.days; day++) {
