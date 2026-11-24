@@ -17,6 +17,7 @@ export const pt = {
     sources: 'Fontes e créditos',
     privacy: 'Privacidade',
     terms: 'Termos',
+    developedBy: 'Desenvolvido por',
   },
   langSwitch: {
     ariaLabel: 'Idioma',

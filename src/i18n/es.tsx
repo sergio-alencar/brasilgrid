@@ -15,6 +15,7 @@ export const es = {
     sources: 'Fuentes y créditos',
     privacy: 'Privacidad',
     terms: 'Términos',
+    developedBy: 'Desarrollado por',
   },
   langSwitch: {
     ariaLabel: 'Idioma',

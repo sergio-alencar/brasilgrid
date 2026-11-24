@@ -17,6 +17,7 @@ export const en = {
     sources: 'Sources & credits',
     privacy: 'Privacy',
     terms: 'Terms',
+    developedBy: 'Developed by',
   },
   langSwitch: {
     ariaLabel: 'Language',
