@@ -28,6 +28,7 @@
     "puzzles:generate": "tsx scripts/generate-puzzles.ts",
     "puzzles:regenerate": "tsx scripts/regenerate-puzzles.ts",
     "puzzles:publish": "tsx scripts/publish-puzzles.ts",
+    "puzzles:auto": "tsx scripts/auto-publish.ts",
     "test:e2e": "playwright test",
     "reports": "tsx scripts/list-reports.ts"
   },

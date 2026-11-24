@@ -1,0 +1,36 @@
+name: Publish puzzles
+
+on:
+  schedule:
+    # 06:00 UTC = 03:00 em Brasília
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Gera e publica as grades que faltam
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: npm run puzzles:auto
+
+      # Em repositório público, o GitHub desativa workflows agendados após 60 dias
+      # sem commits; reativar pela API zera essa contagem.
+      - name: Mantém o agendamento ativo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow enable publish-puzzles.yml --repo "${{ github.repository }}"

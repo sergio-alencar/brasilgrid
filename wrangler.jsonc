@@ -12,7 +12,7 @@
     // O worker roda primeiro nessas rotas (API e, no futuro, as páginas de
     // resultado /r/:id, que vão precisar injetar meta tags de OG). Qualquer
     // outra rota vai direto para os arquivos estáticos da SPA.
-    "run_worker_first": ["/api/*", "/r/*"]
+    "run_worker_first": true
   },
   "hyperdrive": [
     {
@@ -32,7 +32,7 @@
     }
   ],
   "vars": {
-    "PUBLIC_URL": "https://brasilgrid.afasergio.workers.dev",
+    "PUBLIC_URL": "https://brasilgrid.com.br",
     // Sem domínio verificado no Resend, só dá para enviar para o e-mail do dono da conta.
     "EMAIL_FROM": "BrasilGrid <onboarding@resend.dev>"
   },
